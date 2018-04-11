@@ -1,0 +1,19 @@
+.paddingLabel {
+  padding: 6.5px 0px 0px 15px;
+}
+
+.p0{
+  padding: 0px !important;
+}
+
+.p_l_30{
+  padding-left: 30px !important;
+}
+
+.p_l_0{
+  padding-left: 0px !important;
+}
+
+.secctionPadding{
+  padding: 0px 12px !important;
+}

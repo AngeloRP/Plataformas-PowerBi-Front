@@ -1,0 +1,155 @@
+
+<div id="main" role="main" class=" "   [ngStyle]="{'margin-left': marginLeft}">
+
+  <!-- MAIN CONTENT -->
+  <div id="content" class="container" [ngStyle]="{'width': width}">
+
+    <div class="row">
+      <!--<div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 hidden-xs hidden-sm">
+        <h1 class="txt-color-red login-header-big">SmartAdmin</h1>
+        <div class="hero">
+
+          <div class="pull-left login-desc-box-l">
+            <h4 class="paragraph-header">It's Okay to be Smart. Experience the simplicity of SmartAdmin, everywhere you go!</h4>
+            <div class="login-app-icons">
+              <a routerLink="/dashboard/analytics" class="btn btn-danger btn-sm">Frontend Template</a>
+              <a routerLink="/smartadmin/app-layouts" class="btn btn-danger btn-sm">Find out more</a>
+            </div>
+          </div>
+
+          <img src="assets/img/demo/iphoneview.png" alt="" class="pull-right display-image" style="width:210px">
+
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <h5 class="about-heading">About SmartAdmin - Are you up to date?</h5>
+            <p>
+              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa.
+            </p>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <h5 class="about-heading">Not just your average template!</h5>
+            <p>
+              Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi voluptatem accusantium!
+            </p>
+          </div>
+        </div>
+
+      </div>-->
+      <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 auth-margin">
+        <div class="">
+          <!--
+          <form id="smart-form-register" class="smart-form client-form">
+            <header>
+              {{'register' | translate}}
+            </header>
+
+            <fieldset>
+
+              <section>
+                <label class="input">
+                  <i class="icon-append fa fa-envelope"></i>
+                  <input type="email" name="email" placeholder="{{'e_mail' | translate}}" #email>
+                  <b class="tooltip tooltip-bottom-right">{{'need-email' | translate}}</b>
+                </label>
+              </section>
+
+              <section>
+                <label class="input">
+                  <i class="icon-append fa fa-lock"></i>
+                  <input type="password" name="password" placeholder="{{'password' | translate}}" id="password" #password>
+                  <b class="tooltip tooltip-bottom-right">{{'dont-forgot-password' | translate}}</b>
+                </label>
+              </section>
+
+              <section>
+                <label class="input">
+                  <i class="icon-append fa fa-lock"></i>
+                  <input type="password" name="passwordConfirm" placeholder="{{'confirm-password' | translate}}" #conf_password>
+                  <b class="tooltip tooltip-bottom-right">{{'dont-forgot-password' | translate}}</b>
+                </label>
+              </section>
+            </fieldset>
+
+            <fieldset>
+              <div class="row">
+                <section class="col col-6">
+                  <label class="input">
+                    <input type="text" name="{{'name' | translate}}" placeholder="Name" #name>
+                  </label>
+                </section>
+
+                <section class="col col-6">
+                  <label class="select">
+                    <select name="gender" #genre>
+                      <option value="0" selected disabled>{{'genero' | translate}}</option>
+                      <option value="1">{{'man' | translate}}</option>
+                      <option value="2">{{'woman' | translate}}</option>
+                    </select>
+                    <i></i>
+                  </label>
+                </section>
+              </div>
+              <div class="row">
+                <section class="col col-6">
+                  <label class="input">
+                    <i class="icon-append fa fa-calendar"></i>
+                    <input type="date" name="request" placeholder="{{ 'birth_date' | translate}}" class="datepicker" data-dateformat="dd/mm/yy"
+                      #dob>
+                  </label>
+                </section>
+                <section class="col col-6">
+                  <label class="input">
+                    <i class="icon-prepend fa fa-phone"></i>
+                    <input type="tel" name="phone" placeholder="{{ 'phone' | translate}}" #phone>
+                  </label>
+                </section>
+              </div>
+
+            </fieldset>
+            <footer>
+              <button (click)="register($event, email.value, password.value, conf_password.value, name.value, genre.value, dob.value, phone.value)"
+                class="btn btn-primary">
+                {{'register' | translate}}
+              </button>
+            </footer>
+
+            <div class="message">
+              <i class="fa fa-check"></i>
+              <p>
+                Thank you for your registration!
+              </p>
+            </div>
+          </form>-->
+          <app-form
+          [claseSCSS]="form.claseSCSS" 
+          [sections]="form.sections"
+          [validationOptions]="form.validationOptions"
+          [titleButton]="form.titleButton"
+          [header]="form.header"
+          [hasButton]="true"
+          [back]="form.back"
+          (submit)="register($event)"
+          ></app-form>
+
+        </div>
+        <!--<p class="note text-center">*FREE Registration ends on October 2015.</p>
+        <h5 class="text-center">- Or sign in using -</h5>
+        <ul class="list-inline text-center">
+          <li>
+            <a (click)="(null)" class="btn btn-primary btn-circle"><i class="fa fa-facebook"></i></a>
+          </li>
+          <li>
+            <a (click)="(null)" class="btn btn-info btn-circle"><i class="fa fa-twitter"></i></a>
+          </li>
+          <li>
+            <a (click)="(null)" class="btn btn-warning btn-circle"><i class="fa fa-linkedin"></i></a>
+          </li>
+        </ul>
+      -->
+      </div>
+    </div>
+  </div>
+
+</div>

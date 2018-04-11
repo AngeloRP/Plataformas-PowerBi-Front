@@ -1,0 +1,32 @@
+.h-w-f-a{
+    height: -webkit-fill-available;
+    height: -moz-available;
+}
+
+.h0{
+    height: 0px
+}
+
+.h34{
+    height: 34px;
+}
+
+.h38{
+    height: 38px;
+}
+
+.h40{
+    height: 40px;
+}
+
+.min_h40{
+    min-height: 40px !important;
+}
+
+.min_h30{
+    min-height: 30px !important;
+}
+
+.h_inherit{
+    height: inherit !important;
+}

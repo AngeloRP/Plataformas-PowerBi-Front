@@ -1,0 +1,103 @@
+<div class="" *ngIf="!loading">
+
+    <article class="{{claseCss}}">
+
+        <sa-widget [editbutton]="editbutton" [custombutton]="custombutton" [fullscreenbutton]="fullscreenbutton" [collapsed]="collapsed"
+            [colorbutton]="colorbutton" [color]="color">
+
+            <header *ngIf="hasHeader" class="header_widget">
+                <span *ngIf="widget_icon !== ''" class="widget-icon">
+                    <i class="{{widget_icon}}"></i>
+                </span>
+
+                <h2>{{headerTitle | uppercase}}</h2>
+
+            </header>
+            <!--<p *ngIf="asignarMeses" style="margin-top: 10px; margin-left: 5px;">Especifica la cantidad de meses que va ser evaluado una Start UP</p>-->
+            <p *ngIf="activarMeses" style="margin-top: 10px; margin-left: 5px;">A través de esta página podrá dar acceso a la Start Up para registrar y actualizar su información. Después de realizar esta activación no podrá cambiar la fecha de inicio del Incubado.</p>
+            <p *ngIf="calificacion" style="margin-top: 10px; margin-left: 5px;">La calificación de los evaluadores es la última otorgada</p>
+            <!--<p *ngIf="calificacion" style="margin-top: 10px; margin-left: 5px;">Los porcentajes que aparecen en el evaluador corresponden a la última calificación.</p>-->
+            <div>
+                <a *ngIf="hasButton" class="botonAlFrente " title="Eliminar Formulario" (click)="desaparecer()">
+                    <i style="color: white;" class="fa fa-times-circle" aria-hidden="true"></i>
+                </a>
+                <div *ngIf="!contentTable" class="widget-body no-padding">
+                    <app-form [isSubmited]="camposValidados" [claseSCSS]="form.claseSCSS" [isPressed]="isPressed" 
+                        [sections]="form.sections" 
+                        [back]="form.back"
+                        [hasButton]="hasButtonFormulario" [validationOptions]="form.validationOptions" [titleButton]="form.titleButton"
+                        [buttonClass]="buttonClass" [idForm]="idFormulario" (submit)="onSubmit($event)" (terminoCarga)="terminarCarga($event)">
+                    </app-form>
+                    <!--<app-table *ngIf="contentTable" [isPressed]="isPressed" [url]="tableUrl" [columns]="tableColums" [buttons]="tableButtons" [headers]="headers" [dom]="dom"
+                       [back]="form.back" [onLanguage]="onLanguage" [buttonClass]="buttonClass" [rpta]="rpta" [paging]="paging"
+                       [hasFilter]="hasFilter" [hasButtons]="hasButtons" [ruta]="ruta" [id]="id" [idTable]="idTable"
+                       ></app-table>-->
+
+                </div>
+                <div *ngIf="contentTable">
+                    <div *ngIf="tablaEspecial" >
+                        <!--<span class="onoffswitch">
+                            <input type="checkbox" name="start_interval" class="onoffswitch-checkbox" id="start_interval" >
+                            <label class="onoffswitch-label" for="start_interval">
+                                <span class="onoffswitch-inner" data-swchon-text="ACTIVOS" data-swchoff-text="INACTIVOS"></span>
+                                <span class="onoffswitch-switch"></span>
+                            </label>
+                        </span>-->
+                        <app-on-off-switch [opcion1]="'Activos'"  [opcion2]="'Inactivos'" [model]="true"  (modelChange)="cambiarTabla($event)"></app-on-off-switch>
+                        <div *ngIf="cambioEstado" style="margin-top: 40px;">
+                                <app-table 
+                                [posicion]="posicion"
+                                [isPressed]="isPressed" [url]="tableUrl" [columns]="tableColums" [searColumns]="searColumns" [buttons]="tableButtons"
+                                [headers]="headers" [headersLocalStorage]="headersLocalStorage" [rpta]="rpta" [paging]="paging" [sizeFuente]="sizeFuente"
+                                [tituloAcciones]="tituloAcciones" [posicionAcciones]="posicionAcciones" [urlUpdate]="urlUpdateTable"
+                                [headersUpdateLocalStorage]="headersUpdateLocalStorageTable" [hasFilter]="hasFilter" [hasButtons]="hasButtons"
+                                [actions]="rowActions" [campoId]="campoId" [maxWidthActions]="maxWidthActions"></app-table>
+                        </div>
+                        <div *ngIf="!cambioEstado" style="margin-top: 40px;">
+                                <app-table 
+                                [posicion]="posicion"
+                                [isPressed]="isPressed" [url]="tablaEspecial" [columns]="tableColums" [searColumns]="searColumns" [buttons]="tableButtons"
+                                [headers]="headers" [headersLocalStorage]="headersLocalStorage" [rpta]="rpta" [paging]="paging" [sizeFuente]="sizeFuente"
+                                [tituloAcciones]="tituloAcciones" [posicionAcciones]="posicionAcciones" [urlUpdate]="urlUpdateTable"
+                                [headersUpdateLocalStorage]="headersUpdateLocalStorageTable" [hasFilter]="hasFilter" [hasButtons]="hasButtons"
+                                [campoId]="campoId" [maxWidthActions]="maxWidthActions"></app-table>
+                        </div>
+                    </div>
+                    <div *ngIf="tablaFilterActivity">
+                        <app-on-off-switch [opcion1]="'ACTIVOS'"  [opcion2]="'INACTIVOS'" [model]="true"  (modelChange)="cambiarTabla($event)"></app-on-off-switch>
+                        <div *ngIf="cambioEstado" style="margin-top: 40px;">
+                            <app-table 
+                            [posicion]="posicion"
+                            [isPressed]="isPressed" [url]="tableUrl" [columns]="tableColums" [searColumns]="searColumns" [buttons]="tableButtons"
+                            [headers]="headers" [headersLocalStorage]="headersLocalStorage" [rpta]="rpta" [paging]="paging" [sizeFuente]="sizeFuente"
+                            [tituloAcciones]="tituloAcciones" [posicionAcciones]="posicionAcciones" [urlUpdate]="urlUpdateTable"
+                            [headersUpdateLocalStorage]="headersUpdateLocalStorageTable" [hasFilter]="hasFilter" [hasButtons]="hasButtons"
+                            [actions]="rowActions" [campoId]="campoId" [maxWidthActions]="maxWidthActions" [filteredByActivity]="true" [filterActiveofInactive]="true"></app-table>
+                        </div>
+                        <div *ngIf="!cambioEstado" style="margin-top: 40px;">
+                            <app-table 
+                            [posicion]="posicion"
+                            [isPressed]="isPressed" [url]="tableUrl" [columns]="tableColums" [searColumns]="searColumns" [buttons]="tableButtons"
+                            [headers]="headers" [headersLocalStorage]="headersLocalStorage" [rpta]="rpta" [paging]="paging" [sizeFuente]="sizeFuente"
+                            [tituloAcciones]="tituloAcciones" [posicionAcciones]="posicionAcciones" [urlUpdate]="urlUpdateTable"
+                            [headersUpdateLocalStorage]="headersUpdateLocalStorageTable" [hasFilter]="hasFilter" [hasButtons]="hasButtons"
+                            [actions]="rowActions" [campoId]="campoId" [maxWidthActions]="maxWidthActions" [filteredByActivity]="true" [filterActiveofInactive]="false"></app-table>
+                        </div>
+                    </div>
+                    <div *ngIf="!tablaEspecial">
+                        <div *ngIf="!tablaFilterActivity">
+                            <app-table 
+                            [posicion]="posicion"
+                            [isPressed]="isPressed" [url]="tableUrl" [columns]="tableColums" [searColumns]="searColumns" [buttons]="tableButtons"
+                            [headers]="headers" [headersLocalStorage]="headersLocalStorage" [rpta]="rpta" [paging]="paging" [sizeFuente]="sizeFuente"
+                            [tituloAcciones]="tituloAcciones" [posicionAcciones]="posicionAcciones" [urlUpdate]="urlUpdateTable"
+                            [headersUpdateLocalStorage]="headersUpdateLocalStorageTable" [hasFilter]="hasFilter" [hasButtons]="hasButtons"
+                            [actions]="rowActions" [campoId]="campoId" [maxWidthActions]="maxWidthActions"></app-table>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+        </sa-widget>
+    </article>
+</div>

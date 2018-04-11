@@ -1,0 +1,128 @@
+<app-loading *ngIf="loadingData"></app-loading>
+
+<ng-template #modal let-c="close" id="modal" let-d="dismiss">
+
+  <div class="container w100">
+    <div class="modal-header modalHead row">
+      <h4 class="modal-title {{modalData.clase}} col-lg-11 col-md-11 col-sd-11 col-xs-11">
+        <b>{{modalData.titulo | translate}}</b>
+      </h4>
+      <button type="button" class="col-md-1 close closeButton" aria-label="Close" (click)="cerrarModalButton()">
+        <!--<span aria-hidden="true" style="color: #d71717;">&times;</span>-->
+        <i class="fa fa-times" aria-hidden="true"></i>
+      </button>
+    </div>
+    <div class="modal-body" [ngStyle]="{'overflow-y': overflow_y }">
+      <form class="form-horizontal form-label-left parsleyjs" method="post" data-parsley-priority-enabled="false" novalidate="novalidate"
+        *ngIf="!isTable">
+        <div *ngIf="modalData.isFormulario == true">
+          <div class="form-group row fixRow" *ngFor="let element of modalData.formInput; let i=index" style="display: -webkit-box;">
+            <label *ngIf="element.type != 6 " for="{{element.column.title}}" class="form-control-label label_modal col-lg-4 col-md-4 col-xs-4 {{modalData.clase}}">{{element.column.title}}</label>
+            <label *ngIf="element.type == 6 " style="font-weight: 600;" class="form-control-label p0 col-xs-12 {{modalData.clase}} {{element.column.clase}}">{{element.column.title}}</label>
+            <div *ngIf="!element.column.isRequired" class="col-lg-8 col-md-8 col-sd-8 col-xs-8 inputData">
+
+              <input *ngIf="element.type == 0 " class="form-control-label textAreaData w100 background_disabled" value="{{element.column.value}}" 
+                disabled>
+              <textarea *ngIf="element.type == 3 "
+              [(ngModel)]="element.column.value" class="form-control textAreaData background_disabled" name="{{ element.column.title}}"
+                id="{{element.column.name}}" data-parsley-trigger="change" disabled>
+              </textarea>
+              <div *ngIf="element.type == 2" class="form-group centrar">
+                <div *ngFor="let option of element.column.options">
+                  <input type="checkbox" class="centrar checkBox" id="{{option.text}}" [checked]="option.checked"
+                  disabled (change)="onChange(i,option.id,$event.target.checked)"/>
+                  <label for="option.text">{{option.text | translate}}</label>
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="element.column.isRequired && element.type != 5" class="col-xs-8 inputData">
+              <div *ngIf="element.type == 0" class="">
+                <div *ngIf="esCampoPorcentaje(element.column.title)">
+                  <input [(ngModel)]="element.column.value" class="form-control " type="{{element.column.type}}" name="{{ element.column.title}}"
+                    class="sinBackground porcentajeInput" id="{{element.column.name}}" min="{{element.column.min}}" max="{{element.column.max}}"
+                    data-parsley-trigger="change" required="required">
+                  <i class="fa fa-percent" aria-hidden="true"></i>
+                </div>
+
+                <input *ngIf="!esCampoPorcentaje(element.column.title)" [(ngModel)]="element.column.value" class="form-control " type="{{element.column.type}}"
+                  name="{{ element.column.title}}" class="sinBackground textAreaData" id="{{element.column.name}}" min="{{element.column.min}}"
+                  max="{{element.column.max}}" data-parsley-trigger="change" required="required">
+              </div>
+              <div *ngIf="element.type == 1 " class="">
+                <select class="form-control selectModal" [(ngModel)]="element.column.value" id="{{element.column.name}}" [ngModelOptions]="{standalone: true}">
+                  <option *ngFor="let option of element.column.options; let i=index" value="{{option.id}}">{{option.text | translate}}</option>
+                </select>
+              </div>
+
+              <div *ngIf="element.type == 2" class="form-group centrar">
+                <div *ngFor="let option of element.column.options">
+                  <input type="checkbox" class="centrar checkBox" id="{{option.text}}" [checked]="option.checked" (change)="onChange(i,option.id,$event.target.checked)"
+                  />
+                  <label for="option.text">{{option.text | translate}}</label>
+                </div>
+
+              </div>
+
+              <div *ngIf="element.type == 3" class="">
+                <textarea [(ngModel)]="element.column.value" rows="6" class="form-control textAreaData" name="{{ element.column.title}}" id="{{element.column.name}}"
+                  data-parsley-trigger="change" required="required">
+                </textarea>
+              </div>
+
+              <div *ngIf="element.type == 4" class="form-group centrar">
+                <div *ngFor="let option of element.column.options">
+                  <input type="radio" name="radiogroup" class="centrar checkBox" [checked]="option.checked" (change)="onSelectionChange(i,option.id)"
+                  />
+                  <label for="option.text">{{option.text | translate}}</label>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="element.column.isRequired && element.type == 5" class="col-xs-8 inputData" style="padding-left:10px;padding-right:16px;">
+              <div>
+                  <ss-multiselect-dropdown [options]="element.column.options" [settings]="mySettings" [(ngModel)]="element.column.optionsSelecteds" [ngModelOptions]="{standalone: true}" (ngModelChange)="onChange2(i,$event)"></ss-multiselect-dropdown>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="modalData.mensaje">
+              <div [innerHTML]="modalData.mensaje"></div>
+          </div>
+          <div *ngIf="modalData.isFormulario == false" class="deleteContent">
+              <div [innerHTML]="modalData.mensaje"></div>
+          </div>
+        </div>
+      </form>
+
+      <div *ngIf="isTable" class="content" style="margin-bottom: 28px;">
+          <app-table  
+          [hasButtons]="false"
+          [url]="url"
+          [columns]="columns"
+          [searColumns]="searColumns"
+          [headersLocalStorage]="headersLocalStorage"
+          >
+          </app-table>
+      </div>
+      
+      <!--<table *ngIf="isTable && !isLoading">
+        <tr>
+          <th *ngFor="let column of columns">
+            {{column | uppercase}}
+          </th>
+        </tr>
+        <tr *ngFor="let row of rows">
+          <td *ngFor="let column of columns">
+            {{ row[column]}}
+          </td>
+        </tr>
+      </table>-->
+    </div>
+    <div style="padding: 6px;" class="modal-footer row" *ngIf="isTable === false && hasButton === true">
+      <!--<button type="button" class="btn btn-danger  btn-rounded" (click)="cerrarModalButton()">Cancelar</button>-->
+      <button type="submit" class="btn btn-aceptar btn-rounded float-right  " (click)="operation()">Aceptar</button>
+    </div>
+
+  </div>
+</ng-template>
+
+<!--<app-modal *ngIf="advertencia.mostrarAdvertencia === true" [modalData]="advertencia.contenido"  (cerrarModal)="cerrarModalAction($event)" ></app-modal>-->

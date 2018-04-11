@@ -1,0 +1,27 @@
+.buttonsTable{
+    margin-left: 50%;
+    display: -webkit-inline-box;
+}
+
+.buttonTable{
+    padding: 10px 0px 8px 0px;
+    margin-top: -10px;
+    left: calc(100% - 110px);
+    position: absolute;
+}
+
+.table_controls{
+    padding: 0;
+    display: -webkit-box;
+}
+
+.buttonTableIncubados{
+    padding: 10px 0px 8px 0px;
+    margin-top: -20px;
+    left: calc(100% - 170px);
+    position: absolute;
+}
+
+.fontIncubados{
+    font-size: 12px;
+}

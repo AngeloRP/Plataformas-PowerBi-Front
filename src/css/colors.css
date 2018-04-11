@@ -1,0 +1,22 @@
+.addIcon {
+    /* color: #0f16ec; */
+    font-size: large;
+  }
+  
+  .editIcon {
+    color: #42f12d;
+  }
+  
+  .removeIcon {
+    color: #f61919;
+  }
+
+  .verdeAzulado{
+    background-color: #06614b !important;    
+  }
+
+  .colorNegro{
+    color:black;
+  }
+
+  

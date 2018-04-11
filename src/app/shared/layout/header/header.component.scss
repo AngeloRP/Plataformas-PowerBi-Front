@@ -1,0 +1,77 @@
+#titleHeader{
+    font-size: 24px;
+    padding-top: 10px;
+    position: relative;
+    text-align: center;
+    color:white;
+    margin-top: 8px;
+    padding-left: 16%;
+}
+
+@media all and (min-width: 980px){
+    #titleHeader{
+        font-size: 20px;
+        padding-left: 0;
+    }
+    .grupoOpcionesHeader{
+        top: 10px;
+    }
+    #headerContenido{
+        width: calc(100% - 250px) !important;
+    }
+}
+
+@media all and (min-width: 0px) and (max-width:979px){
+    #titleHeader{
+        font-size: 20px;
+    }
+    .grupoOpcionesHeader{
+        top: 0;
+    }
+    #headerContenido{
+        width: 100% !important;
+        display: -webkit-box;
+    }
+    #imageHeader{
+        width: 100% !important;
+        padding: 0 30%;
+    }
+
+}
+
+.imglogoUp{
+    height: 75%;
+    width: 100%;
+    margin: 10px 0;
+    padding: 0 15%;
+}
+
+#imageHeader{
+    width: 250px;
+    margin:0 auto;
+}
+
+#headerContenido{
+    width: calc(100% - 250px);
+    height: auto;
+}
+
+@media (max-width: 979px) and (min-width: 768px){
+    #header{
+        display: grid;
+        height: auto;
+    }
+}
+
+.backHeader{
+    /*background-image: url("../../../../assets/img/emprende-up/lado_horizontal.png") !important;
+    background-repeat: no-repeat  !important;
+    background-size: 100% 100%  !important;*/
+    background-image: linear-gradient(to bottom,#efdbdb,#fff) !important;
+}
+
+.grupoOpcionesHeader{
+    position: relative;
+    top: 10px;
+}
+

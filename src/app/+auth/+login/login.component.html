@@ -1,0 +1,22 @@
+<!--<header id="header" style="background-color:#24604b !important;">
+
+  <div id="logo-group ">
+    <img id="logo" src="assets/img/emprende-up/logo_side_bar.png">
+  </div>
+
+
+</header>-->
+<div role="main" class=" smart-style-3 " style="background-color:#0ac0ea;" >
+    
+  <div class="container">
+    <div class="hijo " [ngStyle]="{'height':altura}">
+      <div class="col-xs-12 col-sm-8 col-md-8 col-lg-5 centrarHorizontalmente">
+        <div class="" style="display:grid">
+          <img class="login_img" src="assets/img/emprende-up/logo_side_bar.png"/>
+          <app-form [isSubmited]="camposValidados" [claseSCSS]="form.claseSCSS" [sections]="form.sections" [validationOptions]="form.validationOptions"
+            [hasButton]="true" [titleButton]="form.titleButton"  [back]="form.back" (submit)="onSubmit($event)"></app-form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

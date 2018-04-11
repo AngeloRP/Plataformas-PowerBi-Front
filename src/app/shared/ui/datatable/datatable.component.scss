@@ -1,0 +1,13 @@
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+    background-color: red;
+ }
+
+ .withFill{
+    width: -webkit-fill-available;
+ }
+
+ .buttonGroupFix{
+    max-width: max-content;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+ }

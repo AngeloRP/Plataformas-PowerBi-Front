@@ -1,0 +1,116 @@
+<a *ngIf="hasButtonEliminar && !isLoading" class="botonAlFrente " id="{{idEliminar}}" title="Eliminar Formulario" (click)="desaparecer()">
+        <i class="fa fa-times-circle" aria-hidden="true"></i>
+</a>
+<form id="{{idForm}}" *ngIf="!isLoading" class="{{claseSCSS}} border_section" [saUiValidate]="validationOptions" novalidate="novalidate"
+    (submit)="submitForm($event)">
+    <header *ngIf="header != '' && header != null " class="labelHeader m0">
+        {{header | translate}}
+    </header>
+    <fieldset class="{{claseCSSextra}}">
+        <section *ngFor="let input of sections; let j=index" class="{{input.clase}}">
+            <label class="input">
+                <label *ngIf="input.inputType == 3" class="col col-12">{{input.placeholder}}</label>
+                <label for="{{input.name}}" *ngIf="input.type == 'date' || input.hasLabel">{{input.placeholder | translate}}</label>
+                <i *ngIf="input.type != 'date' && input.hasIcon" class="{{input.imagen}}"></i>
+                <i *ngIf="input.type == 'date' && input.hasIcon" class="{{input.imagen}}" style="margin-top: 19px"></i>
+
+                <input *ngIf=" input.isRequired &&  input.type == 'number' && input.inputType == 0 && !input.hasLabel " [(ngModel)]="input.value"
+                    id="{{input.name}}" type="{{input.type}}" name="{{input.name}}" placeholder="{{input.placeholder | translate}}"
+                    class="{{input.claseExtra}}" min="{{input.min}}" max="{{input.max}}" required (input)="this.borrarEmSection(input.name, input.value,j)"
+                    [disabled]="!input.isSeteable" title="Campo Requerido">
+
+                <input *ngIf="input.isRequired &&  input.type != 'tel' && input.type != 'number' && input.inputType == 0 && !input.hasLabel"
+                    id="{{input.name}}" [(ngModel)]="input.value" type="{{input.type}}" name="{{input.name}}" class="{{input.claseExtra}}" title="Campo Requerido"
+                    placeholder="{{input.placeholder | translate}}" required [disabled]="!input.isSeteable" (input)="this.borrarEmSection(input.name, input.value,j)">
+
+                <input *ngIf="input.isRequired &&  input.type == 'text'  && input.hasLabel  && input.inputType == 0"
+                    id="{{input.name}}" [(ngModel)]="input.value" type="{{input.type}}" name="{{input.name}}" required [disabled]="!input.isSeteable"
+                    (input)="this.borrarEmSection(input.name, input.value,j)" title="Campo Requerido">
+                <input *ngIf="input.isRequired &&  input.type == 'password' && input.hasLabel  && input.inputType == 0"
+                    id="{{input.name}}" [(ngModel)]="input.value" type="{{input.type}}" name="{{input.name}}" required [disabled]="!input.isSeteable"
+                    (input)="this.borrarEmSection(input.name, input.value,j)" pattern="[a-zA-Z0-9_*@.¿?!¡+]{3,40}" title="Como mínimo 3 carácteres">
+                <input *ngIf="input.isRequired &&  input.type == 'email' && input.hasLabel  && input.inputType == 0"  id="{{input.name}}" [(ngModel)]="input.value" type="{{input.type}}" name="{{input.name}}" required [disabled]="!input.isSeteable"
+                (input)="this.borrarEmSection(input.name, input.value,j)" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z0-9]{1,40}"  title="Escriba un correo válido">
+                <input *ngIf="input.isRequired &&  input.type == 'url' && input.hasLabel  && input.inputType == 0" [(ngModel)]="input.value"
+                    id="{{input.name}}" type="text" name="{{input.name}}" required [disabled]="!input.isSeteable" (input)="this.borrarEmSection(input.name, input.value,j)">
+                <input *ngIf="input.isRequired &&  input.type == 'date' && input.hasLabel  && input.inputType == 0" [(ngModel)]="input.value"
+                    id="{{input.name}}" type="{{input.type}}" name="{{input.name}}" required min="{{input.min}}" max="{{input.max}}"
+                    [disabled]="!input.isSeteable" (input)="this.borrarEmSection(input.name, input.value,j)" title="Campo Requerido">
+
+                <input *ngIf="input.isRequired &&  input.type == 'number' && input.hasLabel  && input.inputType == 0 && !esCampoPorcentaje(input.placeholder)"
+                    [ngModel]="input.value " (ngModelChange)="input.value=$event" id="{{input.name}}" type="number" min="{{input.min}}" max="{{input.max}}"
+                    name="{{input.name}}" required [disabled]="!input.isSeteable" (input)="this.borrarEmSection(input.name, input.value,j)" title="Campo Requerido">
+
+                <input *ngIf="input.isRequired &&  input.type == 'millar'"
+                    [ngModel]="input.value" [ngModelOptions]="{standalone: true}" (ngModelChange)="input.value=$event" id="{{input.name}}" type="text" title="Campo númerico requerido"
+                    [textMask]="{mask: mask}" required [disabled]="!input.isSeteable" (input)="this.borrarEmSection(input.name, input.value,j)">
+                <input
+                    *ngIf="input.isRequired && input.type == 'compras' && input.inputType == 0"
+                    [(ngModel)]="input.value" id="{{input.name}}" type="text" name="{{input.name}}" class="{{input.claseExtra}} inputPorcentaje transparente"
+                    [textMask]="{mask: mask}" required 
+                    (keyup)="compras(input.name, input.value,j)" [disabled]="!input.isSeteable"
+                >
+                <div *ngIf=" input.isRequired &&  input.type == 'number' && input.inputType == 0 && input.hasLabel && esCampoPorcentaje(input.placeholder)"
+                    style="display: flex;">
+                    <input [(ngModel)]="input.value" id="{{input.name}}" type="{{input.type}}" name="{{input.name}}" class="{{input.claseExtra}} inputPorcentaje transparente"
+                        min="{{input.min}}" max="{{input.max}}" required (input)="this.borrarEmSection(input.name, input.value,j)"
+                        (keyup)="otrosEventosSection(input.name, input.value,j)" [disabled]="!input.isSeteable">
+                    <p style="margin-top: 7px; margin-left: 7px;">
+                        <i class="fa fa-percent" aria-hidden="true"></i>
+                    </p>
+                </div>
+
+                <select *ngIf="input.isRequired  && input.isSeteable  && input.inputType == 1" name="{{input.name}}" class="{{input.claseExtra}} "
+                    [(ngModel)]="input.value" id="{{input.name}}" required (change)="this.borrarEmSection(input.name, input.value,j)" title="Campo Requerido">
+                    <option *ngIf="input.optionsDisableds != null" selected="selected" disabled class="optionDisabled">{{input.optionsDisableds.detail | translate}}</option>
+                    <option *ngFor="let option of input.options; let i=index" value="{{option.value}}">{{option.detail | translate}}</option>
+                </select>
+
+                <select *ngIf="input.isRequired && !input.isSeteable && input.inputType == 1" name="{{input.name}}" class="{{input.claseExtra}} "
+                    [(ngModel)]="input.value" id="{{input.name}}" [disabled]="!input.isSeteable" required (change)="this.borrarEmSection(input.name, input.value,j)" title="Campo Requerido">
+                    <option  *ngIf="input.optionsDisableds != null" selected="selected" disabled class="optionDisabled">{{input.optionsDisableds.detail | translate}}</option>
+                    <option *ngFor="let option of input.options; let i=index" value="{{option.value}}">{{option.detail | translate}}</option>
+                </select>
+
+
+                <textarea *ngIf="input.isRequired && input.inputType == 2" [(ngModel)]="input.value" name="{{input.name}}" cols="{{input.columns}}" title="Campo Requerido"
+                    id="{{input.name}}" rows="{{input.rows}}" class="{{input.claseExtra}} textarea_form" placeholder="{{input.placeholder | translate}}"
+                    required (input)="this.borrarEmSection(input.name, input.value,j)"></textarea>
+
+                <!-- No requeridos-->
+
+                <input *ngIf="!input.isRequired && input.type == 'number' && input.inputType == 0 && !input.hasLabel" [(ngModel)]="input.value"
+                    id="{{input.name}}" type="{{input.type}}" name="{{input.name}}" placeholder="{{input.placeholder | translate}}"
+                    class="{{input.claseExtra}}" min="{{input.min}}" max="{{input.max}}" [disabled]="!input.isSeteable">
+
+                <input *ngIf="!input.isRequired && input.type != 'tel' && input.type != 'number' && input.inputType == 0 && !input.hasLabel"
+                    id="{{input.name}}" [(ngModel)]="input.value" type="{{input.type}}" name="{{input.name}}" class="{{input.claseExtra}}"
+                    placeholder="{{input.placeholder | translate}}" [disabled]="!input.isSeteable">
+                <input *ngIf="!input.isRequired && input.type != 'number' && input.hasLabel  && input.inputType == 0" [(ngModel)]="input.value"
+                    id="{{input.name}}" type="{{input.type}}" name="{{input.name}}" [disabled]="!input.isSeteable">
+
+                <input *ngIf="!input.isRequired && input.type == 'number' && input.hasLabel  && input.inputType == 0" [(ngModel)]="input.value"
+                    id="{{input.name}}" type="{{input.type}}" name="{{input.name}}" min="{{input.min}}" max="{{input.max}}" [disabled]="!input.isSeteable">
+                <select *ngIf="!input.isRequired && input.inputType == 1" name="{{input.name}}" class="{{input.claseExtra}} " [(ngModel)]="input.value"
+                    id="{{input.name}}" [disabled]="!input.isSeteable">
+                    <option *ngIf="input.optionsDisableds != null" selected="selected" disabled class="optionDisabled">{{input.optionsDisableds.detail | translate}}</option>
+                    <option *ngFor="let option of input.options; let i=index" value="{{option.value}}">{{option.detail | translate}}</option>
+                </select>
+                <textarea *ngIf="!input.isRequired && input.inputType == 2" [(ngModel)]="input.value" name="{{input.name}}" cols="{{input.columns}}"
+                    id="{{input.name}}" rows="{{input.rows}}" class="{{input.claseExtra}} textarea_form" placeholder="{{input.placeholder | translate}}"
+                    [disabled]="!input.isSeteable"></textarea>
+                <b *ngIf="input.span !== undefined" class="{{input.span.claseImagenB}}">
+                    <i class="{{input.span.claseImagen}}"></i>
+                    {{input.span.advertencia | translate}}
+                </b>
+            </label>
+        </section>
+    </fieldset>
+    <footer *ngIf="hasButton">
+        <button type="submit" class="{{buttonClass}}" [disabled]="!back.enabledButton">
+            {{titleButton | translate}}
+        </button>
+    </footer>
+</form>
+
+<app-modal *ngIf="mostrarM" [modalData]="back.modalValidation" (cerrarModal)="cerrarModal($event)" (actualizarTabla)="operation($event)"></app-modal>

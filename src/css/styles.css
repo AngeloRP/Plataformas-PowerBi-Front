@@ -1,0 +1,215 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* #GOOGLE FONT */
+
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700");
+/* @import url("https://cdn.datatables.net/scroller/1.4.3/js/dataTables.scroller.min.js"); */
+
+@import url("https://cdn.datatables.net/1.10.16/css/dataTables.foundation.min.css");
+@import url("https://cdn.datatables.net/select/1.2.4/css/select.foundation.min.css");
+@import '~@swimlane/ngx-datatable/release/index.css';
+@import '~@swimlane/ngx-datatable/release/themes/material.css';
+@import '~@swimlane/ngx-datatable/release/assets/icons.css';
+.report-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+}
+
+.report-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.dropdown, .dropup {
+    width: 100%;
+}
+
+@media all and (min-width: 970px) {
+    .report-container iframe {
+        width: 100%;
+    }
+}
+
+#left-panel {
+    width: 250px;
+}
+
+#main {
+    padding-bottom: 50px;
+    overflow: hidden;
+    padding-top: 15px;
+}
+
+.page-footer {
+    padding-left: 260px;
+    height: 50px;
+}
+
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0;
+    /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+.evaluar-content-text:before {
+    content: 'Evaluar' !important;
+    font-family: "Open Sans", Arial, Helvetica, Sans-Serif;
+    color: #fff;
+}
+
+input[type="text"], input[type="number"], input[disabled] {
+    border: solid 1px;
+    padding: 3px 5px;
+    background: transparent;
+}
+
+button {
+    /*background-color: #1361e1;*/
+    background-color: #f2f2f2;
+    border: none;
+    /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.56);*/
+    margin: 3px;
+    color: white;
+}
+
+button.dropdown-toggle {
+    text-align: left;
+}
+
+button i:before {
+    /* color: white;*/
+    color: #0d94c7;
+}
+
+sa-widget [role="content"] {
+    background-color: rgba(78, 148, 201, 0.26);
+}
+
+.headerExport {
+    font-size: larger;
+    padding: 5px 9px;
+    background-color: #0d94c7;
+    border-radius: 6px;
+    color: white;
+    font-family: "Open Sans",Arial,Helvetica,Sans-Serif;
+}
+
+option {
+    /*direction:rtl;*/
+    color: black;
+    background-color: white;
+    font-size: 14px;
+}
+
+select {
+    text-align-last: left;
+    font-weight: 600;
+    border-radius: 6px;
+}
+
+input, select, textarea {
+    font-family: "Open Sans", Arial, Helvetica, sans-serif !important;
+}
+
+span.input-group-btn > button > i.fa-times:before {
+    color: black !important;
+}
+
+.acciones{
+    font-size: 11px;
+}
+
+.input-group-btn:last-child>.btn{
+    background-color: #eeeeee;
+}
+.input-group-btn {
+    top: -3px;
+}
+
+.smart-style-3 .dropdown-menu>li>a:hover {
+    background-color: #2899ec !important;
+}
+
+.fa-comments:before{
+    color: white;
+}
+
+#asesoria > fieldset, #mentoria > fieldset{
+    padding: 0;
+}
+
+#visionPantalla > fieldset{
+    padding-left: 0px !important;
+}
+
+#mentoriaEliminar{
+    top: 24px !important;
+    left: 96.6% !important;
+}
+
+.advertencia_despues_registro{
+    text-align: center;
+    font-size: 20px;
+    margin: 24%;
+    background-color: #0ac0ea;
+    color: white;
+    padding: 10px 0px;
+    border-radius: 6px;
+}   
+
+.adventencia_graficos_vacios{
+    background-color: #0ac0ea;
+    margin: 5% 15%;
+    padding: 15px;
+    border-radius: 6px;
+    color: white;
+    font-size: 20px;
+    display: -webkit-box;
+}
+.adventencia_graficos_vacios > h3 {
+    width: calc(100% - 100px);
+}
+.adventencia_graficos_vacios > div {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    background-color: #f9feff;
+}
+
+.adventencia_graficos_vacios > div > div {
+    color: #0ac0ea;
+    font-size: 68px;
+    display: block;
+    position: relative;
+}
+
+
+@media (max-width:2000px){
+    .adventencia_graficos_vacios{
+        display: -webkit-box;
+    }
+    .adventencia_graficos_vacios > div{
+        margin: 0 0;
+    }
+    .adventencia_graficos_vacios > h3{
+        width: calc(100% - 100px);
+    }
+}
+
+@media (max-width:580px){
+    .adventencia_graficos_vacios{
+        display: grid;
+    }
+    .adventencia_graficos_vacios > div{
+        margin: 0 auto;
+    }
+    .adventencia_graficos_vacios > h3{
+        width: 100%;
+    }
+}

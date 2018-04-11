@@ -1,0 +1,252 @@
+<div>
+  <div class="row col-xs-12 fixTable" *ngIf="hasFilter === true || paging === true">
+
+    <div *ngIf="hasFilter === true && paging === true">
+      <div class="col-xs-8" style="padding: 0;">
+        <div class="input-group w70">
+          <div *ngIf="hasActive" class="icon-addon">
+            <input type="text" id="search" class="form-control" [(ngModel)]="controls.filter" placeholder='Escriba para buscar en la tabla...'
+              (keyup)='updateFilter($event)'>
+            <label style="z-index: 22" for="search" class="fa fa-search" rel="tooltip" title="search"></label>
+          </div>
+          <div *ngIf="!hasActive" style="left:0" class="icon-addon">
+            <input type="text" id="search" class="form-control" [(ngModel)]="controls.filter" placeholder='Escriba para buscar en la tabla...'
+              (keyup)='updateFilter($event)'>
+            <label style="z-index: 22" for="search" class="fa fa-search" rel="tooltip" title="search"></label>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-4" style="padding: 0;">
+        <select class="pull-right form-control " style="width: 70px;" (ngModelChange)="updatePageSize($event)" [(ngModel)]="controls.pageSize">
+          <option>10</option>
+          <option>20</option>
+          <option>30</option>
+          <option>50</option>
+        </select>
+      </div>
+    </div>
+    <div *ngIf="hasFilter === true && paging !== true">
+      <div class="col-xs-12 table_controls">
+        <div class="input-group w70">
+          <div *ngIf="hasActive" class="icon-addon">
+            <input type="text" id="search" class="form-control" [(ngModel)]="controls.filter" placeholder='Busque aquí' (keyup)='updateFilter($event)'>
+            <label style="z-index: 22" for="search" class="fa fa-search" rel="tooltip" title="search"></label>
+          </div>
+          <div *ngIf="!hasActive" style="left:0" class="icon-addon">
+            <input type="text" id="search" class="form-control" [(ngModel)]="controls.filter" placeholder='Escriba para buscar en la tabla...'
+              (keyup)='updateFilter($event)'>
+            <label style="z-index: 22" for="search" class="fa fa-search" rel="tooltip" title="search"></label>
+          </div>
+        </div>
+        <div *ngIf="posicion === 0">
+          <div class="{{buttonTable}}" *ngIf="hasButtons  === true && buttons.length > 0">
+            <div *ngIf="hasButtons === true">
+              <div *ngFor="let buttonData of buttons" style="width: 100%; text-align: right;">
+                <button class="button_table" (click)="buttonData.action()">{{buttonData.text}}</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="hasFilter !== true && paging === true">
+      <div class="col-xs-12" style="padding: 0;">
+        <select class="pull-right form-control " style="width: 70px;" (ngModelChange)="updatePageSize($event)" [(ngModel)]="controls.pageSize">
+          <option>10</option>
+          <option>20</option>
+          <option>30</option>
+          <option>50</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <ngx-datatable *ngIf="!isLoading" #table class="material ngx-datatable fixed-header" [rows]="rows" [loadingIndicator]="isLoading"
+    [scrollbarH]="true" [columns]="columns" [columnMode]="'force'" [headerHeight]="'40'" [footerHeight]="45" [rowHeight]="'auto'"
+    [sortType]="'single'" [limit]="controls.pageSize" [cssClasses]="{
+      sortAscending: 'fa fa-caret-up',
+      sortDescending: 'fa fa-caret-down',
+      pagerLeftArrow: 'fa  fa-angle-left',
+      pagerRightArrow: 'fa fa-angle-right',
+      pagerPrevious: 'fa fa-angle-double-left',
+      pagerNext: 'fa fa-angle-double-right'
+    }" [reorderable]="true">
+    
+    <ngx-datatable-column *ngIf="posicionAcciones && actions.length > 0" name="{{tituloAcciones}}" [maxWidth]="tamanioAcciones" [width]="tamanioAcciones"
+      [sortable]="false" prop="campoId">
+      <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+        {{column.name}}
+      </ng-template>
+      <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+        <div *ngIf="url !== 'obtenerStartUpsYEvaluadores'">
+          
+          <div *ngIf="url === 'listarParaComiteActivos' || url === 'listarParaComiteInactivos'">
+              <button  style="background-color: #0d94c7;"  *ngFor="let action of actions" md-icon-button (click)="action.action(row)" title="{{action.text}}">
+                  <i class="{{action.icon}}"></i>
+                </button>
+          </div>
+          <div  *ngIf="url !== 'listarParaComiteActivos' && url !== 'listarParaComiteInactivos'" >
+              <button *ngFor="let action of actions"  md-icon-button (click)="action.action(row)" title="{{action.text}}">
+                  <i class="{{action.icon}}"></i>
+              </button>
+          </div>
+        </div>
+        <div *ngIf="url === 'obtenerStartUpsYEvaluadores'">
+          <button md-icon-button (click)="actions[0].action(row)" title="{{actions[0].text}}">
+            <i class="{{actions[0].icon}}"></i>
+          </button>
+          <button md-icon-button *ngIf="row['tiempo']  >  0" (click)="actions[1].action(row)" title="{{actions[1].text}}">
+            <i class="{{actions[1].icon}}"></i>
+          </button>
+        </div>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column [sortable]="false" *ngFor="let column of columns; let i of index" [maxWidth]="column.maxWidth" [width]="column.width"
+      [minWidth]="column.minWidth" name="{{column.prop | headers_table}}">
+      <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+        <div *ngIf="esCampoEditable(column.prop)">
+          <div *ngIf="esCampoPorcentaje(column.prop)">
+            <div *ngIf=" row[column.prop] != null" style="cursor: pointer;">
+              <select (change)="updateValue($event, column.prop, rowIndex)" [value]="value">
+                <option selected="selected" disabled class="optionDisabled">{{ (row[column.prop]/100) | percent:'1.0-2':'fr'}}</option>
+                <option value="0">0%</option>
+                <option value="5">5%</option>
+                <option value="10">10%</option>
+                <option value="15">15%</option>
+                <option value="20">20%</option>
+                <option value="25">25%</option>
+                <option value="30">30%</option>
+                <option value="35">35%</option>
+                <option value="40">40%</option>
+                <option value="45">45%</option>
+                <option value="50">50%</option>
+                <option value="55">55%</option>
+                <option value="60">60%</option>
+                <option value="65">65%</option>
+                <option value="70">70%</option>
+                <option value="75">75%</option>
+                <option value="80">80%</option>
+                <option value="85">85%</option>
+                <option value="90">90%</option>
+                <option value="95">95%</option>
+                <option value="100">100%</option>
+              </select>
+            </div>
+            <div *ngIf=" row[column.prop] == null" style="cursor: pointer;">
+              <select (change)="updateValue($event, column.prop, rowIndex)" [value]="value">
+                <option selected="selected" disabled class="optionDisabled">{{ (row[column.prop]/100) | percent:'1.0-2':'fr'}}</option>
+                <option value="0">0%</option>
+                <option value="5">5%</option>
+                <option value="10">10%</option>
+                <option value="15">15%</option>
+                <option value="20">20%</option>
+                <option value="25">25%</option>
+                <option value="30">30%</option>
+                <option value="35">35%</option>
+                <option value="40">40%</option>
+                <option value="45">45%</option>
+                <option value="50">50%</option>
+                <option value="55">55%</option>
+                <option value="60">60%</option>
+                <option value="65">65%</option>
+                <option value="70">70%</option>
+                <option value="75">75%</option>
+                <option value="80">80%</option>
+                <option value="85">85%</option>
+                <option value="90">90%</option>
+                <option value="95">95%</option>
+                <option value="100">100%</option>
+              </select>
+            </div>
+          </div>
+          <div *ngIf="!esCampoPorcentaje(column.prop)">
+            <!--<div *ngIf="column.prop == 'comentario'">
+              <button md-icon-button (click)="mostrarModal(rowIndex)" title="Ver y editar comentario">
+                <i class="fa fa-comments"></i>
+              </button>
+            </div>-->
+            <div *ngIf="column.prop != 'comentario'">
+              <div *ngIf="row[column.prop] != null">
+                <div *ngIf="row[column.prop] == 'Sustento'">
+                  <input (blur)="updateValue($event, column.prop, rowIndex)" type="text" [value]="value" />
+                </div>
+                <div *ngIf="row[column.prop] != 'Sustento'">
+                  <input *ngIf="!row[column.prop].includes('objetivo')" (blur)="updateValue($event, column.prop, rowIndex)" type="text" [value]="value"
+                  />
+
+                  <textarea *ngIf="row[column.prop].includes('objetivo')" (blur)="updateValue($event, column.prop, rowIndex)" [value]="value"
+                    class="transparente textarea_component">
+                        </textarea>
+                </div>
+
+              </div>
+              <div *ngIf="row[column.prop] == null">
+                <input (blur)="updateValue($event, column.prop, rowIndex)" type="text" [value]="value" />
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div *ngIf="!esCampoEditable(column.prop)">
+          <div *ngIf="esCampoPorcentaje(column.prop) ">
+            <div *ngIf="row[column.prop] != null">
+              <p [ngStyle]="{'font-size': sizeFuente}" style="text-align:right; margin-right:10px;">{{ (row[column.prop]/100) | percent:'1.0-0':'fr'}}</p>
+            </div>
+            <div *ngIf="row[column.prop] == null">
+              <p style="text-align:right; margin-right:10px;"> --%</p>
+            </div>
+          </div>
+          <div *ngIf="!esCampoPorcentaje(column.prop)">
+            <div *ngIf="column.prop == 'Archivos'">
+              <div *ngIf="row[column.prop].length">
+                <span  *ngFor="let archivo of row[column.prop]; let i = index">
+                  <a style="cursor:pointer;" title="{{archivo}}" (click)="descargarArchivo(archivo)">A{{i+1}}</a>
+                </span>
+              </div>
+              <div *ngIf="!row[column.prop].length">
+                <span >
+                  Sin archivos
+                </span>
+              </div>
+            </div>
+            <div *ngIf="column.prop != 'Archivos'">
+              <div *ngIf="row[column.prop] != null">
+                <p [ngStyle]="{'font-size': sizeFuente}">{{row[column.prop]}}</p>
+              </div>
+              <div *ngIf="row[column.prop] == null">
+                <p>--</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </ngx-datatable-column>
+
+    <!--<ng-container *ngIf="!posicionAcciones">-->
+      <ngx-datatable-column  *ngIf="!posicionAcciones && actions.length > 0" name="{{tituloAcciones}}" 
+        
+        sortable="false" prop="campoId" [maxWidth]="tamanioAcciones" [width]="tamanioAcciones" >
+        <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+          {{column.name}}
+        </ng-template>
+        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+          <button *ngFor="let action of actions" md-icon-button (click)="action.action(row)" title="{{action.text}}">
+            <i class="{{action.icon}}"></i>
+          </button>
+        </ng-template>
+      </ngx-datatable-column>
+    <!--</ng-container>-->
+
+  </ngx-datatable>
+  <div *ngIf="posicion === 1">
+    <div class="row" style="padding: 8px;" *ngIf="hasButtons  === true && buttons.length > 0">
+      <div *ngIf="hasButtons === true">
+        <div *ngFor="let buttonData of buttons" style="width: 100%; text-align: right;">
+          <button style="padding: 5px 10px; display: inline-block" (click)="buttonData.action()">{{buttonData.text}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<app-modal *ngIf="mostrarM == true" [modalData]="modalData" (cerrarModal)="cerrarModal($event)" (actualizarTabla)="actualizarTabla($event)"></app-modal>

@@ -1,0 +1,10 @@
+.regresar {
+    position: absolute;
+    top: 54px;
+    left: 65px;
+}
+
+.derecha {
+    float: right;
+    margin-right: 25px;
+}

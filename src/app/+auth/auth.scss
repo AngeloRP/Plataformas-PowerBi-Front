@@ -1,0 +1,9 @@
+.auth-margin {
+  margin-left: 30%;
+}
+
+@media (max-width: 1000px) {
+  .auth-margin {
+    margin-left: 0%;
+  }
+}

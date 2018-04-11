@@ -1,0 +1,36 @@
+<aside id="left-panel" class="aside"   *ngIf="!isLoading">
+
+  <!-- User info -->
+  <sa-login-info></sa-login-info>
+  <!-- end user info -->
+
+  <nav>
+    <ul saSmartMenu *ngIf="registroInicialCompletado" >
+      <li routerLinkActive="active" *ngFor="let element of sidebar_elements"  >
+        <a  title="{{element.title}}" class="{{element.class}}" id="{{element.id}}" routerLink="{{element.link.commands[0]}}" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"  >
+        <!--<a  title="{{element.title}}" class="{{element.class}}" id="{{element.id}}" (click)="navigate(element)" >-->
+          <span class="{{element.clase_menu}}"><i class="{{element.imagen}}"></i> {{element.title | i18n}}</span>
+        </a>
+        <ul *ngIf="element.hasChilds">
+          <li routerLinkActive="active" *ngFor="let child of element.childs">
+            <a routerLink="/{{child.link.commands[0]}}" title="{{child.title}}" class="{{child.class}}" id="{{element.id}}" >
+              <span class="{{child.clase_menu}}"> <i class="{{child.imagen}}"></i> {{child.title | i18n}}</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+    </ul>
+    <ul saSmartMenu *ngIf="!registroInicialCompletado">
+      <li>
+          <a routerLink="/incubado/home/firstLogin" title="Registro Inicial" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+            <i class="fa fa-home"></i>
+            {{ "Registro Inicial" |i18n}}
+          </a>
+      </li>
+    </ul>
+  </nav>
+  <!--
+  <sa-minify-menu></sa-minify-menu>
+-->
+</aside>

@@ -1,0 +1,10 @@
+
+
+<app-widget  *ngIf="!loading" class="col-lg-6 col-md-6 col-sd-6 col-xs-6"
+[form]="widget.form" 
+[editbutton]="false" 
+[deletebutton]="false" 
+[headerTitle]="widget.headerTitle"
+(widgetEvent)="volverPantallaUsuarios($event)"
+>
+</app-widget>

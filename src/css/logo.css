@@ -1,0 +1,15 @@
+.logo-up {
+    background-color: #2090b9;
+    height: 29px !important;
+    margin-left: 0px !important;
+    color: #f3e3e3;
+    font-size: 20px;
+    text-align: center;
+    text-shadow: 0px 0px 1px black;
+  }
+
+
+  .titulo_boton_abajo{
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+  }

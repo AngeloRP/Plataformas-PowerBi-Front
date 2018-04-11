@@ -1,0 +1,137 @@
+.fixImagen{
+    margin-top: 15px;
+    height: inherit;
+    min-height: inherit;
+}
+
+.fixImagen2Rows{
+    margin-top: 36px;
+}
+
+.fixToolTip{
+    bottom: 70%;
+}
+
+.colorBlue{
+    color: #130faf;
+}
+
+.backgroundHeader{
+    background-color: #07bfa6;
+}
+
+.backgroudBody{
+    background-color: #72cabd;
+}
+
+.textarea_form{
+    padding-left: 35px;
+    padding-top: 6px;
+    border-radius: 6px;
+    min-width: -webkit-fill-available;
+    min-width: -moz-fill-available;
+    max-width: -webkit-fill-available;
+    max-width: -moz-fill-available; 
+    background: transparent;
+    min-height: inherit;
+    overflow-x: hidden;
+    
+}
+
+.combo_form{
+    height: 30px;
+    min-width: -webkit-fill-available;
+    max-width: -webkit-fill-available; 
+    background: transparent;
+    border-radius:6px;
+}
+
+.labelHeader{
+    font-size: 15px;
+    background-color: #0d94c7;
+    padding: 5px;
+    color: white;
+    border: none;
+    border-radius: 6px;
+}
+
+.sinBorde{
+    border: none !important;
+    margin-bottom: 0px;
+}
+
+.border_section{
+    /*border-width: 1px;
+    border-style: solid;
+    border-color: black;*/
+    margin-bottom: 5px;
+}
+
+section>label>input{
+    // background: transparent;
+    color:black !important;
+    // border-radius: 6px;
+}
+
+.loginHeader{
+    /*background-image: url("../../../../assets/img/emprende-up/logo_side_bar.png") !important;
+    background-repeat: no-repeat !important;
+    background-size: auto 90% !important;
+    background-position: center !important;
+    height: 35px;*/
+
+    background-image: url("../../../../assets/img/emprende-up/logo_side_bar.png") !important;
+    background-repeat: no-repeat !important;
+    background-size: 40% 95%!important;
+    background-position: center !important;
+    height: 65px;
+}
+
+.submitButton{
+    margin-right: 8% !important;
+    width: 80%;
+}
+
+.otroHeader{
+    background-color: #06614b;
+    margin: 0;
+    padding: 10px;
+}
+
+.inputPorcentaje{
+    width: 95%;
+    text-align: right;
+}
+
+.fixCasoLabels{
+    margin-left: 15px;
+    margin-right: -15px;
+}
+
+.fixCasoLabelsAlgo{
+    margin-left: 8px;
+    margin-right: -8px;
+}
+
+.fixCasoLabelsTop{
+    margin-top: -8px;
+}
+
+.titulo1{
+    font-size: initial;
+}
+
+.rend_advertencia > .input > label {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/*
+#fundador_0 fieldset div section label input#edad{
+    background-color: red;
+}
+*/
+
+
+
+

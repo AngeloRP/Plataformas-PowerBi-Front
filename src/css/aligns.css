@@ -1,0 +1,11 @@
+.txtCenter{
+    text-align: center;
+}
+
+.txtLeftLast{
+    text-align-last: left !important;
+}
+
+.direccion_left{
+    direction: ltr !important;
+}

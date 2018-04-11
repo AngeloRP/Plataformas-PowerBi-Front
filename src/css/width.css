@@ -1,0 +1,56 @@
+.w100{
+    width: 100% !important;
+}
+  
+.centrarHorizontalmente{
+    margin-left: auto;
+      margin-right: auto;
+}
+  
+.hijo {
+    clear: both;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+}
+
+.w-10{
+    width: 10%;
+}
+  
+.w-15{
+    width: 15%;
+}
+  
+.w-20{
+    width: 20%;
+}
+  
+.w-30{
+    width: 30%;
+}
+
+.w95{
+    width: 95% !important;
+}
+
+.w97{
+    width: 97%;
+}
+
+.w70{
+    width: 70%;
+}
+
+.widthVision{
+    width: 98.6%;
+}
+
+.w-k-f-a{
+    WIDTH: -webkit-fill-available;
+}
+
+.w30px{
+    width: 30px;
+}

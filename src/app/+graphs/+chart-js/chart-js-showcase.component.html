@@ -1,0 +1,100 @@
+<!-- MAIN CONTENT -->
+<div id="content" *ngIf="!loading" >
+
+  <!--<div class="row">
+    <sa-big-breadcrumbs icon="bar-chart-o" [items]="['Graphs', 'Chart.js']" class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></sa-big-breadcrumbs>
+    <sa-stats></sa-stats>
+  </div>
+   widget grid -->
+  <sa-widgets-grid >
+
+    <div class=""  *ngIf="chartjsData">
+     
+      
+        <sa-widget  [editbutton]="false" [colorbutton]="false" [togglebutton]="!isDashboard" *ngIf="charType == 0">
+          <header>
+            <span class="widget-icon"> <i class="fa fa-bar-chart-o"></i> </span>
+            <!--<h2> Line Chart</h2>-->
+            <h2>{{header}}</h2>
+          </header>
+          <div>
+            <div class="widget-body">
+              <sa-chart-js type="line" [data]="chartjsData"></sa-chart-js>
+            </div>
+          </div>
+        </sa-widget>
+        
+
+        <sa-widget  [editbutton]="false" [colorbutton]="false" [togglebutton]="!isDashboard" *ngIf="charType == 1">
+          <header>
+            <span class="widget-icon"> <i class="fa fa-bar-chart-o"></i> </span>
+            <h2>{{header}}</h2>
+            <!--<h2>Radar Chart</h2>-->
+          </header>
+          <div>
+            <div class="widget-body">
+              <sa-chart-js type="radar" [data]="chartjsData"></sa-chart-js>
+            </div>
+          </div>
+        </sa-widget>
+
+        <sa-widget  [editbutton]="false" [colorbutton]="false" [togglebutton]="!isDashboard" *ngIf="charType == 2">
+          <header>
+            <span class="widget-icon"> <i class="fa fa-bar-chart-o"></i> </span>
+            <h2>{{header}}</h2>
+            <!--<h2>Polar Chart</h2>-->
+          </header>
+          <div>
+            <div class="widget-body">
+              <sa-chart-js type="polarArea" [data]="chartjsData"></sa-chart-js>
+            </div>
+          </div>
+        </sa-widget>
+
+
+   
+
+        <sa-widget  [editbutton]="false" [colorbutton]="false" [togglebutton]="!isDashboard" *ngIf="charType == 3">
+          <header>
+            <span class="widget-icon"> <i class="fa fa-bar-chart-o"></i> </span>
+            <h2>{{header}}</h2>
+            <!--<h2>Bar Chart</h2>-->
+          </header>
+          <div>
+            <div class="widget-body">
+              <sa-chart-js type="bar" [data]="chartjsData"></sa-chart-js>
+            </div>
+          </div>
+        </sa-widget>
+
+
+        <sa-widget  [editbutton]="false" [colorbutton]="false"  [togglebutton]="!isDashboard" *ngIf="charType == 4">
+          <header>
+            <span class="widget-icon"> <i class="fa fa-bar-chart-o"></i> </span>
+            <h2>{{header}}</h2>
+            <!--<h2>Doughnut Chart</h2>-->
+          </header>
+          <div>
+            <div class="widget-body">
+              <sa-chart-js type="doughnut" [data]="chartjsData"></sa-chart-js>
+            </div>
+          </div>
+        </sa-widget>
+
+
+        <sa-widget  [editbutton]="false" [colorbutton]="false"  [togglebutton]="!isDashboard" *ngIf="charType == 5">
+          <header>
+            <span class="widget-icon"> <i class="fa fa-bar-chart-o"></i> </span>
+            <h2>{{header}}</h2>
+            <!--<h2>Pie Chart</h2>-->
+          </header>
+          <div>
+            <div class="widget-body">
+              <sa-chart-js type="pie" [data]="chartjsData"></sa-chart-js>
+            </div>
+          </div>
+        </sa-widget>
+
+    </div>
+  </sa-widgets-grid>
+</div>

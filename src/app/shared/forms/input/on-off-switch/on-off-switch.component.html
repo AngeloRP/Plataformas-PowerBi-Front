@@ -1,0 +1,17 @@
+<!--<div class="onoffswitch-container">
+  <span class="onoffswitch-title">{{title}}<ng-content></ng-content></span>
+  <span class="onoffswitch">
+    <input type="checkbox" class="onoffswitch-checkbox" [(ngModel)]="value" [checked]="value"
+           (ngModelChange)="onChange()"
+           id="{{widgetId}}"/>
+    <label class="onoffswitch-label" htmlFor="{{widgetId}}">
+      <span class="onoffswitch-inner"  attr.data-swchon-text="{{opcion1}}"
+      attr.data-swchoff-text="{{opcion2}}"></span>
+        <span class="onoffswitch-switch"></span>
+    </label>
+  </span>
+</div>-->
+<select *ngIf="value" style="margin-bottom: 10px;" class="selectMes selectActivos_Inactivos" [(ngModel)]="value" (change)="onChange()">
+  <option value="1">{{opcion1}}</option>
+  <option value="2">{{opcion2}}</option>
+</select>
