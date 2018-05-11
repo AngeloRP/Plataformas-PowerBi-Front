@@ -33,83 +33,120 @@ export class NavigationComponent implements OnInit, AfterContentChecked {
 
   sidebar_administrador: SidebarElement[] = [
     {
-      id: 'administrador-dashboard',
-      title: 'Reportes',
+      id: 'administrador-progestion',
+      title: 'Reportes Progestión',
       imagen: 'fa fa-lg fa-fw fa-bar-chart-o',
       clase_menu: 'menu-item-parent',
       class: '',
-      link: { commands: ['/administrador/reportes/startups'] },
+      link: { commands: ['/administrador/progestion/reporte1'] },
       hasChilds: true,
       childs: [
         {
-          id: 'administrador-dashboard-startups',
-          title: 'Reporte de Start Ups',
+          id: 'administrador-progestion-reporte1',
+          title: 'Reporte 1',
           imagen: 'fa fa-lg fa-fw fa-bar-chart-o',
           clase_menu: 'menu-item-parent',
           class: '',
-          link: { commands: ['/administrador/reportes/startups'] },
+          link: { commands: ['/administrador/progestion/reporte1'] },
           hasChilds: false
-        }, {
-          id: 'administrador-dashboard-empleados',
-          title: 'Reporte de Empleados',
-          imagen: 'fa fa-lg fa-fw fa-bar-chart-o',
-          clase_menu: 'menu-item-parent',
-          class: '',
-          link: { commands: ['/administrador/reportes/empleados'] },
-          hasChilds: false
-        },
+        }
+      ]
+    },
+    {
+      id: 'administrador-alcorp',
+      title: 'Reportes Arcor',
+      imagen: 'fa fa-lg fa-fw fa-bar-chart-o',
+      clase_menu: 'menu-item-parent',
+      class: '',
+      link: { commands: ['/administrador/arcor/reporte1'] },
+      hasChilds: true,
+      childs: [
         {
-          id: 'administrador-dashboard-ingresos',
-          title: 'Reporte de Ingresos',
+          id: 'administrador-arcor-reporte1',
+          title: 'Reporte 1',
           imagen: 'fa fa-lg fa-fw fa-bar-chart-o',
           clase_menu: 'menu-item-parent',
           class: '',
-          link: { commands: ['/administrador/reportes/ingresos'] },
+          link: { commands: ['/administrador/arcor/reporte1'] },
           hasChilds: false
-        },
+        }
+      ]
+    },
+    {
+      id: 'administrador-forte',
+      title: 'Reportes Forte',
+      imagen: 'fa fa-lg fa-fw fa-bar-chart-o',
+      clase_menu: 'menu-item-parent',
+      class: '',
+      link: { commands: ['/administrador/forte/reporte1'] },
+      hasChilds: true,
+      childs: [
         {
-          id: 'administrador-dashboard-compras',
-          title: 'Reporte de Compras',
+          id: 'administrador-forte-reporte1',
+          title: 'Reporte 1',
           imagen: 'fa fa-lg fa-fw fa-bar-chart-o',
           clase_menu: 'menu-item-parent',
           class: '',
-          link: { commands: ['/administrador/reportes/compras'] },
+          link: { commands: ['/administrador/forte/reporte1'] },
           hasChilds: false
-        },
+        }
+      ]
+    },
+    {
+      id: 'administrador-entel',
+      title: 'Reportes Entel',
+      imagen: 'fa fa-lg fa-fw fa-bar-chart-o',
+      clase_menu: 'menu-item-parent',
+      class: '',
+      link: { commands: ['/administrador/entel/reporte1'] },
+      hasChilds: true,
+      childs: [
         {
-          id: 'administrador-dashboard-fondos',
-          title: 'Reporte de Fondos',
+          id: 'administrador-entel-reporte1',
+          title: 'Reporte 1',
           imagen: 'fa fa-lg fa-fw fa-bar-chart-o',
           clase_menu: 'menu-item-parent',
           class: '',
-          link: { commands: ['/administrador/reportes/fondos'] },
+          link: { commands: ['/administrador/entel/reporte1'] },
           hasChilds: false
-        },
+        }
+      ]
+    }, {
+      id: 'administrador-monge',
+      title: 'Reportes Monge',
+      imagen: 'fa fa-lg fa-fw fa-bar-chart-o',
+      clase_menu: 'menu-item-parent',
+      class: '',
+      link: { commands: ['/administrador/monge/reporte1'] },
+      hasChilds: true,
+      childs: [
         {
-          id: 'administrador-dashboard-impuestos',
-          title: 'Reporte de Impuestos',
+          id: 'administrador-tropa_verano-reporte1',
+          title: 'Reporte 1',
           imagen: 'fa fa-lg fa-fw fa-bar-chart-o',
           clase_menu: 'menu-item-parent',
           class: '',
-          link: { commands: ['/administrador/reportes/impuestos'] },
+          link: { commands: ['/administrador/monge/reporte1'] },
           hasChilds: false
-        },
+        }
+      ]
+    },
+    {
+      id: 'administrador-inkafert',
+      title: 'Reportes Inkafert',
+      imagen: 'fa fa-lg fa-fw fa-bar-chart-o',
+      clase_menu: 'menu-item-parent',
+      class: '',
+      link: { commands: ['/administrador/inkafert/reporte1'] },
+      hasChilds: true,
+      childs: [
         {
-          id: 'administrador-dashboard-mentorias',
-          title: 'Reporte de Mentorias',
+          id: 'administrador-entel-reporte1',
+          title: 'Reporte 1',
           imagen: 'fa fa-lg fa-fw fa-bar-chart-o',
           clase_menu: 'menu-item-parent',
           class: '',
-          link: { commands: ['/administrador/reportes/mentorias'] },
-          hasChilds: false
-        },
-        {
-          id: 'administrador-dashboard-asesorias',
-          title: 'Reporte de Asesorias',
-          imagen: 'fa fa-lg fa-fw fa-bar-chart-o',
-          clase_menu: 'menu-item-parent',
-          class: '',
-          link: { commands: ['/administrador/reportes/asesorias'] },
+          link: { commands: ['/administrador/entel/reporte1'] },
           hasChilds: false
         }
       ]
@@ -121,6 +158,15 @@ export class NavigationComponent implements OnInit, AfterContentChecked {
       clase_menu: 'menu-item-parent',
       class: '',
       link: { commands: ['/administrador/usuarios'] },
+      hasChilds: false
+    },
+    {
+      id: 'gráficas',
+      title: 'Gráficas',
+      imagen: 'fa fafa-circle-o-notch',
+      clase_menu: 'menu-item-parent',
+      class: '',
+      link: { commands: ['/administrador/graficos_pie'] },
       hasChilds: false
     }
     /*{

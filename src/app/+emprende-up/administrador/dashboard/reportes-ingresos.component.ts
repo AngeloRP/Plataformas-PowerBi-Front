@@ -13,7 +13,7 @@ import { SafePipe } from '../../super-module/safe.pipe';
 
 export class ReportesIngresosComponent implements OnInit {
     ingresosPBI =
-    'https://app.powerbi.com/view?r=eyJrIjoiZTcwODZkYjctNzNkZC00YmJkLWI5NzAtOTBmNjVjMmE0MTA1IiwidCI6IjJjYzVlZjE0LTA0ZTMtNDQzMC1hNWNmLTdmZTZhMWVjNTU2YyIsImMiOjR9';
+    'https://app.powerbi.com/view?r=eyJrIjoiZjc1M2ZmZTctMzcwMS00ZmYyLTgxZDQtZDI3MTczMjkxZjhkIiwidCI6IjJjYzVlZjE0LTA0ZTMtNDQzMC1hNWNmLTdmZTZhMWVjNTU2YyIsImMiOjR9';
     constructor() { }
 
     ngOnInit() { }

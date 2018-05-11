@@ -4,9 +4,9 @@ import { SafePipe } from '../../super-module/safe.pipe';
 @Component({
     selector: 'admin-reportes-mentorias',
     template:`
-        <div class="report-container">
+        <!--<div class="report-container">
             <iframe width="1200px" height="790px" [src]="mentoriaPBI | safe" frameborder="0" allowFullScreen="true"></iframe>
-        </div>
+        </div>-->
     `,
     providers:[SafePipe]
 })

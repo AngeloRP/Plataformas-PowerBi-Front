@@ -10,44 +10,61 @@ import { ReportesImpuestosComponent } from 'app/+emprende-up/administrador/dashb
 import { ReportesFondosComponent } from 'app/+emprende-up/administrador/dashboard/reportes-fondos.component';
 import { ReportesMentoriasComponent } from 'app/+emprende-up/administrador/dashboard/reportes-mentorias.component';
 import { ReportesAsesoriasComponent } from './dashboard/reportes-asesoria.component';
+import { ReportesMongeComponent } from './dashboard/reportes_monge.component';
+import { Reporte1MongeComponent } from './dashboard/reporte1_monge.component';
+import { ReportesInkafertComponent } from './dashboard/reportes_inkafert.component';
+import { Reporte1InkafertComponent } from './dashboard/reporte1_inkafert.component';
+import { PieGraficosComponent } from './pie-graficos/pie-graficos.component';
 
 export const routes: Routes = [
-    { path: '', redirectTo: 'reportes' },
+    { path: '', redirectTo: 'progestion' },
     {
-        path: 'reportes',
+        path: 'progestion',
         component: ReportesAdminComponent
     },
     {
-        path: 'reportes/startups',
+        path: 'progestion/reporte1',
         component: ReportesStartUpsComponent
     },
     {
-        path: 'reportes/empleados',
+        path: 'arcor',
         component: ReportesEmpleadosComponent
     },
     {
-        path: 'reportes/ingresos',
+        path: 'arcor/reporte1',
         component: ReportesIngresosComponent
     },
     {
-        path: 'reportes/compras',
-        component: ReportesComprasComponent
-    },
-    {
-        path: 'reportes/fondos',
+        path: 'forte',
         component: ReportesFondosComponent
     },
     {
-        path: 'reportes/impuestos',
+        path: 'forte/reporte1',
         component: ReportesImpuestosComponent
     },
     {
-        path: 'reportes/mentorias',
+        path: 'entel',
         component: ReportesMentoriasComponent
     },
     {
-        path: 'reportes/asesorias',
+        path: 'entel/reporte1',
         component: ReportesAsesoriasComponent
+    },
+    {
+        path: 'monge',
+        component: ReportesMongeComponent
+    },
+    {
+        path: 'monge/reporte1',
+        component: Reporte1MongeComponent
+    },
+    {
+        path: 'inkafert',
+        component: ReportesInkafertComponent
+    },
+    {
+        path: 'inkafert/reporte1',
+        component: Reporte1InkafertComponent
     },
     {
         path: 'register',
@@ -56,6 +73,10 @@ export const routes: Routes = [
     {
         path: 'usuarios',
         loadChildren: 'app/+emprende-up/administrador/usuarios/usuarios.module#UsuariosModule'
+    },
+    {
+        path: 'graficos_pie',
+        component: PieGraficosComponent
     }
 
 ];

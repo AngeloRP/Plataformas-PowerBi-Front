@@ -14,11 +14,11 @@ import { AuthActiveGuard } from 'app/guards/auth-guard';
 
 let siguiente = 'administrador';
 
-/*if (window.localStorage.getItem('category') === '2') {
+if (window.localStorage.getItem('category') === '2') {
   siguiente = 'comite';
 } else if (window.localStorage.getItem('category') === '3') {
   siguiente = 'incubado';
-}*/
+}
 export const routes: Routes = [
   {
     path: '',
@@ -38,7 +38,7 @@ export const routes: Routes = [
       },*/
       {
         path: 'administrador', loadChildren: 'app/+emprende-up/administrador/administrador.module#AdministradorModule',
-        data: { pageTitle: 'Home Administrador' }, canActivate: [AdministradorActiveGuard]
+        data: { pageTitle: 'Home Administrador' } , canActivate: [AdministradorActiveGuard]
       }
     ],
 

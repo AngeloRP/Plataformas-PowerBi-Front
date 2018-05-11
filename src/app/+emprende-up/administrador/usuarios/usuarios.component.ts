@@ -15,7 +15,6 @@ import { HttpOperations } from 'app/+emprende-up/super-module/form-super/input-f
 
 export class UsuariosComponent extends Table implements OnInit {
     mostrarM = false;
-    actions: Array<any>;
     actualizar = false;
     loading = true;
     modalData: ModalData;

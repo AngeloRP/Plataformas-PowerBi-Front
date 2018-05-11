@@ -14,12 +14,22 @@ import { ReportesEmpleadosComponent } from 'app/+emprende-up/administrador/dashb
 import { ReportesComprasComponent } from 'app/+emprende-up/administrador/dashboard/reportes-compras.component';
 // import { MyModalModule } from 'app/+emprende-up/super-module/modal/modal.module';
 import { ReportesAsesoriasComponent } from './dashboard/reportes-asesoria.component';
+import { ReportesMongeComponent } from './dashboard/reportes_monge.component';
+import { Reporte1MongeComponent } from './dashboard/reporte1_monge.component';
+import { ReportesInkafertComponent } from './dashboard/reportes_inkafert.component';
+import { Reporte1InkafertComponent } from './dashboard/reporte1_inkafert.component';
+import { PieGraficosComponent } from './pie-graficos/pie-graficos.component';
+import { PieGraficoComponent } from './pie-grafico/pie-grafico.component';
+import { InlineGraphsModule } from '../../shared/graphs/inline/inline-graphs.module';
+import { TablaDataComponent } from './tabla-data/tabla-data.component';
+import { TablaDataEquipoComponent } from './tabla-data-equipo/tabla-data-equipo.component';
 
 @NgModule({
     imports: [
         routing,
         SuperComunModule,
-        SuperModule
+        SuperModule,
+        InlineGraphsModule
     ],
     exports: [],
     declarations: [
@@ -32,6 +42,14 @@ import { ReportesAsesoriasComponent } from './dashboard/reportes-asesoria.compon
         ReportesFondosComponent,
         ReportesEmpleadosComponent,
         ReportesComprasComponent,
+        ReportesMongeComponent,
+        Reporte1MongeComponent,
+        ReportesInkafertComponent,
+        Reporte1InkafertComponent,
+        PieGraficosComponent,
+        PieGraficoComponent,
+        TablaDataComponent,
+        TablaDataEquipoComponent
     ],
     providers: [PagerService]
 })

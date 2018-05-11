@@ -24,7 +24,103 @@
     height: fit-content;
 }
 
+/** **/
 .login_img{
     width: 60%;
-    margin: 11% auto;
+    margin: 0 auto;
+}
+
+.login_container{
+    background-color: #ecedef;
+    width: 100%;
+    height: 100%;
+}
+
+.login_header{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    img {
+        width:100%;
+        height: 100px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        :before {
+            content: "Iniciar Sesión";
+            display: block;
+            position: absolute;
+            z-index: 10;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: rgba(54,84,99,0.7);
+        }
+    }
+    /*::before{
+        content: "";
+        display: block;
+        position: absolute;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: rgba(54,84,99,0.7);
+    }*/
+    //background-image: url("../../../assets/img/emprende-up/fondo_login.gif");
+    // background-image: url("../../../assets/img/emprende-up/login_header.jpg") !important;
+}
+
+.login_contenido{
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: white;
+    width: 100%;
+
+    * {
+        width: inherit;
+    }
+
+    footer {
+        padding-bottom: 20px;
+    }
+
+    section {
+        display: inline-flex;
+        padding-top: 10px;
+        padding-right: 20px;
+        * {
+            padding: 0;
+            font-weight: 600;
+        }
+    }
+}
+
+.label_login{
+    color:#c5c5c5;
+    padding-left: 10% !important;
+    width: 30% !important;
+    margin: 0;
+    padding-top: 15px !important;
+}
+
+.input_login {
+    color:#9f9f9f;
+    width: 70% !important;
+    border: none;
+    border-bottom: #9f9f9f 2px solid;
+}
+
+.boton_login {
+    background-color: #57b847;
+    color: white;
+    border-radius: 30px;
+    -ms-flex-align: center;
+    align-items: center;
+    text-align: center;
+    width: 25% !important;
+    margin-left: 10%;
+    margin-top: 25px;
+    padding-bottom: 7px;
+    padding-top: 7px;
 }

@@ -6,17 +6,81 @@
 
 
 </header>-->
-<div role="main" class=" smart-style-3 " style="background-color:#0ac0ea;" >
+<!--
+<div role="main" class=" smart-style-3 " style="background-color:#f1dddd;" >
     
   <div class="container">
     <div class="hijo " [ngStyle]="{'height':altura}">
       <div class="col-xs-12 col-sm-8 col-md-8 col-lg-5 centrarHorizontalmente">
         <div class="" style="display:grid">
-          <img class="login_img" src="assets/img/emprende-up/logo_side_bar.png"/>
+          <img class="login_img" src="http://intercorp.com.pe/assets/img/companies/logos/04.png"/>
           <app-form [isSubmited]="camposValidados" [claseSCSS]="form.claseSCSS" [sections]="form.sections" [validationOptions]="form.validationOptions"
             [hasButton]="true" [titleButton]="form.titleButton"  [back]="form.back" (submit)="onSubmit($event)"></app-form>
         </div>
       </div>
     </div>
   </div>
+</div>-->
+
+<div class="login_container">
+  <div class="container">
+    <div class="hijo " [ngStyle]="{'height':altura}">
+      <div class="col-xs-12 col-sm-8 col-md-8 col-lg-6 centrarHorizontalmente">
+        <div class="" style="display:grid">
+          <div class="login_header">
+            <img src="assets/img/emprende-up/fondo_login_dashboard.png">
+          </div>
+          <form class="login_contenido" (submit)="login_submit($event)">
+            <fieldset>
+              <section>
+                <label class="label_login ">Usuario</label>
+                <input class="input_login" id="email" [(ngModel)]="login.email" type="email" required [ngModelOptions]="{standalone: true}" >
+              </section>
+              <section>
+                <label class="label_login">Contraseña</label>
+                <input class="input_login" id="password" [(ngModel)]="login.password" type="password" required [ngModelOptions]="{standalone: true}" >
+              </section>
+            </fieldset>
+            <footer>
+              <button type="submit" class="boton_login centrarHorizontalmente">Login</button>
+            </footer>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<app-loading *ngIf="loading"></app-loading>
+
+<!--<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-form-title" style="background-image: url(images/bg-01.jpg);">
+					<span class="login100-form-title-1">
+						Sign In
+					</span>
+				</div>
+
+				<form class="login100-form validate-form">
+					<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
+						<span class="label-input100">Username</span>
+						<input class="input100" type="text" name="username" placeholder="Enter username">
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
+						<span class="label-input100">Password</span>
+						<input class="input100" type="password" name="pass" placeholder="Enter password">
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn">
+							Login
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>-->

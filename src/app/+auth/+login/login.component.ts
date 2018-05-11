@@ -2,7 +2,10 @@ import { Component, OnInit, AfterContentChecked } from '@angular/core';
 import { Form } from '../../+emprende-up/super-module/form-super/form';
 import { HttpOperations } from '../../+emprende-up/super-module/form-super/input-form';
 import { SaveUserService } from 'app/+auth/save-user.service';
+import { ApiService } from 'app/core/api/api.service';
+import { Http } from '@angular/http';
 
+declare var $: any;
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,10 +17,18 @@ import { SaveUserService } from 'app/+auth/save-user.service';
 })
 export class LoginComponent implements OnInit, AfterContentChecked {
   camposValidados = false;
-  form: Form;
+  loading = false;
+  login = {
+    email: null,
+    password: null
+  }
+  // form: Form;
+
   altura = '';
   constructor(
-    private saveUser: SaveUserService
+    private saveUser: SaveUserService,
+    private loginService: ApiService,
+    private http: Http
   ) {
 
   }
@@ -28,9 +39,33 @@ export class LoginComponent implements OnInit, AfterContentChecked {
     }, 0);
   }
 
+  login_submit(event) {
+    event.preventDefault();
+    console.log('Event:' + JSON.stringify(event));
+    if (this.login.email !== null && this.login.password !== null) {
+      // this.loading = true;
+      console.log('Datos a Enviar:' + JSON.stringify(this.login));
+      this.loginService = new ApiService(this.http);
+      this.loginService.fillApiService('loginUsuario');
+      this.loginService.post(this.login).subscribe(
+        login => {
+          console.log('Login JSON:' + JSON.stringify(login));
+          this.saveUser.save({
+            data: login.data.rpta,
+            success: true
+          });
+        }, error => {
+          // this.loading = false;
+        }
+      );
+    }
+  }
+
+  
+
   ngOnInit() {
     window.localStorage.clear();
-    this.form = new Form();
+    /*this.form = new Form();
     this.form.back.modalValidation = {
       titulo: 'login',
       isFormulario: false,
@@ -130,7 +165,7 @@ export class LoginComponent implements OnInit, AfterContentChecked {
           }
         ]
       }
-    ]; */
+    ];
     this.form.sections = [
           {
             isRequired: true,
@@ -170,7 +205,7 @@ export class LoginComponent implements OnInit, AfterContentChecked {
               advertencia: 'Ingrese su contraseña'
             }
           }
-    ];
+    ];*/
   }
 
   /*_login(event) {
@@ -178,12 +213,24 @@ export class LoginComponent implements OnInit, AfterContentChecked {
  }*/
 
   onSubmit(event) {
-   // console.log('Widget Event' + event);
+    console.log('Evento Login' + JSON.stringify(event));
     if (event) {
       if (event.isTrusted) {
         this.camposValidados = true;
       } else {
-        this.saveUser.save(event);
+        if (this.login.email !== null && this.login.password !== null) {
+          this.loading = true;
+          this.loginService = new ApiService(this.http);
+          this.loginService.fillApiService('loginUsuario');
+          this.loginService.post(this.login).subscribe(
+            login => {
+              console.log('Login JSON:' + JSON.stringify(login));
+              this.saveUser.save(login.data);
+            }, error => {
+              this.loading = false;
+            }
+          );
+        }
       }
     }
   }
