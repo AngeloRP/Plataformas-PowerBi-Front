@@ -19,4 +19,8 @@ export class PieGraficosComponent implements OnInit {
     this.mostrarGraficos = false;
   }
 
+  eventoMostrarGraficos() {
+    this.mostrarGraficos = true;
+  }
+
 }
