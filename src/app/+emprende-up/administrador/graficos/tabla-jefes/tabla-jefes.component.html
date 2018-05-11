@@ -1,0 +1,37 @@
+<div *ngIf="mostrarJefes">
+    <button class="boton_regresar" (click)="eventoRegresar()">Regresar</button>
+    <app-table
+    (outputEvent)="hacieEquipos($event)"
+      [idTable]="'jefes'"
+      [url]="'informacionJefesPorFilial/' + idFilial"
+      [posicion]="0"
+      [hasFilter]="true"
+      [searColumns]="
+                        [
+                        'Nombre',
+                        'Meta',
+                        'Ejecutado',
+                        '% Realizado',
+                        '% Restante'
+                        ]"
+                        [columns]="
+                        [
+                        { prop: 'Nombre'},
+                        { prop: 'Meta',width:96, maxWidth:96  },
+                        { prop: 'Ejecutado',width:96, maxWidth:96  },
+                        { prop: '% Realizado',width:96, maxWidth:96  },
+                        { prop: '% Restante',width:96, maxWidth:96   }
+                        ]"
+    
+    >
+    </app-table>
+</div>
+<div *ngIf="!mostrarJefes">
+  <app-tabla-equipos
+  (regresar)="haciaJefes()"
+  [idJefe]="idJefe"
+  ></app-tabla-equipos>
+</div>
+
+
+

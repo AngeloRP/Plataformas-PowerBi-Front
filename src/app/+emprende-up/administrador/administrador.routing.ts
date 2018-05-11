@@ -14,6 +14,8 @@ import { ReportesMongeComponent } from './dashboard/reportes_monge.component';
 import { Reporte1MongeComponent } from './dashboard/reporte1_monge.component';
 import { ReportesInkafertComponent } from './dashboard/reportes_inkafert.component';
 import { Reporte1InkafertComponent } from './dashboard/reporte1_inkafert.component';
+import { PieGraficosComponent } from './graficos/pie-graficos/pie-graficos.component';
+
 
 export const routes: Routes = [
     { path: '', redirectTo: 'progestion' },
@@ -72,6 +74,10 @@ export const routes: Routes = [
     {
         path: 'usuarios',
         loadChildren: 'app/+emprende-up/administrador/usuarios/usuarios.module#UsuariosModule'
+    },
+    {
+        path: 'graficos',
+        component: PieGraficosComponent
     }
 
 ];

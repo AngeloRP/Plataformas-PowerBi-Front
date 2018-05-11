@@ -3,24 +3,26 @@ import {
     Component,
     OnInit,
     ViewEncapsulation,
-    ViewChild
+    ViewChild,
+    Output
 } from '@angular/core';
-import {DatatableComponent} from '@swimlane/ngx-datatable/release';
-import {ApiService} from 'app/core/api/api.service';
-import {Http, RequestOptions, Headers, Response, ResponseContentType} from '@angular/http';
+import { DatatableComponent } from '@swimlane/ngx-datatable/release';
+import { ApiService } from 'app/core/api/api.service';
+import { Http, RequestOptions, Headers, Response, ResponseContentType } from '@angular/http';
 import {
     Header,
     ModalData,
     InputSelector
 } from 'app/+emprende-up/super-module/interfaces';
-import {NotificationService} from 'app/shared/utils/notification.service';
-import {config_server} from 'app/shared/conexion-back/middleware';
-import {TableInterface} from 'app/+emprende-up/super-module/widget-super/table-interface';
-import {HttpOperations} from 'app/+emprende-up/super-module/form-super/input-form';
-import {isNumber, isNull} from 'util';
+import { NotificationService } from 'app/shared/utils/notification.service';
+import { config_server } from 'app/shared/conexion-back/middleware';
+import { TableInterface } from 'app/+emprende-up/super-module/widget-super/table-interface';
+import { HttpOperations } from 'app/+emprende-up/super-module/form-super/input-form';
+import { isNumber, isNull } from 'util';
 import * as  conexion_back from '../../../../assets/api/back/url.json'
-import {saveAs} from 'file-saver';
-import 'rxjs/Rx' ;
+import { saveAs } from 'file-saver';
+import 'rxjs/Rx';
+import { EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'app-table',
@@ -46,6 +48,7 @@ export class TableComponent implements OnInit {
         filter: ''
     };
     // @Input() dataTabla: TableInterface;
+    @Input() idTable = '';
     @Input() hasActive = false;
     @Input() buttonTable = 'buttonTable';
     @Input() modalData: ModalData;
@@ -73,13 +76,19 @@ export class TableComponent implements OnInit {
     @Input() isPressed = false;
     @Input() filteredByActivity = false;
     @Input() filterActiveofInactive = true;
+    @Output() outputEvent: EventEmitter<any>;
     urlUpdateCache: string;
     rowComentario = 0;
     @ViewChild(DatatableComponent) table: DatatableComponent;
 
     constructor(private apiService: ApiService,
-                private tableService: ApiService,
-                private http: Http) {
+        private tableService: ApiService,
+        private http: Http) {
+        this.outputEvent = new EventEmitter<any>();
+    }
+
+    emitirEventOutput(event) {
+        this.outputEvent.emit(event);
     }
 
     mostrarModal(rowIndex) {
@@ -234,7 +243,7 @@ export class TableComponent implements OnInit {
 
     downloadFile(data: Response) {
         var blob = new Blob([data], { type: 'text/csv' });
-        var url= window.URL.createObjectURL(blob);
+        var url = window.URL.createObjectURL(blob);
         window.open(url)
     }
 
@@ -428,8 +437,22 @@ export class TableComponent implements OnInit {
         // console.log('++++++++++++++++++++');
     }
 
+    getRowClass(row) {
+        const tazdingo = row['% Realizado'];
+        return {
+            'rojo': tazdingo < 40,
+            'amarillo': tazdingo >= 40 && tazdingo < 60,
+            'azul': tazdingo >= 60
+        }
+    }
+
     esCampoPorcentaje(columna) {
         if (
+            columna.includes('% Realizado') ||
+            columna.includes('% Restante')
+        ) {
+            return true;
+        } else if (
             columna.includes('Enero') ||
             columna.includes('Febrero') ||
             columna.includes('Marzo') ||

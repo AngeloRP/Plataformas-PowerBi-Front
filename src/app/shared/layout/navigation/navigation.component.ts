@@ -159,6 +159,14 @@ export class NavigationComponent implements OnInit, AfterContentChecked {
       class: '',
       link: { commands: ['/administrador/usuarios'] },
       hasChilds: false
+    },{
+      id:'graficos',
+      title: 'Gráficos',
+      imagen: 'fa fa-lg fa-fw fa-group',
+      clase_menu: 'menu-item-parent',
+      class: '',
+      link: { commands: ['/administrador/graficos'] },
+      hasChilds: false
     }
     /*{
       id: 'administrador-startups',
@@ -350,40 +358,6 @@ export class NavigationComponent implements OnInit, AfterContentChecked {
 
         }
       );
-      /*
-      await this.evaluacionesService.get().toPromise().then(
-        meses => {
-          if (meses.data) {
-            if (meses.data.success) {
-              sidebarEvaluaciones.addChildsEvaluaciones(meses.data.rpta);
-             // console.log('Evaluaciones llenadas');
-            }
-          }
-        }
-
-      ).catch(
-        reject => {
-
-        }
-        );
-      //
-      await this.indicadoresService.get().toPromise().then(
-        meses => {
-          if (meses.data) {
-            if (meses.data.success) {
-              sidebarIndicadores.addChildsIndicadores(meses.data.rpta);
-             // console.log('Evaluaciones e indicadores llenados');
-            }
-          }
-        }
-
-      ).catch(
-        reject => {
-
-        }
-        );
-        */
-
       sidebarIncubados.push(sidebarEvaluaciones.element);
       sidebarIncubados.push(sidebarIndicadores.element);
 

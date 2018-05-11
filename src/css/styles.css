@@ -50,6 +50,15 @@
     height: 50px;
 }
 
+.boton_regresar {
+    border-radius: 6px; 
+    background-color: #0d94c7
+}
+
+.easy-pie-chart .percent{
+    font-size: 270% !important;
+    top: 44%;
+}
 input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     /* display: none; <- Crashes Chrome on hover */
     -webkit-appearance: none;

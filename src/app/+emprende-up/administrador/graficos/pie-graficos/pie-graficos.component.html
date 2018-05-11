@@ -1,0 +1,39 @@
+
+<div *ngIf="mostrarGraficos">
+    <app-pie-grafico
+    [data_size]="150"
+    [data_color]="'txt-color-red'"
+    [data_pie_size]="50"
+    [data_percent]="50"
+    [titulo]="'Tarjetas'"
+    [idFilial]="1"
+    (regresar)="haciaTablaJefes($event)"
+  >
+  </app-pie-grafico>
+  
+  <app-pie-grafico
+    [data_size]="150"
+    [data_color]="'txt-color-blue'"
+    [data_pie_size]="50"
+    [data_percent]="65"
+    [titulo]="'Servicios'"
+    [idFilial]="2"
+    (regresar)="haciaTablaJefes($event)"
+  >
+  </app-pie-grafico>
+  
+  <app-pie-grafico
+    [data_size]="150"
+    [data_color]="'txt-color-black'"
+    [data_pie_size]="50"
+    [data_percent]="80"
+    [titulo]="'Compras'"
+    [idFilial]="3"
+    (regresar)="haciaTablaJefes($event)"
+  >
+  </app-pie-grafico>
+</div>
+
+<div *ngIf="!mostrarGraficos">
+    <app-tabla-jefes [idFilial]="idFilial"></app-tabla-jefes>
+</div>

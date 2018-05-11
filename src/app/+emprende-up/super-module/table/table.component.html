@@ -1,4 +1,4 @@
-<div>
+<div id="{{idTable}}">
   <div class="row col-xs-12 fixTable" *ngIf="hasFilter === true || paging === true">
 
     <div *ngIf="hasFilter === true && paging === true">
@@ -62,7 +62,8 @@
   </div>
 
   <ngx-datatable *ngIf="!isLoading" #table class="material ngx-datatable fixed-header" [rows]="rows" [loadingIndicator]="isLoading"
-    [scrollbarH]="true" [columns]="columns" [columnMode]="'force'" [headerHeight]="'40'" [footerHeight]="45" [rowHeight]="'auto'"
+    [scrollbarH]="true" [scrollbarV]="true" [columns]="columns" [columnMode]="'force'" [headerHeight]="'40'" [footerHeight]="45"
+    [rowClass]="getRowClass"
     [sortType]="'single'" [limit]="controls.pageSize" [cssClasses]="{
       sortAscending: 'fa fa-caret-up',
       sortDescending: 'fa fa-caret-down',
@@ -211,7 +212,13 @@
             </div>
             <div *ngIf="column.prop != 'Archivos'">
               <div *ngIf="row[column.prop] != null">
-                <p [ngStyle]="{'font-size': sizeFuente}">{{row[column.prop]}}</p>
+                <ng-container *ngIf="column.prop == 'Nombre'">
+                  <button (click)="emitirEventOutput(row)">{{row[column.prop]}}</button>
+                </ng-container>
+                <ng-container *ngIf="column.prop != 'Nombre'">
+                    <p [ngStyle]="{'font-size': sizeFuente}">{{row[column.prop]}}</p>
+                </ng-container>
+                
               </div>
               <div *ngIf="row[column.prop] == null">
                 <p>--</p>
