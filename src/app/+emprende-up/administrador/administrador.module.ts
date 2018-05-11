@@ -18,18 +18,12 @@ import { ReportesMongeComponent } from './dashboard/reportes_monge.component';
 import { Reporte1MongeComponent } from './dashboard/reporte1_monge.component';
 import { ReportesInkafertComponent } from './dashboard/reportes_inkafert.component';
 import { Reporte1InkafertComponent } from './dashboard/reporte1_inkafert.component';
-import { PieGraficosComponent } from './pie-graficos/pie-graficos.component';
-import { PieGraficoComponent } from './pie-grafico/pie-grafico.component';
-import { InlineGraphsModule } from '../../shared/graphs/inline/inline-graphs.module';
-import { TablaDataComponent } from './tabla-data/tabla-data.component';
-import { TablaDataEquipoComponent } from './tabla-data-equipo/tabla-data-equipo.component';
 
 @NgModule({
     imports: [
         routing,
         SuperComunModule,
         SuperModule,
-        InlineGraphsModule
     ],
     exports: [],
     declarations: [
@@ -45,11 +39,7 @@ import { TablaDataEquipoComponent } from './tabla-data-equipo/tabla-data-equipo.
         ReportesMongeComponent,
         Reporte1MongeComponent,
         ReportesInkafertComponent,
-        Reporte1InkafertComponent,
-        PieGraficosComponent,
-        PieGraficoComponent,
-        TablaDataComponent,
-        TablaDataEquipoComponent
+        Reporte1InkafertComponent
     ],
     providers: [PagerService]
 })

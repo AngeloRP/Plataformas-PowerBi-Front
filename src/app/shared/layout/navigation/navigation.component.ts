@@ -159,15 +159,6 @@ export class NavigationComponent implements OnInit, AfterContentChecked {
       class: '',
       link: { commands: ['/administrador/usuarios'] },
       hasChilds: false
-    },
-    {
-      id: 'gráficas',
-      title: 'Gráficas',
-      imagen: 'fa fafa-circle-o-notch',
-      clase_menu: 'menu-item-parent',
-      class: '',
-      link: { commands: ['/administrador/graficos_pie'] },
-      hasChilds: false
     }
     /*{
       id: 'administrador-startups',
