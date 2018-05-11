@@ -10,8 +10,8 @@ declare var $: any;
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: [
-    'login.component.scss',
-    '../auth.scss'
+    'login.component.css',
+    '../auth.css'
   ],
   providers: [SaveUserService]
 })

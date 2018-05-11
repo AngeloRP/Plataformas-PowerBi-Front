@@ -11,7 +11,7 @@ declare var $: any;
 @Component({
   selector: 'app-sa-navigation',
   templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.scss'],
+  styleUrls: ['./navigation.component.css'],
   providers: [ApiService]
 })
 export class NavigationComponent implements OnInit, AfterContentChecked {

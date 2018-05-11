@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: [
-    '../../../+auth/auth.scss',
+    '../../../+auth/auth.css',
   ],
   providers: [SaveUserService]
 })

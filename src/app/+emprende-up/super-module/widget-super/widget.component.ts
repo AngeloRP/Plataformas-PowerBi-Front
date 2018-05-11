@@ -11,7 +11,7 @@ import { FormInt } from 'app/+emprende-up/super-module/interfaces';
   selector: 'app-widget',
   templateUrl: 'widget.component.html',
   styleUrls: [
-    './widget.component.scss'],
+    './widget.component.css'],
   providers: [ModalComponent]
 })
 export class WidgetFormComponent extends Widget implements OnInit {

@@ -7,7 +7,7 @@ import { TranslateService } from '../../../translate/translate.service';
   selector: 'app-forgot',
   templateUrl: './forgot.component.html',
   styleUrls: [
-    '../auth.scss',
+    '../auth.css',
   ]
 })
 export class ForgotComponent extends MultiIdiomas implements OnInit {

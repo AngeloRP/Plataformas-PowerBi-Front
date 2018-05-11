@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from "../user.service";
-import { LayoutService } from "../../layout/layout.service";
+import { UserService } from '../user.service';
+import { LayoutService } from '../../layout/layout.service';
 
 declare var $: any;
 
@@ -8,7 +8,7 @@ declare var $: any;
 
   selector: 'sa-login-info',
   templateUrl: './login-info.component.html',
-  styleUrls: ['./login-info.component.scss']
+  styleUrls: ['./login-info.component.css']
 })
 export class LoginInfoComponent implements OnInit {
   startUpId: any = null;

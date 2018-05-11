@@ -31,7 +31,7 @@ import { ConexionBack } from 'super/conexion-back';
   selector: 'app-modal',
   templateUrl: 'modal.component.html',
   styleUrls: [
-    './modal.component.scss'
+    './modal.component.css'
   ]
 })
 export class ModalComponent implements OnInit {

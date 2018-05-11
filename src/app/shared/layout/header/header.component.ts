@@ -8,7 +8,7 @@ declare var $: any;
   selector: 'sa-header',
   templateUrl: './header.component.html',
   styleUrls: [
-    './header.component.scss'
+    './header.component.css'
   ]
 })
 export class HeaderComponent implements OnInit, AfterViewChecked {

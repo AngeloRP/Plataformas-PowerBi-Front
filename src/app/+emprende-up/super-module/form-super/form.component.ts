@@ -32,8 +32,8 @@ const numberMask = createNumberMask({
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: [
-    './form.component.scss',
-    './form_combo_text_collapse.scss',
+    './form.component.css',
+    './form_combo_text_collapse.css',
   ],
   providers: [ModalComponent]
 })
