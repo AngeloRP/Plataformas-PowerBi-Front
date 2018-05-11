@@ -441,7 +441,7 @@ export class TableComponent implements OnInit {
         const tazdingo = row['% Realizado'];
         return {
             'rojo': tazdingo < 40,
-            'amarillo': tazdingo >= 40 && tazdingo < 60,
+            'naranja': tazdingo >= 40 && tazdingo < 60,
             'azul': tazdingo >= 60
         }
     }

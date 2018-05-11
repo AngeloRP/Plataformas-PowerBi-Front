@@ -20,6 +20,7 @@ export class SaveUserService {
     if (event !== undefined) {
       if (event.success === true) {
         console.log('Login Exito:' + JSON.stringify(event.data));
+        window.localStorage.setItem('email', event.data.email);
         window.localStorage.setItem('userInformation', event.data.name);
         window.localStorage.setItem('user-id', event.data.user_id);
         window.localStorage.setItem('start-up-id', event.data.start_up_id);

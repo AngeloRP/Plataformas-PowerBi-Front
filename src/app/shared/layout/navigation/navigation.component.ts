@@ -159,52 +159,9 @@ export class NavigationComponent implements OnInit, AfterContentChecked {
       class: '',
       link: { commands: ['/administrador/usuarios'] },
       hasChilds: false
-    },{
-      id:'graficos',
-      title: 'Gráficos',
-      imagen: 'fa fa-lg fa-fw fa-group',
-      clase_menu: 'menu-item-parent',
-      class: '',
-      link: { commands: ['/administrador/graficos'] },
-      hasChilds: false
     }
-    /*{
-      id: 'administrador-startups',
-      title: 'Incubados',
-      imagen: 'fa fa-lg fa-fw fa-group',
-      clase_menu: 'menu-item-parent',
-      class: '',
-      link: { commands: ['/administrador/start-ups'] },
-      hasChilds: false
-    },
-    {
-      id: 'administrador-asignar-evaluadores',
-      title: 'Asignar Evaluadores',
-      imagen: 'fa fa-lg fa-fw fa-group',
-      clase_menu: 'menu-item-parent',
-      class: '',
-      link: { commands: ['/administrador/asignarEvaluadores'] },
-      hasChilds: false
-    },
-    {
-      id: 'administrador-asignar-meses',
-      title: 'Asignar Meses de Incubación',
-      imagen: 'fa fa-lg fa-fw fa-calendar',
-      clase_menu: 'menu-item-parent',
-      class: '',
-      link: { commands: ['/administrador/asignarMeses'] },
-      hasChilds: false
-    },
-    {
-      id: 'administrador-activar-formularios',
-      title: 'Activar Evaluaciones Mensuales',
-      imagen: 'fa fa-lg fa-fw fa-calendar',
-      clase_menu: 'menu-item-parent',
-      class: '',
-      link: { commands: ['/administrador/activarFormularios'] },
-      hasChilds: false
-    }*/
   ];
+
   constructor(
     public http: Http,
     private router: Router,
@@ -245,7 +202,21 @@ export class NavigationComponent implements OnInit, AfterContentChecked {
       case '1':
         {
           // console.log('Entro a sidebar administrador');
-          this.sidebar_elements = this.sidebar_administrador;
+          if (window.localStorage.getItem('email') === 'FinancieraUno@oh.com') {
+            this.sidebar_elements = [
+              {
+                id: 'graficos',
+                title: 'Gráficos',
+                imagen: 'fa fa-lg fa-fw fa-group',
+                clase_menu: 'menu-item-parent',
+                class: '',
+                link: { commands: ['/administrador/graficos'] },
+                hasChilds: false
+              }
+            ]
+          } else {
+            this.sidebar_elements = this.sidebar_administrador;
+          }
           this.registroInicialCompletado = true;
           this.isLoading = false;
         }

@@ -16,9 +16,16 @@ import { ReportesInkafertComponent } from './dashboard/reportes_inkafert.compone
 import { Reporte1InkafertComponent } from './dashboard/reporte1_inkafert.component';
 import { PieGraficosComponent } from './graficos/pie-graficos/pie-graficos.component';
 
+let redirect = 'progestion';
+if (window.localStorage.getItem('email') === 'FinancieraUno@oh.com') {
+    // console.log('Entro a Financiera');
+    redirect = 'graficos';
+} else {
+    redirect = 'progestion';
+}
 
 export const routes: Routes = [
-    { path: '', redirectTo: 'progestion' },
+    { path: '', redirectTo: redirect },
     {
         path: 'progestion',
         component: ReportesAdminComponent
@@ -81,5 +88,18 @@ export const routes: Routes = [
     }
 
 ];
+
+export const routesFinanciera: Routes = [
+    { path: '', redirectTo: 'graficos' },
+    {
+        path: 'graficos',
+        component: PieGraficosComponent
+    }
+];
+
+// let routes = routes_comunes;
+
+
+
 export const routing = RouterModule.forChild(routes);
 
