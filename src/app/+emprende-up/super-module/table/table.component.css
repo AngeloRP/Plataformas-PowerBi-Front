@@ -23,6 +23,10 @@
   color: blue !important;
 }
 
+.ngx-datatable *, .ngx-datatable *:before, .ngx-datatable *:after{
+  font-family: serif;
+}
+
 .datatable-body-row, .datatable-header-inner {}
 
 .datatable-header-cell {}
