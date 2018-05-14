@@ -87,6 +87,11 @@ export class TableComponent implements OnInit {
         this.outputEvent = new EventEmitter<any>();
     }
 
+    limpiarBuscador() {
+        this.controls.filter = '';
+        this.rows = this.temp;
+    }
+
     emitirEventOutput(event) {
         this.outputEvent.emit(event);
     }

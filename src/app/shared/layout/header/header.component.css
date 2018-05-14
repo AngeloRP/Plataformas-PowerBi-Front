@@ -34,16 +34,17 @@
     }
     #imageHeader{
         width: 100% !important;
-        padding: 0 30%;
+        padding: 0 10%;
+        display: flex;
     }
 
 }
 
 .imglogoUp{
     height: 75%;
-    width: 100%;
+    width: 85%;
     margin: 10px 0;
-    padding: 0 15%;
+    padding: 0 10%;
 }
 
 #imageHeader{
@@ -66,8 +67,10 @@
 .backHeader{
     /*background-image: url("../../../../assets/img/emprende-up/lado_horizontal.png") !important;
     background-repeat: no-repeat  !important;
-    background-size: 100% 100%  !important;*/
+    background-size: 100% 100%  !important;
     background-image: linear-gradient(to bottom,#efdbdb,#fff) !important;
+    */
+    background: #fff !important;
 }
 
 .grupoOpcionesHeader{

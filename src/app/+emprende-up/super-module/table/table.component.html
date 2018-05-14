@@ -8,11 +8,14 @@
             <input type="text" id="search" class="form-control" [(ngModel)]="controls.filter" placeholder='Escriba para buscar en la tabla...'
               (keyup)='updateFilter($event)'>
             <label style="z-index: 22" for="search" class="fa fa-search" rel="tooltip" title="search"></label>
+            <button class="boton_eliminar" (click)="limpiarBuscador()" >X</button>
           </div>
           <div *ngIf="!hasActive" style="left:0" class="icon-addon">
+            
             <input type="text" id="search" class="form-control" [(ngModel)]="controls.filter" placeholder='Escriba para buscar en la tabla...'
               (keyup)='updateFilter($event)'>
             <label style="z-index: 22" for="search" class="fa fa-search" rel="tooltip" title="search"></label>
+            <button class="boton_eliminar" (click)="limpiarBuscador()" >X</button>
           </div>
         </div>
       </div>
@@ -31,11 +34,13 @@
           <div *ngIf="hasActive" class="icon-addon">
             <input type="text" id="search" class="form-control" [(ngModel)]="controls.filter" placeholder='Busque aquí' (keyup)='updateFilter($event)'>
             <label style="z-index: 22" for="search" class="fa fa-search" rel="tooltip" title="search"></label>
+            <button class="boton_eliminar" (click)="limpiarBuscador()" >X</button>
           </div>
           <div *ngIf="!hasActive" style="left:0" class="icon-addon">
             <input type="text" id="search" class="form-control" [(ngModel)]="controls.filter" placeholder='Escriba para buscar en la tabla...'
               (keyup)='updateFilter($event)'>
             <label style="z-index: 22" for="search" class="fa fa-search" rel="tooltip" title="search"></label>
+            <button class="boton_eliminar" (click)="limpiarBuscador()" >X</button>
           </div>
         </div>
         <div *ngIf="posicion === 0">
@@ -61,7 +66,7 @@
     </div>
   </div>
 
-  <ngx-datatable *ngIf="!isLoading" #table class="material ngx-datatable fixed-header" [rows]="rows" [loadingIndicator]="isLoading"
+  <ngx-datatable *ngIf="!isLoading" #table class="material ngx-datatable fixed-header table-striped" [rows]="rows" [loadingIndicator]="isLoading"
     [scrollbarH]="true" [scrollbarV]="true" [columns]="columns" [columnMode]="'force'" [headerHeight]="'40'" [footerHeight]="45"
     [rowClass]="getRowClass"
     [sortType]="'single'" [limit]="controls.pageSize" [cssClasses]="{
@@ -191,7 +196,7 @@
         <div *ngIf="!esCampoEditable(column.prop)">
           <div *ngIf="esCampoPorcentaje(column.prop) ">
             <div *ngIf="row[column.prop] != null">
-              <p [ngStyle]="{'font-size': sizeFuente}" style="text-align:right; margin-right:10px;">{{ (row[column.prop]/100) | percent:'1.0-0':'fr'}}</p>
+              <p [ngStyle]="{'font-size': sizeFuente}" >{{ (row[column.prop]/100) | percent:'1.0-0':'fr'}}</p>
             </div>
             <div *ngIf="row[column.prop] == null">
               <p style="text-align:right; margin-right:10px;"> --%</p>

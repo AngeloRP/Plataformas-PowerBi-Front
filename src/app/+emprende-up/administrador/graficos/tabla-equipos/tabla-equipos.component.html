@@ -1,26 +1,29 @@
-<button class="boton_regresar" (click)="eventoRegresar()">Regresar</button>
-<app-table
-  [idTable]="'equipos'"ks
-  [url]="'informacionEquipo/' + idJefe"
-  [posicion]="0"
-  [hasFilter]="true"
-  [searColumns]="
-                    [
-                    'Nombre',
-                    'Meta',
-                    'Ejecutado',
-                    '% Realizado',
-                    '% Restante'
-                    ]"
-                    [columns]="
-                    [
-                    { prop: 'Nombre'},
-                    { prop: 'Meta', width:96, maxWidth:96  },
-                    { prop: 'Ejecutado',width:96, maxWidth:96 },
-                    { prop: '% Realizado',width:96, maxWidth:96  },
-                    { prop: '% Restante',width:96, maxWidth:96   }
-                    ]"
+<div  style="margin-left: 10px;">
+    <button class="boton_regresar" (click)="eventoRegresar()">Regresar</button>
+    <app-table
+      [idTable]="'equipos'"ks
+      [url]="'informacionEquipo/' + idJefe"
+      [posicion]="0"
+      [hasFilter]="true"
+      [searColumns]="
+                        [
+                        'Nombre',
+                        'Meta',
+                        'Ejecutado',
+                        '% Realizado',
+                        '% Restante'
+                        ]"
+                        [columns]="
+                        [
+                        { prop: 'Nombre'},
+                        { prop: 'Meta', width:96, maxWidth:96  },
+                        { prop: 'Ejecutado',width:96, maxWidth:96 },
+                        { prop: '% Realizado',width:96, maxWidth:96  },
+                        { prop: '% Restante',width:96, maxWidth:96   }
+                        ]"
+    
+    >
+    
+    </app-table>
+</div>
 
->
-
-</app-table>

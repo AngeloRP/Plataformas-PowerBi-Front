@@ -50,9 +50,28 @@
     height: 50px;
 }
 
+#left-panel{
+    padding-top: 66px !important;
+}
+
+@media (min-width:768px) and (max-width:979px){
+    #left-panel{
+        padding-top: 0px !important;
+    }
+}
+
+@media (min-width:0px) and (max-width:679px){
+    #left-panel{
+        padding-top: 0px !important;
+    }
+}
+
 .boton_regresar {
     border-radius: 6px; 
-    background-color: #0d94c7
+    color: #0d94c7;
+    background-color: transparent;
+    font-weight: 700;
+    font-size: 14px;
 }
 
 .easy-pie-chart .percent{

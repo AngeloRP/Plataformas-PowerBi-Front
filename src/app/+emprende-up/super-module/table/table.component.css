@@ -149,9 +149,29 @@
   color: inherit !important;
   font-size: 15px;
   border-radius: 6px;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.boton_eliminar {
   position: absolute;
-  top: 0;
-  left:0;
+  z-index: 23;
+    height: 32px;
+    color: red;
+    font-weight: 800;
+    border-radius: 3px;
+    top: -3px;
+    right: -2px;
+    font-size: 16px;
+    width: 30px;
+    line-height: 10px;
+    border: solid gray 1px;
+}
+
+.datatable-body-cell * {
+  width: inherit;
 }
 
 .datatable-row-wrapper:last-child {
@@ -203,14 +223,14 @@
   transform: translate(0, -50%);
 }
 
-.table-striped .datatable-body .datatable-row-wrapper:nth-of-type(odd) {
-  background: transparent !important;
-  /* background-color: black !important;*/
+.table-striped .datatable-body .datatable-row-wrapper:nth-of-type(odd), .table-striped .datatable-body .datatable-row-wrapper:nth-of-type(odd) .datatable-body-cell button {
+  /*background: transparent !important;*/
+  background: #f2f2f2!important
 }
 
-.table-striped .datatable-body .datatable-row-wrapper:nth-of-type(even) {
-  background: transparent !important;
-  /* background-color: #ffffff; */
+.table-striped .datatable-body .datatable-row-wrapper:nth-of-type(even), .table-striped .datatable-body .datatable-row-wrapper:nth-of-type(even) .datatable-body-cell button {
+  /*background: transparent !important;*/
+  background: #ffffff !important;
 }
 
 .datatable-body .datatable-body-row {}
@@ -290,6 +310,6 @@
 .ngx-datatable .datatable-body-cell, .ngx-datatable .datatable-header-cell {
   user-select: text !important;
   line-height: 1.5;
-  background: #f2f2f2;
+  /*background: #f2f2f2;*/
   border-right: 2px solid #ccc;
 }

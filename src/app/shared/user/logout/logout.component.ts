@@ -8,12 +8,14 @@ declare var $: any;
   selector: 'sa-logout',
   template: `
 <div id="logout" (click)="showPopup()" class="btn-header transparent pull-right">
-        <span> <a routerlink="/auth/login" title="Sign Out" data-action="userLogout"
+        <span> <a routerlink="/auth/login" class="logout_class" title="Sign Out" data-action="userLogout"
                   data-logout-msg="Desea salir del sistema?"><i
           class="fa fa-sign-out"></i></a> </span>
     </div>
   `,
-  styles: []
+  styleUrls: [
+    './logout.component.css'
+  ]
 })
 export class LogoutComponent implements OnInit {
 
