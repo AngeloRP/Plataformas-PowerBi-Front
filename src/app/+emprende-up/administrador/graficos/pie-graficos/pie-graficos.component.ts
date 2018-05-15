@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../../../../core/api/api.service';
+import { Http } from '@angular/http';
 
 @Component({
   selector: 'app-pie-graficos',
@@ -7,10 +9,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PieGraficosComponent implements OnInit {
   mostrarGraficos = true;
+  loading = true;
   idFilial = 1;
-  constructor() { }
+  filiales: any;
+  constructor(private graficos: ApiService, private http: Http) { }
 
   ngOnInit() {
+    this.graficos = new ApiService(this.http);
+    this.graficos.fillApiService('informacionFilial');
+    this.graficos.get().subscribe(
+      filiales => {
+        if (filiales.data) {
+          if (filiales.data.rpta) {
+            this.filiales = filiales.data.rpta;
+            console.log('Filiales:' + JSON.stringify(this.filiales));
+            this.loading = false;
+          }
+        }
+      },
+      error => {
+
+      }
+    );
   }
 
   haciaTablaJefes(event) {

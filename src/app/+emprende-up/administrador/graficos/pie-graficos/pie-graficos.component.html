@@ -1,19 +1,19 @@
 
-<div *ngIf="mostrarGraficos">
+<div *ngIf="mostrarGraficos && !loading">
     <app-pie-grafico
     [data_size]="140"
-    [data_color]="'txt-color-red'"
+    [data_color]="'grafico_tarjetas_color'"
     [data_pie_size]="120"
-    [data_percent]="50"
-    [titulo]="'Tarjetas'"
-    [idFilial]="1"
+    [data_percent]="filiales[0]['% Realizado']"
+    [titulo]="filiales[0]['Nombre']"
+    [idFilial]="filiales[0]['id_filial']"
     (regresar)="haciaTablaJefes($event)"
   >
   </app-pie-grafico>
   
   <app-pie-grafico
     [data_size]="140"
-    [data_color]="'txt-color-blue'"
+    [data_color]="'grafico_servicios_color'"
     [data_pie_size]="120"
     [data_percent]="65"
     [titulo]="'Servicios'"
@@ -24,7 +24,7 @@
   
   <app-pie-grafico
     [data_size]="140"
-    [data_color]="'txt-color-black'"
+    [data_color]="'grafico_compras_color'"
     [data_pie_size]="120"
     [data_percent]="80"
     [titulo]="'Compras'"
@@ -34,7 +34,7 @@
   </app-pie-grafico>
 </div>
 
-<div *ngIf="!mostrarGraficos">
+<div *ngIf="!mostrarGraficos && !loading">
     <app-tabla-jefes
     (regresar)="eventoMostrarGraficos()"
     [idFilial]="idFilial"

@@ -42,9 +42,9 @@
 
 .imglogoUp{
     height: 75%;
-    width: 85%;
-    margin: 10px 0;
-    padding: 0 10%;
+    width: 60%;
+    margin: 10px;
+   /* padding: 0 10%;*/
 }
 
 #imageHeader{
@@ -70,11 +70,21 @@
     background-size: 100% 100%  !important;
     background-image: linear-gradient(to bottom,#efdbdb,#fff) !important;
     */
-    background: #fff !important;
+    background:#cbd5ea  !important;
 }
 
 .grupoOpcionesHeader{
     position: relative;
     top: 10px;
+}
+
+.collapse{
+    display: block;
+    margin-top: 12px;
+}
+
+.opciones_header {
+    display: inline-flex;
+    HEIGHT: inherit;
 }
 

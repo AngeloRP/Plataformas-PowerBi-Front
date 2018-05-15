@@ -11,17 +11,6 @@
   margin-top: 20px;
 }
 
-.rojo {
-  color: red !important;
-}
-
-.naranja {
-  color: orange !important;
-}
-
-.azul {
-  color: blue !important;
-}
 
 .ngx-datatable *, .ngx-datatable *:before, .ngx-datatable *:after{
   font-family: serif;

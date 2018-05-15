@@ -187,7 +187,7 @@ export class TableComponent implements OnInit {
         );
         this.apiService.get().subscribe(
             data => {
-                // console.log('Data Tabla:' + JSON.stringify(data));
+            console.log('Data Tabla:' + JSON.stringify(data));
                 if (data.data.success) {
                     // cache our list
                     if (data.data[this.rpta]) {
@@ -443,11 +443,12 @@ export class TableComponent implements OnInit {
     }
 
     getRowClass(row) {
-        const tazdingo = row['% Realizado'];
+        const realizado = row['% Realizado'];
         return {
-            'rojo': tazdingo < 40,
-            'naranja': tazdingo >= 40 && tazdingo < 60,
-            'azul': tazdingo >= 60
+            'valor0' : realizado === 0,
+            'entre_1_40': realizado > 0 && realizado <= 40,
+            'entre_40_60': realizado > 40 && realizado <= 60,
+            'mayor_60': realizado > 60
         }
     }
 

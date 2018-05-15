@@ -19,4 +19,54 @@
     color:black;
   }
 
+  nav ul li {
+    background: #b8c3e2 !important;
+  }
+
+  .rojo {
+    color: red !important;
+  }
+  
+  .naranja {
+    color: orange !important;
+  }
+  
+  .azul {
+    color: blue !important;
+  }
+  
+  .verde {
+    color: green !important;
+  }
+
+  .valor0 {
+    color: #acadbc !important;
+  }
+
+  .entre_1_40 {
+    color: #f86964 !important;
+  }
+
+  .entre_40_60 {
+    color: #6b82af !important;
+  }
+
+  .mayor_60{
+    color: #39c663 !important;
+  }
+
+
+  .grafico_tarjetas_color{
+    color: #6b82af !important;
+  }
+
+  .grafico_servicios_color{
+    color: #73c6b5 !important;
+  }
+
+  .grafico_compras_color{
+    color: #f7c960 !important;
+  }
+
+
   

@@ -54,7 +54,7 @@
     padding-top: 66px !important;
 }
 
-@media (min-width:768px) and (max-width:979px){
+/*@media (min-width:768px) and (max-width:979px){
     #left-panel{
         padding-top: 0px !important;
     }
@@ -64,7 +64,7 @@
     #left-panel{
         padding-top: 0px !important;
     }
-}
+}*/
 
 .boton_regresar {
     border-radius: 6px; 
@@ -74,9 +74,27 @@
     font-size: 14px;
 }
 
+#left-panel{
+    display: block;
+}
+
+.hidden-menu #left-panel{
+    display: none;
+}
+
+.hidden-menu #main{
+    left: 0px !important;
+}
+
 .easy-pie-chart .percent{
     font-size: 270% !important;
-    top: 44%;
+    top: 40%;
+}
+
+@media (min-width:0px) and (max-width:450px){
+    .easy-pie-chart .percent{
+        top: 44%;
+    }
 }
 input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     /* display: none; <- Crashes Chrome on hover */

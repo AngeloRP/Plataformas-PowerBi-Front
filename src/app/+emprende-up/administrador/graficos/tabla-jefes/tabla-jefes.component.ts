@@ -23,6 +23,7 @@ export class TablaJefesComponent implements OnInit {
 
   hacieEquipos(event) {
     console.log('Evento:' + JSON.stringify(event));
+    this.idJefe = event.id_equipo;
     this.mostrarJefes = false;
   }
 
