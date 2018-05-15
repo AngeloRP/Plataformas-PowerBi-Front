@@ -74,6 +74,10 @@
     font-size: 14px;
 }
 
+.hidden-menu #hide-menu>:first-child>a {
+    background: #0ac0ea !important;
+}
+
 #left-panel{
     display: block;
 }
