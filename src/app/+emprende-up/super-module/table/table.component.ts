@@ -454,8 +454,8 @@ export class TableComponent implements OnInit {
 
     esCampoPorcentaje(columna) {
         if (
-            columna.includes('% Realizado') ||
-            columna.includes('% Restante')
+            columna.includes('Realizado') ||
+            columna.includes('Restante')
         ) {
             return true;
         } else if (
