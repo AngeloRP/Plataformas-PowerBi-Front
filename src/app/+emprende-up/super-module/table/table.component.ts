@@ -443,7 +443,7 @@ export class TableComponent implements OnInit {
     }
 
     getRowClass(row) {
-        const realizado = row['% Realizado'];
+        const realizado = row['Realizado'];
         return {
             'valor0' : realizado === 0,
             'entre_1_40': realizado > 0 && realizado <= 40,

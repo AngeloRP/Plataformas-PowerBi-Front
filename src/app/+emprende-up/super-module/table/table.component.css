@@ -11,6 +11,11 @@
   margin-top: 20px;
 }
 
+.datatable-body-cell-label {
+    position: relative;
+    left: -12px;
+    top: 0;
+}
 
 .ngx-datatable *, .ngx-datatable *:before, .ngx-datatable *:after{
   font-family: serif;

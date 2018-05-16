@@ -117,13 +117,23 @@
 .boton_login {
     background-color: #57b847;
     color: white;
-    border-radius: 30px;
+    border-radius: 3px;
     -ms-flex-align: center;
     align-items: center;
     text-align: center;
     width: 25% !important;
-    margin-left: 10%;
+    margin-left: calc(75% - 20px);
     margin-top: 25px;
     padding-bottom: 7px;
     padding-top: 7px;
+}
+
+@media (min-width:0px) and (max-width:450px){
+    section {
+        display: grid !important;
+    }
+    .input_login {
+        margin-left: 10%;
+        width: 90% !important;
+    }
 }

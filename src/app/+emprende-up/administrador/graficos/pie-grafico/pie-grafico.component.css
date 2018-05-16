@@ -1,6 +1,15 @@
-.titulo_pie{
+.titulo_pie {
     margin-bottom: 0;
     font-weight: 700;
     text-align: center;
-    width: 190px;
+}
+
+.easy-pie-chart .percent{
+    font-size: 270% !important;
+    top: 45%;
+    left: 0;
+}
+
+.container {
+    width: inherit !important;
 }

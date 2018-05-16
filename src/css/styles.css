@@ -90,16 +90,6 @@
     left: 0px !important;
 }
 
-.easy-pie-chart .percent{
-    font-size: 270% !important;
-    top: 40%;
-}
-
-@media (min-width:0px) and (max-width:450px){
-    .easy-pie-chart .percent{
-        top: 44%;
-    }
-}
 input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     /* display: none; <- Crashes Chrome on hover */
     -webkit-appearance: none;
