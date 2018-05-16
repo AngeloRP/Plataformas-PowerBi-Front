@@ -1,11 +1,14 @@
 import {Component, OnInit} from '@angular/core';
-import {LayoutService} from "../../layout.service";
+import {LayoutService} from '../../layout.service';
 
 declare var $: any;
 
 @Component({
   selector: 'sa-collapse-menu',
-  templateUrl: './collapse-menu.component.html'
+  templateUrl: './collapse-menu.component.html',
+  styleUrls: [
+    './collapse-menu.component.css',
+  ]
 })
 export class CollapseMenuComponent {
   constructor(

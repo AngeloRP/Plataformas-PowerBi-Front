@@ -37,6 +37,7 @@
 
 #left-panel {
     width: 250px;
+    padding-top: 64px !important;
 }
 
 #main {
@@ -48,10 +49,6 @@
 .page-footer {
     padding-left: 260px;
     height: 50px;
-}
-
-#left-panel{
-    padding-top: 66px !important;
 }
 
 /*@media (min-width:768px) and (max-width:979px){
@@ -88,6 +85,10 @@
 
 .hidden-menu #main{
     left: 0px !important;
+}
+
+.btn-header.pull-right{
+    margin-left: 0px !important;
 }
 
 input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {

@@ -34,7 +34,6 @@
     }
     #imageHeader{
         width: 100% !important;
-        padding: 0 10%;
         display: flex;
     }
 
@@ -43,7 +42,7 @@
 .imglogoUp{
     height: 75%;
     width: 60%;
-    margin: 10px;
+    margin: 9px 31%;
    /* padding: 0 10%;*/
 }
 
@@ -80,7 +79,6 @@
 
 .collapse{
     display: block;
-    margin-top: 12px;
 }
 
 .opciones_header {
