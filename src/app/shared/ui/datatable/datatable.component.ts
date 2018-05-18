@@ -16,7 +16,7 @@ declare var $: any;
   selector: 'app-sa-datatable',
   templateUrl: './datatable.component.html',
   styleUrls: [
-    './datatable.component.scss'
+    './datatable.component.css'
   ],
   providers: [ModalComponent]
 })

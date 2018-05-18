@@ -128,6 +128,7 @@ app-on-off-switch {
     border-bottom-right-radius: 0px !important;
 }
 
+/* Galaxy S5*/
 table.dataTable td, table.dataTable th {
     text-overflow: ellipsis;
     white-space:nowrap; 
@@ -135,6 +136,7 @@ table.dataTable td, table.dataTable th {
     width: 36px;
     max-width: 36px;
 }
+
 
 /* 
 @media all and (max-width:1000px) and (min-width:900px){
