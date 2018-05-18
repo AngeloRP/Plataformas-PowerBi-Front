@@ -8,14 +8,18 @@
             <input type="text" id="search" class="form-control" [(ngModel)]="controls.filter" placeholder='Escriba para buscar en la tabla...'
               (keyup)='updateFilter($event)'>
             <label style="z-index: 22" for="search" class="fa fa-search" rel="tooltip" title="search"></label>
-            <button class="boton_eliminar" (click)="limpiarBuscador()" >X</button>
+            <button class="boton_eliminar  container" (click)="limpiarBuscador()" >
+              <i class="fa fa-times-circle iconoLimpiar"></i>
+            </button>
           </div>
           <div *ngIf="!hasActive" style="left:0" class="icon-addon">
             
             <input type="text" id="search" class="form-control" [(ngModel)]="controls.filter" placeholder='Escriba para buscar en la tabla...'
               (keyup)='updateFilter($event)'>
             <label style="z-index: 22" for="search" class="fa fa-search" rel="tooltip" title="search"></label>
-            <button class="boton_eliminar" (click)="limpiarBuscador()" >X</button>
+            <button class="boton_eliminar  container" (click)="limpiarBuscador()" >
+                <i class="fa fa-times-circle iconoLimpiar"></i>
+            </button>
           </div>
         </div>
       </div>
@@ -34,13 +38,13 @@
           <div *ngIf="hasActive" class="icon-addon">
             <input type="text" id="search" class="form-control" [(ngModel)]="controls.filter" placeholder='Busque aquí' (keyup)='updateFilter($event)'>
             <label style="z-index: 22" for="search" class="fa fa-search" rel="tooltip" title="search"></label>
-            <button class="boton_eliminar" (click)="limpiarBuscador()" >X</button>
+            <button class="boton_eliminar  container" (click)="limpiarBuscador()" ><i class="fa fa-times-circle iconoLimpiar"></i></button>
           </div>
           <div *ngIf="!hasActive" style="left:0" class="icon-addon">
             <input type="text" id="search" class="form-control" [(ngModel)]="controls.filter" placeholder='Escriba para buscar en la tabla...'
               (keyup)='updateFilter($event)'>
             <label style="z-index: 22" for="search" class="fa fa-search" rel="tooltip" title="search"></label>
-            <button class="boton_eliminar" (click)="limpiarBuscador()" >X</button>
+            <button class="boton_eliminar  container" (click)="limpiarBuscador()" ><i class="fa fa-times-circle iconoLimpiar"></i></button>
           </div>
         </div>
         <div *ngIf="posicion === 0">
@@ -218,7 +222,7 @@
             <div *ngIf="column.prop != 'Archivos'">
               <div *ngIf="row[column.prop] != null">
                 <ng-container *ngIf="column.prop == 'Nombre'">
-                  <button (click)="emitirEventOutput(row)">{{row[column.prop]}}</button>
+                  <a (click)="emitirEventOutput(row)">{{row[column.prop]}}</a>
                 </ng-container>
                 <ng-container *ngIf="column.prop != 'Nombre'">
                     <p [ngStyle]="{'font-size': sizeFuente}">{{row[column.prop]}}</p>

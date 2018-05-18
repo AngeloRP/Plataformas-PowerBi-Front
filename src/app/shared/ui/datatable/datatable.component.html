@@ -1,0 +1,12 @@
+<table 
+class="dataTable responsive {{tableClass}}"
+width="{{width}}"
+appTextColor [columnaCalculo]="'Realizado'" [metodoCalculo]="colorear"
+[contenido]="contenido"
+>
+    <ng-content></ng-content>
+</table>
+ <!--
+ <app-modal  *ngIf="mostrarM == true"
+ [modalData]="back.modalValidation" (cerrarModal)="cerrarModal($event)" (actualizarTabla)="actualizarTabla($event)">
+ </app-modal>-->

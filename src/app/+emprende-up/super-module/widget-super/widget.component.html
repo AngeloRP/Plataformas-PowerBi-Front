@@ -28,10 +28,11 @@
                         [hasButton]="hasButtonFormulario" [validationOptions]="form.validationOptions" [titleButton]="form.titleButton"
                         [buttonClass]="buttonClass" [idForm]="idFormulario" (submit)="onSubmit($event)" (terminoCarga)="terminarCarga($event)">
                     </app-form>
-                    <!--<app-table *ngIf="contentTable" [isPressed]="isPressed" [url]="tableUrl" [columns]="tableColums" [buttons]="tableButtons" [headers]="headers" [dom]="dom"
-                       [back]="form.back" [onLanguage]="onLanguage" [buttonClass]="buttonClass" [rpta]="rpta" [paging]="paging"
+                    <app-jquery-table *ngIf="contentTable" [isPressed]="isPressed" [url]="tableUrl" [columns]="tableColumns" [buttons]="tableButtons" [headers]="headers"
+                    (dobleclickEvent)="emitirEvento($event)"
+                    [back]="form.back" [onLanguage]="onLanguage" [buttonClass]="buttonClass" [rpta]="rpta" [paging]="paging"
                        [hasFilter]="hasFilter" [hasButtons]="hasButtons" [ruta]="ruta" [id]="id" [idTable]="idTable"
-                       ></app-table>-->
+                       ></app-jquery-table>
 
                 </div>
                 <div *ngIf="contentTable">
@@ -45,54 +46,48 @@
                         </span>-->
                         <app-on-off-switch [opcion1]="'Activos'"  [opcion2]="'Inactivos'" [model]="true"  (modelChange)="cambiarTabla($event)"></app-on-off-switch>
                         <div *ngIf="cambioEstado" style="margin-top: 40px;">
-                                <app-table 
-                                [posicion]="posicion"
-                                [isPressed]="isPressed" [url]="tableUrl" [columns]="tableColums" [searColumns]="searColumns" [buttons]="tableButtons"
-                                [headers]="headers" [headersLocalStorage]="headersLocalStorage" [rpta]="rpta" [paging]="paging" [sizeFuente]="sizeFuente"
-                                [tituloAcciones]="tituloAcciones" [posicionAcciones]="posicionAcciones" [urlUpdate]="urlUpdateTable"
-                                [headersUpdateLocalStorage]="headersUpdateLocalStorageTable" [hasFilter]="hasFilter" [hasButtons]="hasButtons"
-                                [actions]="rowActions" [campoId]="campoId" [maxWidthActions]="maxWidthActions"></app-table>
+                                <app-jquery-table 
+                                (dobleclickEvent)="emitirEvento($event)"
+                                [isPressed]="isPressed" [url]="tableUrl" [columns]="tableColumns" [buttons]="tableButtons"
+                                [headers]="headers" [rpta]="rpta" [paging]="paging"
+                                [hasFilter]="hasFilter" [hasButtons]="hasButtons"
+                                ></app-jquery-table>
                         </div>
                         <div *ngIf="!cambioEstado" style="margin-top: 40px;">
-                                <app-table 
-                                [posicion]="posicion"
-                                [isPressed]="isPressed" [url]="tablaEspecial" [columns]="tableColums" [searColumns]="searColumns" [buttons]="tableButtons"
-                                [headers]="headers" [headersLocalStorage]="headersLocalStorage" [rpta]="rpta" [paging]="paging" [sizeFuente]="sizeFuente"
-                                [tituloAcciones]="tituloAcciones" [posicionAcciones]="posicionAcciones" [urlUpdate]="urlUpdateTable"
-                                [headersUpdateLocalStorage]="headersUpdateLocalStorageTable" [hasFilter]="hasFilter" [hasButtons]="hasButtons"
-                                [campoId]="campoId" [maxWidthActions]="maxWidthActions"></app-table>
+                            <app-jquery-table 
+                            (dobleclickEvent)="emitirEvento($event)"
+                            [isPressed]="isPressed" [url]="tableUrl" [columns]="tableColumns" [buttons]="tableButtons"
+                            [headers]="headers" [rpta]="rpta" [paging]="paging"
+                            [hasFilter]="hasFilter" [hasButtons]="hasButtons"
+                            ></app-jquery-table>
                         </div>
                     </div>
                     <div *ngIf="tablaFilterActivity">
                         <app-on-off-switch [opcion1]="'ACTIVOS'"  [opcion2]="'INACTIVOS'" [model]="true"  (modelChange)="cambiarTabla($event)"></app-on-off-switch>
                         <div *ngIf="cambioEstado" style="margin-top: 40px;">
-                            <app-table 
-                            [posicion]="posicion"
-                            [isPressed]="isPressed" [url]="tableUrl" [columns]="tableColums" [searColumns]="searColumns" [buttons]="tableButtons"
-                            [headers]="headers" [headersLocalStorage]="headersLocalStorage" [rpta]="rpta" [paging]="paging" [sizeFuente]="sizeFuente"
-                            [tituloAcciones]="tituloAcciones" [posicionAcciones]="posicionAcciones" [urlUpdate]="urlUpdateTable"
-                            [headersUpdateLocalStorage]="headersUpdateLocalStorageTable" [hasFilter]="hasFilter" [hasButtons]="hasButtons"
-                            [actions]="rowActions" [campoId]="campoId" [maxWidthActions]="maxWidthActions" [filteredByActivity]="true" [filterActiveofInactive]="true"></app-table>
+                            <app-jquery-table 
+                            (dobleclickEvent)="emitirEvento($event)"
+                                [isPressed]="isPressed" [url]="tableUrl" [columns]="tableColumns" [buttons]="tableButtons"
+                                [headers]="headers" [rpta]="rpta" [paging]="paging"
+                                [hasFilter]="hasFilter" [hasButtons]="hasButtons"
+                                ></app-jquery-table>
                         </div>
                         <div *ngIf="!cambioEstado" style="margin-top: 40px;">
-                            <app-table 
-                            [posicion]="posicion"
-                            [isPressed]="isPressed" [url]="tableUrl" [columns]="tableColums" [searColumns]="searColumns" [buttons]="tableButtons"
-                            [headers]="headers" [headersLocalStorage]="headersLocalStorage" [rpta]="rpta" [paging]="paging" [sizeFuente]="sizeFuente"
-                            [tituloAcciones]="tituloAcciones" [posicionAcciones]="posicionAcciones" [urlUpdate]="urlUpdateTable"
-                            [headersUpdateLocalStorage]="headersUpdateLocalStorageTable" [hasFilter]="hasFilter" [hasButtons]="hasButtons"
-                            [actions]="rowActions" [campoId]="campoId" [maxWidthActions]="maxWidthActions" [filteredByActivity]="true" [filterActiveofInactive]="false"></app-table>
+                            <app-jquery-table 
+                            (dobleclickEvent)="emitirEvento($event)"
+                                [isPressed]="isPressed" [url]="tableUrl" [columns]="tableColumns" [buttons]="tableButtons"
+                                [headers]="headers" [rpta]="rpta" [paging]="paging"
+                                [hasFilter]="hasFilter" [hasButtons]="hasButtons"
+                                ></app-jquery-table>
                         </div>
                     </div>
                     <div *ngIf="!tablaEspecial">
                         <div *ngIf="!tablaFilterActivity">
-                            <app-table 
-                            [posicion]="posicion"
-                            [isPressed]="isPressed" [url]="tableUrl" [columns]="tableColums" [searColumns]="searColumns" [buttons]="tableButtons"
-                            [headers]="headers" [headersLocalStorage]="headersLocalStorage" [rpta]="rpta" [paging]="paging" [sizeFuente]="sizeFuente"
-                            [tituloAcciones]="tituloAcciones" [posicionAcciones]="posicionAcciones" [urlUpdate]="urlUpdateTable"
-                            [headersUpdateLocalStorage]="headersUpdateLocalStorageTable" [hasFilter]="hasFilter" [hasButtons]="hasButtons"
-                            [actions]="rowActions" [campoId]="campoId" [maxWidthActions]="maxWidthActions"></app-table>
+                            <app-jquery-table (dobleclickEvent)="emitirEvento($event)"
+                                [isPressed]="isPressed" [url]="tableUrl" [columns]="tableColumns" [buttons]="tableButtons"
+                                [headers]="headers" [rpta]="rpta" [paging]="paging"
+                                [hasFilter]="hasFilter" [hasButtons]="hasButtons"
+                                ></app-jquery-table>
                         </div>
                     </div>
                    

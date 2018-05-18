@@ -27,6 +27,8 @@ import { ComaMillarPipe } from './pipes/coma_millar.pipe';
 import { HeadersTablePipe } from './pipes/headers_table.pipe';
 import { TextMaskModule } from 'angular2-text-mask';
 import { WidgetFormComponent } from 'app/+emprende-up/super-module/widget-super/widget.component';
+import { JqueryTableComponent } from './jquery_table/jquery_table.component';
+import { SmartadminDatatableModule } from '../../shared/ui/datatable/smartadmin-datatable.module';
 
 @NgModule({
     imports: [
@@ -36,6 +38,7 @@ import { WidgetFormComponent } from 'app/+emprende-up/super-module/widget-super/
         FormsModule,
         SmartadminFormsModule,
         NgxDatatableModule,
+        SmartadminDatatableModule,
         SmartadminFormsLiteModule,
         TextMaskModule,
         Select2Module,
@@ -48,12 +51,14 @@ import { WidgetFormComponent } from 'app/+emprende-up/super-module/widget-super/
         SmartadminWidgetsModule,
         SmartadminFormsModule,
         ModalComponent,
+        JqueryTableComponent,
         TableComponent,
         LoadingComponent,
         FormComponent,
         WidgetFormComponent
     ],
     declarations: [
+        JqueryTableComponent,
         ModalComponent,
         TableComponent,
         FormComponent,

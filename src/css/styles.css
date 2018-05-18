@@ -63,12 +63,18 @@
     }
 }*/
 
+tr {
+    font-family: serif;
+    font-weight: 600;
+}
+
 .boton_regresar {
     border-radius: 6px; 
     color: #0d94c7;
     background-color: transparent;
     font-weight: 700;
     font-size: 14px;
+    margin-left: 10px;
 }
 
 .hidden-menu #hide-menu>:first-child>a {
@@ -85,6 +91,7 @@
 
 .hidden-menu #main{
     left: 0px !important;
+    margin-left: 0px !important;
 }
 
 .btn-header.pull-right{

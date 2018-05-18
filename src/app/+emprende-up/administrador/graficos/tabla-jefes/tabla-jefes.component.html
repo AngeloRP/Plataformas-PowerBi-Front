@@ -1,6 +1,7 @@
 <div *ngIf="mostrarJefes" >
     <button class="boton_regresar" (click)="eventoRegresar()">Regresar</button>
-    <app-table
+    <!--<app-table
+    class="col-xs-12"
     (outputEvent)="hacieEquipos($event)"
       [idTable]="'jefes'"
       [url]="'informacionJefesPorFilial/' + idFilial"
@@ -17,19 +18,38 @@
                         [columns]="
                         [
                         { prop: 'Nombre'},
-                        { prop: 'Meta',width:50, maxWidth:50  },
+                        { prop: 'Meta',width:45, maxWidth:45  },
                         { prop: 'Ejecutado',width:62, maxWidth:62  },
                         { prop: 'Realizado',width:62, maxWidth:62  },
-                        { prop: 'Restante',width:62, maxWidth:62   }
+                        { prop: 'Restante',width:61, maxWidth:61   }
                         ]"
     
     >
-    </app-table>
+    </app-table>-->
+    <app-widget
+    (dobleclickEvent)="hacieEquipos($event)"
+    [headerTitle]="titulo"
+    [tableUrl]="'informacionJefesPorFilial/' + idFilial"
+    [id]="'jefes'"
+    [contentTable]="true"
+    [hasButtons]="false"
+    [tableColumns]="
+                        [
+                        { data: 'Nombre'},
+                        { data: 'Meta'  },
+                        { data: 'Ejecutado'  },
+                        { data: 'Realizado' },
+                        { data: 'Restante'  }
+                        ]"
+    
+    >
+    </app-widget>
 </div>
 <div *ngIf="!mostrarJefes">
   <app-tabla-equipos
   (regresar)="haciaJefes()"
   [idJefe]="idJefe"
+  [titulo]="nombreJefe"
   ></app-tabla-equipos>
 </div>
 

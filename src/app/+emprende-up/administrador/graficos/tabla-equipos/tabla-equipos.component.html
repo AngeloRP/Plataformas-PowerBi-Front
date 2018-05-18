@@ -1,6 +1,7 @@
 <div>
     <button class="boton_regresar" (click)="eventoRegresar()">Regresar</button>
-    <app-table
+    <!--<app-table
+        class="col-xs-12"
       [idTable]="'equipos'"
       [url]="'informacionEquipo/' + idJefe"
       [posicion]="0"
@@ -16,14 +17,31 @@
                         [columns]="
                         [
                         { prop: 'Nombre'},
-                        { prop: 'Meta',width:50, maxWidth:50  },
+                        { prop: 'Meta',width:45, maxWidth:45  },
                         { prop: 'Ejecutado',width:62, maxWidth:62  },
                         { prop: 'Realizado',width:62, maxWidth:62  },
-                        { prop: 'Restante',width:62, maxWidth:62   }
+                        { prop: 'Restante',width:61, maxWidth:61   }
                         ]"
     
     >
     
-    </app-table>
+    </app-table>-->
+    <app-widget
+    [headerTitle]="titulo"
+    [tableUrl]="'informacionEquipo/' + idJefe"
+    [id]="'equipos'"
+    [contentTable]="true"
+    [hasButtons]="false"
+    [tableColumns]="
+                        [
+                        { data: 'Nombre'},
+                        { data: 'Meta'  },
+                        { data: 'Ejecutado'  },
+                        { data: 'Realizado' },
+                        { data: 'Restante'  }
+                        ]"
+    
+    >
+    </app-widget>
 </div>
 

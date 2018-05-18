@@ -1,5 +1,5 @@
-/*
-import { Component, Input, ElementRef, AfterViewChecked, OnInit, SimpleChanges } from '@angular/core';
+
+import { Component, Input, ElementRef, AfterViewChecked, OnInit, SimpleChanges, EventEmitter, Output } from '@angular/core';
 import { addClassName } from '../../utils/dom-helpers';
 import { Router } from '@angular/router';
 import { Operations } from 'app/+emprende-up/super-module/operations';
@@ -13,23 +13,15 @@ import { Mensaje } from 'util/mensaje';
 declare var $: any;
 
 @Component({
-
   selector: 'app-sa-datatable',
-  template: `
-      <table class="dataTable responsive {{tableClass}}" width="{{width}}">
-        <ng-content></ng-content>
-      </table>
-     <!--
-     <app-modal  *ngIf="mostrarM == true"
-     [modalData]="back.modalValidation" (cerrarModal)="cerrarModal($event)" (actualizarTabla)="actualizarTabla($event)">
-     </app-modal>-->
-`,
+  templateUrl: './datatable.component.html',
   styleUrls: [
     './datatable.component.scss'
   ],
   providers: [ModalComponent]
 })
 export class DatatableComponent extends Operations implements OnInit {
+  @Input() contenido: any;
   @Input() title: string
   @Input() public options: any;
   @Input() public filter: any;
@@ -48,6 +40,7 @@ export class DatatableComponent extends Operations implements OnInit {
   @Input() public id = '';
   @Input() public otroId = '';
   @Input() idTable = '';
+  @Output() dobleclickEvent: EventEmitter<any>;
   antiguo: any = null;
   constructor(
     public modal: ModalComponent,
@@ -60,14 +53,15 @@ export class DatatableComponent extends Operations implements OnInit {
     private http: Http
   ) {
     super();
+    this.dobleclickEvent = new EventEmitter<any>();
   }
 
   actualizarTabla(isActualizado) {
     if (isActualizado) {
       // this.inicializar();
-      /* $(document).ready(function() {
+      $(document).ready(function () {
         $('.dataTable').render();
-        });
+      });
       // $('.dataTable').render();
       // window.location.reload();
       const table = $('.dataTable').DataTable(this.options);
@@ -82,31 +76,42 @@ export class DatatableComponent extends Operations implements OnInit {
     this.inicializar();
   }
 
-
+  colorear(row, header) {
+    const realizado = row[header];
+    if (realizado === 0) {
+      return 'valor0';
+    } else if (realizado > 0 && realizado <= 40) {
+      return 'entre_1_40';
+    } else if (realizado > 40 && realizado <= 60) {
+      return 'entre_40_60';
+    } else {
+      return 'mayor_60';
+    }
+  }
 
   inicializar() {
     Promise.all([
       System.import('script-loader!smartadmin-plugins/datatables/datatables.min.js')
     ]).then(
       () => {
-       // console.log('Entro a renderizar');
-       // console.log(JSON.stringify(this.back));
+        // console.log('Entro a renderizar');
+        // console.log(JSON.stringify(this.back));
 
         if (this.back) {
           if (this.back.modalValidation) {
-           // console.log(JSON.stringify(this.back.modalValidation));
+            // console.log(JSON.stringify(this.back.modalValidation));
             this.antiguo = this.back.modalValidation;
-           // console.log('Antiguo:' + this.antiguo);
+            // console.log('Antiguo:' + this.antiguo);
 
             this.apiService = new ApiService(this.http);
           }
         }
         this.render();
       }).catch(
-      error => {
-       // console.log('Error Import:' + error);
-       // console.log('Error Import JSON:' + JSON.stringify(error));
-      }
+        error => {
+          // console.log('Error Import:' + error);
+          // console.log('Error Import JSON:' + JSON.stringify(error));
+        }
       );
   }
 
@@ -119,12 +124,12 @@ export class DatatableComponent extends Operations implements OnInit {
     }
 
     const mm = await this.fillModal(data);
-   // console.log('sdadada:' + mm);
+    // console.log('sdadada:' + mm);
 
-   // console.log('Indice Ultimo:' + indiceUltimo);
-   // console.log('Back Nuevo:' + JSON.stringify(this.back.modalValidation));
-   // console.log('URL:' + this.back.modalValidation.url);
-   // console.log(JSON.stringify(this.back.modalValidation));
+    // console.log('Indice Ultimo:' + indiceUltimo);
+    // console.log('Back Nuevo:' + JSON.stringify(this.back.modalValidation));
+    // console.log('URL:' + this.back.modalValidation.url);
+    // console.log(JSON.stringify(this.back.modalValidation));
     this.modal.setModalData(this.back.modalValidation);
     this.mostrarM = true;
   }
@@ -136,9 +141,9 @@ export class DatatableComponent extends Operations implements OnInit {
     let options = this.options || {}
     // let table = $('.table').DataTable(options);
     // console.log(JSON.stringify(options));
-    // console.log('Buttons:'+ JSON.stringify(options.buttons));
+    console.log('Buttons:' + JSON.stringify(options.buttons));
     let toolbar = '';
-    if (options.buttons) { toolbar += 'B'; }
+    // if (options.buttons) { toolbar += 'B'; }
     if (this.paginationLength) { toolbar += 'l'; }
     if (this.columnsHide) { toolbar += 'C'; }
 
@@ -151,14 +156,18 @@ export class DatatableComponent extends Operations implements OnInit {
         // }
       }
     }
-   // console.log('ID TABLA:' + this.idTable);
+    // console.log('ID TABLA:' + this.idTable);
     options = $.extend(options, {
 
       'dom': this.dom,
       oLanguage: this.onLanguage,
-      'autoWidth': false,
+      autoWidth: true,
       retrieve: true,
-      responsive: true,
+      responsive: false,
+      columnDefs: [
+        { width: 10, targets: 0 }
+      ],
+      fixedColumns: true,
       initComplete: (settings, json) => {
         element.parent().find('.input-sm', ).removeClass('input-sm').addClass('input-md');
         element.parent().find('div.dt-toolbar').attr('id', this.idTable);
@@ -178,21 +187,38 @@ export class DatatableComponent extends Operations implements OnInit {
       // console.log('Entro al select' + JSON.stringify(element));
       const selectedRows = _dataTable.rows({ selected: true }).count();
       const data = _dataTable.rows({ selected: true }).data();
-     // console.log('Info row:' + JSON.stringify(data[0]));
-     // console.log('Cantidad de Botones:' + this.options.buttons.length);
+      console.log('Info row:' + JSON.stringify(data[0]));
+      /*console.log('Cantidad de Botones:' + this.options.buttons.length);
       for (let i = 0; i < this.options.buttons.length; i++) {
         _dataTable.button(i).enable(selectedRows === 1);
-       // console.log(_dataTable.button(i));
+        // console.log(_dataTable.button(i));
         // console.log(JSON.stringify(_dataTable.button(i)));
 
-      }
+      }*/
 
     });
 
+    /*_dataTable.on('dblclick', 'tr', async (tr) => {
+      const data = _dataTable.rows({ selected: true }).data();
+      console.log('Double click row:' + JSON.stringify(data[0]));
+      if (data !== undefined) {
+        if (data[0] !== undefined) {
+          console.log('Row Selected:' + JSON.stringify(data[0]));
+          this.dobleclickEvent.emit(data[0]);
+        }
+      }
+    })*/
+
     _dataTable.on('click', 'tr', async (tr) => {
       const data = _dataTable.rows({ selected: true }).data();
-     // console.log('Row Selected:' + JSON.stringify(data[0]));
+      // console.log('Row Selected:' + JSON.stringify(data[0]));
       // $('div#evaluacionRetos.dt-toolbar').remove();
+      if (data !== undefined) {
+        if (data[0] !== undefined) {
+          console.log('Row Selected:' + JSON.stringify(data[0]));
+          this.dobleclickEvent.emit(data[0]);
+        }
+      }
       if (this.ruta.trim() !== '' && this.id.trim() !== '') {
         if (data[0].name) {
           window.localStorage.setItem('start-up', data[0].name);
@@ -203,14 +229,14 @@ export class DatatableComponent extends Operations implements OnInit {
         this.router.navigate([this.ruta + '/' + data[0][this.id]]);
       } else {
 
-        if (this.back) {
+        /*if (this.back) {
           if (this.back.modalValidation) {
-            /*let nuevoUrl = this.back.modalValidation.url.substring(indiceUltimo, this.back.modalValidation.url.length);
-           // console.log('Url:' + this.back.modalValidation.url);
+            let nuevoUrl = this.back.modalValidation.url.substring(indiceUltimo, this.back.modalValidation.url.length);
+            // console.log('Url:' + this.back.modalValidation.url);
 
-           // console.log('Nuevo Url:' + nuevoUrl);
+            // console.log('Nuevo Url:' + nuevoUrl);
             let entero = parseInt(nuevoUrl);
-           // console.log('Back Antiguo:' + JSON.stringify(this.back.modalValidation));
+            // console.log('Back Antiguo:' + JSON.stringify(this.back.modalValidation));
             if (this.back.modalValidation.url.split('/')[0] === 'AsignarTiempoIncubacion') {
               if (data[0]['Comite'] === null || data[0]['Comite'].trim() === '') {
                 this.notificationService = new NotificationService();
@@ -225,7 +251,7 @@ export class DatatableComponent extends Operations implements OnInit {
             }
 
           }
-        }
+        }*/
       }
     });
 
@@ -245,7 +271,7 @@ export class DatatableComponent extends Operations implements OnInit {
     if (!toolbar) {
       element.parent().find('.dt-toolbar')
         .append('<div class="text-right"><img src="assets/img/logo.png" alt="SmartAdmin"'
-        + 'style="width: 111px; margin-top: 3px; margin-right: 10px;"></div>');
+          + 'style="width: 111px; margin-top: 3px; margin-right: 10px;"></div>');
     }
 
     if (this.detailsFormat) {
@@ -267,10 +293,8 @@ export class DatatableComponent extends Operations implements OnInit {
 
 
 
-    /*element.on('select', () => {
-    
-
-      var selectedRows = element.rows({ selected: true }).count();
+    element.on('select', () => {
+      const selectedRows = element.rows({ selected: true }).count();
 
       element.button(0).enable(selectedRows === 1);
     });
@@ -278,12 +302,13 @@ export class DatatableComponent extends Operations implements OnInit {
   }
 
   eliminarElementos() {
+    /*
     if (!this.hasFilter) {
       $('#' + this.idTable + ' > div > div' + '.dataTables_filter').remove();
     }
-   // console.log('Filter:' + this.hasFilter);
-   // console.log('Paging:' + this.paging);
-   // console.log('Tiene botones?:' + this.hasButtons);
+    // console.log('Filter:' + this.hasFilter);
+    // console.log('Paging:' + this.paging);
+    // console.log('Tiene botones?:' + this.hasButtons);
     if (this.paging === false) {
       $('#' + this.idTable + ' > ' + 'dataTables_paginate paging_simple_numbers').remove();
     }
@@ -294,16 +319,16 @@ export class DatatableComponent extends Operations implements OnInit {
     }
 
     if (this.hasFilter === false && this.hasButtons === false) {
-     // console.log('Entro a borrar toolbar:' + !this.hasFilter && !this.hasButtons);
+      // console.log('Entro a borrar toolbar:' + !this.hasFilter && !this.hasButtons);
 
       $('div#' + this.idTable).remove();
-    }
+    }*/
   }
 
   fillChecked(elemento: any, arreglo: any[], header: string) {
     for (const element of arreglo) {
       if (elemento[header] === element[header]) {
-       // console.log('Checked FALSE');
+        // console.log('Checked FALSE');
         this.back.modalValidation.formInput[1].column.options.push({
           id: elemento.user_id,
           text: elemento.name,
@@ -312,7 +337,7 @@ export class DatatableComponent extends Operations implements OnInit {
         return;
       }
     }
-   // console.log('Checked TRUE');
+    // console.log('Checked TRUE');
     this.back.modalValidation.formInput[1].column.options.push({
       id: elemento.user_id,
       text: elemento.name,
@@ -324,8 +349,8 @@ export class DatatableComponent extends Operations implements OnInit {
     let algo;
     algo = await this.apiService.get().toPromise().then(
       async dataBack => {
-       // console.log('DATA:' + JSON.stringify(this.back.modalValidation.formInput[i].column.options));
-       // console.log('DATA BACK:' + JSON.stringify(dataBack.data));
+        // console.log('DATA:' + JSON.stringify(this.back.modalValidation.formInput[i].column.options));
+        // console.log('DATA BACK:' + JSON.stringify(dataBack.data));
         if (dataBack.data) {
           if (dataBack.data.success) {
             if (dataBack.data.rpta) {
@@ -337,7 +362,7 @@ export class DatatableComponent extends Operations implements OnInit {
                 this.casoExtraService.fillApiService('listarEvaluadores');
                 await this.casoExtraService.get().toPromise().then(
                   evaluadores => {
-                   // console.log('Evaluadores:' + JSON.stringify(evaluadores));
+                    // console.log('Evaluadores:' + JSON.stringify(evaluadores));
 
                     if (evaluadores.data.success) {
                       if (evaluadores.data.rpta) {
@@ -346,16 +371,16 @@ export class DatatableComponent extends Operations implements OnInit {
                         while (indice < cantEvaluadores) {
                           const evaluador = evaluadores.data.rpta[indice];
                           this.fillChecked(evaluador, dataBack.data.rpta, 'name');
-                         // console.log('Checked Fin');
+                          // console.log('Checked Fin');
                           indice++;
                         }
-                       // console.log('DATA 2 fase:' + JSON.stringify(this.back.modalValidation.formInput[1].column.options));
+                        // console.log('DATA 2 fase:' + JSON.stringify(this.back.modalValidation.formInput[1].column.options));
                       }
                     }
                   }
                 ).catch(
 
-                  );
+                );
               } else {
                 for (const detalle of dataBack.data.rpta) {
                   const nuevoDetalle = {
@@ -367,10 +392,10 @@ export class DatatableComponent extends Operations implements OnInit {
                     nuevoDetalle.checked = true;
                   }
                   this.back.modalValidation.formInput[i].column.options.push(nuevoDetalle);
-                 // console.log('Detalle:' + JSON.stringify(nuevoDetalle));
+                  // console.log('Detalle:' + JSON.stringify(nuevoDetalle));
                 }
 
-               // console.log('Flag: 0');
+                // console.log('Flag: 0');
               }
 
 
@@ -385,7 +410,7 @@ export class DatatableComponent extends Operations implements OnInit {
       }
     ).catch();
 
-   // console.log('Nuevos Valores:' + JSON.stringify(this.back.modalValidation));
+    // console.log('Nuevos Valores:' + JSON.stringify(this.back.modalValidation));
 
 
     return algo;
@@ -397,7 +422,7 @@ export class DatatableComponent extends Operations implements OnInit {
     this.casoExtraService.fillApiService('listarEvaluadores');
     const algo = await this.casoExtraService.get().toPromise().then(
       evaluadores => {
-       // console.log('Evaluadores:' + JSON.stringify(evaluadores));
+        // console.log('Evaluadores:' + JSON.stringify(evaluadores));
 
         if (evaluadores.data.success) {
           if (evaluadores.data.rpta) {
@@ -414,7 +439,7 @@ export class DatatableComponent extends Operations implements OnInit {
       }
     ).catch(
 
-      );
+    );
 
   }
 
@@ -432,13 +457,13 @@ export class DatatableComponent extends Operations implements OnInit {
         )
       ) {
         this.back.modalValidation.formInput[i].column.options = [];
-       // console.log('URL Fill modal:' + inputElement.url);
+        // console.log('URL Fill modal:' + inputElement.url);
         this.apiService = new ApiService(this.http);
         this.apiService.webAddress.addUrl(inputElement.url + '/' + data[0][this.id]);
         modal = await this.fillAlgo(i, inputElement, data[0][this.otroId]);
       }
-     // console.log('Flag: 1');
-     // console.log('Data:' + JSON.stringify(data[0]));
+      // console.log('Flag: 1');
+      // console.log('Data:' + JSON.stringify(data[0]));
       if (this.back.modalValidation.formInput[i].column.name === 'mes-evaluacion') {
         if (this.back.modalValidation.formInput[i].column.value === null) {
           this.back.modalValidation.formInput[i].column.value = data[0][this.back.modalValidation.formInput[i].column.name];
@@ -448,7 +473,7 @@ export class DatatableComponent extends Operations implements OnInit {
       }
 
       if (this.back.modalValidation.url === 'actualizacionDeEvaluacionObjetivoIncubado/' + data[0][this.id]) {
-       // console.log('ENTROOOOO');
+        // console.log('ENTROOOOO');
         this.back.modalValidation.formResponseJSON['porcentaje'] = data[0][this.back.modalValidation.formInput[i].column.name];
       } else {
 
@@ -457,11 +482,11 @@ export class DatatableComponent extends Operations implements OnInit {
       }
 
     }
-   // console.log('Modal:' + modal);
+    // console.log('Modal:' + modal);
 
     return modal;
   }
 
 
 }
-*/
+

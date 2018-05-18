@@ -8,6 +8,7 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 export class TablaEquiposComponent implements OnInit {
   @Input() idJefe = 1;
   @Output() regresar: EventEmitter<any>;
+  @Input() titulo = '';
   constructor() {
     this.regresar = new EventEmitter<any>();
   }

@@ -30,7 +30,7 @@ const store = {
   device: '',
 
   mobileViewActivated: false,
-  menuCollapsed: false,
+  menuCollapsed: true,
   menuMinified: false,
 };
 
@@ -216,6 +216,9 @@ export class LayoutService {
 
 
   processBody(state) {
+
+    console.log('State:' + state);
+    
     let $body = $('body');
   
     

@@ -104,28 +104,55 @@ app-on-off-switch {
     margin-top: 35px;
 }
 
-.fa-plus-circle:before{
+.fa-plus-circle:before {
     color: white !important;
 }
 
-#listaMeses{
+#listaMeses {
     border-width: 0px;
-    background-color: #0ac0ea  !important;
+    background-color: #0ac0ea !important;
 }
 
-.conBorderRadisuArriba6{
+.conBorderRadisuArriba6 {
     border-top-left-radius: 6px !important;
     border-top-right-radius: 6px !important;
 }
-.sinBorderRadiusArriba{
+
+.sinBorderRadiusArriba {
     border-top-left-radius: 0px !important;
     border-top-right-radius: 0px !important;
 }
 
-.sinBorderRadiusAbajo{
+.sinBorderRadiusAbajo {
     border-bottom-left-radius: 0px !important;
     border-bottom-right-radius: 0px !important;
 }
+
+table.dataTable td, table.dataTable th {
+    text-overflow: ellipsis;
+    white-space:nowrap; 
+    overflow:hidden;
+    width: 36px;
+    max-width: 36px;
+}
+
+/* 
+@media all and (max-width:1000px) and (min-width:900px){
+    table.dataTable td, table.dataTable th {
+        width: 40px;
+        max-width: 40px;
+        min-width: 
+    }
+}*/
+
+table.dataTable td:hover, table.dataTable th:hover {
+    width: auto;
+    white-space: initial;
+    overflow: visible;
+    cursor: pointer;
+}
+
+
 .selectMes {
     background: transparent;
     width: -webkit-fill-available;

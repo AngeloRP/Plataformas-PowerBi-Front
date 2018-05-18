@@ -23,7 +23,7 @@ export class WidgetFormComponent extends Widget implements OnInit {
   @Input() sizeFuente = '13px';
   @Input() idFormulario: any;
 
-  // @Input() idTable = '';
+  @Input() idTable = '';
   @Input() claseCss = 'col-sm-12 col-md-12 col-lg-12 col-xs-12';
   /*@Input()
   dom: string = '<'dt-toolbar'<'col-xs-6 col-sm-6'f><'col-sm-6 col-xs-6 text-right'' +
@@ -51,26 +51,34 @@ export class WidgetFormComponent extends Widget implements OnInit {
   @Input() hasButton = false;
   @Input() campoId = '';
   @Input() posicion = 1;
+  
   mostrar = true;
   loading = true;
   cambioEstado = true;
   constructor() {
     super();
+    
   }
 
   desaparecer() {
     this.loading = true;
   }
 
+  emitirEvento(event) {
+    this.dobleclickEvent.emit(event);
+  }
+
+
+
   ngOnInit() {
-   // console.log('DeleteButton:' + this.hasButton);
-   // console.log('Validation Options:' + JSON.stringify(this.form.validationOptions));
-   this.loading = false;
+    // console.log('DeleteButton:' + this.hasButton);
+    // console.log('Validation Options:' + JSON.stringify(this.form.validationOptions));
+    this.loading = false;
   }
 
   cambiarTabla(event) {
     // console.log('Evento Cambiar Tabla:' + event );
-   // console.log('Url de Tabla Activos:' + this.tabla.tableUrl);
+    // console.log('Url de Tabla Activos:' + this.tabla.tableUrl);
     this.cambioEstado = event;
   }
 

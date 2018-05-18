@@ -12,6 +12,7 @@ export class PieGraficosComponent implements OnInit {
   loading = true;
   idFilial = 1;
   filiales: any;
+  titulo = '';
   constructor(private graficos: ApiService, private http: Http) { }
 
   ngOnInit() {
@@ -35,7 +36,8 @@ export class PieGraficosComponent implements OnInit {
 
   haciaTablaJefes(event) {
     console.log('Event:' + JSON.stringify(event));
-    this.idFilial = event;
+    this.idFilial = event.idFilial;
+    this.titulo = event.titulo;
     this.mostrarGraficos = false;
   }
 

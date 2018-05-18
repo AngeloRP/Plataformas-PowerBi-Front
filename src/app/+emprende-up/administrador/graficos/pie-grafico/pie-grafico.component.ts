@@ -21,7 +21,12 @@ export class PieGraficoComponent implements OnInit {
   }
 
   haciaTablaJefes() {
-    this.regresar.emit(this.idFilial);
+    this.regresar.emit(
+      {
+        idFilial: this.idFilial,
+        titulo: this.titulo
+      }
+    );
   }
 
 }

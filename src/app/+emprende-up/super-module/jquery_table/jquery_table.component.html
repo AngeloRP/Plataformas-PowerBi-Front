@@ -1,0 +1,31 @@
+<!--<sa-widgets-grid>-->
+  <div class="row">
+    <article class="col-sm-12">
+      <sa-widget [editbutton]="false" color="darken">
+
+        <div>
+          <div class="widget-body no-padding">
+            <app-sa-datatable [options]="options" paginationLength="true" tableClass="table table-striped table-bordered table-hover"
+              width="100%" [dom]="dom" [onLanguage]="onLanguage" [buttonClass]="buttonClass" [hasFilter]="hasFilter" [paging]="paging"
+              [isPressed]="isPressed" [hasButtons]="hasButtons" [ruta]="ruta" [id]="id" [back]="back" [idTable]="idTable"
+              [contenido]="contenido"
+              (dobleclickEvent)="emitirEvento($event)"
+              >
+              <thead>
+                <tr>
+                  <th data-class="expand" *ngFor="let column of columns">{{column.data | uppercase}}</th>
+                </tr>
+              </thead>
+              <!--<tbody>
+                <tr *ngFor="let row of contenido" >
+                  <td *ngFor="let column of columns" >
+                    {{row[column.data]}}
+                  </td>
+                </tr>
+              </tbody>-->
+            </app-sa-datatable>
+          </div>
+        </div>
+      </sa-widget>
+    </article>
+  </div>

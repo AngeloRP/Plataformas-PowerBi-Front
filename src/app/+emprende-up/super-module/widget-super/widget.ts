@@ -8,6 +8,7 @@ import { config_server } from 'app/shared/conexion-back/middleware';
 import { Header } from 'app/+emprende-up/super-module/interfaces';
 import { TableInterface } from 'app/+emprende-up/super-module/widget-super/table-interface';
 export class Widget {
+  @Input() contenido: any;
   @Input() form: Form;
   @Input() buttonClass = 'btn btn-primary submitButton';
   // @Input() operations: Operations;
@@ -21,7 +22,7 @@ export class Widget {
   @Input() headersLocalStorage: string[];
 
   @Input() tableUrl: string;
-  @Input() tableColums: any[];
+  @Input() tableColumns: any[];
   @Input() searColumns: any[];
   @Input() tableButtons: any[] = [];
   @Input() rowActions: any[] = [];
@@ -33,8 +34,8 @@ export class Widget {
 
   // @Input() tabla: TableInterface;
 
-    @Input() tablaEspecial: string;
-    @Input() tablaFilterActivity = false;
+  @Input() tablaEspecial: string;
+  @Input() tablaFilterActivity = false;
   /*@Input() tableColumsSegundaOpcion: any[];
   @Input() tableButtons: any[] = [];
   @Input() rowActions:any[] = [];
@@ -44,9 +45,9 @@ export class Widget {
   @Input() hasFilter = true;
   @Input() hasButtons = true;*/
   @Input() public contentTable = false;
-    @Input() public asignarMeses = false;
-    @Input() public activarMeses = false;
-    @Input() public calificacion = false;
+  @Input() public asignarMeses = false;
+  @Input() public activarMeses = false;
+  @Input() public calificacion = false;
 
   @Input() public widget_icon = '';
   @Input() public headerTitle: string;
@@ -63,7 +64,7 @@ export class Widget {
   @Input() public color = 'teal';
   @Input() public load = false;
   @Input() public refresh = false;
-
+  @Output() dobleclickEvent: EventEmitter<any>;
   @Output() widgetEvent: EventEmitter<any>;
   @Output() terminoCarga: EventEmitter<boolean>;
   camposValidados = false;
@@ -71,14 +72,15 @@ export class Widget {
     this.form = new Form();
     this.widgetEvent = new EventEmitter<any>();
     this.terminoCarga = new EventEmitter<boolean>();
-   // this.tabla.tituloAcciones = 'ACCIONES';
-   /* if (this.tablaEspecial) {
-      this.tablaEspecial.tituloAcciones = 'ACCIONES';
-    }*/
+    this.dobleclickEvent =  new EventEmitter<any>();
+    // this.tabla.tituloAcciones = 'ACCIONES';
+    /* if (this.tablaEspecial) {
+       this.tablaEspecial.tituloAcciones = 'ACCIONES';
+     }*/
   }
 
   onSubmit(event) {
-   // console.log('Widget Event' + JSON.stringify(event));
+    // console.log('Widget Event' + JSON.stringify(event));
     /*if (event) {
       if (event.isTrusted) {
         this.camposValidados = true;
@@ -88,7 +90,7 @@ export class Widget {
     }*/
     this.widgetEvent.emit(event);
 
-   // console.log(event);
+    // console.log(event);
     // event.preventDefault();
   }
 }

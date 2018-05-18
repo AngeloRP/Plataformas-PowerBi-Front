@@ -7,8 +7,10 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 })
 export class TablaJefesComponent implements OnInit {
   @Input() idFilial = 1;
+  @Input() titulo = '';
   @Output() regresar: EventEmitter<any>;
   mostrarJefes = true;
+  nombreJefe = '';
   idJefe = 1;
   constructor() {
     this.regresar = new EventEmitter<any>();
@@ -24,6 +26,7 @@ export class TablaJefesComponent implements OnInit {
   hacieEquipos(event) {
     console.log('Evento:' + JSON.stringify(event));
     this.idJefe = event.id_equipo;
+    this.nombreJefe = event['Nombre'];
     this.mostrarJefes = false;
   }
 

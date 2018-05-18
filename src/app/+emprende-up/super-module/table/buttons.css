@@ -3,6 +3,14 @@
     display: -webkit-inline-box;
 }
 
+.iconoLimpiar {
+    margin: 0px !important;
+    padding: 3px !important;
+    position: absolute !important;
+    left: 0px !important;
+    font-size: 25px;
+}
+
 .buttonTable{
     padding: 10px 0px 8px 0px;
     margin-top: -10px;
