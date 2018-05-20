@@ -147,13 +147,18 @@ table.dataTable td, table.dataTable th {
     }
 }*/
 
-table.dataTable td:hover, table.dataTable th:hover {
+table.dataTable td:hover, table.dataTable th:hover{
     width: auto;
     white-space: initial;
     overflow: visible;
     cursor: pointer;
 }
 
+table.dataTable tr:active * {
+    width: auto;
+    word-wrap: break-word;
+    white-space: initial;
+}
 
 .selectMes {
     background: transparent;

@@ -32,7 +32,8 @@
                     (dobleclickEvent)="emitirEvento($event)"
                     [back]="form.back" [onLanguage]="onLanguage" [buttonClass]="buttonClass" [rpta]="rpta" [paging]="paging"
                        [hasFilter]="hasFilter" [hasButtons]="hasButtons" [ruta]="ruta" [id]="id" [idTable]="idTable"
-                       ></app-jquery-table>
+                       >
+                    </app-jquery-table>
 
                 </div>
                 <div *ngIf="contentTable">
@@ -50,7 +51,7 @@
                                 (dobleclickEvent)="emitirEvento($event)"
                                 [isPressed]="isPressed" [url]="tableUrl" [columns]="tableColumns" [buttons]="tableButtons"
                                 [headers]="headers" [rpta]="rpta" [paging]="paging"
-                                [hasFilter]="hasFilter" [hasButtons]="hasButtons"
+                                [hasFilter]="hasFilter" [hasButtons]="hasButtons" [idTable]="idTable"
                                 ></app-jquery-table>
                         </div>
                         <div *ngIf="!cambioEstado" style="margin-top: 40px;">
@@ -58,7 +59,7 @@
                             (dobleclickEvent)="emitirEvento($event)"
                             [isPressed]="isPressed" [url]="tableUrl" [columns]="tableColumns" [buttons]="tableButtons"
                             [headers]="headers" [rpta]="rpta" [paging]="paging"
-                            [hasFilter]="hasFilter" [hasButtons]="hasButtons"
+                            [hasFilter]="hasFilter" [hasButtons]="hasButtons" [idTable]="idTable"
                             ></app-jquery-table>
                         </div>
                     </div>
@@ -69,7 +70,7 @@
                             (dobleclickEvent)="emitirEvento($event)"
                                 [isPressed]="isPressed" [url]="tableUrl" [columns]="tableColumns" [buttons]="tableButtons"
                                 [headers]="headers" [rpta]="rpta" [paging]="paging"
-                                [hasFilter]="hasFilter" [hasButtons]="hasButtons"
+                                [hasFilter]="hasFilter" [hasButtons]="hasButtons" [idTable]="idTable"
                                 ></app-jquery-table>
                         </div>
                         <div *ngIf="!cambioEstado" style="margin-top: 40px;">
@@ -77,7 +78,7 @@
                             (dobleclickEvent)="emitirEvento($event)"
                                 [isPressed]="isPressed" [url]="tableUrl" [columns]="tableColumns" [buttons]="tableButtons"
                                 [headers]="headers" [rpta]="rpta" [paging]="paging"
-                                [hasFilter]="hasFilter" [hasButtons]="hasButtons"
+                                [hasFilter]="hasFilter" [hasButtons]="hasButtons" [idTable]="idTable"
                                 ></app-jquery-table>
                         </div>
                     </div>
@@ -86,7 +87,7 @@
                             <app-jquery-table (dobleclickEvent)="emitirEvento($event)"
                                 [isPressed]="isPressed" [url]="tableUrl" [columns]="tableColumns" [buttons]="tableButtons"
                                 [headers]="headers" [rpta]="rpta" [paging]="paging"
-                                [hasFilter]="hasFilter" [hasButtons]="hasButtons"
+                                [hasFilter]="hasFilter" [hasButtons]="hasButtons" [idTable]="idTable"
                                 ></app-jquery-table>
                         </div>
                     </div>

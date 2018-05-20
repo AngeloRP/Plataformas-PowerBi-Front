@@ -1,7 +1,7 @@
 <table 
 class="dataTable responsive {{tableClass}}"
 width="{{width}}"
-appTextColor [columnaCalculo]="'Realizado'" [metodoCalculo]="colorear"
+appTextColor [columnaCalculo]="'Realizado'" [metodoCalculo]="colorear" [columnas]="options.columns" [columnasColorear]="['Realizado']"
 [contenido]="contenido"
 >
     <ng-content></ng-content>

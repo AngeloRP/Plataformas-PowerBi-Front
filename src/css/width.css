@@ -54,3 +54,7 @@
 .w30px{
     width: 30px;
 }
+
+.jarviswidget header h2 {
+    width: auto !important;
+}

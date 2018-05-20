@@ -16,13 +16,32 @@
                   <th data-class="expand" *ngFor="let column of columns">{{column.data | uppercase}}</th>
                 </tr>
               </thead>
-              <!--<tbody>
+              <tbody>
                 <tr *ngFor="let row of contenido" >
-                  <td *ngFor="let column of columns" >
-                    {{row[column.data]}}
+                  <!--<ng-template *ngIf="tieneBotones === true">
+                    <ng-template *ngFor="let column of columns;let i = index" >
+                      <td *ngIf="i === 0"><a (click)="emitirEvento(row)">{{row[column.data]}}</a></td>
+                      <td *ngIf="i !== 0">{{row[column.data]}}</td>
+                    </ng-template>
+                  </ng-template>
+                  <ng-template *ngIf="tieneBotones === false">
+                      <td *ngFor="let column of columns" >
+                          {{row[column.data]}}
+                      </td>
+                  </ng-template>-->
+                  <td *ngFor="let column of columns;let i = index" >
+                    <ng-container *ngIf="tieneBotones() === true && i === 0"><a (click)="emitirEvento(row)">{{row[column.data]}}</a></ng-container>
+                    <ng-container *ngIf="i > 0 || tieneBotones() === false">
+                      <ng-container *ngIf="esCampoPorcentaje(column)">
+                          {{row[column.data]/ 100  | percent:'1.0-2':'fr'}}
+                      </ng-container>
+                      <ng-container *ngIf="!esCampoPorcentaje(column)">
+                          {{row[column.data]}}
+                      </ng-container>
+                    </ng-container>
                   </td>
                 </tr>
-              </tbody>-->
+              </tbody>
             </app-sa-datatable>
           </div>
         </div>

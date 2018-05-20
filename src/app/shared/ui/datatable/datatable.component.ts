@@ -137,11 +137,11 @@ export class DatatableComponent extends Operations implements OnInit {
   async render() {
     const element = $(this.el.nativeElement.children[0]);
     // let element = $(this.el.nativeElement);
-
+    element.attr('id', this.idTable);
     let options = this.options || {}
     // let table = $('.table').DataTable(options);
-    // console.log(JSON.stringify(options));
-    console.log('Buttons:' + JSON.stringify(options.buttons));
+    console.log(JSON.stringify(options));
+    // console.log('Buttons:' + JSON.stringify(options.buttons));
     let toolbar = '';
     // if (options.buttons) { toolbar += 'B'; }
     if (this.paginationLength) { toolbar += 'l'; }
@@ -149,24 +149,19 @@ export class DatatableComponent extends Operations implements OnInit {
 
     if (typeof options.ajax === 'string') {
       const url = options.ajax;
-      options.ajax = {
-        url: url,
-        // complete: function (xhr) {
-        //
-        // }
-      }
+      /*options.ajax = {
+        url: url
+      }*/
     }
-    // console.log('ID TABLA:' + this.idTable);
+    console.log('ID TABLA:' + this.idTable);
     options = $.extend(options, {
-
+      // 'recordsFiltered': this.contenido.length,
       'dom': this.dom,
+      ordering: false,
       oLanguage: this.onLanguage,
       autoWidth: true,
       retrieve: true,
       responsive: false,
-      columnDefs: [
-        { width: 10, targets: 0 }
-      ],
       fixedColumns: true,
       initComplete: (settings, json) => {
         element.parent().find('.input-sm', ).removeClass('input-sm').addClass('input-md');
@@ -174,7 +169,8 @@ export class DatatableComponent extends Operations implements OnInit {
         element.parent().find('div.dt-buttons.btn-group').addClass('container').
           css({ 'padding-left': '0px', 'padding-right': '0px', 'max-width': 'max-content' });
         // element.parent().find('td')
-        this.eliminarElementos();
+        this.ocultarMensajeTablaVacia();
+        // this.eliminarElementos();
 
       }
     });
@@ -183,7 +179,7 @@ export class DatatableComponent extends Operations implements OnInit {
 
     const _dataTable = element.DataTable(options);
 
-    _dataTable.on('select', () => {
+    /*_dataTable.on('select', () => {
       // console.log('Entro al select' + JSON.stringify(element));
       const selectedRows = _dataTable.rows({ selected: true }).count();
       const data = _dataTable.rows({ selected: true }).data();
@@ -194,9 +190,9 @@ export class DatatableComponent extends Operations implements OnInit {
         // console.log(_dataTable.button(i));
         // console.log(JSON.stringify(_dataTable.button(i)));
 
-      }*/
+      }
 
-    });
+    });*/
 
     /*_dataTable.on('dblclick', 'tr', async (tr) => {
       const data = _dataTable.rows({ selected: true }).data();
@@ -209,51 +205,51 @@ export class DatatableComponent extends Operations implements OnInit {
       }
     })*/
 
-    _dataTable.on('click', 'tr', async (tr) => {
-      const data = _dataTable.rows({ selected: true }).data();
-      // console.log('Row Selected:' + JSON.stringify(data[0]));
-      // $('div#evaluacionRetos.dt-toolbar').remove();
-      if (data !== undefined) {
-        if (data[0] !== undefined) {
-          console.log('Row Selected:' + JSON.stringify(data[0]));
-          this.dobleclickEvent.emit(data[0]);
-        }
-      }
-      if (this.ruta.trim() !== '' && this.id.trim() !== '') {
-        if (data[0].name) {
-          window.localStorage.setItem('start-up', data[0].name);
-        }
-        if (data[0].titulo) {
-          window.localStorage.setItem('mes-name', data[0].titulo);
-        }
-        this.router.navigate([this.ruta + '/' + data[0][this.id]]);
-      } else {
+    /*_dataTable.on('click', 'tr', async (tr) => {
+       const data = _dataTable.rows({ selected: true }).data();
+       // console.log('Row Selected:' + JSON.stringify(data[0]));
+       // $('div#evaluacionRetos.dt-toolbar').remove();
+       if (data !== undefined) {
+         if (data[0] !== undefined) {
+           console.log('Row Selected:' + JSON.stringify(data[0]));
+           this.dobleclickEvent.emit(data[0]);
+         }
+       }
+       if (this.ruta.trim() !== '' && this.id.trim() !== '') {
+         if (data[0].name) {
+           window.localStorage.setItem('start-up', data[0].name);
+         }
+         if (data[0].titulo) {
+           window.localStorage.setItem('mes-name', data[0].titulo);
+         }
+         this.router.navigate([this.ruta + '/' + data[0][this.id]]);
+       } else {
 
-        /*if (this.back) {
-          if (this.back.modalValidation) {
-            let nuevoUrl = this.back.modalValidation.url.substring(indiceUltimo, this.back.modalValidation.url.length);
-            // console.log('Url:' + this.back.modalValidation.url);
+         if (this.back) {
+           if (this.back.modalValidation) {
+             let nuevoUrl = this.back.modalValidation.url.substring(indiceUltimo, this.back.modalValidation.url.length);
+             // console.log('Url:' + this.back.modalValidation.url);
 
-            // console.log('Nuevo Url:' + nuevoUrl);
-            let entero = parseInt(nuevoUrl);
-            // console.log('Back Antiguo:' + JSON.stringify(this.back.modalValidation));
-            if (this.back.modalValidation.url.split('/')[0] === 'AsignarTiempoIncubacion') {
-              if (data[0]['Comite'] === null || data[0]['Comite'].trim() === '') {
-                this.notificationService = new NotificationService();
-                this.notificationService.smallBox(
-                  new Mensaje('Sin Evaluadores Asignados', 'red', 'fa fa-thumbs-down bounce animated').mensaje);
-              } else {
-                await this.showModal(data);
-              }
+             // console.log('Nuevo Url:' + nuevoUrl);
+             let entero = parseInt(nuevoUrl);
+             // console.log('Back Antiguo:' + JSON.stringify(this.back.modalValidation));
+             if (this.back.modalValidation.url.split('/')[0] === 'AsignarTiempoIncubacion') {
+               if (data[0]['Comite'] === null || data[0]['Comite'].trim() === '') {
+                 this.notificationService = new NotificationService();
+                 this.notificationService.smallBox(
+                   new Mensaje('Sin Evaluadores Asignados', 'red', 'fa fa-thumbs-down bounce animated').mensaje);
+               } else {
+                 await this.showModal(data);
+               }
 
-            } else {
-              await this.showModal(data);
-            }
+             } else {
+               await this.showModal(data);
+             }
 
-          }
-        }*/
-      }
-    });
+           }
+         }
+       }
+    });*/
 
     if (this.filter) {
       // Apply the filter
@@ -274,7 +270,7 @@ export class DatatableComponent extends Operations implements OnInit {
           + 'style="width: 111px; margin-top: 3px; margin-right: 10px;"></div>');
     }
 
-    if (this.detailsFormat) {
+    /*if (this.detailsFormat) {
       const format = this.detailsFormat
       element.on('click', 'td.details-control', function () {
         // console.log('Entro al click' + JSON.stringify(element));
@@ -297,8 +293,18 @@ export class DatatableComponent extends Operations implements OnInit {
       const selectedRows = element.rows({ selected: true }).count();
 
       element.button(0).enable(selectedRows === 1);
-    });
+    });*/
 
+  }
+
+  ocultarMensajeTablaVacia() {
+    if (this.options !== undefined) {
+      if (this.options.private !== undefined) {
+        if (this.options.private === true) {
+          $('#' + this.idTable + '_wrapper table tbody tr:last-child .dataTables_empty').css({ display: 'none' });
+        }
+      }
+    }
   }
 
   eliminarElementos() {

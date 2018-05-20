@@ -1,4 +1,4 @@
-<div class="col-xs-6 col-lg-4" saEasyPieChartContainer>
+<div class="col-xs-6 col-lg-4" saEasyPieChartContainer (terminoCarga)="capturarEvento($event)">
 
   <div class="">
     <ul class="list-inline">
@@ -10,13 +10,13 @@
             </div>
           </div>
         </div>
-        <div class=" {{data_color}} easy-pie-chart easyPieChart" [attr.data-percent]="data_percent" [attr.data-size]="data_size"
+        <div class=" {{data_color}} easy-pie-chart easyPieChart " [attr.data-percent]="data_percent" [attr.data-size]="data_size"
           [attr.data-pie-size]="data_pie_size">
           <div class="container">
             <div class="hijo">
               <div class="centrarHorizontalmente">
                 <button (click)="haciaTablaJefes()">
-                  <span class=" {{data_color}} percent percent-sign  font-xl semi-bold">{{data_percent}}</span>
+                  <span class="{{mostrarGrafica}} {{data_color}} percent percent-sign  font-xl semi-bold">{{data_percent}}</span>
                 </button>
               </div>
             </div>

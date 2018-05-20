@@ -13,11 +13,20 @@ export class PieGraficoComponent implements OnInit {
   @Input() titulo = 'Algo';
   @Input() idFilial = 1;
   @Output() regresar: EventEmitter<any>;
+  mostrarGrafica = 'noMostrar';
   constructor() {
     this.regresar = new EventEmitter<any>();
   }
 
   ngOnInit() {
+  }
+
+  capturarEvento(event) {
+    // console.log('Event:' + event);
+    if (event === true) {
+      this.mostrarGrafica = 'mostrar';
+    }
+    // this.mostrarGrafica = event;
   }
 
   haciaTablaJefes() {

@@ -313,7 +313,7 @@ export class NavigationComponent implements OnInit, AfterContentChecked {
       await this.mesesService.get().toPromise().then(
         meses => {
           if (meses.data) {
-            console.log('Meses:' + JSON.stringify(meses.data));
+            // console.log('Meses:' + JSON.stringify(meses.data));
             if (meses.data.success) {
               if (meses.data.rpta.length > 0) {
                 sidebarEvaluaciones.addChildsEvaluaciones(meses.data.rpta);

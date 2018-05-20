@@ -23,7 +23,7 @@ export class PieGraficosComponent implements OnInit {
         if (filiales.data) {
           if (filiales.data.rpta) {
             this.filiales = filiales.data.rpta;
-            console.log('Filiales:' + JSON.stringify(this.filiales));
+            // console.log('Filiales:' + JSON.stringify(this.filiales));
             this.loading = false;
           }
         }
@@ -35,7 +35,7 @@ export class PieGraficosComponent implements OnInit {
   }
 
   haciaTablaJefes(event) {
-    console.log('Event:' + JSON.stringify(event));
+    // console.log('Event:' + JSON.stringify(event));
     this.idFilial = event.idFilial;
     this.titulo = event.titulo;
     this.mostrarGraficos = false;

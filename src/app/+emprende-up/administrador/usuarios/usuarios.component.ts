@@ -64,7 +64,7 @@ export class UsuariosComponent extends Table implements OnInit {
                 action: (data) => {
                     // this.router.navigate(['/administrador/usuarios/listaUsuarios/'+dt.row({selected:true}).data().user_id]);
                    // console.log('Fila de datos:' + JSON.stringify(dt.row({ selected: true }).data()));
-                    console.log('Data:' + JSON.stringify(data));
+                    // console.log('Data:' + JSON.stringify(data));
                     /*
                     let date = new Date(
                         data['Fecha de nacimiento'].split('/')[2],

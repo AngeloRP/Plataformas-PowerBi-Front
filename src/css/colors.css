@@ -68,5 +68,9 @@
     color: #f7c960 !important;
   }
 
+  td a {
+    color: inherit !important;
+  }
+
 
   

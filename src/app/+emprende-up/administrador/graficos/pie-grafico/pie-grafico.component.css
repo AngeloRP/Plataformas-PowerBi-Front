@@ -13,3 +13,11 @@
 .container {
     width: inherit !important;
 }
+
+.noMostrar{
+    display: none;
+}
+
+.mostrar {
+    display: block;
+}

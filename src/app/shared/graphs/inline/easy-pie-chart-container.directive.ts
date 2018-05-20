@@ -4,19 +4,22 @@ import {
 } from '@angular/core';
 
 import 'script-loader!smartadmin-plugins/bower_components/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js';
+import { Output, EventEmitter } from '@angular/core';
 
 declare var $: any;
 
 @Directive({
   selector: '[saEasyPieChartContainer]'
 })
-export class EasyPieChartContainer implements AfterContentChecked, AfterContentInit{
+export class EasyPieChartContainer implements AfterContentChecked, AfterContentInit {
+  @Output() terminoCarga: EventEmitter<boolean>;
+  constructor(private container: ElementRef) {
+    this.terminoCarga = new EventEmitter<boolean>();
+  }
 
-  constructor(private container: ElementRef) {}
+  render() {
 
-  render(){
-
-    $('.easy-pie-chart', this.container.nativeElement).each(function(idx, element) {
+    $('.easy-pie-chart', this.container.nativeElement).each((idx, element) => {
 
       const $this = $(element),
         barColor = $this.css('color') || $this.data('pie-color'),
@@ -25,37 +28,38 @@ export class EasyPieChartContainer implements AfterContentChecked, AfterContentI
 
       $this.easyPieChart({
 
-        barColor : barColor,
-        trackColor : trackColor,
-        scaleColor : false,
-        lineCap : 'butt',
-        lineWidth : size / 8.5,
-        animate : 1500,
-        rotate : -90,
-        size : size,
-        onStep: function(from, to, percent) {
+        barColor: barColor,
+        trackColor: trackColor,
+        scaleColor: false,
+        lineCap: 'butt',
+        lineWidth: size / 8.5,
+        animate: 1500,
+        rotate: -90,
+        size: size,
+        onStep: function (from, to, percent) {
           $(this.el).find('.percent').text(Math.round(percent));
         }
 
       });
+      this.terminoCarga.emit(true);
     });
 
   }
 
   private counter = 0;
 
-  ngAfterContentChecked(){
+  ngAfterContentChecked() {
     let counter = $('.easy-pie-chart').length;
-    if(counter != this.counter){
+    if (counter != this.counter) {
       this.counter = counter;
-      setTimeout(()=>{
+      setTimeout(() => {
         this.render()
       }, 25)
     }
 
   }
 
-  ngAfterContentInit(){
+  ngAfterContentInit() {
     this.render()
   }
 

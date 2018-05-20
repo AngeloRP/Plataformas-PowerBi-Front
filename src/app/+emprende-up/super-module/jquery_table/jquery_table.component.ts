@@ -39,7 +39,7 @@ export class JqueryTableComponent extends Operations implements OnInit, OnChange
   dataJson: {
     msg: any[]
   };
-  contenido: any;
+  @Input() contenido: any;
   options: any;
   public REST_ROOT = conexion_back.url;
   // public REST_ROOT = 'https://jsonplaceholder.typicode.com';
@@ -54,6 +54,26 @@ export class JqueryTableComponent extends Operations implements OnInit, OnChange
       { name: 'Company' },
     ];
     this.dobleclickEvent = new EventEmitter<any>();
+  }
+
+  tieneBotones(): boolean {
+    // console.log('Entro a tiene botones');
+    if (this.idTable === 'jefes') {
+      // console.log('SI tiene');
+      return true;
+    } else {
+      // console.log('NO tiene');
+      return false;
+    }
+  }
+
+  esCampoPorcentaje(columna: any): boolean {
+    // console.log('Columna:' + JSON.stringify(columna));
+    if (columna.data === 'Realizado' || columna.data === 'Restante') {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -85,62 +105,103 @@ export class JqueryTableComponent extends Operations implements OnInit, OnChange
     console.log('Columns:' + JSON.stringify(this.columns));
     console.log('Url:', this.REST_ROOT + '/' + this.url);
     // console.log('Headers:' + this.headers.keys() + ':' + this.headers.get('START-UP-ID'));
-
-    this.options = {
-      dom: 'Bfrtip',
-      select: {
-        style: 'single'
-      },
-      'paging': this.paging,
-      ajax: (data, callback, settings) => {
-
-        this.http.get(this.REST_ROOT + '/' + this.url,
-          {
-            headers: this.headers
-          }).map(this.extractData)
-          .catch(this.handleError)
-          .subscribe((data) => {
-            // console.log('URL:' + this.REST_ROOT + '/' + this.url);
-            // console.log('Data:' + JSON.stringify(data));
-            // console.log('Headers Keys:' + this.headers.keys());
-            // console.log('Headers Values:' + this.headers.values());
-            // console.log('data from rest endpoint msg', data.msg);
-            // console.log('data from rest endpoint', data.rpta);
-            // console.log('data from rest endpoint', data[this.rpta]);
-            // console.log('data from rest endpoint', data[this.rpta]);
-            // console.log('Exito:' + data.success);
-            if (data.success === true) {
-              if (data[this.rpta]) {
-                if (data[this.rpta].length > 0) {
-                  if (
-                    data[this.rpta][0].vision_id !== null &&
-                    data[this.rpta][0].vision_id !== undefined
-                  ) {
-                    window.localStorage.setItem('vision-id', data[this.rpta][0].vision_id);
-                  };
-                  if (
-                    data[this.rpta][0].objetivo_id !== null &&
-                    data[this.rpta][0].objetivo_id !== undefined
-                  ) {
-                    window.localStorage.setItem('objetivo-id', data[this.rpta][0].objetivo_id);
-                  };
-                  this.contenido = data[this.rpta].slice(0, 100);
-                  callback({
-                    aaData: data[this.rpta].slice(0, 100)
-                  });
-                } else {
-                  callback({
-                    aaData: []
-                  })
-                }
+    if (this.contenido === undefined) {
+      this.http.get(this.REST_ROOT + '/' + this.url,
+        {
+          headers: this.headers
+        }).map(this.extractData)
+        .catch(this.handleError)
+        .subscribe((data) => {
+          // console.log('URL:' + this.REST_ROOT + '/' + this.url);
+          // console.log('Data:' + JSON.stringify(data));
+          // console.log('Headers Keys:' + this.headers.keys());
+          // console.log('Headers Values:' + this.headers.values());
+          // console.log('data from rest endpoint msg', data.msg);
+          // console.log('data from rest endpoint', data.rpta);
+          // console.log('data from rest endpoint', data[this.rpta]);
+          // console.log('data from rest endpoint', data[this.rpta]);
+          // console.log('Exito:' + data.success);
+          if (data.success === true) {
+            if (data[this.rpta]) {
+              if (data[this.rpta].length > 0) {
+                if (
+                  data[this.rpta][0].vision_id !== null &&
+                  data[this.rpta][0].vision_id !== undefined
+                ) {
+                  window.localStorage.setItem('vision-id', data[this.rpta][0].vision_id);
+                };
+                if (
+                  data[this.rpta][0].objetivo_id !== null &&
+                  data[this.rpta][0].objetivo_id !== undefined
+                ) {
+                  window.localStorage.setItem('objetivo-id', data[this.rpta][0].objetivo_id);
+                };
+                this.contenido = data[this.rpta].slice(0, 100);
+              } else {
+                this.contenido = [];
               }
             }
-          })
-      },
-      columns: this.columns,
-      buttons: this.buttons
+          }
+        });
+      this.options = {
+        dom: 'Bfrtip',
+        private: true,
+        select: {
+          style: 'single'
+        },
+        'paging': this.paging,
+        /*ajax: (data, callback, settings) => {
+          if (this.contenido === undefined) {
+            this.http.get(this.REST_ROOT + '/' + this.url,
+            {
+              headers: this.headers
+            }).map(this.extractData)
+            .catch(this.handleError)
+            .subscribe((data) => {
+              // console.log('URL:' + this.REST_ROOT + '/' + this.url);
+              // console.log('Data:' + JSON.stringify(data));
+              // console.log('Headers Keys:' + this.headers.keys());
+              // console.log('Headers Values:' + this.headers.values());
+              // console.log('data from rest endpoint msg', data.msg);
+              // console.log('data from rest endpoint', data.rpta);
+              // console.log('data from rest endpoint', data[this.rpta]);
+              // console.log('data from rest endpoint', data[this.rpta]);
+              // console.log('Exito:' + data.success);
+              if (data.success === true) {
+                if (data[this.rpta]) {
+                  if (data[this.rpta].length > 0) {
+                    if (
+                      data[this.rpta][0].vision_id !== null &&
+                      data[this.rpta][0].vision_id !== undefined
+                    ) {
+                      window.localStorage.setItem('vision-id', data[this.rpta][0].vision_id);
+                    };
+                    if (
+                      data[this.rpta][0].objetivo_id !== null &&
+                      data[this.rpta][0].objetivo_id !== undefined
+                    ) {
+                      window.localStorage.setItem('objetivo-id', data[this.rpta][0].objetivo_id);
+                    };
+                    this.contenido = data[this.rpta].slice(0, 100);
+                    callback({
+                      aaData: data[this.rpta].slice(0, 100)
+                    });
+                  } else {
+                    callback({
+                      aaData: []
+                    })
+                  }
+                }
+              }
+            })
+          } else {
+            return this.contenido;
+          }
+        },*/
+        columns: this.columns,
+        buttons: this.buttons
+      }
     }
-
   }
 
   private extractData(res: Response) {

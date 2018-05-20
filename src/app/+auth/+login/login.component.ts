@@ -41,15 +41,15 @@ export class LoginComponent implements OnInit, AfterContentChecked {
 
   login_submit(event) {
     event.preventDefault();
-    console.log('Event:' + JSON.stringify(event));
+    // console.log('Event:' + JSON.stringify(event));
     if (this.login.email !== null && this.login.password !== null) {
       // this.loading = true;
-      console.log('Datos a Enviar:' + JSON.stringify(this.login));
+      // console.log('Datos a Enviar:' + JSON.stringify(this.login));
       this.loginService = new ApiService(this.http);
       this.loginService.fillApiService('loginUsuario');
       this.loginService.post(this.login).subscribe(
         login => {
-          console.log('Login JSON:' + JSON.stringify(login));
+          // console.log('Login JSON:' + JSON.stringify(login));
           this.saveUser.save({
             data: login.data.rpta,
             success: true
@@ -213,7 +213,7 @@ export class LoginComponent implements OnInit, AfterContentChecked {
  }*/
 
   onSubmit(event) {
-    console.log('Evento Login' + JSON.stringify(event));
+    // console.log('Evento Login' + JSON.stringify(event));
     if (event) {
       if (event.isTrusted) {
         this.camposValidados = true;
@@ -224,7 +224,7 @@ export class LoginComponent implements OnInit, AfterContentChecked {
           this.loginService.fillApiService('loginUsuario');
           this.loginService.post(this.login).subscribe(
             login => {
-              console.log('Login JSON:' + JSON.stringify(login));
+              // console.log('Login JSON:' + JSON.stringify(login));
               this.saveUser.save(login.data);
             }, error => {
               this.loading = false;
