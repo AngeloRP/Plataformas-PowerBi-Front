@@ -63,9 +63,30 @@
     }
 }*/
 
-tr {
-    font-family: serif;
-    font-weight: 600;
+tr, th, span, h1, h2, h3, h4 {
+    font-family: 'Rajdhani', sans-serif !important;
+}
+
+tr{
+    font-size: 18px !important;
+}
+
+.dt-toolbar>:first-child{
+    margin-bottom: 10px;
+}
+
+.degree-sign:after, .percent-sign:after{
+    font-size: 75% !important;
+}
+
+
+.dt-toolbar-footer {
+    display: none;
+}
+
+.list-inline{
+    margin-left: 0px !important;
+    text-align: center;
 }
 
 .boton_regresar {

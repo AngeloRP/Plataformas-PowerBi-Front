@@ -1,12 +1,13 @@
 .titulo_pie {
     margin-bottom: 0;
-    font-weight: 700;
+    font-weight: 500;
     text-align: center;
+    font-size: 32px;
 }
 
 .easy-pie-chart .percent{
-    font-size: 270% !important;
-    top: 45%;
+    font-size: 340% !important;
+    top: 43%;
     left: 0;
 }
 
