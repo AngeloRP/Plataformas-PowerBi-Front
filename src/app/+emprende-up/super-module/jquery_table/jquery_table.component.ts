@@ -12,7 +12,7 @@ declare var $: any;
 })
 export class JqueryTableComponent extends Operations implements OnInit, OnChanges {
   @Input() columns: any[];
-  @Input() buttons: any[];
+  @Input() buttons: any[] = [];
   @Input() idTable = '';
   @Input() headers: Headers = new Headers(
     { 'Content-Type': 'application/json' }
@@ -20,7 +20,7 @@ export class JqueryTableComponent extends Operations implements OnInit, OnChange
   @Input() metodoCalculo;
   @Input() columnaCalculo;
   @Input() public buttonClass: string;
-  @Input() rpta: string = 'msg';
+  @Input() rpta: string = 'rpta';
 
   @Input() dom = "<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-12 hidden-xs text-right'" + toolbar + ">r>" +
     "t" +
@@ -117,7 +117,7 @@ export class JqueryTableComponent extends Operations implements OnInit, OnChange
           // console.log('Headers Keys:' + this.headers.keys());
           // console.log('Headers Values:' + this.headers.values());
           // console.log('data from rest endpoint msg', data.msg);
-          // console.log('data from rest endpoint', data.rpta);
+           console.log('data from rest endpoint', data.rpta);
           // console.log('data from rest endpoint', data[this.rpta]);
           // console.log('data from rest endpoint', data[this.rpta]);
           // console.log('Exito:' + data.success);

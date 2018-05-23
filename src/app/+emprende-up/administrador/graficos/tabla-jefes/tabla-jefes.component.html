@@ -1,4 +1,4 @@
-<div *ngIf="mostrarJefes" >
+<div *ngIf="mostrarJefes" class="col-md-12" >
     <button class="boton_regresar" (click)="eventoRegresar()">Regresar</button>
     <!--<app-table
     class="col-xs-12"
@@ -26,7 +26,7 @@
     
     >
     </app-table>-->
-    <app-widget
+    <!--<app-widget
     (dobleclickEvent)="hacieEquipos($event)"
     [headerTitle]="titulo"
     [idTable]="'jefes'"
@@ -44,7 +44,22 @@
                         ]"
     
     >
-    </app-widget>
+    </app-widget>-->
+    <app-jquery-table
+    [url]="'informacionJefesPorFilial/' + idFilial"
+    [id]="'jefes'"
+    [idTable]="'jefes'"
+    [hasButtons]="false"
+    [columns]="
+                        [
+                        { data: 'Nombre'},
+                        { data: 'Meta'  },
+                        { data: 'Ejecutado'  },
+                        { data: 'Realizado' },
+                        { data: 'Restante'  }
+                        ]"
+    >
+    </app-jquery-table>
 </div>
 <div *ngIf="!mostrarJefes">
   <app-tabla-equipos

@@ -129,13 +129,13 @@ app-on-off-switch {
 }
 
 /* Galaxy S5*/
-table.dataTable td, table.dataTable th {
+/*table.dataTable td, table.dataTable th {
     text-overflow: ellipsis;
     white-space:nowrap; 
     overflow:hidden;
     width: 36px;
     max-width: 36px;
-}
+}*/
 
 
 /* 

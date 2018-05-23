@@ -63,12 +63,41 @@
     }
 }*/
 
-tr, th, span, h1, h2, h3, h4 {
+body, tr, th, span, h1, h2, h3, h4 {
     font-family: 'Rajdhani', sans-serif !important;
+}
+
+thead tr {
+    color: #212121;
+}
+
+tbody tr {
+    color: #757575;
+}
+
+.table thead tr{
+    background: transparent;
+}
+
+h1, h2, h3, h4 {
+    letter-spacing: 1.5px !important;
+}
+
+.dt-toolbar{
+    background: transparent !important;
+    border-bottom: none !important;
+}
+
+.table-responsive{
+    border: none !important;
 }
 
 tr{
     font-size: 18px !important;
+}
+
+th{
+    font-weight: 400 !important;
 }
 
 .dt-toolbar>:first-child{
@@ -94,8 +123,8 @@ tr{
     color: #0d94c7;
     background-color: transparent;
     font-weight: 700;
+    padding: 0px;
     font-size: 14px;
-    margin-left: 10px;
 }
 
 .hidden-menu #hide-menu>:first-child>a {

@@ -26,7 +26,7 @@
     >
     
     </app-table>-->
-    <app-widget
+    <!--<app-widget
     [headerTitle]="titulo"
     [tableUrl]="'informacionEquipo/' + idJefe"
     [id]="'equipos'"
@@ -43,6 +43,22 @@
                         ]"
     
     >
-    </app-widget>
+    </app-widget>-->
+    <app-jquery-table
+    [url]="'informacionEquipo/' + idJefe"
+    [id]="'equipos'"
+    [idTable]="'equipos'"
+    [hasButtons]="false"
+    [columns]="
+                        [
+                        { data: 'Nombre'},
+                        { data: 'Meta'  },
+                        { data: 'Ejecutado'  },
+                        { data: 'Realizado' },
+                        { data: 'Restante'  }
+                        ]"
+    
+    >
+    </app-jquery-table>
 </div>
 
