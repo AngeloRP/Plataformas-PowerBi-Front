@@ -40,10 +40,8 @@
 }
 
 .imglogoUp{
-    height: 100%;
-    width: 80%;
-    padding: 9px 10%;
-   /* padding: 0 10%;*/
+    padding-right: 10px;
+    margin-left: 17%;
 }
 
 #imageHeader{
@@ -89,5 +87,6 @@
 
 .opciones_header div {
     width: calc(100% - 46px);
+    display: -webkit-inline-box;
 }
 
