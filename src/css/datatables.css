@@ -2,6 +2,15 @@ table.dataTable.DTFC_Cloned {
     margin: 0.2px !important;
 }
 
+table thead tr th {
+    color: white;
+    background-color: #f7c05b !important;
+}
+
+table.dataTable.DTFC_Cloned thead tr th {
+    background-color: #4c4a4a !important;
+}
+
 /*@media (max-width:500px){
     table {
         table-layout: fixed;
