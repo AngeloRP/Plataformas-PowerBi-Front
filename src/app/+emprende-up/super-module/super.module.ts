@@ -49,6 +49,7 @@ import { SmartadminDatatableModule } from '../../shared/ui/datatable/smartadmin-
     exports: [
         SmartadminFormsLiteModule,
         SmartadminWidgetsModule,
+        SmartadminDatatableModule,
         SmartadminFormsModule,
         ModalComponent,
         JqueryTableComponent,

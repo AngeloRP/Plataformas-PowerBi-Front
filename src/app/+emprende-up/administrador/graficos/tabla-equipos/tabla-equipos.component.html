@@ -1,64 +1,35 @@
-<div>
+<div class="col-xs-12">
     <button class="boton_regresar" (click)="eventoRegresar()">Regresar</button>
-    <!--<app-table
-        class="col-xs-12"
-      [idTable]="'equipos'"
-      [url]="'informacionEquipo/' + idJefe"
-      [posicion]="0"
-      [hasFilter]="true"
-      [searColumns]="
-                        [
-                        'Nombre',
-                        'Meta',
-                        'Ejecutado',
-                        '% Realizado',
-                        '% Restante'
-                        ]"
-                        [columns]="
-                        [
-                        { prop: 'Nombre'},
-                        { prop: 'Meta',width:45, maxWidth:45  },
-                        { prop: 'Ejecutado',width:62, maxWidth:62  },
-                        { prop: 'Realizado',width:62, maxWidth:62  },
-                        { prop: 'Restante',width:61, maxWidth:61   }
-                        ]"
     
-    >
-    
-    </app-table>-->
-    <!--<app-widget
-    [headerTitle]="titulo"
-    [tableUrl]="'informacionEquipo/' + idJefe"
-    [id]="'equipos'"
-    [idTable]="'equipos'"
-    [contentTable]="true"
-    [hasButtons]="false"
-    [tableColumns]="
-                        [
-                        { data: 'Nombre'},
-                        { data: 'Meta'  },
-                        { data: 'Ejecutado'  },
-                        { data: 'Realizado' },
-                        { data: 'Restante'  }
-                        ]"
-    
-    >
-    </app-widget>-->
-    <app-jquery-table
-    [url]="'informacionEquipo/' + idJefe"
-    [id]="'equipos'"
-    [idTable]="'equipos'"
-    [hasButtons]="false"
-    [columns]="
-                        [
-                        { data: 'Nombre'},
-                        { data: 'Meta'  },
-                        { data: 'Ejecutado'  },
-                        { data: 'Realizado' },
-                        { data: 'Restante'  }
-                        ]"
-    
-    >
-    </app-jquery-table>
-</div>
 
+    <table id="equipos" appTextColor [columnaCalculo]="'Realizado'" [metodoCalculo]="colorear" [contenido]="this.data" [columnas]="[
+      'Nombre',
+      'Meta',
+      'Ejecutado',
+      'Restante',
+      'Realizado'
+    ]" [columnasColorear]="[
+    'Realizado'
+    ]" datatable [dtOptions]="dtOptions" class="table table-striped table-condensed table-hover" *ngIf="this.temp_var">
+        <thead>
+            <tr>
+                <th>Usuario</th>
+                <th>Nombre</th>
+                <th>Meta</th>
+                <th>Ejecutado</th>
+                <th>Restante</th>
+                <th>Realizado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let rec of this.data">
+                <td>{{rec['idusuario']}}</td>
+                <td>{{rec['Nombre']}}</td>
+                <td>{{rec['Meta']}}</td>
+                <td>{{rec['Ejecutado']}}</td>
+                <td>{{rec['Restante']/ 100 | percent:'1.0-2':'fr'}}</td>
+                <td>{{rec['Realizado']/ 100 | percent:'1.0-2':'fr'}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

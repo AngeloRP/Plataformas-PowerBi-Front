@@ -21,14 +21,19 @@ export class ColorearTextoTablaDirective implements AfterContentChecked {
         if (this.contador === 0) {
             if (this.metodoCalculo !== undefined) {
                 if (this.contenido !== undefined) {
-                    // console.log('Contenido:' + JSON.stringify(this.contenido));
+                    console.log('Contenido:' + JSON.stringify(this.contenido));
+                    console.log('Columnas:' + JSON.stringify(this.columnas));
+                    console.log('Columnas a colorear:' + JSON.stringify(this.columnasColorear));
                     this.contador++;
                     for (let index = 0; index < this.contenido.length; index++) {
                         const claseCss = this.metodoCalculo(this.contenido[index], this.columnaCalculo);
-                        const fila = '.dataTable > tbody > tr:nth-child(' + (index + 1) + ') ';
+                        const fila = 'table > tbody > tr:nth-child(' + (index + 1) + ') ';
+                        // const fila = 'table > tbody > tr ';
                         for (let indexC = 0; indexC < this.columnas.length; indexC++) {
-                            if ( this.columnasColorear.includes(this.columnas[indexC]['data']) ) {
-                                const columna = 'td:nth-child(' + (indexC + 1) + ')';
+                            if ( this.columnasColorear.includes(this.columnas[indexC]) ) {
+                                console.log('Entro a colorear');
+                                const columna = 'td:nth-child(' + (indexC + 2) + ')';
+                                // const columna = 'td ';
                                 $(fila + columna).addClass(claseCss);
                             }
                         }

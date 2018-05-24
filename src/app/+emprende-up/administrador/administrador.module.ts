@@ -23,12 +23,14 @@ import { PieGraficosComponent } from './graficos/pie-graficos/pie-graficos.compo
 import { PieGraficoComponent } from './graficos/pie-grafico/pie-grafico.component';
 import { TablaJefesComponent } from './graficos/tabla-jefes/tabla-jefes.component';
 import { TablaEquiposComponent } from './graficos/tabla-equipos/tabla-equipos.component';
+import { DataTablesModule } from 'angular-datatables';
 @NgModule({
     imports: [
         routing,
         SuperComunModule,
         SuperModule,
-        InlineGraphsModule
+        InlineGraphsModule,
+        DataTablesModule
     ],
     exports: [],
     declarations: [

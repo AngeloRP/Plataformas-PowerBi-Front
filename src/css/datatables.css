@@ -1,0 +1,66 @@
+table.dataTable.DTFC_Cloned {
+    margin: 0.2px !important;
+}
+
+/*@media (max-width:500px){
+    table {
+        table-layout: fixed;
+        min-width: 150px;
+        width:150px;
+        word-wrap:break-word;
+    }
+}*/
+
+.table-condensed.table>tbody>tr>td, .table-condensed.table>tbody>tr>th, .table-condensed.table>tfoot>tr>td, .table-condensed.table>tfoot>tr>th, .table-condensed.table>thead>tr>td, .table-condensed.table>thead>tr>th {
+    padding: 0px 10px !important;
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    vertical-align: middle !important;
+}
+
+.DTFC_LeftBodyWrapper {
+    left: -3px !important;
+}
+
+/*@media (max-width: 600px) {
+    .dataTables_scrollHeadInner > table > thead > tr > th:first-child,
+    .dataTables_scrollBody > table > tbody > tr > td:first-child,
+    .DTFC_LeftHeadWrapper,
+    .DTFC_LeftHeadWrapper *,
+    .DTFC_LeftBodyWrapper ,
+    .DTFC_LeftBodyWrapper >  * ,
+    .DTFC_LeftBodyLiner > table ,
+    .DTFC_LeftBodyLiner > table > tbody,
+    .DTFC_LeftBodyLiner > table > tbody > *{
+        max-width: 150px !important;
+        width: 150px !important;
+    }
+}*/
+
+.DTFC_RightBodyWrapper {
+    left: 1px !important;
+}
+
+thead>tr>th {
+    background: #fff !important;
+}
+
+div.dataTables_wrapper div.dataTables_filter label {
+    float: left!important;
+    padding-bottom: 10px;
+}
+
+.dataTables_wrapper .dataTables_filter {
+    margin-top: 0px !important;
+}
+
+div.dataTables_wrapper div.dataTables_filter input {
+    padding: 6px 12px;
+    border: 1px solid #ccc !important;
+}
+
+/*.DTFC_LeftHeadWrapper > table > thead > tr:nth-child(1),
+.DTFC_LeftBodyWrapper {
+    width: 100px !important;
+}*/

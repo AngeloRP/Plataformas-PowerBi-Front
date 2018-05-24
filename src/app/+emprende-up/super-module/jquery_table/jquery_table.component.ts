@@ -14,6 +14,10 @@ export class JqueryTableComponent extends Operations implements OnInit, OnChange
   @Input() columns: any[];
   @Input() buttons: any[] = [];
   @Input() idTable = '';
+  @Input() fixedColumns = {
+    leftColumns: 0,
+    rightColumns: 0
+  };
   @Input() headers: Headers = new Headers(
     { 'Content-Type': 'application/json' }
   );
@@ -150,6 +154,7 @@ export class JqueryTableComponent extends Operations implements OnInit, OnChange
           style: 'single'
         },
         'paging': this.paging,
+        fixedColumns: this.fixedColumns,
         /*ajax: (data, callback, settings) => {
           if (this.contenido === undefined) {
             this.http.get(this.REST_ROOT + '/' + this.url,

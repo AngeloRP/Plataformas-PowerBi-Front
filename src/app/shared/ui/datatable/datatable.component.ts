@@ -40,6 +40,7 @@ export class DatatableComponent extends Operations implements OnInit {
   @Input() public id = '';
   @Input() public otroId = '';
   @Input() idTable = '';
+  @Input() fixedColumns: any;
   @Output() dobleclickEvent: EventEmitter<any>;
   antiguo: any = null;
   constructor(
@@ -159,10 +160,10 @@ export class DatatableComponent extends Operations implements OnInit {
       'dom': this.dom,
       ordering: false,
       oLanguage: this.onLanguage,
-      autoWidth: true,
+      autoWidth: false,
       retrieve: true,
       responsive: false,
-      fixedColumns: true,
+      fixedColumns: this.fixedColumns,
       initComplete: (settings, json) => {
         element.parent().find('.input-sm', ).removeClass('input-sm').addClass('input-md');
         element.parent().find('div.dt-toolbar').attr('id', this.idTable);

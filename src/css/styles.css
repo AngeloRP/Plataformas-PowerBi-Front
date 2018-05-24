@@ -2,14 +2,16 @@
 
 /* #GOOGLE FONT */
 
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700");
-/* @import url("https://cdn.datatables.net/scroller/1.4.3/js/dataTables.scroller.min.js"); */
+/*@import url("https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700");
+ @import url("https://cdn.datatables.net/scroller/1.4.3/js/dataTables.scroller.min.js"); */
 
+/*
 @import url("https://cdn.datatables.net/1.10.16/css/dataTables.foundation.min.css");
 @import url("https://cdn.datatables.net/select/1.2.4/css/select.foundation.min.css");
 @import '~@swimlane/ngx-datatable/release/index.css';
 @import '~@swimlane/ngx-datatable/release/themes/material.css';
 @import '~@swimlane/ngx-datatable/release/assets/icons.css';
+*/
 .report-container {
     position: relative;
     padding-bottom: 56.25%;
@@ -62,6 +64,8 @@
         padding-top: 0px !important;
     }
 }*/
+
+
 
 body, tr, th, span, h1, h2, h3, h4 {
     font-family: 'Rajdhani', sans-serif !important;
@@ -149,10 +153,8 @@ th{
 }
 
 input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
-    /* display: none; <- Crashes Chrome on hover */
     -webkit-appearance: none;
     margin: 0;
-    /* <-- Apparently some margin are still there even though it's hidden */
 }
 
 .evaluar-content-text:before {
@@ -168,10 +170,8 @@ input[type="text"], input[type="number"], input[disabled] {
 }
 
 button {
-    /*background-color: #1361e1;*/
     background-color: #f2f2f2;
     border: none;
-    /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.56);*/
     margin: 3px;
     color: white;
 }
@@ -181,7 +181,6 @@ button.dropdown-toggle {
 }
 
 button i:before {
-    /* color: white;*/
     color: #0d94c7;
 }
 
@@ -199,7 +198,6 @@ sa-widget [role="content"] {
 }
 
 option {
-    /*direction:rtl;*/
     color: black;
     background-color: white;
     font-size: 14px;
@@ -246,10 +244,11 @@ span.input-group-btn > button > i.fa-times:before {
     padding-left: 0px !important;
 }
 
+
 #mentoriaEliminar{
     top: 24px !important;
     left: 96.6% !important;
-}
+}*/
 
 .advertencia_despues_registro{
     text-align: center;

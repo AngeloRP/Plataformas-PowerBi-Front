@@ -16,6 +16,8 @@ require('bootstrap/js/popover.js'); // required for X-editable
 require('bootstrap/js/dropdown.js'); // required for bootstrap-colorpicker
 require('bootstrap/js/tab.js'); //
 require('bootstrap/js/modal.js'); //
+require('datatables.net');
+require('datatables.net-fixedcolumns');
 
 window['moment'] = require('moment');
 

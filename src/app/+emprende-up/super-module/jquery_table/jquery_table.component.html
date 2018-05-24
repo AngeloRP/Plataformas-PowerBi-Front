@@ -4,11 +4,11 @@
       <sa-widget [editbutton]="false" color="darken">
 
         <div>-->
-          <div class="table-responsive">
+          <div >
             <app-sa-datatable [options]="options" paginationLength="true" tableClass="table table-striped table-condensed table-hover"
               width="100%" [dom]="dom" [onLanguage]="onLanguage" [buttonClass]="buttonClass" [hasFilter]="hasFilter" [paging]="paging"
               [isPressed]="isPressed" [hasButtons]="hasButtons" [ruta]="ruta" [id]="id" [back]="back" [idTable]="idTable"
-              [contenido]="contenido"
+              [contenido]="contenido" [fixedColumns]="fixedColumns"
               (dobleclickEvent)="emitirEvento($event)"
               >
               <thead>
@@ -18,17 +18,6 @@
               </thead>
               <tbody>
                 <tr *ngFor="let row of contenido" >
-                  <!--<ng-template *ngIf="tieneBotones === true">
-                    <ng-template *ngFor="let column of columns;let i = index" >
-                      <td *ngIf="i === 0"><a (click)="emitirEvento(row)">{{row[column.data]}}</a></td>
-                      <td *ngIf="i !== 0">{{row[column.data]}}</td>
-                    </ng-template>
-                  </ng-template>
-                  <ng-template *ngIf="tieneBotones === false">
-                      <td *ngFor="let column of columns" >
-                          {{row[column.data]}}
-                      </td>
-                  </ng-template>-->
                   <td *ngFor="let column of columns;let i = index" >
                     <ng-container *ngIf="tieneBotones() === true && i === 0"><a (click)="emitirEvento(row)">{{row[column.data]}}</a></ng-container>
                     <ng-container *ngIf="i > 0 || tieneBotones() === false">
