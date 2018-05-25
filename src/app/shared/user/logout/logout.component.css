@@ -1,5 +1,20 @@
 .logout_class {
-    background: #cbd5ea !important;
-    color: #0d94c7 !important;
-    margin: 43% 0px !important;
+  margin: 0 !important;
+  height: inherit !important;
   }
+
+.deslogueo {
+  font-size: 26px;
+  margin-top: 42%;
+  color:white;
+}
+
+#logout {
+  width: 45px !important;
+}
+
+#logout *,
+#logout * *,
+#logout * * * {
+  width: inherit !important;
+}

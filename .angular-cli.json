@@ -18,6 +18,7 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
+        "css/fonts.css",
         "css/datatables.css",
         "css/aligns.css",
         "css/background.css",

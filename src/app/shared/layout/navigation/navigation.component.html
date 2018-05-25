@@ -7,13 +7,13 @@
   <nav>
     <ul saSmartMenu *ngIf="registroInicialCompletado" >
       <li routerLinkActive="active" *ngFor="let element of sidebar_elements"  >
-        <a  title="{{element.title}}" class="{{element.class}}" id="{{element.id}}" routerLink="{{element.link.commands[0]}}" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"  >
+        <a  title="{{element.title}}" class="{{element.class}}" id="{{element.id}}" routerLink="{{element.link.commands[0]}}" (click)="ocultar()" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"  >
         <!--<a  title="{{element.title}}" class="{{element.class}}" id="{{element.id}}" (click)="navigate(element)" >-->
           <span class="{{element.clase_menu}}"><i class="{{element.imagen}}"></i> {{element.title | i18n}}</span>
         </a>
         <ul *ngIf="element.hasChilds">
           <li routerLinkActive="active" *ngFor="let child of element.childs">
-            <a routerLink="/{{child.link.commands[0]}}" title="{{child.title}}" class="{{child.class}}" id="{{element.id}}" >
+            <a routerLink="/{{child.link.commands[0]}}" (click)="ocultar()" title="{{child.title}}" class="{{child.class}}" id="{{element.id}}" >
               <span class="{{child.clase_menu}}"> <i class="{{child.imagen}}"></i> {{child.title | i18n}}</span>
             </a>
           </li>

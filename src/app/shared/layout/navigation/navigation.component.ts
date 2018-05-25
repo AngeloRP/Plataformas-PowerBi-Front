@@ -6,6 +6,7 @@ import { AfterContentChecked } from '@angular/core/src/metadata/lifecycle_hooks'
 import { ApiService } from '../../../core/api/api.service';
 import { Http } from '@angular/http';
 import { SidebarElementClass } from 'app/shared/layout/navigation/sidebar-element';
+import { LayoutService } from '../layout.service';
 
 declare var $: any;
 @Component({
@@ -165,11 +166,16 @@ export class NavigationComponent implements OnInit, AfterContentChecked {
   constructor(
     public http: Http,
     private router: Router,
-    private mesesService: ApiService
+    private mesesService: ApiService,
+    private layoutService: LayoutService
     // private evaluacionesService: ApiService,
     // private indicadoresService: ApiService
   ) {
 
+  }
+
+  ocultar() {
+    this.layoutService.onCollapseMenu();
   }
 
   refreshEvaluacionService() {

@@ -1,32 +1,6 @@
-.headerComp {
-    /*border-color: rgba(84,210,208,.83)!important;
-    background: rgba(124,221,219,.83)!important;
-    color: #fff;
-    background-color: #0d94c7 !important;
-    box-shadow: none;
-    border-radius: 6px;
-    padding: 0;
-    line-height: 40px;
-    display: block;
-    border: 1px solid #C2C2C2;*/
-    border: none !important;
-    color: #fff;
-    height: 40px;
-    background-color: #0d94c7 !important;
-    box-shadow: none;
-    border-radius: 6px;
-    padding: 0;
-    line-height: 40px;
-    display: block;
-}
 
 html {
     overflow-x: hidden;
-}
-
-.headerDashboard {
-    margin-top: -23px;
-    height: 38px;
 }
 
 .botonAlFrente {
@@ -37,34 +11,6 @@ html {
     font-size: 20px;
 }
 
-.tituloComp {
-    height: 100%;
-    width: auto;
-    display: inline-block;
-    font-size: 15px;
-    position: relative;
-    margin: 0;
-    line-height: 34px;
-    letter-spacing: 0;
-    margin-left: 10px;
-    float: left;
-}
-
-.fundadoresTitulo {
-    font-size: 15px;
-    margin-bottom: 0px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    margin-left: 1.3%;
-    border-radius: 6px;
-    width: 97.6%;
-    /*border: 1px solid black;*/
-    background-color: #0d94c7;
-    color: #fff;
-    margin-top: 12px;
-    border-bottom: none;
-}
-
 app-on-off-switch {
     position: absolute;
     top: 0px;
@@ -73,79 +19,13 @@ app-on-off-switch {
 
 .switchFix {
     margin-top: 14px;
-    /*left: 70%;*/
     left: 0;
-}
-
-.loader {
-    border: 16px solid #f3f3f3;
-    /* Light grey */
-    border-top: 16px solid #3498db;
-    /* Blue */
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    animation: spin 2s linear infinite;
-}
-
-.loader2 {
-    z-index: 1100;
-    background: rgba(255, 255, 255, .03);
-    position: absolute;
-    width: 100%;
-    text-align: center;
-    height: 100%;
-    padding-top: 50%;
-    font-size: 30px;
-    color: #6967663d;
-}
-
-.fixImagenEtapa {
-    margin-top: 35px;
 }
 
 .fa-plus-circle:before {
     color: white !important;
 }
 
-#listaMeses {
-    border-width: 0px;
-    background-color: #0ac0ea !important;
-}
-
-.conBorderRadisuArriba6 {
-    border-top-left-radius: 6px !important;
-    border-top-right-radius: 6px !important;
-}
-
-.sinBorderRadiusArriba {
-    border-top-left-radius: 0px !important;
-    border-top-right-radius: 0px !important;
-}
-
-.sinBorderRadiusAbajo {
-    border-bottom-left-radius: 0px !important;
-    border-bottom-right-radius: 0px !important;
-}
-
-/* Galaxy S5*/
-/*table.dataTable td, table.dataTable th {
-    text-overflow: ellipsis;
-    white-space:nowrap; 
-    overflow:hidden;
-    width: 36px;
-    max-width: 36px;
-}*/
-
-
-/* 
-@media all and (max-width:1000px) and (min-width:900px){
-    table.dataTable td, table.dataTable th {
-        width: 40px;
-        max-width: 40px;
-        min-width: 
-    }
-}*/
 
 table.dataTable td:hover, table.dataTable th:hover{
     width: auto;
@@ -162,7 +42,7 @@ table.dataTable tr:active * {
 
 .selectMes {
     background: transparent;
-    width: -webkit-fill-available;
+    width: -webkit-fill-available, moz-fill-available;
     font-size: initial;
     margin: 0 14px;
     color: white;
@@ -181,10 +61,6 @@ table.dataTable tr:active * {
     height: 32px !important;
 }
 
-.detalle_tabla {
-    position: absolute;
-    top: -12px;
-}
 
 .fixPosiscionAgregar {
     margin-right: 50px;
@@ -195,39 +71,6 @@ table.dataTable tr:active * {
     min-height: 200px;
     min-width: 100%;
     max-height: 200px;
-}
-
-@media all and (max-width:1368px) {
-    .detalle_tabla {
-        position: absolute;
-        top: -12px;
-        font-size: 13px;
-        font-family: "Open Sans", Arial, Helvetica, Sans-Serif;
-    }
-}
-
-@media all and (max-width:968px) {
-    .detalle_tabla {
-        position: absolute;
-        top: -12px;
-        font-size: 12px;
-    }
-}
-
-@media all and (max-width:968px) {
-    .detalle_tabla {
-        position: absolute;
-        top: -12px;
-        font-size: 11px;
-    }
-}
-
-@media all and (max-width:568px) {
-    .detalle_tabla {
-        position: absolute;
-        top: -12px;
-        font-size: 10px;
-    }
 }
 
 @keyframes spin {

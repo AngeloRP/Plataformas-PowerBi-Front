@@ -21,31 +21,18 @@
     }
 }
 
-@media all and (min-width: 0px) and (max-width:979px){
-    #titleHeader{
-        font-size: 20px;
-    }
-    .grupoOpcionesHeader{
-        top: 0;
-    }
-    #headerContenido{
-        width: 100% !important;
-        display: -webkit-box;
-    }
-    #imageHeader{
-        width: 100% !important;
-        display: flex;
-    }
-
+.imglogoUp{
+    padding: 16.5px calc(50% - 150px);
 }
 
-.imglogoUp{
-    padding-right: 10px;
-    margin-left: 17%;
+@media (max-width: 600px) {
+    .imglogoUp {
+        padding: 16.5px calc(50% - 153px);
+    }
 }
 
 #imageHeader{
-    width: 250px;
+    width: 100%;
     margin:0 auto;
 }
 
@@ -67,7 +54,7 @@
     background-size: 100% 100%  !important;
     background-image: linear-gradient(to bottom,#efdbdb,#fff) !important;
     */
-    background:#cbd5ea  !important;
+    background:#00A0E3  !important;
 }
 
 .grupoOpcionesHeader{

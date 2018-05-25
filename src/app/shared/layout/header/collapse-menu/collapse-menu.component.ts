@@ -18,6 +18,6 @@ export class CollapseMenuComponent {
   }
 
   onToggle() {
-    this.layoutService.onCollapseMenu()
+    this.layoutService.onCollapseMenu();
   }
 }

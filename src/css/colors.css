@@ -20,7 +20,7 @@
   }
 
   nav ul li {
-    background: #b8c3e2 !important;
+    background: #BBDEFB !important;
   }
 
   .rojo {
@@ -57,15 +57,15 @@
 
 
   .grafico_tarjetas_color{
-    color: #6b82af !important;
+    color: #4e98c7 !important;
   }
 
   .grafico_servicios_color{
-    color: #73c6b5 !important;
+    color: #53B2BF !important;
   }
 
   .grafico_compras_color{
-    color: #f7c960 !important;
+    color: #cc7d34 !important;
   }
 
   td a {

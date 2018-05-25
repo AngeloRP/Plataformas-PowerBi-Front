@@ -22,3 +22,7 @@
 .mostrar {
     display: block;
 }
+
+.centrarHorizontalmente button {
+    background-color: #E1E2E1;
+}
