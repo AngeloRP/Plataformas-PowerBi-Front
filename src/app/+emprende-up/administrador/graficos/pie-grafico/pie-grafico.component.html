@@ -6,18 +6,32 @@
         <div class="container">
           <div class="hijo">
             <div class="centrarHorizontalmente">
-              <h2 class="{{data_color}} titulo_pie">{{titulo}}</h2>
+              <h2 class="{{data.data_color}} titulo_pie" [ngStyle]="{'font-size': this.data.font_size + 'px'}">{{data.titulo}}</h2>
             </div>
           </div>
         </div>
         <div class="panel-body">
-          <div class=" {{data_color}} easy-pie-chart easyPieChart " [attr.data-percent]="data_percent" [attr.data-size]="data_size"
-            [attr.data-pie-size]="data_pie_size">
+          <div class=" {{data.data_color}} easy-pie-chart easyPieChart " [attr.data-percent]="data.data_percent" [attr.data-size]="data.data_size"
+            [attr.data-pie-size]="data.data_pie_size">
             <div class="container">
               <div class="hijo">
                 <div class="centrarHorizontalmente">
                   <button (click)="haciaTablaJefes()">
-                    <span class="{{mostrarGrafica}} {{data_color}} percent percent-sign  font-xl semi-bold">{{data_percent}}</span>
+                    <span 
+                    class="
+                    {{mostrarGrafica}}
+                    {{data.data_color}}
+                    percent
+                    percent-sign
+                    semi-bold" 
+                    [ngStyle]="{
+                      'font-size': (this.data.font_size * 1.5) + 'px',
+                      'top': (this.data.font_size * 2.75) + 'px'
+                    }"
+                    
+                    >
+                      {{data.data_percent}}
+                    </span>
                   </button>
                 </div>
               </div>

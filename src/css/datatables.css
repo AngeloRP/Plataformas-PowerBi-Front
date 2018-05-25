@@ -3,12 +3,21 @@ table.dataTable.DTFC_Cloned {
 }
 
 table thead tr th {
-    color: white;
-    background-color: #f7c05b !important;
+    color: #212121;
+    background-color: #f5f5f6 !important;
+    border-top: 1px solid #111111 !important;
+}
+
+.DTFC_LeftHeadWrapper {
+    left: -3px !important;
+}
+
+table.dataTable thead th {
+    border-bottom: 0px solid #111111 !important;
 }
 
 table.dataTable.DTFC_Cloned thead tr th {
-    background-color: #4c4a4a !important;
+    color: #FFFFFF !important;
 }
 
 /*@media (max-width:500px){
@@ -31,6 +40,7 @@ table.dataTable.DTFC_Cloned thead tr th {
 
 .DTFC_LeftBodyWrapper {
     left: -3px !important;
+    top: -1px !important;
 }
 
 /*@media (max-width: 600px) {

@@ -9,17 +9,20 @@
     font-family: serif;
 }
 
-
 .btn-aceptar {
     background-color: #3276b1;
     color: white !important;
 }
 
-datatable-body-cell > div > button {
+datatable-body-cell>div>button {
     background-color: #0d94c7 !important;
     border-radius: 6px;
 }
 
-.fa-list:before{
+.fa-list:before {
     color: white;
+}
+
+btn:hover {
+    color: #ffff;
 }
