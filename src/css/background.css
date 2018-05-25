@@ -1,3 +1,15 @@
 .transparente{
     background: transparent !important;
 }
+
+.grafico_tarjetas_color_background{
+    background-color: #4e98c7 !important;
+  }
+
+  .grafico_servicios__background{
+    background-color: #53B2BF !important;
+  }
+
+  .grafico_compras__background{
+    background-color: #cc7d34 !important;
+  }

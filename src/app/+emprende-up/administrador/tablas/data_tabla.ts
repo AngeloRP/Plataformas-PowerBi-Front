@@ -1,7 +1,11 @@
+import { Input } from '@angular/core';
+
 export class Datatabla {
   public dtOptions: any = {};
   public data: Object;
   public temp_var: Object = false;
+  @Input() titulo = '';
+  @Input() fondoBase = '';
   constructor() {
     this.dtOptions = {
       scrollY: true,

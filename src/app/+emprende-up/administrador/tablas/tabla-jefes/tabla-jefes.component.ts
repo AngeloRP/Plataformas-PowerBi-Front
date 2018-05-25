@@ -10,7 +10,6 @@ declare let $: any;
 })
 export class TablaJefesComponent extends Datatabla implements OnInit {
   @Input() idFilial = 1;
-  @Input() titulo = '';
   @Output() regresar: EventEmitter<any>;
   mostrarJefes = true;
   nombreJefe = '';
@@ -31,6 +30,11 @@ export class TablaJefesComponent extends Datatabla implements OnInit {
       jefes => {
         this.data = jefes.data.rpta;
         this.temp_var = true;
+        console.log('Background: ' + this.fondoBase + '_background');
+        const algo = 'table.dataTable.DTFC_Cloned thead tr th';
+        console.log('Algo:' + algo);
+
+        $(algo).css({ 'background-color': 'red' });
       }
     );
   }

@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit, AfterContentChecked {
       this.loginService.fillApiService('loginUsuario');
       this.loginService.post(this.login).subscribe(
         login => {
-          // console.log('Login JSON:' + JSON.stringify(login));
+          console.log('Login JSON:' + JSON.stringify(login));
           this.saveUser.save({
             data: login.data.rpta,
             success: true

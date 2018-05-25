@@ -58,7 +58,7 @@ thead>tr>th {
 
 div.dataTables_wrapper div.dataTables_filter label {
     float: left!important;
-    padding-bottom: 10px;
+    padding-bottom: 15px;
 }
 
 .dataTables_wrapper .dataTables_filter {
@@ -68,6 +68,7 @@ div.dataTables_wrapper div.dataTables_filter label {
 div.dataTables_wrapper div.dataTables_filter input {
     padding: 6px 12px;
     border: 1px solid #ccc !important;
+    background-color: #f4f4f4;
 }
 
 /*.DTFC_LeftHeadWrapper > table > thead > tr:nth-child(1),

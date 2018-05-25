@@ -11,7 +11,6 @@ import { Http } from '@angular/http';
 export class TablaEquiposComponent extends Datatabla implements OnInit {
   @Input() idJefe = 1;
   @Output() regresar: EventEmitter<any>;
-  @Input() titulo = '';
   constructor(
     public http: Http,
     private equipoService: ApiService
@@ -28,6 +27,7 @@ export class TablaEquiposComponent extends Datatabla implements OnInit {
       equipo => {
         this.data = equipo.data.rpta;
         this.temp_var = true;
+        $('table.dataTable.DTFC_Cloned thead tr th').addClass(this.fondoBase + '_background');
       }
     );
   }

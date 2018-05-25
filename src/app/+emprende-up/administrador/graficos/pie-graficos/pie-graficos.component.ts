@@ -13,6 +13,7 @@ export class PieGraficosComponent implements OnInit {
   idFilial = 1;
   filiales: any;
   titulo = '';
+  fondoBase = '';
   constructor(private graficos: ApiService, private http: Http) { }
 
   ngOnInit() {
@@ -38,6 +39,7 @@ export class PieGraficosComponent implements OnInit {
     // console.log('Event:' + JSON.stringify(event));
     this.idFilial = event.idFilial;
     this.titulo = event.titulo;
+    this.fondoBase = event.data_color;
     this.mostrarGraficos = false;
   }
 

@@ -16,7 +16,7 @@ export class SaveUserService {
 
   public save(event) {
      // console.log('Event:' + event);
-     // console.log('Event json:' + JSON.stringify(event));
+     console.log('Event json:' + JSON.stringify(event));
     if (event !== undefined) {
       if (event.success === true) {
         // console.log('Login Exito:' + JSON.stringify(event.data));
@@ -29,7 +29,7 @@ export class SaveUserService {
   }
 
   public navigateHome(tipoUsuario: number) {
-    // console.log('Tipo Usuario:' + tipoUsuario);
+    console.log('Tipo Usuario:' + tipoUsuario);
     this.urlService = new ApiService(this.http);
     // this.urlService.fillApiService('');
 
@@ -38,7 +38,7 @@ export class SaveUserService {
     } else if (tipoUsuario === 2) {
       this.router.navigate(['/comite/startups']);
     } else if (tipoUsuario === 1) {
-      this.router.navigate(['/administrador/progestion']);
+      this.router.navigate(['/administrador']);
     }
   }
 

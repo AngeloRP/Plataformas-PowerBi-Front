@@ -2,7 +2,7 @@
 
   <div class="">
     <ul class="list-inline">
-      <li>
+      <li class="panel" id="panel-pie">
         <div class="container">
           <div class="hijo">
             <div class="centrarHorizontalmente">
@@ -10,18 +10,21 @@
             </div>
           </div>
         </div>
-        <div class=" {{data_color}} easy-pie-chart easyPieChart " [attr.data-percent]="data_percent" [attr.data-size]="data_size"
-          [attr.data-pie-size]="data_pie_size">
-          <div class="container">
-            <div class="hijo">
-              <div class="centrarHorizontalmente">
-                <button (click)="haciaTablaJefes()">
-                  <span class="{{mostrarGrafica}} {{data_color}} percent percent-sign  font-xl semi-bold">{{data_percent}}</span>
-                </button>
+        <div class="panel-body">
+          <div class=" {{data_color}} easy-pie-chart easyPieChart " [attr.data-percent]="data_percent" [attr.data-size]="data_size"
+            [attr.data-pie-size]="data_pie_size">
+            <div class="container">
+              <div class="hijo">
+                <div class="centrarHorizontalmente">
+                  <button (click)="haciaTablaJefes()">
+                    <span class="{{mostrarGrafica}} {{data_color}} percent percent-sign  font-xl semi-bold">{{data_percent}}</span>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
+
       </li>
       <!--<li>&nbsp;&nbsp;&nbsp;
         <div class="easy-pie-chart txt-color-blue easyPieChart" data-percent="36" data-pie-size="180">

@@ -33,7 +33,8 @@ export class PieGraficoComponent implements OnInit {
     this.regresar.emit(
       {
         idFilial: this.idFilial,
-        titulo: this.titulo
+        titulo: this.titulo,
+        data_color: this.data_color
       }
     );
   }

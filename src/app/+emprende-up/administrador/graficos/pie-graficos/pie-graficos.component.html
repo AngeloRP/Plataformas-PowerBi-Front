@@ -1,5 +1,5 @@
 
-<div *ngIf="mostrarGraficos && !loading">
+<div *ngIf="mostrarGraficos && !loading" id="pie_graficos">
     <app-pie-grafico
     [data_size]="140"
     [data_color]="'grafico_tarjetas_color'"
@@ -39,5 +39,6 @@
     (regresar)="eventoMostrarGraficos()"
     [idFilial]="idFilial"
     [titulo]="titulo"
+    [fondoBase]="fondoBase"
     ></app-tabla-jefes>
 </div>

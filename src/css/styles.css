@@ -47,7 +47,7 @@
     padding-bottom: 50px;
     overflow: hidden;
     padding-top: 15px;
-    background-color: #E1E2E1;
+    background-color: #F5F5F6;
 }
 
 .page-footer {
@@ -57,7 +57,7 @@
 
 
 body, tr, th, span, h1, h2, h3, h4 {
-    font-family: 'Rajdhani', sans-serif !important;
+    font-family: 'Imprima', sans-serif !important;
 }
 
 thead tr {
@@ -66,10 +66,6 @@ thead tr {
 
 tbody tr {
     color: #757575;
-}
-
-.table thead tr{
-    background: transparent;
 }
 
 h1, h2, h3, h4 {
@@ -112,13 +108,17 @@ th{
 }
 
 .boton_regresar {
-    border-radius: 6px; 
-    color: #2dc562b0;
-    background-color: transparent;
-    font-weight: 700;
-    padding: 0px;
+    border-radius: 3px; 
+    color: #ffff;
+    background-color: #4e7b91;
+    padding: 5px 10px;
     font-size: 14px;
+    margin-bottom: 15px;
 }
+
+.boton_regresar i:before {
+    color: #ffffff;
+} 
 
 .hidden-menu #hide-menu>:first-child>a {
     margin: 0px !important;
@@ -138,7 +138,7 @@ th{
 .hidden-menu #main{
     left: 0px !important;
     margin-left: 0px !important;
-    background-color: #E1E2E1;
+    background-color: #F5F5F6;
 }
 
 .btn-header {
