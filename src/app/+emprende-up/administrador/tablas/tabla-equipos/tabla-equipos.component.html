@@ -2,26 +2,20 @@
     <button class="boton_regresar btn" (click)="eventoRegresar()">
         <i class="fa fa-arrow-left"></i>&nbsp;Regresar
     </button>
-    
-    <table
-    id="{{titulo}}"
-    appTextColor [columnaCalculo]="'Realizado'"
-    [metodoCalculo]="colorear"
-    [contenido]="this.data" 
-    [columnas]="[
+
+    <table id="{{titulo}}" appTextColor [columnaCalculo]="'Realizado'" [metodoCalculo]="colorear" [contenido]="this.data" [columnas]="[
       'Nombre',
       'Meta',
       'Ejecutado',
       'Restante',
       'Realizado'
-    ]"
-    [columnasColorear]="[
+    ]" [columnasColorear]="[
     'Realizado'
-    ]"
-    datatable [dtOptions]="dtOptions" class="table table-striped table-condensed table-hover" *ngIf="this.temp_var">
+    ]" datatable [dtOptions]="dtOptions" class="table table-striped table-condensed table-hover" *ngIf="this.temp_var">
         <thead>
             <tr>
                 <th>Usuario</th>
+                <th>Puesto</th>
                 <th>Nombre</th>
                 <th>Meta</th>
                 <th>Ejecutado</th>
@@ -30,8 +24,10 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let rec of this.data">
+            <tr *ngFor="let rec of this.data;let i = index;">
                 <td>{{rec['idusuario']}}</td>
+                <td *ngIf="(i+1) < this.data.length">{{i + 1}}°</td>
+                <td *ngIf="(i+1) >= this.data.length">Resultado</td>
                 <td>{{rec['Nombre']}}</td>
                 <td>{{rec['Meta']}}</td>
                 <td>{{rec['Ejecutado']}}</td>

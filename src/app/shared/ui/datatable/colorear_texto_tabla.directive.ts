@@ -33,7 +33,7 @@ export class ColorearTextoTablaDirective implements AfterContentChecked {
                         for (let indexC = 0; indexC < this.columnas.length; indexC++) {
                             if (this.columnasColorear.includes(this.columnas[indexC])) {
                                 // console.log('Entro a colorear');
-                                const columna = 'td:nth-child(' + (indexC + 2) + ')';
+                                const columna = 'td:nth-child(' + (indexC + 3) + ')';
                                 // const columna = 'td ';
                                 $(fila + columna).addClass(claseCss);
                             }
