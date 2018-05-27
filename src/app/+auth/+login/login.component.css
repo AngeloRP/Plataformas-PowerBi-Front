@@ -112,6 +112,7 @@
     width: 70% !important;
     border: none;
     border-bottom: #9f9f9f 2px solid;
+    box-shadow: none;
 }
 
 .boton_login {
