@@ -8,6 +8,7 @@ import { routing } from './graficos.routing';
 import { TablasModule } from '../tablas/tablas.module';
 import { ApiService } from 'app/core/api/api.service';
 import { DashboardModule } from '../dashboard/dashboard.module';
+import { CentrarPieDirective } from './centrar-pie.directive';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { DashboardModule } from '../dashboard/dashboard.module';
   ],
   declarations: [
     PieGraficosComponent,
-    PieGraficoComponent
+    PieGraficoComponent,
+    CentrarPieDirective
   ],
   providers: [
     ApiService

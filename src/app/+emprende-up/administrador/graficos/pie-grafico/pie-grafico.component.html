@@ -10,14 +10,15 @@
             </div>
           </div>
         </div>
-        <div class="panel-body">
+        <div appCentrarPie class="panel-body" >
           <div class=" {{data.data_color}} easy-pie-chart easyPieChart " [attr.data-percent]="data.data_percent" [attr.data-size]="data.data_size"
             [attr.data-pie-size]="data.data_pie_size">
             <div class="container">
               <div class="hijo">
                 <div class="centrarHorizontalmente">
                   <button (click)="haciaTablaJefes()">
-                    <span 
+                    <span
+                    
                     class="
                     {{mostrarGrafica}}
                     {{data.data_color}}
@@ -25,8 +26,7 @@
                     percent-sign
                     semi-bold" 
                     [ngStyle]="{
-                      'font-size': (this.data.font_size * 1.5) + 'px',
-                      'top': (this.data.font_size * 2.75) + 'px'
+                      'font-size': (this.data.font_size * 1.5) + 'px'
                     }"
                     
                     >

@@ -41,6 +41,7 @@ export class EasyPieChartContainer implements AfterContentChecked, AfterContentI
         }
 
       });
+      // $this.easyPieChart.div.div.div.button.span.css({ 'top': ($('#porcentaje_grafica').height() + 6) + 'px' });
       this.terminoCarga.emit(true);
     });
 
@@ -54,7 +55,7 @@ export class EasyPieChartContainer implements AfterContentChecked, AfterContentI
       this.counter = counter;
       setTimeout(() => {
         this.render()
-      }, 25)
+      }, 10)
     }
 
   }
