@@ -21,16 +21,16 @@ export class Datatabla {
         "sSearch": "<span class='input-group-addon'><i class='glyphicon glyphicon-search'></i></span> ",
         "sLengthMenu": "_MENU_"
       },
+      aaSorting: [],
       autoWidth: false,
-      order: [[4, 'desc']],
       columnDefs: [
         {
-          'targets': [ 0 ],
+          'targets': [0],
           'visible': false,
           'searchable': false
         },
         {
-          'targets': [0, 1, 2, 3],
+          'targets': [0, 1, 2, 3, 4, 5],
           'orderable': false
         }
       ],

@@ -6,15 +6,14 @@
     background-color: #4e98c7 !important;
 }
 
-.grafico_servicios__background {
+.grafico_servicios_background {
     background-color: #53B2BF !important;
 }
 
-.grafico_compras__background {
+.grafico_compras_background {
     background-color: #cc7d34 !important;
 }
 
-
-#Tarjetas_wrapper .DTFC_ScrollWrapper .DTFC_LeftWrapper .DTFC_LeftHeadWrapper table.dataTable.DTFC_Cloned thead tr th {
+/*#Tarjetas_wrapper .DTFC_ScrollWrapper .DTFC_LeftWrapper .DTFC_LeftHeadWrapper table.dataTable.DTFC_Cloned thead tr th {
     background-color: #4e98c7 !important;
-}
+}*/

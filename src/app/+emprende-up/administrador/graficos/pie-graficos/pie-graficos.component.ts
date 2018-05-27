@@ -25,13 +25,13 @@ export class PieGraficosComponent extends PieGrafico implements OnInit {
 
   ngOnInit() {
     const width = window.innerWidth;
-    console.log('Width:' + width);
+    // console.log('Width:' + width);
     this.data.data_size = (width - 140) / 2;
     this.data.data_pie_size = this.data.data_size - 20;
     this.data.font_size = this.data.data_pie_size / 5;
-    console.log('Data_size:' + this.data.data_size);
-    console.log('Data_pie_size:' + this.data.data_pie_size);
-    console.log('Font_size:' + this.data.font_size);
+    // console.log('Data_size:' + this.data.data_size);
+    // console.log('Data_pie_size:' + this.data.data_pie_size);
+    // console.log('Font_size:' + this.data.font_size);
     this.graficos = new ApiService(this.http);
     this.graficos.fillApiService('informacionFilial');
     this.graficos.get().subscribe(
@@ -63,27 +63,31 @@ export class PieGraficosComponent extends PieGrafico implements OnInit {
       font_size: this.data.font_size
     });
 
-    this.servicios.data.data_size = this.data.data_size;
-    this.servicios.data.data_pie_size = this.data.data_pie_size;
-    this.servicios.data.data_color = 'grafico_servicios_color';
-    this.servicios.data.data_percent = 65;
-    this.servicios.data.titulo = 'Servicios';
-    this.servicios.data.font_size = this.data.font_size;
-    this.servicios.data.id = 2;
+    this.servicios.fillPieGrafico({
+      data_size: this.data.data_size,
+      data_pie_size: this.data.data_pie_size,
+      data_color: 'grafico_servicios_color',
+      data_percent: 65,
+      titulo: 'Servicios',
+      font_size: this.data.font_size,
+      id: 2,
+    });
 
-    this.compras.data.data_size = this.data.data_size;
-    this.compras.data.data_pie_size = this.data.data_pie_size;
-    this.compras.data.data_color = 'grafico_compras_color';
-    this.compras.data.data_percent = 80;
-    this.compras.data.titulo = 'Compras';
-    this.compras.data.font_size = this.data.font_size;
-    this.compras.data.id = 3;
+    this.compras.fillPieGrafico({
+      data_size: this.data.data_size,
+      data_pie_size: this.data.data_pie_size,
+      data_color: 'grafico_compras_color',
+      data_percent: 80,
+      titulo: 'Compras',
+      font_size: this.data.font_size,
+      id: 3
+    });
   }
 
 
 
   haciaTablaJefes(event) {
-    // console.log('Event:' + JSON.stringify(event));
+    console.log('Event hacia Jefes:' + JSON.stringify(event));
     this.data.id = event.idFilial;
     this.data.titulo = event.titulo;
     this.data.data_color = event.data_color;

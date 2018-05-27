@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, AfterContentChecked } from '@angular/core';
 import { Datatabla } from '../data_tabla';
 import { Http } from '@angular/http';
 import { ApiService } from 'app/core/api/api.service';
@@ -8,7 +8,7 @@ declare let $: any;
   templateUrl: './tabla-jefes.component.html',
   styleUrls: ['./tabla-jefes.component.css']
 })
-export class TablaJefesComponent extends Datatabla implements OnInit {
+export class TablaJefesComponent extends Datatabla implements OnInit, AfterContentChecked {
   @Input() idFilial = 1;
   @Output() regresar: EventEmitter<any>;
   mostrarJefes = true;
@@ -29,9 +29,19 @@ export class TablaJefesComponent extends Datatabla implements OnInit {
     this.jefesService.get().subscribe(
       jefes => {
         this.data = jefes.data.rpta;
+        console.log('Jefes: ' + JSON.stringify(this.data));
         this.temp_var = true;
       }
     );
+  }
+
+  ngAfterContentChecked() {
+    $(
+      '.dataTables_wrapper ' +
+      '.DTFC_ScrollWrapper ' +
+      '.DTFC_LeftWrapper ' +
+      '.DTFC_LeftHeadWrapper ' +
+      'table.dataTable.DTFC_Cloned thead tr th').addClass(this.fondoBase + '_background');
   }
 
   eventoRegresar() {
