@@ -20,11 +20,11 @@ export class Datatabla {
         leftColumns: 2
       },
       oLanguage: {
-        "sSearch": "<span class='input-group-addon'><i class='glyphicon glyphicon-search'></i></span> ",
-        "sLengthMenu": "_MENU_"
-      },
-      language: {
-        searchPlaceholder: 'Busque aquí'
+        sSearch: "<span class='input-group-addon'><i class='glyphicon glyphicon-search'></i></span> ",
+        sLengthMenu: '_MENU_',
+        sInfo: 'Tiene un total de _TOTAL_ registros a mostrar',
+        sEmptyTable: 'No hay datos registrados en tabla',
+        sInfoEmpty: 'Sin registros para mostrar'
       },
       aaSorting: [],
       autoWidth: false,

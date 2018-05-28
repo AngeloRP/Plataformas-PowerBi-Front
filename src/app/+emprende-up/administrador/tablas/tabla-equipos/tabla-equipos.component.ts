@@ -25,8 +25,20 @@ export class TablaEquiposComponent extends Datatabla implements OnInit {
     this.equipoService.fillApiService('informacionEquipo/' + this.idJefe);
     this.equipoService.get().subscribe(
       equipo => {
-        this.data = equipo.data.rpta;
-        this.temp_var = true;
+        if (equipo !== undefined) {
+          if (equipo !== null) {
+            if (equipo.data !== undefined) {
+              if (equipo.data !== null) {
+                if (equipo.data.rpta !== undefined) {
+                  if (equipo.data.rpta !== null) {
+                    this.data = equipo.data.rpta;
+                    this.temp_var = true;
+                  }
+                }
+              }
+            }
+          }
+        }
         $('table.dataTable.DTFC_Cloned thead tr th').addClass(this.fondoBase + '_background');
       }
     );

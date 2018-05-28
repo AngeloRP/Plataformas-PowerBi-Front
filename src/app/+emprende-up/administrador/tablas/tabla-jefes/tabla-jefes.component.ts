@@ -28,14 +28,32 @@ export class TablaJefesComponent extends Datatabla implements OnInit, AfterConte
     this.jefesService.fillApiService('informacionJefesPorFilial/' + this.idFilial);
     this.jefesService.get().subscribe(
       jefes => {
-        this.data = jefes.data.rpta;
+        if (jefes !== undefined) {
+          if (jefes !== null) {
+            if (jefes.data !== undefined) {
+              if (jefes.data !== null) {
+                if (jefes.data.rpta !== undefined) {
+                  if (jefes.data.rpta !== null) {
+                    this.data = jefes.data.rpta;
+                    this.temp_var = true;
+                  }
+                }
+              }
+            }
+          }
+        }
+        // $('table.dataTable.DTFC_Cloned thead tr th').addClass(this.fondoBase + '_background');
         console.log('Jefes: ' + JSON.stringify(this.data));
-        this.temp_var = true;
+        /*if (this.data !== null) {
+          if (this.data.length > 0) {
+          }
+        }*/
       }
     );
   }
 
   ngAfterContentChecked() {
+    // console.log('Fondo Base:' + this.fondoBase);
     $(
       '.dataTables_wrapper ' +
       '.DTFC_ScrollWrapper ' +

@@ -6,6 +6,10 @@
     margin-bottom: 10px;
 }
 
+#buscador:hover {
+    box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2);
+}
+
 .b-activo a {
     color: rgb(255, 0, 21);
 }

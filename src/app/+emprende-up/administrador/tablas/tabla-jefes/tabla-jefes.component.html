@@ -1,13 +1,14 @@
-<div *ngIf="mostrarJefes && this.temp_var" class="col-xs-12" >
+<div *ngIf="mostrarJefes" class="col-xs-12" >
     <div class="d_flex">
         <button class="boton_regresar btn " (click)="eventoRegresar()">
             <i class="fa fa-arrow-left"></i>&nbsp;
           </button>
           <h1>{{titulo}}</h1>
     </div>
-    <app-opciones-nav></app-opciones-nav>
-    <app-buscador [mostrar]="mostrar" (mostrarEvent)="mostrarBuscador($event)"></app-buscador>
-    <table id="{{titulo}}"
+    <app-opciones-nav  *ngIf="this.temp_var"></app-opciones-nav>
+    <app-buscador  *ngIf="this.temp_var" [mostrar]="mostrar" (mostrarEvent)="mostrarBuscador($event)"></app-buscador>
+    <table *ngIf="this.temp_var"
+    id="{{titulo}}"
     appTextColor
     [columnaCalculo]="'Realizado'" 
     [metodoCalculo]="colorear" 
