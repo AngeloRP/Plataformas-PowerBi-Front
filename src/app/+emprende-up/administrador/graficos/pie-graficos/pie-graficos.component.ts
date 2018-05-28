@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { ApiService } from '../../../../core/api/api.service';
 import { Http } from '@angular/http';
 import { PieGrafico } from '../pie-grafico';
@@ -24,11 +24,15 @@ export class PieGraficosComponent extends PieGrafico implements OnInit {
   }
 
   ngOnInit() {
+    this.render();
+  }
+
+  render() {
     const width = window.innerWidth;
     console.log('Width:' + width);
     if (width >= 1200) {
       this.data.data_size = (width - 300) / 6;
-    } else if (width > 992){
+    } else if (width > 992) {
       this.data.data_size = (width - 140) / 3;
     } else {
       this.data.data_size = (width - 140) / 2;
@@ -102,6 +106,18 @@ export class PieGraficosComponent extends PieGrafico implements OnInit {
 
   eventoMostrarGraficos() {
     this.mostrarGraficos = true;
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(): void {
+    // this.fixBugColumnResize();
+    if (this.loading === false) {
+      console.log('Entro a cambiar autoWidth');
+      this.loading = true;
+      setTimeout(() => {
+        this.render();
+      }, 0);
+    }
   }
 
 }
