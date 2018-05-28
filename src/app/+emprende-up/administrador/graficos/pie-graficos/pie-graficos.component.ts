@@ -111,7 +111,7 @@ export class PieGraficosComponent extends PieGrafico implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(): void {
     // this.fixBugColumnResize();
-    if (this.loading === false) {
+    if (this.loading === false && this.mostrarGraficos === true) {
       console.log('Entro a cambiar autoWidth');
       this.loading = true;
       setTimeout(() => {
