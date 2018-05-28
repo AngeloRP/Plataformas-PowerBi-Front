@@ -1,4 +1,4 @@
-import { Input } from '@angular/core';
+import { Input, HostListener } from '@angular/core';
 
 export class Datatabla {
   public dtOptions: any = {};
@@ -63,6 +63,19 @@ export class Datatabla {
       return 'entre_40_60';
     } else {
       return 'mayor_60';
+    }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(): void {
+    // this.fixBugColumnResize();
+    if (this.temp_var === true) {
+      console.log('Entro a cambiar autoWidth');
+      this.temp_var = false;
+      setTimeout(() => {
+        this.temp_var = true;
+        this.dtOptions.autoWidth = true;
+      }, 0);
     }
   }
 }
