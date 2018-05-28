@@ -25,13 +25,19 @@ export class PieGraficosComponent extends PieGrafico implements OnInit {
 
   ngOnInit() {
     const width = window.innerWidth;
-    // console.log('Width:' + width);
-    this.data.data_size = (width - 140) / 2;
+    console.log('Width:' + width);
+    if (width >= 1200) {
+      this.data.data_size = (width - 300) / 6;
+    } else if (width > 992){
+      this.data.data_size = (width - 140) / 3;
+    } else {
+      this.data.data_size = (width - 140) / 2;
+    }
     this.data.data_pie_size = this.data.data_size - 20;
     this.data.font_size = this.data.data_pie_size / 5;
-    // console.log('Data_size:' + this.data.data_size);
-    // console.log('Data_pie_size:' + this.data.data_pie_size);
-    // console.log('Font_size:' + this.data.font_size);
+    console.log('Data_size:' + this.data.data_size);
+    console.log('Data_pie_size:' + this.data.data_pie_size);
+    console.log('Font_size:' + this.data.font_size);
     this.graficos = new ApiService(this.http);
     this.graficos.fillApiService('informacionFilial');
     this.graficos.get().subscribe(

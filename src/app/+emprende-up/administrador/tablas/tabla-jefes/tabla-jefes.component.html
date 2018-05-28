@@ -23,7 +23,7 @@
       <thead>
         <tr>
           <th>Equipo</th>
-          <th>Puesto</th>
+          <!--<th>#</th>-->
           <th>Nombre</th>
           <th>Meta</th>
           <th>Ejecutado</th>
@@ -34,8 +34,8 @@
       <tbody>
         <tr *ngFor="let rec of this.data;let i = index;">
           <td>{{rec['id_equipo']}}</td>
-          <td *ngIf="(i+1) < this.data.length">{{i + 1}}°</td>
-          <td *ngIf="(i+1) >= this.data.length">Resultado</td>
+          <!--<td *ngIf="(i+1) < this.data.length">{{i + 1}}°</td>
+          <td *ngIf="(i+1) >= this.data.length">Resultado</td>-->
           <td >{{rec['Nombre']}}</td>
           <td>{{rec['Meta']}}</td>
           <td>{{rec['Ejecutado']}}</td>
