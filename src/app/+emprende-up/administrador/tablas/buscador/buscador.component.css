@@ -1,0 +1,23 @@
+#buscador {
+    float: right;
+    padding: 6px 10px;
+    border-radius: 6px;
+    margin-top: 6px;
+    margin-bottom: 10px;
+}
+
+.b-activo a {
+    color: rgb(255, 0, 21);
+}
+
+.b-inactivo a {
+    color: white;
+}
+
+.b-inactivo {
+    background-color: rgb(255, 0, 21);
+}
+
+.b-activo {
+    background-color: rgba(193,198,208,.6);
+}

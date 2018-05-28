@@ -1,0 +1,71 @@
+.n-bg-near-black {
+    background-color: #18191a;
+}
+
+.opciones-nav {
+    position: relative;
+    height: 28px;
+}
+
+.n-top-100 {
+    top: 100%;
+}
+
+@media screen and (min-width: 30em){
+    .top-auto-ns {
+        top: auto;
+    }
+    .ph0-ns {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .relative-ns {
+        position: relative;
+    }
+    .w-auto-ns {
+        width: auto;
+    }
+    .flex-ns {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+    }
+}
+
+/*.ph3 {
+    padding-left: 16px;
+    padding-left: 1rem;
+    padding-right: 16px;
+    padding-right: 1rem;
+}*/
+
+.absolute {
+    position: absolute;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.items-center {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.left-0 {
+    left: 0;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.td-2 {
+    -webkit-transition-duration: .3s;
+    transition-duration: .3s;
+}

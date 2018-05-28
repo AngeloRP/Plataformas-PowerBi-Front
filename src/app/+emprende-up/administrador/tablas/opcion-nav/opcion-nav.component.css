@@ -1,0 +1,159 @@
+.link, .link:active, .link:focus, .link:hover, .link:link, .link:visited {
+    -webkit-transition: color .15s ease-in;
+    transition: color .15s ease-in;
+}
+
+.link, .link:focus, .n-outline-none, .n-outline-none:focus {
+    outline: none;
+}
+
+.n-mr6 {
+    margin-right: 6px;
+}
+
+@media screen and (min-width: 30em){
+    .n-pv12-ns {
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+}
+
+
+@media screen and (min-width: 30em) {
+    .n-ph6-ns {
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+}
+
+.n-pv9 {
+    padding-top: 9px;
+    padding-bottom: 9px;
+}
+
+@media screen and (min-width: 30em){
+    .f6-ns {
+        font-size: .875rem;
+    }
+    .dn-ns {
+        display: none;
+    }
+    .dib-ns {
+        display: inline-block;
+    }
+}
+
+.f5 {
+    font-size: 16px;
+    font-size: 1rem;
+}
+
+.bw1 {
+    border-width: 2px;
+    border-width: .125rem;
+}
+
+.dib {
+    display: inline-block;
+}
+
+.br-pill {
+    border-radius: 9999px;
+}
+
+.ba {
+    border-style: solid;
+    border-width: 1px;
+}
+
+.white {
+    color: #fff;
+}
+
+.relative {
+    position: relative;
+}
+
+.link {
+    text-decoration: none;
+}
+
+.items-center {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.n-a-center {
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+}
+
+.n-h6 {
+    height: 6px;
+}
+
+.n-w6 {
+    width: 6px;
+}
+
+.td-2 {
+    -webkit-transition-duration: .3s;
+    transition-duration: .3s;
+}
+
+.tp-bc {
+    -webkit-transition-property: background-color;
+    transition-property: background-color;
+}
+
+.flex {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.border-box, a, article, aside, blockquote, body, code, dd, div, dl, dt, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, html, input[type=email], input[type=number], input[type=password], input[type=tel], input[type=text], input[type=url], legend, li, main, nav, ol, p, pre, section, table, td, textarea, th, tr, ul {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+a {
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}
+
+.n-h12 {
+    height: 12px;
+}
+
+.n-w12 {
+    width: 12px;
+}
+
+.n-mr9 {
+    margin-right: 9px;
+}
+
+a.opcion-nav:active{
+
+}
+
+.n-afterline {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    height: 4px;
+    width: 100%;
+    border-radius: 3px;
+}
+
+/*.redondeado {
+    background-color: #18191a;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}*/

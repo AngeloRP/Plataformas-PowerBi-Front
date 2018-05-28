@@ -110,10 +110,11 @@ th{
 .boton_regresar {
     border-radius: 3px; 
     color: #ffff;
+    width: 40px;
     background-color: #4e7b91;
     padding: 5px 10px;
     font-size: 14px;
-    margin-bottom: 15px;
+    margin: 8px 10px 6px 0px;
 }
 
 .boton_regresar:hover,.dataTables_filter:hover  {

@@ -5,6 +5,9 @@ import { TablaJefesComponent } from './tabla-jefes/tabla-jefes.component';
 import { TablaEquiposComponent } from './tabla-equipos/tabla-equipos.component';
 import { SmartadminDatatableModule } from '../../../shared/ui/datatable/smartadmin-datatable.module';
 import { ApiService } from 'app/core/api/api.service';
+import { OpcionesNavComponent } from './opciones-nav/opciones-nav.component';
+import { OpcionNavComponent } from './opcion-nav/opcion-nav.component';
+import { BuscadorComponent } from './buscador/buscador.component';
 
 @NgModule({
   imports: [
@@ -14,7 +17,10 @@ import { ApiService } from 'app/core/api/api.service';
   ],
   declarations: [
     TablaJefesComponent,
-    TablaEquiposComponent
+    TablaEquiposComponent,
+    OpcionesNavComponent,
+    OpcionNavComponent,
+    BuscadorComponent
   ],
   exports: [
     TablaJefesComponent,

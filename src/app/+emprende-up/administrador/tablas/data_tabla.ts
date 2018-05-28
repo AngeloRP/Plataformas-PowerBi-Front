@@ -2,8 +2,9 @@ import { Input, HostListener } from '@angular/core';
 
 export class Datatabla {
   public dtOptions: any = {};
-  public data: any[] ;
+  public data: any[];
   public temp_var: Object = false;
+  public mostrar = true;
   @Input() titulo = '';
   @Input() fondoBase = '';
   constructor() {
@@ -13,6 +14,7 @@ export class Datatabla {
       scrollCollapse: true,
       select: true,
       paging: false,
+      fixedHeader: true,
       deferLoading: 20,
       fixedColumns: {
         leftColumns: 2
@@ -20,6 +22,9 @@ export class Datatabla {
       oLanguage: {
         "sSearch": "<span class='input-group-addon'><i class='glyphicon glyphicon-search'></i></span> ",
         "sLengthMenu": "_MENU_"
+      },
+      language: {
+        searchPlaceholder: 'Busque aquí'
       },
       aaSorting: [],
       autoWidth: false,
@@ -64,6 +69,25 @@ export class Datatabla {
     } else {
       return 'mayor_60';
     }
+  }
+
+  mostrarBuscador(event) {
+
+    console.log('Entro a evento mostrar buscador');
+    setTimeout(() => {
+      this.temp_var = false;
+    }, 0);
+    setTimeout(() => {
+      if (event === true) {
+        this.mostrar = true;
+        this.dtOptions.searching = true;
+      } else {
+        this.mostrar = false;
+        this.dtOptions.searching = false;
+      }
+      this.temp_var = true;
+    }, 10);
+
   }
 
   @HostListener('window:resize', ['$event'])

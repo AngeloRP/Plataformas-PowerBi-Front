@@ -1,0 +1,6 @@
+
+<div *ngIf="!loading" class="opciones-nav n-top-100 left-0 ph3 n-bg-near-black overflow-hidden tp-all td-2 relative-ns flex-ns items-center w-auto-ns top-auto-ns ph0-ns  visibility-hidden n-mx-h0-s disabled-link-s">
+  <ng-container *ngFor="let opcion of opciones;let i = index;">
+      <app-opcion-nav [data]="opcion" [indice]="i" (seleccionar)="seleccionar($event)"></app-opcion-nav>
+  </ng-container>
+</div>

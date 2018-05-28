@@ -106,6 +106,8 @@ export class PieGraficosComponent extends PieGrafico implements OnInit {
 
   eventoMostrarGraficos() {
     this.mostrarGraficos = true;
+    console.log('Loading?:' + this.loading);
+    this.render();
   }
 
   @HostListener('window:resize', ['$event'])

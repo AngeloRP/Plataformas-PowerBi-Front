@@ -1,8 +1,12 @@
-<div *ngIf="mostrarJefes" class="col-xs-12" >
-    <button class="boton_regresar btn " (click)="eventoRegresar()">
-      <i class="fa fa-arrow-left"></i>&nbsp;Regresar
-    </button>
-
+<div *ngIf="mostrarJefes && this.temp_var" class="col-xs-12" >
+    <div class="d_flex">
+        <button class="boton_regresar btn " (click)="eventoRegresar()">
+            <i class="fa fa-arrow-left"></i>&nbsp;
+          </button>
+          <h1>{{titulo}}</h1>
+    </div>
+    <app-opciones-nav></app-opciones-nav>
+    <app-buscador [mostrar]="mostrar" (mostrarEvent)="mostrarBuscador($event)"></app-buscador>
     <table id="{{titulo}}"
     appTextColor
     [columnaCalculo]="'Realizado'" 
@@ -19,7 +23,7 @@
     [columnasColorear]="[
     'Realizado'
     ]"
-    datatable [dtOptions]="dtOptions" class="table table-hover responsive no-wrap" *ngIf="this.temp_var">
+    datatable [dtOptions]="dtOptions" class="table table-condensed table-hover responsive no-wrap" >
       <thead>
         <tr>
           <th>Equipo</th>
@@ -45,7 +49,7 @@
       </tbody>
     </table>
 </div>
-<div *ngIf="!mostrarJefes">
+<div *ngIf="!mostrarJefes && this.temp_var">
   <app-tabla-equipos
   (regresar)="haciaJefes()"
   [idJefe]="idJefe"

@@ -16,6 +16,18 @@ table.dataTable thead th {
     border-bottom: 0px solid #111111 !important;
 }
 
+table.dataTable thead th, table.dataTable thead td{
+    padding: 4px 18px !important;
+}
+
+.dataTables_scrollBody table.dataTable thead th, .DTFC_LeftBodyLiner table.dataTable thead th{
+    padding: 0px 18px !important;
+}
+
+.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody {
+    border: none;
+}
+
 table.dataTable.DTFC_Cloned thead tr th {
     color: #FFFFFF !important;
 }
@@ -68,7 +80,9 @@ thead>tr>th {
 
 div.dataTables_wrapper div.dataTables_filter label {
     float: left!important;
-    padding-bottom: 15px;
+    padding-bottom: 3px;
+    width: inherit;
+    margin: -3px;
 }
 
 .dataTables_wrapper .dataTables_filter {
@@ -76,9 +90,18 @@ div.dataTables_wrapper div.dataTables_filter label {
 }
 
 div.dataTables_wrapper div.dataTables_filter input {
-    padding: 6px 12px;
-    border: 1px solid #ccc !important;
-    background-color: #f4f4f4;
+    margin-left: 0px !important;
+    margin-right: -4px !important;
+    padding: 7px 12px;
+    border: none !important;
+    background-color: #fff;
+    width: calc(100% - 32px);
+}
+
+.dataTables_filter .input-group-addon {
+    width: 36px !important;
+    border: none;
+    color: #93979e;
 }
 
 .input-group-addon{
