@@ -2,7 +2,7 @@
 
   <div class="">
     <ul class="list-inline">
-      <li class="panel" id="panel-pie">
+      <!--<li class="panel" id="panel-pie">
         <div class="container">
           <div class="hijo">
             <div class="centrarHorizontalmente">
@@ -39,43 +39,45 @@
           </div>
         </div>
 
-      </li>
-      <!--<li>&nbsp;&nbsp;&nbsp;
-        <div class="easy-pie-chart txt-color-blue easyPieChart" data-percent="36" data-pie-size="180">
-          <span class="percent percent-sign txt-color-blue font-xl semi-bold">36</span>
-        </div>
-        &nbsp;&nbsp;&nbsp;
-      </li>
-      <li>&nbsp;&nbsp;&nbsp;
-        <div class="easy-pie-chart txt-color-pinkDark easyPieChart" data-percent="46" data-pie-size="160">
-          <span class="percent percent-sign txt-color-pinkDark font-lg semi-bold">46</span>
-        </div>
-        &nbsp;&nbsp;&nbsp;
-      </li>
-      <li>&nbsp;&nbsp;&nbsp;
-        <div class="easy-pie-chart txt-color-greenLight easyPieChart" data-percent="56" data-pie-size="110">
-          <span class="percent percent-sign txt-color-greenLight font-md">56</span>
-        </div>
-        &nbsp;&nbsp;&nbsp;
-      </li>
-      <li>&nbsp;&nbsp;&nbsp;
-        <div class="easy-pie-chart txt-color-orange easyPieChart" data-percent="66" data-pie-size="60">
-          <span class="percent percent-sign txt-color-orange">66</span>
-        </div>
-        &nbsp;&nbsp;&nbsp;
-      </li>
-      <li>&nbsp;&nbsp;&nbsp;
-        <div class="easy-pie-chart txt-color-darken easyPieChart" data-percent="76" data-pie-size="45">
-          <span class="percent percent-sign font-sm">76</span>
-        </div>
-        &nbsp;&nbsp;&nbsp;
-      </li>
-      <li>&nbsp;&nbsp;&nbsp;
-        <div class="easy-pie-chart txt-color-blue easyPieChart" data-percent="86" data-pie-size="35">
-          <span class="percent percent-sign font-xs">86</span>
-        </div>
-        &nbsp;&nbsp;&nbsp;
       </li>-->
+      <li>
+        <div class="container">
+          <div class="hijo">
+            <div class="centrarHorizontalmente">
+              <h2 class="{{data.data_color}} titulo_pie" [ngStyle]="{'font-size': this.data.font_size + 'px'}">{{data.titulo}}</h2>
+            </div>
+          </div>
+        </div>
+        <div appCentrarPie>
+          <div class=" {{data.data_color}} easy-pie-chart easyPieChart " [attr.data-percent]="data.data_percent" [attr.data-size]="data.data_size"
+            [attr.data-pie-size]="data.data_pie_size">
+            <div class="container">
+              <div class="hijo">
+                <div class="centrarHorizontalmente">
+                  <button (click)="haciaTablaJefes()">
+                    <span
+                    
+                    class="
+                    {{mostrarGrafica}}
+                    {{data.data_color}}
+                    percent
+                    percent-sign
+                    semi-bold" 
+                    [ngStyle]="{
+                      'font-size': (this.data.font_size * 1.5) + 'px'
+                    }"
+                    
+                    >
+                      {{data.data_percent}}
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </li>
     </ul>
 
   </div>
