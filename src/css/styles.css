@@ -47,7 +47,7 @@
     padding-bottom: 50px;
     overflow: hidden;
     padding-top: 15px;
-    background-color: #F5F5F6;
+    background-color: #edeff2;
 }
 
 .page-footer {
@@ -147,7 +147,6 @@ th{
 .hidden-menu #main{
     left: 0px !important;
     margin-left: 0px !important;
-    background-color: #F5F5F6;
 }
 
 .btn-header {
