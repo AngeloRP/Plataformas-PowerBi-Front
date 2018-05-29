@@ -39,14 +39,16 @@
 
 #left-panel {
     width: 250px;
+    position: fixed !important;
     padding-top: 64px !important;
     background-color: #eff0ef;
+    display: block;
 }
 
 #main {
     padding-bottom: 50px;
     overflow: hidden;
-    padding-top: 15px;
+    padding-top: 65px;
     background-color: #edeff2;
 }
 
@@ -137,9 +139,6 @@ th{
     height: inherit !important;
 }
 
-#left-panel{
-    display: block;
-}
 
 .hidden-menu #left-panel{
     display: none;

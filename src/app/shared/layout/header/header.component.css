@@ -8,6 +8,11 @@
     padding-left: 16%;
 }
 
+#header {
+    position: fixed;
+}
+
+
 @media all and (min-width: 980px){
     #titleHeader{
         font-size: 20px;
@@ -45,6 +50,18 @@
     #header{
         display: grid;
         height: auto;
+    }
+}
+
+@media all and (min-width:312px) {
+    #header{
+        width: 100%;
+    }
+}
+
+@media all and (max-width:311px) {
+    #header{
+        width: auto;
     }
 }
 

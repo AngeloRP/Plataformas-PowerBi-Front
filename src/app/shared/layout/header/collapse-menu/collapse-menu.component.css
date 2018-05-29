@@ -1,6 +1,7 @@
 #menu_collapse {
     width: 45px;
     font-size: 25px;
+    margin-top: 0px !important;
 }
 
 #menu_collapse i{

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, AfterContentChecked } from '@angular/core';
 import { Datatabla } from '../data_tabla';
 import { ApiService } from 'app/core/api/api.service';
 import { Http } from '@angular/http';
@@ -8,7 +8,7 @@ import { Http } from '@angular/http';
   templateUrl: './tabla-equipos.component.html',
   styleUrls: ['./tabla-equipos.component.css']
 })
-export class TablaEquiposComponent extends Datatabla implements OnInit {
+export class TablaEquiposComponent extends Datatabla implements OnInit, AfterContentChecked {
   @Input() idJefe = 1;
   @Output() regresar: EventEmitter<any>;
   constructor(
@@ -39,9 +39,19 @@ export class TablaEquiposComponent extends Datatabla implements OnInit {
             }
           }
         }
-        $('table.dataTable.DTFC_Cloned thead tr th').addClass(this.fondoBase + '_background');
+        // $('table.dataTable.DTFC_Cloned thead tr th').addClass(this.fondoBase + '_background');
       }
     );
+  }
+
+  ngAfterContentChecked() {
+    // console.log('Fondo Base:' + this.fondoBase);
+    $(
+      '.dataTables_wrapper ' +
+      '.DTFC_ScrollWrapper ' +
+      '.DTFC_LeftWrapper ' +
+      '.DTFC_LeftHeadWrapper ' +
+      'table.dataTable.DTFC_Cloned thead tr th').addClass(this.fondoBase + '_background');
   }
 
   eventoRegresar() {
