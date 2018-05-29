@@ -38,7 +38,7 @@ export class PieGraficosComponent extends PieGrafico implements OnInit {
       this.data.data_size = (width - 140) / 2;
     }
     this.data.data_pie_size = this.data.data_size - 20;
-    this.data.font_size = this.data.data_pie_size / 5;
+    this.data.font_size = this.data.data_pie_size / 4;
     console.log('Data_size:' + this.data.data_size);
     console.log('Data_pie_size:' + this.data.data_pie_size);
     console.log('Font_size:' + this.data.font_size);

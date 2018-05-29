@@ -5,11 +5,12 @@
 .opciones-nav {
     position: relative;
     height: auto;
+    display: flex;
 }
 
-.n-top-100 {
+/*.n-top-100 {
     top: 100%;
-}
+}*/
 
 @media screen and (min-width: 30em){
     .top-auto-ns {

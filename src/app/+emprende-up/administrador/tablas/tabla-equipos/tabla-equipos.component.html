@@ -1,12 +1,12 @@
-<div class="col-xs-12" style="display: grid;">
+<div *ngIf="this.temp_var" class="col-xs-12" style="display: grid;">
     <div class="d_flex">
         <button class="boton_regresar btn " (click)="eventoRegresar()">
             <i class="fa fa-arrow-left"></i>&nbsp;
         </button>
         <h1>{{titulo}}</h1>
     </div>
-    <app-opciones-nav></app-opciones-nav>
-    <app-buscador></app-buscador>
+    <app-opciones-nav  ></app-opciones-nav>
+    <app-buscador [mostrar]="mostrar" (mostrarEvent)="mostrarBuscador($event)"></app-buscador>
     <table id="{{titulo}}" appTextColor [columnaCalculo]="'Realizado'" [metodoCalculo]="colorear" [contenido]="this.data" [columnas]="[
       'Nombre',
       'Meta',
@@ -15,7 +15,7 @@
       'Realizado'
     ]" [columnasColorear]="[
     'Realizado'
-    ]" datatable [dtOptions]="dtOptions" class="table table-condensed responsive table-hover " *ngIf="this.temp_var">
+    ]" datatable [dtOptions]="dtOptions" class="table table-condensed responsive table-hover " >
         <thead>
             <tr>
                 <th>Usuario</th>

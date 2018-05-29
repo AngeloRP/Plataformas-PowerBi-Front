@@ -4,7 +4,7 @@ export class Datatabla {
   public dtOptions: any = {};
   public data: any[];
   public temp_var: Object = false;
-  public mostrar = true;
+  public mostrar = false;
   @Input() titulo = '';
   @Input() fondoBase = '';
   constructor() {
@@ -16,6 +16,7 @@ export class Datatabla {
       paging: false,
       fixedHeader: true,
       deferLoading: 20,
+      searching: false,
       fixedColumns: {
         leftColumns: 2
       },
