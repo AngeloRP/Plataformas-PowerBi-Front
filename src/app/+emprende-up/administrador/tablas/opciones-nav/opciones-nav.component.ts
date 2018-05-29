@@ -31,15 +31,26 @@ export class OpcionesNavComponent extends OpcionNav implements OnInit {
     });
   }
 
-  seleccionar(event){
+  seleccionar(event) {
     this.indice = event;
-    for(let i = 0; i<this.opciones.length; i++){
-      if(i === this.indice){
-        this.opciones[i].presionado = true;
+    // console.log('Opciones');
+    // console.log(JSON.stringify(this.opciones));
+    // console.log('Seleccionar event:' + JSON.stringify(event));
+    for (let i = 0; i < this.opciones.length; i++) {
+      if (i === this.indice) {
+        this.opciones[i] = {
+          titulo: this.opciones[i].titulo,
+          presionado: true
+        };
       } else {
-        this.opciones[i].presionado = false;
+        this.opciones[i] = {
+          titulo: this.opciones[i].titulo,
+          presionado: false
+        };
       }
     }
+    // console.log('Opciones cambiadas');
+    // console.log(JSON.stringify(this.opciones));
   }
 
 }

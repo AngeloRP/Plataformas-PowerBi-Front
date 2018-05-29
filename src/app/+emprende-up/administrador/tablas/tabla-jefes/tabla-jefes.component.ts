@@ -68,9 +68,20 @@ export class TablaJefesComponent extends Datatabla implements OnInit, AfterConte
 
   haciaEquipos(event) {
     console.log('Evento:' + JSON.stringify(event));
-    this.idJefe = event[0];
-    this.nombreJefe = event[1];
-    this.mostrarJefes = false;
+    if (
+      event[0] !== undefined &&
+      event[0] !== null &&
+      event[0] !== '' &&
+      event[1] !== undefined &&
+      event[1] !== null &&
+      event[1] !== ''
+    ) {
+      this.idJefe = event[0];
+      this.nombreJefe = event[1];
+      this.mostrarJefes = false;
+    } else {
+
+    }
   }
 
   rumbo_A(event) {
