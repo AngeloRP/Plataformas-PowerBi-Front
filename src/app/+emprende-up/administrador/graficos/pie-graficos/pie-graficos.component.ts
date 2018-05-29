@@ -11,7 +11,8 @@ import { PieGrafico } from '../pie-grafico';
 export class PieGraficosComponent extends PieGrafico implements OnInit {
   tarjetas: PieGrafico;
   servicios: PieGrafico;
-  compras: PieGrafico;
+  credicompras: PieGrafico;
+  efectivo: PieGrafico;
   mostrarGraficos = true;
   loading = true;
   filiales: any;
@@ -20,7 +21,8 @@ export class PieGraficosComponent extends PieGrafico implements OnInit {
     super();
     this.tarjetas = new PieGrafico();
     this.servicios = new PieGrafico();
-    this.compras = new PieGrafico();
+    this.credicompras = new PieGrafico();
+    this.efectivo = new PieGrafico();
   }
 
   ngOnInit() {
@@ -78,19 +80,29 @@ export class PieGraficosComponent extends PieGrafico implements OnInit {
       data_pie_size: this.data.data_pie_size,
       data_color: 'grafico_servicios_color',
       data_percent: 65,
-      titulo: 'Servicios',
+      titulo: 'Seguros',
       font_size: this.data.font_size,
       id: 2,
     });
 
-    this.compras.fillPieGrafico({
+    this.credicompras.fillPieGrafico({
       data_size: this.data.data_size,
       data_pie_size: this.data.data_pie_size,
       data_color: 'grafico_compras_color',
       data_percent: 80,
-      titulo: 'Compras',
+      titulo: 'Credicompras',
       font_size: this.data.font_size,
       id: 3
+    });
+
+    this.efectivo.fillPieGrafico({
+      data_size: this.data.data_size,
+      data_pie_size: this.data.data_pie_size,
+      data_color: 'grafico_efectivo_color',
+      data_percent: 90,
+      titulo: 'Efectivo',
+      font_size: this.data.font_size,
+      id: 4
     });
   }
 

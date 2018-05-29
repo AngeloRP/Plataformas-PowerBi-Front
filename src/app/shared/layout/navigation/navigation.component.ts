@@ -218,6 +218,51 @@ export class NavigationComponent implements OnInit, AfterContentChecked {
                 class: '',
                 link: { commands: ['/administrador/graficos'] },
                 hasChilds: false
+              },
+              {
+                id: 'graficos_servicios',
+                title: 'Servicios',
+                imagen: 'fa fa-lg fa-fw fa-group',
+                clase_menu: 'menu-item-parent',
+                class: '',
+                link: { commands: ['/administrador/graficos'] },
+                hasChilds: false
+              },
+              {
+                id: 'graficos_tarjetas',
+                title: 'Tarjetas',
+                imagen: 'fa fa-lg fa-fw fa-group',
+                clase_menu: 'menu-item-parent',
+                class: '',
+                link: { commands: ['/administrador/graficos'] },
+                hasChilds: false
+              },
+              {
+                id: 'graficos_efectivo',
+                title: 'Efectivo',
+                imagen: 'fa fa-lg fa-fw fa-group',
+                clase_menu: 'menu-item-parent',
+                class: '',
+                link: { commands: ['/administrador/graficos'] },
+                hasChilds: false
+              },
+              {
+                id: 'graficos_crediventas',
+                title: 'Crediventas',
+                imagen: 'fa fa-lg fa-fw fa-group',
+                clase_menu: 'menu-item-parent',
+                class: '',
+                link: { commands: ['/administrador/graficos'] },
+                hasChilds: false
+              },
+              {
+                id: 'graficos_crediventas_vea',
+                title: 'Crediventas VEA',
+                imagen: 'fa fa-lg fa-fw fa-group',
+                clase_menu: 'menu-item-parent',
+                class: '',
+                link: { commands: ['/administrador/graficos'] },
+                hasChilds: false
               }
             ]
           } else {

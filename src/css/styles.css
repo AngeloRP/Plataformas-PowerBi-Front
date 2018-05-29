@@ -43,6 +43,7 @@
     padding-top: 64px !important;
     background-color: #eff0ef;
     display: block;
+    min-height: calc(100% - 50px);
 }
 
 #main {
@@ -53,7 +54,7 @@
 }
 
 .page-footer {
-    padding-left: 260px;
+    padding-left: 20px;
     height: 50px;
 }
 

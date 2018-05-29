@@ -68,6 +68,10 @@
     color: #cc7d34 !important;
   }
 
+  .grafico_efectivo_color {
+    color: #c9a836 !important;
+}
+
   td a {
     color: inherit !important;
   }

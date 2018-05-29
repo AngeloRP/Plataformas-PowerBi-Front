@@ -13,7 +13,13 @@
   </app-pie-grafico>
   
   <app-pie-grafico
-    [data]="this.compras.data"
+    [data]="this.credicompras.data"
+    (regresar)="haciaTablaJefes($event)"
+  >
+  </app-pie-grafico>
+
+  <app-pie-grafico
+    [data]="this.efectivo.data"
     (regresar)="haciaTablaJefes($event)"
   >
   </app-pie-grafico>
