@@ -30,7 +30,7 @@
     padding: 16.5px calc(50% - 150px);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 600px) and (min-width: 312px) {
     .imglogoUp {
         padding: 16.5px calc(50% - 153px);
     }
@@ -57,11 +57,16 @@
     #header{
         width: 100%;
     }
+    
 }
 
 @media all and (max-width:311px) {
     #header{
         width: auto;
+    }
+    .imglogoUp  {
+        padding: 20.5px 0px;
+        width: calc(100% - 82px);
     }
 }
 
