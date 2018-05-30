@@ -1,21 +1,27 @@
-
 <div class="login_container">
   <div class="container">
     <div class="hijo " [ngStyle]="{'height':altura}">
       <div class="col-xs-12 col-sm-8 col-md-8 col-lg-6 centrarHorizontalmente">
         <div class="" style="display:grid">
           <div class="login_header">
-            <img src="assets/img/emprende-up/fondo_login_dashboard.png">
+            <!--<img src="assets/img/emprende-up/fondo_login_dashboard.png">-->
+            <img src="assets/img/financieraoh.png">
           </div>
           <form class="login_contenido" (submit)="login_submit($event)">
             <fieldset>
               <section>
-                <label class="label_login ">Usuario</label>
-                <input class="input_login" id="email" [(ngModel)]="login.email" type="email" required [ngModelOptions]="{standalone: true}" >
+                <div class="label_with_icon">
+                  <i class="glyphicon glyphicon-user"></i>
+                  <label class="label_login ">Usuario</label>
+                </div>
+                <input class="input_login" id="email" [(ngModel)]="login.email" type="email" required [ngModelOptions]="{standalone: true}">
               </section>
               <section>
-                <label class="label_login">Contraseña</label>
-                <input class="input_login" id="password" [(ngModel)]="login.password" type="password" required [ngModelOptions]="{standalone: true}" >
+                <div class="label_with_icon">
+                  <i class="fa fa-key"></i>
+                  <label class="label_login">Contraseña</label>
+                </div>
+                <input class="input_login" id="password" [(ngModel)]="login.password" type="password" required [ngModelOptions]="{standalone: true}">
               </section>
             </fieldset>
             <footer>

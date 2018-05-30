@@ -37,6 +37,8 @@
 
 .login_header img {
     width: 100%;
+    padding: 8% 10% 8% 10%;
+    margin-bottom: 16%;
     height: 80px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -57,6 +59,7 @@
 .login_header {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    margin-top: 25%;
     /*::before{
         content: "";
         display: block;
@@ -73,10 +76,15 @@
     background-image: url("../../../assets/img/emprende-up/login_header.jpg") !important;*/
 }
 
+.centrarHorizontalmente {
+    width: 100%;
+    height: 100%;
+}
+
 .login_contenido {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    background-color: white;
+    /* background-color: white;*/
     width: 100%;
 }
 
@@ -91,20 +99,19 @@
 .login_contenido section {
     display: inline-flex;
     padding-top: 10px;
-    padding-right: 20px;
 }
 
 .login_contenido section * {
-    padding: 0;
     font-weight: 600;
+    background-color: #ffffff00;
+    font-size: 15px;
 }
 
 .label_login {
     color: #c5c5c5;
-    padding-left: 10% !important;
-    width: 30% !important;
+    width: 70% !important;
     margin: 0;
-    padding-top: 15px !important;
+    padding: 15px 15px 0px !important;
 }
 
 .input_login {
@@ -116,17 +123,29 @@
 }
 
 .boton_login {
-    background-color: #1a89b1;
+    background-color: #1C9EB4;
     color: white;
     border-radius: 3px;
     -ms-flex-align: center;
     align-items: center;
     text-align: center;
-    width: 25% !important;
-    margin-left: calc(75% - 20px);
     margin-top: 25px;
-    padding-bottom: 7px;
-    padding-top: 7px;
+    padding: 8px 0px;
+    font-size: 19px;
+    margin: 25px 0;
+}
+
+.label_with_icon {
+    display: flex;
+    width: 30% !important;
+}
+
+.label_with_icon i {
+    padding: 10% 0 0 10%;
+}
+
+.label_with_icon i:before {
+    color: #94999F;
 }
 
 @media (min-width:0px) and (max-width:450px){
@@ -134,7 +153,13 @@
         display: grid !important;
     }
     .input_login {
-        margin-left: 10%;
-        width: 90% !important;
+        width: 100% !important;
+    }
+    .label_with_icon {
+        width: 100% !important;
+    }
+    .label_with_icon i {
+        padding: 5% 0 0;
+        width: 10%;
     }
 }
