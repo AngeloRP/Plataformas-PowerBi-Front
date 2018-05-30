@@ -8,6 +8,7 @@ import { ApiService } from 'app/core/api/api.service';
 import { OpcionesNavComponent } from './opciones-nav/opciones-nav.component';
 import { OpcionNavComponent } from './opcion-nav/opcion-nav.component';
 import { BuscadorComponent } from './buscador/buscador.component';
+import { FinantiendaSelectComponent } from './finantienda-select/finantienda-select.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { BuscadorComponent } from './buscador/buscador.component';
     TablaEquiposComponent,
     OpcionesNavComponent,
     OpcionNavComponent,
-    BuscadorComponent
+    BuscadorComponent,
+    FinantiendaSelectComponent
   ],
   exports: [
     TablaJefesComponent,
