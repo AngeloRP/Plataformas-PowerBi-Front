@@ -68,9 +68,9 @@
 }
 
 section>label>input{
-    /* background: transparent;*/
+    // background: transparent;
     color:black !important;
-    /* border-radius: 6px;*/
+    // border-radius: 6px;
 }
 
 .loginHeader{
@@ -80,7 +80,7 @@ section>label>input{
     background-position: center !important;
     height: 35px;*/
 
-    /*background-image: url("../../../../assets/img/emprende-up/logo_side_bar.png") !important;*/
+    background-image: url("../../../../assets/img/emprende-up/logo_side_bar.png") !important;
     background-repeat: no-repeat !important;
     background-size: 40% 95%!important;
     background-position: center !important;
