@@ -28,11 +28,11 @@
 
 .imglogoUp{
     padding: 16.5px calc(50% - 150px);
-    width: calc(100% - 90px) !important;
-    background-color: white;
+    /*width: calc(100% - 90px) !important;
+    background-color: white;*/
 }
 
-@media (max-width: 600px) and (min-width: 356px) {
+@media (max-width: 600px) and (min-width: 312px) {
     .imglogoUp {
         padding: 16.5px calc(50% - 153px);
     }
