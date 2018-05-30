@@ -130,7 +130,7 @@ export class ModalComponent implements OnInit {
     this.modalData.formInput[indice].column.value = this.modalData.formInput[indice].column.optionsSelecteds;
   }
   onChange(indice: number, value: any, isChecked: boolean) {
-    let array = new Array<any>();
+    const array = new Array<any>();
     let i = 0;
     // console.log('Datos:' + JSON.stringify(this.modalData.formInput[indice].column.options));
     // console.log('Indice:' + indice);
@@ -367,7 +367,7 @@ export class ModalComponent implements OnInit {
 
   realizarOperacion() {
     console.log('Entro a Realizar Operacion');
-    this.operationService = new ApiService(this.http);
+    this.operationService = new ApiService(this.http, [], this.notificationService);
     this.operationService.fillApiService(
       this.modalData.url,
       this.modalData.headers,

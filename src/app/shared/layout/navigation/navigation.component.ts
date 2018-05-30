@@ -7,6 +7,7 @@ import { ApiService } from '../../../core/api/api.service';
 import { Http } from '@angular/http';
 import { SidebarElementClass } from 'app/shared/layout/navigation/sidebar-element';
 import { LayoutService } from '../layout.service';
+import { NotificationService } from '../../utils/notification.service';
 
 declare var $: any;
 @Component({
@@ -167,7 +168,8 @@ export class NavigationComponent implements OnInit, AfterContentChecked {
     public http: Http,
     private router: Router,
     private mesesService: ApiService,
-    private layoutService: LayoutService
+    private layoutService: LayoutService,
+    public notificationService: NotificationService
     // private evaluacionesService: ApiService,
     // private indicadoresService: ApiService
   ) {
@@ -179,7 +181,7 @@ export class NavigationComponent implements OnInit, AfterContentChecked {
   }
 
   refreshEvaluacionService() {
-    this.mesesService = new ApiService(this.http);
+    this.mesesService = new ApiService(this.http, [], this.notificationService);
     this.mesesService.fillApiService('obtenerStartUpConMesActivado/' + window.localStorage.getItem('start-up-id'),
       null);
     /*

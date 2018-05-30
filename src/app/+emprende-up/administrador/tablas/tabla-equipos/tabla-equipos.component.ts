@@ -2,6 +2,7 @@ import { Component, OnInit, Input, EventEmitter, Output, AfterContentChecked } f
 import { Datatabla } from '../data_tabla';
 import { ApiService } from 'app/core/api/api.service';
 import { Http } from '@angular/http';
+import { NotificationService } from 'app/shared/utils/notification.service';
 
 @Component({
   selector: 'app-tabla-equipos',
@@ -13,6 +14,7 @@ export class TablaEquiposComponent extends Datatabla implements OnInit, AfterCon
   @Output() regresar: EventEmitter<any>;
   constructor(
     public http: Http,
+    public notificationSvr: NotificationService,
     private equipoService: ApiService
   ) {
     super();
@@ -21,7 +23,7 @@ export class TablaEquiposComponent extends Datatabla implements OnInit, AfterCon
 
   ngOnInit() {
     this.temp_var = false;
-    this.equipoService = new ApiService(this.http);
+    this.equipoService = new ApiService(this.http, [], this.notificationSvr);
     this.equipoService.fillApiService('informacionEquipo/' + this.idJefe);
     this.equipoService.get().subscribe(
       equipo => {

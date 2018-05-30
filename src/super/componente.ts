@@ -10,6 +10,7 @@ import { Input, EventEmitter, Output } from '@angular/core';
 import { Header } from '../app/+emprende-up/super-module/interfaces/interfaces';
 import { ApiService } from '../app/core/api/api.service';
 import { Http } from '@angular/http';
+import { NotificationService } from 'app/shared/utils/notification.service';
 
 export enum OperacionWidget {
   ACTUALIZANDO = 0,
@@ -39,7 +40,7 @@ export class Componente {
   @Output() elimino_form: EventEmitter<any>;
   private rowForms: Array<RowForm>;
   private sectionsInt: Array<SectionInt>;
-  constructor(public backSvr: ApiService, public http: Http) {
+  constructor(public backSvr: ApiService, public http: Http, public notificationSvr: NotificationService) {
     this.date = new Date();
     this.rowForms = new Array<RowForm>();
     this.sectionsInt = new Array<SectionInt>();
@@ -109,7 +110,7 @@ export class Componente {
     // console.log('Headers Local GET:' + headersLocalGet);
 
     if (urlGet !== null) {
-      this.backSvr = new ApiService(this.http);
+      this.backSvr = new ApiService(this.http, [], this.notificationSvr);
       this.backSvr.fillApiService(urlGet, headersGet, headersLocalGet);
       this.configuracionParaIngresarHttp(urlPost, titulo);
       // console.log('URL:' + this.backSvr.webAddress.getUrl());

@@ -23,7 +23,7 @@ export class ConexionBack extends MultiIdiomas {
     }
 
     resetOperation(url: string, headersLocalStorage: string[], headers: Header[], typeOperation?: HttpOperations) {
-        this.operationService = new ApiService(this.http);
+        this.operationService = new ApiService(this.http, [], this.notificacionService);
         // console.log('Headers:' + headersLocalStorage);
         this.operationService.fillApiService(url, headers, headersLocalStorage);
         /*if (this.isPressedAdd && typeOperation === HttpOperations.POST) {
@@ -48,7 +48,6 @@ export class ConexionBack extends MultiIdiomas {
         console.log('Header Keys :' + this.operationService.webAddress.getHeaderKeys());
         console.log('Header Values:' + this.operationService.webAddress.getHeaderValues());
         console.log('Url:' + this.operationService.webAddress.getUrl());
-        
         switch (back.typeOperation) {
             case HttpOperations.POST: {
                 operacion = this.operationService.post(

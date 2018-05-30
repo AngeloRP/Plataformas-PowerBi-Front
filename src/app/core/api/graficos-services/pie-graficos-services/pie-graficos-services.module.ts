@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FinantiendasService } from './finantiendas.service';
+import { PieGraficosService } from './pie-graficos.service';
 
 @NgModule({
   imports: [
@@ -8,7 +8,7 @@ import { FinantiendasService } from './finantiendas.service';
   ],
   declarations: [],
   providers: [
-    FinantiendasService
+    PieGraficosService
   ]
 })
-export class FinantiendasServicesModule { }
+export class PieGraficosServicesModule { }

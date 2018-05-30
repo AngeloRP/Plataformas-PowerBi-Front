@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FinantiendaInterface } from '../../finantienda/finantienda.interface';
+import { FinantiendaInterface } from '../../../../core/api/finantiendas-services/finantienda/finantienda.interface';
 
 @Component({
   selector: 'app-finantienda-select',

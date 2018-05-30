@@ -1,7 +1,8 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { ApiService } from '../../../../core/api/api.service';
+// import { ApiService } from '../../../../core/api/api.service';
 import { Http } from '@angular/http';
 import { PieGrafico } from '../pie-grafico';
+import { PieGraficosService } from '../../../../core/api/graficos-services/pie-graficos-services/pie-graficos.service';
 
 @Component({
   selector: 'app-pie-graficos',
@@ -17,7 +18,10 @@ export class PieGraficosComponent extends PieGrafico implements OnInit {
   loading = true;
   filiales: any;
 
-  constructor(private graficos: ApiService, private http: Http) {
+  constructor(
+    private http: Http,
+    private graficoSvr: PieGraficosService
+  ) {
     super();
     this.tarjetas = new PieGrafico();
     this.servicios = new PieGrafico();
@@ -44,7 +48,12 @@ export class PieGraficosComponent extends PieGrafico implements OnInit {
     console.log('Data_size:' + this.data.data_size);
     console.log('Data_pie_size:' + this.data.data_pie_size);
     console.log('Font_size:' + this.data.font_size);
-    this.graficos = new ApiService(this.http);
+    this.graficoSvr.obtenerFiliales().then(() => {
+      this.filiales = this.graficoSvr.results;
+      this.fillPieGrafico();
+      this.loading = false;
+    });
+    /*this.graficos = new ApiService(this.http);
     this.graficos.fillApiService('informacionFilial');
     this.graficos.get().subscribe(
       filiales => {
@@ -59,7 +68,7 @@ export class PieGraficosComponent extends PieGrafico implements OnInit {
       },
       error => {
       }
-    );
+    );*/
   }
 
 

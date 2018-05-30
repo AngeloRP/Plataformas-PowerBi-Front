@@ -485,7 +485,7 @@ export class FormComponent extends Form implements OnInit, OnChanges {
       }
     } else if (nombre_input === 'region') {
       // console.log('Region Id:' + JSON.stringify(value));
-      this.operationService = new ApiService(this.http);
+      this.operationService = new ApiService(this.http, [], this.notificationService);
       this.operationService.fillApiService('obtenerProvincia/' + value);
       await this.operationService
         .get()
@@ -536,7 +536,7 @@ export class FormComponent extends Form implements OnInit, OnChanges {
         'province'
       );
     } else if (nombre_input === 'province') {
-      this.operationService = new ApiService(this.http);
+      this.operationService = new ApiService(this.http, [], this.notificationService);
       this.operationService.fillApiService('obtenerDistrito/' + value);
       await this.operationService
         .get()

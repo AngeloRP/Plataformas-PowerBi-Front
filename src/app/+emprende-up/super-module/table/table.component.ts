@@ -81,7 +81,9 @@ export class TableComponent implements OnInit {
     rowComentario = 0;
     @ViewChild(DatatableComponent) table: DatatableComponent;
 
-    constructor(private apiService: ApiService,
+    constructor(
+        public notificationSvr: NotificationService,
+        private apiService: ApiService,
         private tableService: ApiService,
         private http: Http) {
         this.outputEvent = new EventEmitter<any>();
@@ -179,7 +181,7 @@ export class TableComponent implements OnInit {
         // console.log('Columnas:' +  this.dataTabla.tableColums);
         // console.log('Columnas:' +  JSON.stringify(this.dataTabla.tableColums));
         this.urlUpdateCache = this.urlUpdate;
-        this.apiService = new ApiService(this.http);
+        this.apiService = new ApiService(this.http, [], this.notificationSvr);
         this.apiService.fillApiService(
             this.url,
             this.headers,
@@ -187,7 +189,7 @@ export class TableComponent implements OnInit {
         );
         this.apiService.get().subscribe(
             data => {
-            console.log('Data Tabla:' + JSON.stringify(data));
+                console.log('Data Tabla:' + JSON.stringify(data));
                 if (data.data.success) {
                     // cache our list
                     if (data.data[this.rpta]) {
@@ -276,7 +278,7 @@ export class TableComponent implements OnInit {
         // console.log('UPDATED!', this.rows[rowIndex][cell]); */
         // console.log('Temp:' + this.temp[rowIndex]['objetivo_id']);
 
-        this.tableService = new ApiService(this.http);
+        this.tableService = new ApiService(this.http, [], this.notificationSvr);
         this.tableService.webAddress.headers = config_server.headers;
 
         let value;
@@ -445,7 +447,7 @@ export class TableComponent implements OnInit {
     getRowClass(row) {
         const realizado = row['Realizado'];
         return {
-            'valor0' : realizado === 0,
+            'valor0': realizado === 0,
             'entre_1_40': realizado > 0 && realizado <= 40,
             'entre_40_60': realizado > 40 && realizado <= 60,
             'mayor_60': realizado > 60

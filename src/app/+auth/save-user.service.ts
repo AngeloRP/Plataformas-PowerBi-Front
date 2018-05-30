@@ -30,7 +30,7 @@ export class SaveUserService {
 
   public navigateHome(tipoUsuario: number) {
     console.log('Tipo Usuario:' + tipoUsuario);
-    this.urlService = new ApiService(this.http);
+    // this.urlService = new ApiService(this.http);
     // this.urlService.fillApiService('');
 
     if (tipoUsuario === 3) {

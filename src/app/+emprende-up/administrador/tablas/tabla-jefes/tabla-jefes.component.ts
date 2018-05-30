@@ -2,6 +2,7 @@ import { Component, OnInit, Input, EventEmitter, Output, AfterContentChecked } f
 import { Datatabla } from '../data_tabla';
 import { Http } from '@angular/http';
 import { ApiService } from 'app/core/api/api.service';
+import { NotificationService } from '../../../../shared/utils/notification.service';
 declare let $: any;
 @Component({
   selector: 'app-tabla-jefes',
@@ -17,14 +18,15 @@ export class TablaJefesComponent extends Datatabla implements OnInit, AfterConte
 
   constructor(
     public http: Http,
-    private jefesService: ApiService
+    private jefesService: ApiService,
+    public notificationSvr: NotificationService
   ) {
     super();
     this.regresar = new EventEmitter<any>();
   }
 
   ngOnInit() {
-    this.jefesService = new ApiService(this.http);
+    this.jefesService = new ApiService(this.http, [], this.notificationSvr);
     this.jefesService.fillApiService('informacionJefesPorFilial/' + this.idFilial);
     this.jefesService.get().subscribe(
       jefes => {

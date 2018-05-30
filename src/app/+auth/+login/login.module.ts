@@ -5,13 +5,15 @@ import { LoginComponent } from './login.component';
 import { SuperComunModule } from '../../+emprende-up/super-module/super-comun.module';
 import { SuperModule } from '../../+emprende-up/super-module/super.module';
 import { FormsModule } from '@angular/forms';
+import { AuthServicesModule } from '../../core/api/auth-services/auth-services.module';
 
 @NgModule({
   imports: [
     SuperComunModule,
     LoginRoutingModule,
     FormsModule,
-    SuperModule
+    SuperModule,
+    AuthServicesModule
   ],
   declarations: [LoginComponent],
   providers: []

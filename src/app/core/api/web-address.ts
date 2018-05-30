@@ -17,6 +17,14 @@ export class WebAddress {
 
     }
 
+    addHeaders(headers: { name, value }[]) {
+        if (headers !== null) {
+            for (const header of headers) {
+                this.addHeader(header);
+            }
+        }
+    }
+
     addHeader(header: { name, value }) {
         if (this.headers.has(header.name)) {
             this.headers.delete(header.name);

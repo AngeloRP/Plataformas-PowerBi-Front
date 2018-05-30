@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FinantiendasService } from './finantiendas.service';
 
 @NgModule({
   imports: [
@@ -8,7 +7,6 @@ import { FinantiendasService } from './finantiendas.service';
   ],
   declarations: [],
   providers: [
-    FinantiendasService
   ]
 })
-export class FinantiendasServicesModule { }
+export class GraficosServicesModule { }

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Optional } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -16,13 +16,19 @@ import * as  conexion_back from 'assets/api/back/url.json';
 import { Router } from '@angular/router';
 @Injectable()
 export class ApiService extends EndPointService {
-  constructor(public http: Http, public notificationService?: NotificationService,
+  results: any;
+  constructor(
+    public http: Http,
+    @Optional() public headers: { name, value }[],
+    public notificationService: NotificationService,
     public translate?: TranslateService) {
     super(http, conexion_back.url, config_server.headers);
     this.webAddress.addHeader({
       name: 'USER-ID',
       value: window.localStorage.getItem('user-id')
     });
+    //this.webAddress.addUrl(url);
+    this.webAddress.addHeaders(headers);
   }
 
   public fillApiService(
@@ -76,127 +82,179 @@ export class ApiService extends EndPointService {
     return operacion;
   }
 
-  /*
-    async  delay(milliseconds: number, count: number): Promise<number> {
-      return new Promise<number>(resolve => {
-        setTimeout(() => {
-          resolve(count);
-        }, milliseconds);
-      });
-    }
-
-    async operation(back: BackOperation){
-      let errMensaje = back.back.errorMessage.content;
-      let succMensaje = back.back.successMessage.content;
-      if (back.isBackOperation) {
-        return new Promise<any>(
-          resolve => {resolve({
-            success: true,
-            data: back.back.responseJson
-          });
-        });
-      }else{
-        back.back.errorMessage.title = this.translate.instant(back.back.errorMessage.title);
-        back.back.successMessage.title = this.translate.instant(back.back.successMessage.title);
-        this.tipoOperacion(back.back).subscribe(
-          success => {
-            this.notificationService = new NotificationService();
-           // console.log('Exito:' + success.headers);
-           // console.log('Exito:' + JSON.stringify(success));
-           // console.log('RPTA:' + back.rpta);
-            if (success) {
-              if (success.data) {
-                let msg = success.data.msg;
-                back.back.successMessage.content = succMensaje + msg + '</i>';
-                back.back.errorMessage.content = errMensaje + msg + '</i>';
-                if (success.data.success === true) {
-                  if (success.data[back.rpta] != undefined) {
-                    let rpta = success.data[back.rpta];
-                   // console.log('Mensaje Exito 1:' + JSON.stringify({ success: true, data: rpta }));
-                   // console.log('Notificacion 1:' + rpta);
-                    return new Promise<any>(
-                      resolve => {resolve({
-                        success: true,
-                        data:rpta
-                      });
-                    });
-                  } else {
-                    return new Promise<any>(
-                      resolve => {resolve({
-                        success: true,
-                        data:success.data.msg
-                      });
-                    });
-                  }
-                  this.notificationService.smallBox(back.back.successMessage);
-                  back.back.errorMessage.content = errMensaje;
-                  back.back.successMessage.content = succMensaje;
-                  if (back.back.typeOperation === HttpOperations.POST) {
-                    this.operacionesBackEnd.isPressedAdd = true;
-                    //this.titleButton = 'Editar';
-                    this.back.enabledButton = false;
-                  }
-                } else {
-                  this.notificationService.smallBox(this.back.back.errorMessage);
-
-                  this.back.back.errorMessage.content = errMensaje;
-                  this.back.back.successMessage.content = succMensaje;
-
-                 // console.log('Mensaje :' + JSON.stringify({ success: false, data: success.data.msg }));
-                  this.submit.emit({ success: false, data: success.data.msg });
+  protected getData(mostrarAlertaSuccess: boolean = false, mostrarAlertaError: boolean = true) {
+    const resultado = this.get().toPromise().then(
+      resultados => {
+        if (resultados.data !== undefined) {
+          if (resultados.data.rpta !== undefined) {
+            this.results = resultados.data.rpta;
+            if (mostrarAlertaSuccess === true && resultados.data.msg !== undefined) {
+              this.notificationService.smallBox(
+                {
+                  title: resultados.data.msg,
+                  color: 'blue',
+                  iconSmall: `fa fa-thumbs-up bounce animated`,
+                  timeout: 1000
                 }
-
-              } else {
-                this.back.back.errorMessage.content = errMensaje + success.data.msg + '</i>';
-               // console.log('Notificacion 2:' + success.data.msg);
-
-                this.notificationService.smallBox(this.back.back.errorMessage);
-
-                this.back.back.errorMessage.content = errMensaje;
-                this.back.back.successMessage.content = succMensaje;
-
-               // console.log('Mensaje:' + JSON.stringify({ success: false, data: success.data.msg }));
-                this.submit.emit({ success: false, data: success.data.msg });
-              }
-            } else {
-              this.back.back.errorMessage.content = errMensaje + success.data.msg + '</i>';
-              this.notificationService.smallBox(this.back.back.errorMessage);
-              this.back.back.errorMessage.content = errMensaje;
-              this.back.back.successMessage.content = succMensaje;
-
-             // console.log('Notificacion 3:' + success.data.msg);
-             // console.log('Mensaje:' + JSON.stringify({ success: false, data: success.data.msg }));
-              this.submit.emit({ success: false, data: success.data.msg });
+              );
             }
-           // console.log('Comenzo a retornar Promesa');
-
-          },
-          error => {
-            this.back.back.errorMessage.content = errMensaje + error + '</i>';
-            this.notificationService.smallBox(this.back.back.errorMessage);
-
-            this.back.back.errorMessage.content = errMensaje;
-            this.back.back.successMessage.content = succMensaje;
-
-            this.submit.emit({ success: false, data: error });
+          } else {
+            this.results = null;
+            if (resultados.data.msg !== undefined) {
+              this.notificationService.bigBox(
+                {
+                  title: resultados.data.msg,
+                  color: 'red',
+                  iconSmall: `fa fa-thumbs-down bounce animated`,
+                  timeout: 1000
+                }
+              );
+            }
+          }
+        } else {
+          this.results = null;
+          this.notificationService.bigBox(
+            {
+              title: 'Error de Servidor',
+              color: 'red',
+              iconSmall: `fa fa-thumbs-down bounce animated`,
+              timeout: 1000
+            }
+          );
+        }
+      }
+    ).catch(
+      error => {
+        this.results = null;
+        this.notificationService.bigBox(
+          {
+            title: 'Error de Servidor',
+            color: 'red',
+            iconSmall: `fa fa-thumbs-down bounce animated`,
+            timeout: 1000
           }
         );
+        console.log('Error:' + JSON.stringify(error));
       }
-    }
+    );
+    return resultado;
+  }
 
-   // async function always return a Promise
-    async  dramaticWelcome(): Promise<void> {
-     // console.log("Hello");
-
-      for (let i = 0; i < 5; i++) {
-        // await is converting Promise<number> into number
-        const count: number = await this.delay(500, i);
-       // console.log(count);
+  protected postData(body: any, mostrarAlertaSuccess: boolean = false, mostrarAlertaError: boolean = true) {
+    const resultado = this.post(body).toPromise().then(
+      resultados => {
+        if (resultados.data !== undefined) {
+          if (resultados.data.rpta !== undefined) {
+            this.results = resultados.data.rpta;
+            if (mostrarAlertaSuccess === true && resultados.data.msg !== undefined) {
+              this.notificationService.smallBox(
+                {
+                  title: resultados.data.msg,
+                  color: 'blue',
+                  iconSmall: `fa fa-thumbs-up bounce animated`,
+                  timeout: 1000
+                }
+              );
+            }
+          } else {
+            this.results = null;
+            if (mostrarAlertaError === true && resultados.data.msg !== undefined) {
+              this.notificationService.bigBox(
+                {
+                  title: resultados.data.msg,
+                  color: 'red',
+                  iconSmall: `fa fa-thumbs-down bounce animated`,
+                  timeout: 1000
+                }
+              );
+            }
+          }
+        } else {
+          this.results = null;
+          this.notificationService.bigBox(
+            {
+              title: 'Error de Servidor',
+              color: 'red',
+              iconSmall: `fa fa-thumbs-down bounce animated`,
+              timeout: 1000
+            }
+          );
+        }
       }
+    ).catch(
+      error => {
+        this.results = null;
+        this.notificationService.bigBox(
+          {
+            title: 'Error de Servidor',
+            color: 'red',
+            iconSmall: `fa fa-thumbs-down bounce animated`,
+            timeout: 1000
+          }
+        );
+        console.log('Error:' + JSON.stringify(error));
+      }
+    );
+    return resultado;
+  }
 
-     // console.log("World!");
-    }
-  */
+  protected patchData(body: any, mostrarAlertaSuccess: boolean = false, mostrarAlertaError: boolean = true) {
+    const resultado = this.patch(body).toPromise().then(
+      resultados => {
+        if (resultados.data !== undefined) {
+          if (resultados.data.rpta !== undefined) {
+            this.results = resultados.data.rpta;
+            if (mostrarAlertaSuccess === true && resultados.data.msg !== undefined) {
+              this.notificationService.smallBox(
+                {
+                  title: resultados.data.msg,
+                  color: 'blue',
+                  iconSmall: `fa fa-thumbs-up bounce animated`,
+                  timeout: 1000
+                }
+              );
+            }
+          } else {
+            this.results = null;
+            if (mostrarAlertaError === true && resultados.data.msg !== undefined) {
+              this.notificationService.bigBox(
+                {
+                  title: resultados.data.msg,
+                  color: 'red',
+                  iconSmall: `fa fa-thumbs-down bounce animated`,
+                  timeout: 1000
+                }
+              );
+            }
+          }
+        } else {
+          this.results = null;
+          this.notificationService.bigBox(
+            {
+              title: 'Error de Servidor',
+              color: 'red',
+              iconSmall: `fa fa-thumbs-down bounce animated`,
+              timeout: 1000
+            }
+          );
+        }
+      }
+    ).catch(
+      error => {
+        this.results = null;
+        this.notificationService.bigBox(
+          {
+            title: 'Error de Servidor',
+            color: 'red',
+            iconSmall: `fa fa-thumbs-down bounce animated`,
+            timeout: 1000
+          }
+        );
+        console.log('Error:' + JSON.stringify(error));
+      }
+    );
+    return resultado;
+  }
 
 
 

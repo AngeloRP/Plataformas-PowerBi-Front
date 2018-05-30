@@ -4,6 +4,7 @@ import { HttpOperations } from '../../+emprende-up/super-module/form-super/input
 import { SaveUserService } from 'app/+auth/save-user.service';
 import { ApiService } from 'app/core/api/api.service';
 import { Http } from '@angular/http';
+import { AuthService } from '../../core/api/auth-services/auth.service';
 
 declare var $: any;
 @Component({
@@ -27,7 +28,7 @@ export class LoginComponent implements OnInit, AfterContentChecked {
   altura = '';
   constructor(
     private saveUser: SaveUserService,
-    private loginService: ApiService,
+    private loginService: AuthService,
     private http: Http
   ) {
 
@@ -45,7 +46,7 @@ export class LoginComponent implements OnInit, AfterContentChecked {
     if (this.login.email !== null && this.login.password !== null) {
       // this.loading = true;
       // console.log('Datos a Enviar:' + JSON.stringify(this.login));
-      this.loginService = new ApiService(this.http);
+      /*this.loginService = new ApiService(this.http);
       this.loginService.fillApiService('loginUsuario');
       this.loginService.post(this.login).subscribe(
         login => {
@@ -57,7 +58,10 @@ export class LoginComponent implements OnInit, AfterContentChecked {
         }, error => {
           // this.loading = false;
         }
-      );
+      );*/
+      this.loginService.login(this.login).then(() => {
+        console.log('Se logro :D');
+      });
     }
   }
 
