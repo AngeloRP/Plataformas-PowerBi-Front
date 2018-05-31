@@ -62,6 +62,7 @@ export class TablaJefesComponent extends Datatabla implements OnInit, AfterConte
       '.DTFC_LeftWrapper ' +
       '.DTFC_LeftHeadWrapper ' +
       'table.dataTable.DTFC_Cloned thead tr th').addClass(this.fondoBase + '_background');
+    this.posicionarTablaAlActivarBuscador();
   }
 
   eventoRegresar() {

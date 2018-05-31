@@ -91,6 +91,14 @@ export class Datatabla {
 
   }
 
+  posicionarTablaAlActivarBuscador(): void {
+    if (this.mostrar === true) {
+      $('.dataTables_wrapper').css({ 'top': '7px' });
+    } else {
+      $('.dataTables_wrapper').css({ 'top': '40px' });
+    }
+  }
+
   @HostListener('window:resize', ['$event'])
   onResize(): void {
     // this.fixBugColumnResize();

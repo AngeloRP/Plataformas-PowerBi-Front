@@ -1,9 +1,11 @@
 #buscador {
-    float: right;
-    padding: 6px 10px;
-    border-radius: 6px;
-    margin-top: 6px;
+    float: left;
+    padding: 7px 12px;
+    margin-top: 4px;
     margin-bottom: 10px;
+    position: absolute;
+    left: 10px;
+    z-index: 10;
 }
 
 #buscador:hover {

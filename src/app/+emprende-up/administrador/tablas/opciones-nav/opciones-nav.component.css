@@ -2,10 +2,16 @@
     background-color: #18191a;
 }
 
+app-opcion-nav {
+    width: 50%;
+}
+
 .opciones-nav {
     position: relative;
     height: auto;
     display: flex;
+    left: -3px;
+    width: calc(100% + 2px);
 }
 
 /*.n-top-100 {

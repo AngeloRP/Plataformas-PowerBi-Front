@@ -7,5 +7,9 @@ export class OpcionNav {
 
     constructor() {
         this.loading = true;
+        this.data = {
+            titulo: 'Barra Superior',
+            presionado: false
+        }
     }
 }

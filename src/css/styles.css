@@ -117,7 +117,7 @@ th{
     background-color: #4e7b91;
     padding: 5px 10px;
     font-size: 14px;
-    margin: 8px 10px 6px 0px;
+    margin: 8px 10px 6px -3.5px;
 }
 
 .boton_regresar:hover,.dataTables_filter:hover  {

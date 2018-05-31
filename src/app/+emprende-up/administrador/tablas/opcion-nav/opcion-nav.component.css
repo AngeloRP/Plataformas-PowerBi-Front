@@ -137,6 +137,11 @@ a {
     margin-right: 9px;
 }
 
+a.opcion-nav {
+    display: block;
+    text-align: center;
+}
+
 a.opcion-nav:active{
 
 }

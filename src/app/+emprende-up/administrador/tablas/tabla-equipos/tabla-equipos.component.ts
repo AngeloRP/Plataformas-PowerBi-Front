@@ -54,6 +54,8 @@ export class TablaEquiposComponent extends Datatabla implements OnInit, AfterCon
       '.DTFC_LeftWrapper ' +
       '.DTFC_LeftHeadWrapper ' +
       'table.dataTable.DTFC_Cloned thead tr th').addClass(this.fondoBase + '_background');
+    this.posicionarTablaAlActivarBuscador();
+
   }
 
   eventoRegresar() {
