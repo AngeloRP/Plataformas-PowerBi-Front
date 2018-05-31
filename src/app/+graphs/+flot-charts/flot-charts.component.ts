@@ -5,6 +5,7 @@ import { FakeDataSource } from './flot-examples';
 import { FadeInTop } from '../../shared/animations/fade-in-top.decorator';
 import { ApiService } from 'app/core/api/api.service';
 import { Http } from '@angular/http';
+import { NotificationService } from '../../shared/utils/notification.service';
 
 export enum FlotTypes {
   Bar = 0,
@@ -34,17 +35,18 @@ export class FlotChartsComponent implements OnInit, OnDestroy {
   constructor(
     private apiService: ApiService,
     private http: Http,
-    private jsonApiService: JsonApiService
-  ) {}
+    private jsonApiService: JsonApiService,
+    public notificationSvr: NotificationService
+  ) { }
 
   ngOnInit() {
     // this.jsonApiService.fetch( '/graphs/flot.json').subscribe(data => this.flotData = data);
-    this.apiService = new ApiService(this.http);
+    this.apiService = new ApiService(this.http, [], this.notificationSvr);
     this.apiService.fillApiService(this.url, null, this.headersLocalStorage);
     this.apiService.get().subscribe(data => {
-     // console.log('Url:'+this.apiService.webAddress.getUrl());
-     // console.log('Header Keys:'+this.apiService.webAddress.getHeaderKeys());
-     // console.log('Header Values:'+this.apiService.webAddress.getHeaderValues());
+      // console.log('Url:'+this.apiService.webAddress.getUrl());
+      // console.log('Header Keys:'+this.apiService.webAddress.getHeaderKeys());
+      // console.log('Header Values:'+this.apiService.webAddress.getHeaderValues());
 
       // console.log('CHart js:' + JSON.stringify(data));
       /* if(this.charType === FlotTypes.Horizontal_Bar){

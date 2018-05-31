@@ -9,7 +9,6 @@
     <app-buscador [mostrar]="mostrar" (mostrarEvent)="mostrarBuscador($event)"></app-buscador>
     <table id="{{titulo}}" appTextColor [columnaCalculo]="'Realizado'" [metodoCalculo]="colorear" [contenido]="this.data" [columnas]="[
       'Nombre',
-      'Meta',
       'Ejecutado',
       'Restante',
       'Realizado'
@@ -21,10 +20,9 @@
                 <th>Usuario</th>
                 <!--<th>#</th>-->
                 <th>Nombre</th>
-                <th>Meta</th>
                 <th>Ejecutado</th>
-                <th>Restante</th>
                 <th>Realizado</th>
+                <th>Restante</th>
             </tr>
         </thead>
         <tbody>
@@ -33,10 +31,9 @@
                 <!--<td *ngIf="(i+1) < this.data.length">{{i + 1}}°</td>
                 <td *ngIf="(i+1) >= this.data.length">Resultado</td>-->
                 <td>{{rec['Nombre']}}</td>
-                <td>{{rec['Meta']}}</td>
                 <td>{{rec['Ejecutado']}}</td>
-                <td>{{rec['Restante']/ 100 | percent:'1.0-2':'fr'}}</td>
                 <td>{{rec['Realizado']/ 100 | percent:'1.0-2':'fr'}}</td>
+                <td>{{rec['Restante']/ 100 | percent:'1.0-2':'fr'}}</td>
             </tr>
         </tbody>
     </table>

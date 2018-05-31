@@ -3,6 +3,7 @@ import { JsonApiService } from '../../core/api/json-api.service';
 import { FadeInTop } from '../../shared/animations/fade-in-top.decorator';
 import { ApiService } from '../../core/api/api.service';
 import { Http } from '@angular/http';
+import { NotificationService } from 'app/shared/utils/notification.service';
 
 export enum ChartTypes {
     Line = 0,
@@ -37,9 +38,12 @@ export class ChartJsShowcaseComponent implements OnInit, OnChanges {
 
     public chartjsData: any;
 
-    constructor(private apiService: ApiService,
+    constructor(
+        public notificationSvr: NotificationService,
+        private apiService: ApiService,
         private http: Http,
-        private jsonApiService: JsonApiService) {
+        private jsonApiService: JsonApiService
+    ) {
         this.url = 'tazdingo';
         // console.log('URL INICIO:' + this.url);
         this.tieneDatos = new EventEmitter<boolean>();
@@ -87,7 +91,7 @@ export class ChartJsShowcaseComponent implements OnInit, OnChanges {
                     break;
             }
         }
-        this.apiService = new ApiService(this.http);
+        this.apiService = new ApiService(this.http, [], this.notificationSvr);
         // console.log('URL CHARTJS:' + this.url);
 
         this.apiService.fillApiService(this.url, null, this.headersLocalStorage);
@@ -97,7 +101,7 @@ export class ChartJsShowcaseComponent implements OnInit, OnChanges {
                 // console.log('Header Keys:' + this.apiService.webAddress.getHeaderKeys());
                 // console.log('Header Values:' + this.apiService.webAddress.getHeaderValues());
 
-               // console.log('CHart js:' + JSON.stringify(data));
+                // console.log('CHart js:' + JSON.stringify(data));
 
                 this.chartjsData = {
                     'labels': data.data.labels,

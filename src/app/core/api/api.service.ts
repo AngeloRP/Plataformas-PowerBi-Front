@@ -27,7 +27,7 @@ export class ApiService extends EndPointService {
       name: 'USER-ID',
       value: window.localStorage.getItem('user-id')
     });
-    //this.webAddress.addUrl(url);
+    // this.webAddress.addUrl(url);
     this.webAddress.addHeaders(headers);
   }
 

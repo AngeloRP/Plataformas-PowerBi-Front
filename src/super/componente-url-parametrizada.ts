@@ -1,6 +1,7 @@
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'app/core/api/api.service';
 import { Http } from '@angular/http/src/http';
+import { NotificationService } from 'app/shared/utils/notification.service';
 
 export class ComponenteUrlParametrizado {
     loading = true;
@@ -10,7 +11,8 @@ export class ComponenteUrlParametrizado {
     constructor(
         public http: Http,
         public mesesService: ApiService,
-        public route: ActivatedRoute) {
+        public route: ActivatedRoute,
+        public notificationSvr: NotificationService) {
         this.loading = true;
         this.meses = new Array<any>();
         this.mesActualID = '';
@@ -32,11 +34,11 @@ export class ComponenteUrlParametrizado {
     }
 
     protected async fillMesesData() {
-        this.mesesService = new ApiService(this.http);
+        // this.mesesService = new ApiService(this.http);
         this.meses = new Array<any>();
        // console.log('Mes Actual:' + this.mesActualID);
 
-        this.mesesService = new ApiService(this.http);
+        this.mesesService = new ApiService(this.http, [], this.notificationSvr);
         if (
             window.localStorage.getItem('start-up-id') !== null &&
             window.localStorage.getItem('start-up-id') !== undefined &&
