@@ -10,11 +10,12 @@ import { PieGraficosService } from '../../../../core/api/graficos-services/pie-g
   styleUrls: ['./pie-graficos.component.css']
 })
 export class PieGraficosComponent extends PieGrafico implements OnInit {
-  tarjetas: PieGrafico;
-  servicios: PieGrafico;
-  credicompras: PieGrafico;
-  efectivo: PieGrafico;
-  mostrarGraficos = true;
+  // tarjetas: PieGrafico;
+  // servicios: PieGrafico;
+  // credicompras: PieGrafico;
+  // efectivo: PieGrafico;
+  graficos: Array<PieGrafico>;
+  mostrarGraficos = false;
   loading = true;
   filiales: any;
 
@@ -22,11 +23,20 @@ export class PieGraficosComponent extends PieGrafico implements OnInit {
     private http: Http,
     private graficoSvr: PieGraficosService
   ) {
-    super();
-    this.tarjetas = new PieGrafico();
-    this.servicios = new PieGrafico();
-    this.credicompras = new PieGrafico();
-    this.efectivo = new PieGrafico();
+    super({
+      data_size: 1,
+      data_pie_size: 1,
+      data_percent: 1,
+      data_color: 'grafico_color',
+      titulo: '',
+      id: 1,
+      font_size: 12
+    });
+    this.graficos = new Array<PieGrafico>();
+    // this.tarjetas = new PieGrafico();
+    // this.servicios = new PieGrafico();
+    // this.credicompras = new PieGrafico();
+    // this.efectivo = new PieGrafico();
   }
 
   ngOnInit() {
@@ -48,11 +58,12 @@ export class PieGraficosComponent extends PieGrafico implements OnInit {
     console.log('Data_size:' + this.data.data_size);
     console.log('Data_pie_size:' + this.data.data_pie_size);
     console.log('Font_size:' + this.data.font_size);
-    this.graficoSvr.obtenerFiliales().then(() => {
+    this.loading = false;
+    /*this.graficoSvr.obtenerFiliales().then(() => {
       this.filiales = this.graficoSvr.results;
       this.fillPieGrafico();
       this.loading = false;
-    });
+    });*/
     /*this.graficos = new ApiService(this.http);
     this.graficos.fillApiService('informacionFilial');
     this.graficos.get().subscribe(
@@ -73,8 +84,29 @@ export class PieGraficosComponent extends PieGrafico implements OnInit {
 
 
   fillPieGrafico() {
-
-    this.tarjetas.fillPieGrafico({
+    for (let index = 0; index < this.filiales.length; index++) {
+      const filial = this.filiales[index];
+      const grafico = new PieGrafico({
+        data_size: this.data.data_size,
+        data_pie_size: this.data.data_pie_size,
+        data_percent: filial['Realizado'],
+        data_color: 'grafico_' + filial['Nombre'] + '_color',
+        titulo: filial['Nombre'],
+        id: filial['id_filial'],
+        font_size: this.data.font_size
+      });
+      /*grafico.fillPieGrafico({
+        data_size: this.data.data_size,
+        data_pie_size: this.data.data_pie_size,
+        data_percent: filial['Realizado'],
+        data_color: 'grafico_'+ filial['Nombre'] + '_color',
+        titulo: filial['Nombre'],
+        id: filial['id_filial'],
+        font_size: this.data.font_size
+      });*/
+      this.graficos.push(grafico);
+    }
+    /*this.tarjetas.fillPieGrafico({
       data_size: this.data.data_size,
       data_pie_size: this.data.data_pie_size,
       data_percent: this.filiales[0]['Realizado'],
@@ -112,7 +144,7 @@ export class PieGraficosComponent extends PieGrafico implements OnInit {
       titulo: 'Efectivo',
       font_size: this.data.font_size,
       id: 4
-    });
+    });*/
   }
 
 

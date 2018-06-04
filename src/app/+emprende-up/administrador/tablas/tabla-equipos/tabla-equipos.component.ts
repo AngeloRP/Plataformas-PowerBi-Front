@@ -3,6 +3,7 @@ import { Datatabla } from '../data_tabla';
 import { ApiService } from 'app/core/api/api.service';
 import { Http } from '@angular/http';
 import { NotificationService } from 'app/shared/utils/notification.service';
+import { FiltrosService } from '../filtros/filtros.service';
 
 @Component({
   selector: 'app-tabla-equipos',

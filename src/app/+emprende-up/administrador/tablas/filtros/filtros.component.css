@@ -1,0 +1,13 @@
+app-buscador, app-finantienda-select {
+    display: block;
+}
+
+app-finantienda-select {
+    margin-left: 33px;
+    padding-right: 3px;
+}
+
+#filtros {
+    display: inline-block;
+    padding: 0px;
+}

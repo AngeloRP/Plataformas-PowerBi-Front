@@ -6,7 +6,7 @@
         <h1>{{titulo}}</h1>
     </div>
     <app-opciones-nav  ></app-opciones-nav>
-    <app-buscador [mostrar]="mostrar" (mostrarEvent)="mostrarBuscador($event)"></app-buscador>
+    <app-buscador></app-buscador>
     <table id="{{titulo}}" appTextColor [columnaCalculo]="'Realizado'" [metodoCalculo]="colorear" [contenido]="this.data" [columnas]="[
       'Nombre',
       'Ejecutado',
@@ -14,7 +14,7 @@
       'Realizado'
     ]" [columnasColorear]="[
     'Realizado'
-    ]" datatable [dtOptions]="dtOptions" class="table table-condensed responsive table-hover " >
+    ]" datatable [dtOptions]="dtOptions" class="table responsive table-hover " >
         <thead>
             <tr>
                 <th>Usuario</th>

@@ -3,8 +3,9 @@ import { Input } from '@angular/core';
 export class PieGrafico {
     @Input() data: PieGraficoInterface;
 
-    constructor() {
-        this.data = {
+    constructor(data: PieGraficoInterface) {
+        this.data = data;
+        /*this.data = {
             data_size: 140,
             data_pie_size: 120,
             data_percent: 50,
@@ -12,7 +13,7 @@ export class PieGrafico {
             titulo: 'Tarjetas',
             font_size: 20,
             id: 1
-        }
+        }*/
     }
 
     public fillPieGrafico(data: PieGraficoInterface) {

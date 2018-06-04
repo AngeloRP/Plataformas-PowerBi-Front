@@ -10,7 +10,7 @@ export class WebAddress {
         this.headers = headers;
     }
 
-    addUrl(ruta: string) {
+    addUrl(ruta: any) {
         if (ruta !== undefined && ruta !== null && ruta !== '') {
             this.urlPath += '/' + ruta;
         }

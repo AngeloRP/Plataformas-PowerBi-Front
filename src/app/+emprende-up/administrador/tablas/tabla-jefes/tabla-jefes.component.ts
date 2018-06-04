@@ -1,57 +1,89 @@
-import { Component, OnInit, Input, EventEmitter, Output, AfterContentChecked } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, AfterContentChecked, OnDestroy } from '@angular/core';
 import { Datatabla } from '../data_tabla';
 import { Http } from '@angular/http';
-import { ApiService } from 'app/core/api/api.service';
+
 import { NotificationService } from '../../../../shared/utils/notification.service';
+import { TablaJefesService } from '../../../../core/api/tablas-services/tabla-jefes-services/tabla-jefes.service';
+import { FiltrosService } from '../filtros/filtros.service';
+import { TablaJefesAcumuladosService } from '../../../../core/api/tablas-services/tabla-jefes-services/tabla-jefes-acumulados.service';
 declare let $: any;
 @Component({
   selector: 'app-tabla-jefes',
   templateUrl: './tabla-jefes.component.html',
   styleUrls: ['./tabla-jefes.component.css']
 })
-export class TablaJefesComponent extends Datatabla implements OnInit, AfterContentChecked {
+export class TablaJefesComponent extends Datatabla implements OnInit, AfterContentChecked, OnDestroy {
   @Input() idFilial = 1;
   @Output() regresar: EventEmitter<any>;
-  mostrarJefes = true;
+  finantiendaId = '029';
+  fecha = '20180105';
   nombreJefe = '';
+  mostrarJefes = true;
   idJefe = 1;
 
   constructor(
+    private filtrosService: FiltrosService,
     public http: Http,
-    private jefesService: ApiService,
+    private jefesService: TablaJefesService,
+    private jefesAcumuladosService: TablaJefesAcumuladosService,
     public notificationSvr: NotificationService
   ) {
     super();
+    this.filtrosService.buscadorEvent.subscribe(
+      (resultado) => {
+        this.mostrarBuscador(resultado);
+      }
+    );
+    this.columnas = [
+      'ejecutivo',
+      'meta',
+      'entregado',
+      'porcentaje'
+    ];
+    /*this.columnas = [
+      'id_equipo',
+      'Nombre',
+      'Meta',
+      'Ejecutado',
+      'Realizado'
+    ];*/
+    this.headers = [
+      'Ejecutivo',
+      'Meta',
+      'Porcentaje',
+      'Entregado'
+    ];
+    /*this.headers = [
+      'Equipo',
+      'Nombre',
+      'Meta',
+      'Ejecutado',
+      'Realizado'
+    ]*/
     this.regresar = new EventEmitter<any>();
   }
 
+  ngOnDestroy() {
+    this.filtrosService.buscadorEvent.unsubscribe();
+  }
+
   ngOnInit() {
-    this.jefesService = new ApiService(this.http, [], this.notificationSvr);
-    this.jefesService.fillApiService('informacionJefesPorFilial/' + this.idFilial);
-    this.jefesService.get().subscribe(
-      jefes => {
-        if (jefes !== undefined) {
-          if (jefes !== null) {
-            if (jefes.data !== undefined) {
-              if (jefes.data !== null) {
-                if (jefes.data.rpta !== undefined) {
-                  if (jefes.data.rpta !== null) {
-                    this.data = jefes.data.rpta;
-                    this.temp_var = true;
-                  }
-                }
-              }
-            }
-          }
+    if (this.diario === true) {
+      this.jefesService.obtenerTarjetas().then(
+        () => {
+          this.data = this.jefesService.results;
+          this.temp_var = true;
         }
-        // $('table.dataTable.DTFC_Cloned thead tr th').addClass(this.fondoBase + '_background');
-        console.log('Jefes: ' + JSON.stringify(this.data));
-        /*if (this.data !== null) {
-          if (this.data.length > 0) {
-          }
-        }*/
-      }
-    );
+      );
+    } else {
+      console.log('Entro acumulados');
+      this.jefesAcumuladosService.obtenerTarjetas().then(
+        () => {
+          this.data = this.jefesService.results;
+          this.temp_var = true;
+        }
+      );
+    }
   }
 
   ngAfterContentChecked() {

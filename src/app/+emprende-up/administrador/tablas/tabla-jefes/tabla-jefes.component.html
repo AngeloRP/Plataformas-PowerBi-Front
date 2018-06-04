@@ -5,44 +5,37 @@
           </button>
           <h1>{{titulo}}</h1>
     </div>
-    <app-opciones-nav  *ngIf="this.temp_var"></app-opciones-nav>
-    <app-buscador  *ngIf="this.temp_var" [mostrar]="mostrar" (mostrarEvent)="mostrarBuscador($event)"></app-buscador>
+    <app-opciones-nav  *ngIf="this.temp_var" (nuevoSeleccionado)="capturando($event)"></app-opciones-nav>
+    <!--<app-buscador  *ngIf="this.temp_var"></app-buscador>-->
+    <app-filtros *ngIf="this.temp_var" ></app-filtros>
     <table *ngIf="this.temp_var"
     id="{{titulo}}"
     appTextColor
-    [columnaCalculo]="'Realizado'" 
+    [columnaCalculo]="'porcentaje'" 
     [metodoCalculo]="colorear" 
     [contenido]="this.data" 
     [colorcito]="fondoBase"
-    [columnas]="[
-      'Nombre',
-      'Ejecutado',
-      'Restante',
-      'Realizado'
-    ]"
+    [columnas]="columnas"
     [columnasColorear]="[
-    'Realizado'
+    'porcentaje'
     ]"
-    datatable [dtOptions]="dtOptions" class="table table-condensed table-hover responsive no-wrap" >
+    datatable [dtOptions]="dtOptions" class="table table-hover responsive no-wrap" >
       <thead>
         <tr>
-          <th>Equipo</th>
-          <!--<th>#</th>-->
-          <th>Nombre</th>
-          <th>Ejecutado</th>
-          <th>Realizado</th>
-          <th>Restante</th>
+          <th *ngFor="let header of headers">{{header}}</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let rec of this.data;let i = index;">
-          <td>{{rec['id_equipo']}}</td>
-          <!--<td *ngIf="(i+1) < this.data.length">{{i + 1}}°</td>
-          <td *ngIf="(i+1) >= this.data.length">Resultado</td>-->
-          <td >{{rec['Nombre']}}</td>
-          <td>{{rec['Ejecutado']}}</td>
-          <td>{{rec['Realizado']/ 100  | percent:'1.0-2':'fr'}}</td>
-          <td>{{rec['Restante']/ 100  | percent:'1.0-2':'fr'}}</td>
+          <!--<td>{{rec['id_equipo']}}</td>-->
+          <td *ngFor="let columna of columnas;let i = index;">
+            <ng-container *ngIf="columna === 'porcentaje'">
+                {{rec[columna] / 100 | percent:'1.0-2':'fr'}}
+            </ng-container>
+            <ng-container *ngIf="columna !== 'porcentaje'">
+                {{rec[columna]}}
+            </ng-container>
+          </td>
         </tr>
       </tbody>
     </table>

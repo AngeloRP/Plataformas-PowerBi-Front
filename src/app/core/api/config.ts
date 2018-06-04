@@ -3,19 +3,22 @@ import { Observable } from 'rxjs/Observable';
 
 // Uso de Tokens
 const headers = new Headers(
-  { 'Content-Type': 'application/json', 'API-TOKEN':'ZSSsSfsxtAZ46a8W9dVtCUBvH8vRcOlbHeEAu77X' }
+  { 'Content-Type': 'application/json', 'API-TOKEN': 'ZSSsSfsxtAZ46a8W9dVtCUBvH8vRcOlbHeEAu77X' }
 );
 headers.append('Access-Control-Allow-Origin', '*');
 headers.append('Access-Control-Allow-Headers', '*');
-headers.append('USER-ID', window.localStorage.getItem('user_id'));
+headers.append('Access-Controll-Allow-Credentials', '*');
+headers.append('Access-Control-Request-Headers', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
+headers.append('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+// headers.append('USER-ID', window.localStorage.getItem('user_id'));
 // headers.append('API-TOKEN', 'ZSSsSfsxtAZ46a8W9dVtCUBvH8vRcOlbHeEAu77X');
 /*headers.append('Access-Control-Request-Headers', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
 headers.append('Access-Control-Allow-Headers', 'Content-Type, Authorization');*/
 // Extracion de la informacion que se recibe, header and body
 function extraData(res: Response) {
- // console.log('Response');
- // console.log(res);
- // console.log('xxxxxxxxxxxxxxxxxxx');
+//  console.log('Response');
+//  console.log(res);
+//  console.log('xxxxxxxxxxxxxxxxxxx');
   const body = res.json();
   if (body) {
     return {

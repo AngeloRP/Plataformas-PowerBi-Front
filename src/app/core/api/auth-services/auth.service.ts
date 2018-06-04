@@ -5,22 +5,21 @@ import { ApiService } from 'app/core/api/api.service';
 import { Router } from '@angular/router';
 
 @Injectable()
-export class AuthService extends ApiService {
+export class AuthService {
 
   constructor(
-    public http: Http,
-    public notificationService: NotificationService,
+    public api: ApiService,
     private router: Router
   ) {
-    super(http, [], notificationService);
-    this.webAddress.addUrl('loginUsuario');
+    // super(http, [], notificationService);
+    this.api.webAddress.addUrl('loginUsuario');
   }
 
   login(body: { email: string, password: string }): Promise<void> {
-    return this.postData(body, true).then(() => {
-      window.localStorage.setItem('email', this.results.email);
-      window.localStorage.setItem('userInformation', this.results.name);
-      window.localStorage.setItem('category', this.results.category);
+    return this.api.postData(body, true).then(() => {
+      window.localStorage.setItem('email', this.api.results.email);
+      window.localStorage.setItem('userInformation', this.api.results.name);
+      window.localStorage.setItem('category', this.api.results.category);
       this.router.navigate(['/']);
     }).catch(
       error => {

@@ -23,10 +23,10 @@ export class ApiService extends EndPointService {
     public notificationService: NotificationService,
     public translate?: TranslateService) {
     super(http, conexion_back.url, config_server.headers);
-    this.webAddress.addHeader({
+    /*this.webAddress.addHeader({
       name: 'USER-ID',
       value: window.localStorage.getItem('user-id')
-    });
+    });*/
     // this.webAddress.addUrl(url);
     this.webAddress.addHeaders(headers);
   }
@@ -87,6 +87,7 @@ export class ApiService extends EndPointService {
       resultados => {
         if (resultados.data !== undefined) {
           if (resultados.data.rpta !== undefined) {
+            console.log('Resultados: ' + JSON.stringify(resultados.data.rpta));
             this.results = resultados.data.rpta;
             if (mostrarAlertaSuccess === true && resultados.data.msg !== undefined) {
               this.notificationService.smallBox(
@@ -94,7 +95,7 @@ export class ApiService extends EndPointService {
                   title: resultados.data.msg,
                   color: 'blue',
                   iconSmall: `fa fa-thumbs-up bounce animated`,
-                  timeout: 1000
+                  timeout: 5000
                 }
               );
             }
@@ -106,7 +107,7 @@ export class ApiService extends EndPointService {
                   title: resultados.data.msg,
                   color: 'red',
                   iconSmall: `fa fa-thumbs-down bounce animated`,
-                  timeout: 1000
+                  timeout: 5000
                 }
               );
             }
@@ -118,7 +119,7 @@ export class ApiService extends EndPointService {
               title: 'Error de Servidor',
               color: 'red',
               iconSmall: `fa fa-thumbs-down bounce animated`,
-              timeout: 1000
+              timeout: 5000
             }
           );
         }

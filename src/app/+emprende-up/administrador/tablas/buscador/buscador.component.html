@@ -1,7 +1,9 @@
 
-<div id="buscador" class="{{claseBuscador}}">
-    <a (click)="mostrarBuscador()">
-        <i class="fa fa-search"></i>
-    </a>
-    
-</div>
+<!--<div style="display: inline;">-->
+    <div id="buscador" class="{{filtroSvr.claseBuscador}}">
+        <a (click)="filtroSvr.hacerClick()">
+            <i class="fa fa-search"></i>
+        </a>
+    </div>
+    <!--<app-finantienda-select *ngIf="filtroSvr.claseBuscador"></app-finantienda-select>
+</div>-->

@@ -10,7 +10,15 @@ export class PieGraficoComponent extends PieGrafico implements OnInit {
   @Output() regresar: EventEmitter<any>;
   mostrarGrafica = 'noMostrar';
   constructor() {
-    super();
+    super({
+      data_size: 1,
+      data_pie_size: 1,
+      data_percent: 1,
+      data_color: 'grafico_color',
+      titulo: '',
+      id: 1,
+      font_size: 12
+    });
     this.regresar = new EventEmitter<any>();
   }
 

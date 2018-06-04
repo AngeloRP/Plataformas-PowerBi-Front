@@ -1,6 +1,10 @@
 
 <div *ngIf="mostrarGraficos && !loading" id="pie_graficos">
-    <app-pie-grafico
+  <div *ngFor="let grafico of graficos;let i=index;">
+    <app-pie-grafico [data]="grafico.data" (regresar)="haciaTablaJefes($event)" ></app-pie-grafico>
+  </div>
+    
+  <!--<app-pie-grafico
     [data]="this.tarjetas.data"
     (regresar)="haciaTablaJefes($event)"
   >
@@ -22,7 +26,7 @@
     [data]="this.efectivo.data"
     (regresar)="haciaTablaJefes($event)"
   >
-  </app-pie-grafico>
+  </app-pie-grafico>-->
 </div>
 
 <div *ngIf="!mostrarGraficos && !loading">

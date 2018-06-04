@@ -24,8 +24,8 @@ export const routes: Routes = [
     path: '',
     component: MainLayoutComponent,
     data: { pageTitle: 'Home' },
-    canActivate: [AuthActiveGuard],
-    canActivateChild: [AuthActiveGuard],
+    // canActivate: [AuthActiveGuard],
+    // canActivateChild: [AuthActiveGuard],
     children: [
       { path: '', redirectTo: siguiente, pathMatch: 'full' },
       /*{
@@ -38,7 +38,7 @@ export const routes: Routes = [
       },*/
       {
         path: 'administrador', loadChildren: 'app/+emprende-up/administrador/administrador.module#AdministradorModule',
-        data: { pageTitle: 'Home Administrador' } , canActivate: [AdministradorActiveGuard]
+        data: { pageTitle: 'Home Administrador' } // , canActivate: [AdministradorActiveGuard]
       }
     ],
 

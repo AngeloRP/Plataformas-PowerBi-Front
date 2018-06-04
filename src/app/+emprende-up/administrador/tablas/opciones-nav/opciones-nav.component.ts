@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { OpcionNavInterface } from '../opcion-nav/opcion-nav.interface';
 import { OpcionNav } from '../opcion-nav/opcion-nav';
 
@@ -9,10 +9,11 @@ import { OpcionNav } from '../opcion-nav/opcion-nav';
 })
 export class OpcionesNavComponent extends OpcionNav implements OnInit {
   opciones: OpcionNavInterface[];
-
+  @Output() nuevoSeleccionado: EventEmitter<any>;
   constructor() {
     super();
     this.opciones = [];
+    this.nuevoSeleccionado = new EventEmitter<any>();
   }
 
   ngOnInit() {
@@ -23,7 +24,7 @@ export class OpcionesNavComponent extends OpcionNav implements OnInit {
   fillOpciones() {
     this.opciones.push({
       titulo: 'Diario',
-      presionado: false
+      presionado: true
     });
     this.opciones.push({
       titulo: 'Acumulado',
@@ -42,11 +43,13 @@ export class OpcionesNavComponent extends OpcionNav implements OnInit {
           titulo: this.opciones[i].titulo,
           presionado: true
         };
+        this.nuevoSeleccionado.emit(true);
       } else {
         this.opciones[i] = {
           titulo: this.opciones[i].titulo,
           presionado: false
         };
+        this.nuevoSeleccionado.emit(false);
       }
     }
     // console.log('Opciones cambiadas');

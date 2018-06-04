@@ -4,17 +4,26 @@ import { DataTablesModule } from 'angular-datatables';
 import { TablaJefesComponent } from './tabla-jefes/tabla-jefes.component';
 import { TablaEquiposComponent } from './tabla-equipos/tabla-equipos.component';
 import { SmartadminDatatableModule } from '../../../shared/ui/datatable/smartadmin-datatable.module';
-import { ApiService } from 'app/core/api/api.service';
 import { OpcionesNavComponent } from './opciones-nav/opciones-nav.component';
 import { OpcionNavComponent } from './opcion-nav/opcion-nav.component';
 import { BuscadorComponent } from './buscador/buscador.component';
 import { FinantiendaSelectComponent } from './finantienda-select/finantienda-select.component';
+import { FinantiendasServicesModule } from '../../../core/api/finantiendas-services/finantiendas-services.module';
+import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
+import { FormsModule } from '@angular/forms';
+import { FiltrosComponent } from './filtros/filtros.component';
+import { FiltrosService } from './filtros/filtros.service';
+import { ApiModule } from '../../../core/api/api.module';
 
 @NgModule({
   imports: [
     CommonModule,
     DataTablesModule,
-    SmartadminDatatableModule
+    SmartadminDatatableModule,
+    FinantiendasServicesModule,
+    FormsModule,
+    MultiselectDropdownModule,
+    ApiModule
   ],
   declarations: [
     TablaJefesComponent,
@@ -22,14 +31,15 @@ import { FinantiendaSelectComponent } from './finantienda-select/finantienda-sel
     OpcionesNavComponent,
     OpcionNavComponent,
     BuscadorComponent,
-    FinantiendaSelectComponent
+    FinantiendaSelectComponent,
+    FiltrosComponent
   ],
   exports: [
     TablaJefesComponent,
     TablaEquiposComponent
   ],
   providers: [
-    ApiService
+    FiltrosService
   ]
 })
 export class TablasModule { }

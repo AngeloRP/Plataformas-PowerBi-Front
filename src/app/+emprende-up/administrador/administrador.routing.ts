@@ -1,7 +1,7 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-const redirect = 'dashboard';
+const redirect = 'graficos';
 
 export const routes: Routes = [
     { path: '', redirectTo: redirect },

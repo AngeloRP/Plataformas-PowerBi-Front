@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
+import { FiltrosService } from '../filtros/filtros.service';
 
 @Component({
   selector: 'app-buscador',
@@ -6,30 +7,13 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
   styleUrls: ['./buscador.component.css']
 })
 export class BuscadorComponent implements OnInit {
-  @Output() mostrarEvent: EventEmitter<boolean>;
-  claseBuscador = 'b-activo';
-  @Input() mostrar = true;
-
-  constructor() {
-    this.mostrarEvent = new EventEmitter<boolean>();
+  constructor(
+    public filtroSvr: FiltrosService
+  ) {
   }
 
   ngOnInit() {
-    this.llenarClaseBuscador();
-  }
-
-  mostrarBuscador() {
-    this.mostrar = !this.mostrar;
-    this.llenarClaseBuscador();
-    this.mostrarEvent.emit(this.mostrar);
-  }
-
-  llenarClaseBuscador() {
-    if (this.mostrar) {
-      this.claseBuscador = 'b-activo';
-    } else {
-      this.claseBuscador = 'b-inactivo';
-    }
+    this.filtroSvr.llenarClaseBuscador();
   }
 
 }

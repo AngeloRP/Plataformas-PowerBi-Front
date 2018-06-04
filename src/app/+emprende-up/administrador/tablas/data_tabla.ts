@@ -1,13 +1,17 @@
 import { Input, HostListener } from '@angular/core';
 
 export class Datatabla {
+  public diario = true;
   public dtOptions: any = {};
   public data: any[];
   public temp_var: Object = false;
   public mostrar = false;
+  public columnas: string[] = [];
+  public headers: string[] = [];
   @Input() titulo = '';
   @Input() fondoBase = '';
-  constructor() {
+  constructor(
+  ) {
     this.dtOptions = {
       scrollY: true,
       scrollX: true,
@@ -18,7 +22,10 @@ export class Datatabla {
       deferLoading: 20,
       searching: false,
       fixedColumns: {
-        leftColumns: 2
+        leftColumns: 1
+      },
+      search: {
+        caseInsensitive: false
       },
       oLanguage: {
         sSearch: "<span class='input-group-addon'><i class='glyphicon glyphicon-search'></i></span> ",
@@ -31,12 +38,7 @@ export class Datatabla {
       autoWidth: false,
       columnDefs: [
         {
-          'targets': [0],
-          'visible': false,
-          'searchable': false
-        },
-        {
-          'targets': [0, 1, 2, 3, 4],
+          'targets': [0, 1, 2, 3],
           'orderable': false
         }
       ],
@@ -93,11 +95,15 @@ export class Datatabla {
 
   posicionarTablaAlActivarBuscador(): void {
     if (this.mostrar === true) {
-      $('.dataTables_wrapper').css({ 'top': '7px' });
+      $('.dataTables_wrapper').css({ 'top': '8px' });
     } else {
       $('.dataTables_wrapper').css({ 'top': '40px' });
     }
   }
+
+  /*capturando(event) {
+    this.diario = event;
+  }*/
 
   @HostListener('window:resize', ['$event'])
   onResize(): void {
