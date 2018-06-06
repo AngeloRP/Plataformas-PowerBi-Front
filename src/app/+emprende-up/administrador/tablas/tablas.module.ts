@@ -16,6 +16,7 @@ import { FiltrosService } from './filtros/filtros.service';
 import { ApiModule } from '../../../core/api/api.module';
 import { TablasServicesModule } from '../../../core/api/tablas-services/tablas-services.module';
 import { OpcionesNavService } from './opciones-nav/opciones-nav.service';
+import { FechasModule } from '../fechas/fechas.module';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { OpcionesNavService } from './opciones-nav/opciones-nav.service';
     FinantiendasServicesModule,
     FormsModule,
     MultiselectDropdownModule,
+    FechasModule,
     ApiModule,
     TablasServicesModule
   ],

@@ -1,11 +1,11 @@
-import { OpaqueToken } from '@angular/core';
+import { OpaqueToken, InjectionToken } from '@angular/core';
 
 // Aqui se importara los archivos ts de los lenguajes que tendra el sistema
 import { LANG_ES_NAME, LANG_ES_TRANS } from './lang-es';
 import { LANG_EN_NAME, LANG_EN_TRANS } from './lang-en';
 
 // toke de traduccion
-export const TRANSLATIONS = new OpaqueToken('translations');
+export const TRANSLATIONS = new InjectionToken('translations');
 
 // todas las traducciones del sistema
 export const dictionary = {};

@@ -6,8 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./selector-dia.component.css']
 })
 export class SelectorDiaComponent implements OnInit {
-  fecha: any;
-  validationOptions: any = {};
+  minDate = new Date(2000, 0, 1);
+  maxDate = new Date();
   constructor() { }
 
   ngOnInit() {
