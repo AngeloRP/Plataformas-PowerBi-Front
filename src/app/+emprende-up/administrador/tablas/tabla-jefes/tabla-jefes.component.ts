@@ -1,11 +1,11 @@
 import { Component, OnInit, Input, EventEmitter, Output, AfterContentChecked, OnDestroy } from '@angular/core';
 import { Datatabla } from '../data_tabla';
-import { Http } from '@angular/http';
-
 import { NotificationService } from '../../../../shared/utils/notification.service';
-import { TablaJefesService } from '../../../../core/api/tablas-services/tabla-jefes-services/tabla-jefes.service';
 import { FiltrosService } from '../filtros/filtros.service';
-import { TablaJefesAcumuladosService } from '../../../../core/api/tablas-services/tabla-jefes-services/tabla-jefes-acumulados.service';
+import { OpcionesNavService } from '../opciones-nav/opciones-nav.service';
+import { JefesInterface } from './jefes.interface';
+import { TablaDataJefesService } from '../../../../core/api/tablas-services/tabla-jefes-services/tabla-data-jefes.service';
+import { TipoReporte } from 'app/enums/tipo_reporte.enum';
 declare let $: any;
 @Component({
   selector: 'app-tabla-jefes',
@@ -13,8 +13,9 @@ declare let $: any;
   styleUrls: ['./tabla-jefes.component.css']
 })
 export class TablaJefesComponent extends Datatabla implements OnInit, AfterContentChecked, OnDestroy {
-  @Input() idFilial = 1;
+  @Input() idFinantienda = '1';
   @Output() regresar: EventEmitter<any>;
+  @Input() data: JefesInterface[] = [];
   finantiendaId = '029';
   fecha = '20180105';
   nombreJefe = '';
@@ -23,9 +24,8 @@ export class TablaJefesComponent extends Datatabla implements OnInit, AfterConte
 
   constructor(
     private filtrosService: FiltrosService,
-    public http: Http,
-    private jefesService: TablaJefesService,
-    private jefesAcumuladosService: TablaJefesAcumuladosService,
+    private jefesDataService: TablaDataJefesService,
+    private opcionesNavService: OpcionesNavService,
     public notificationSvr: NotificationService
   ) {
     super();
@@ -34,32 +34,21 @@ export class TablaJefesComponent extends Datatabla implements OnInit, AfterConte
         this.mostrarBuscador(resultado);
       }
     );
+    this.opcionesNavService.nuevoSeleccionado.subscribe(
+      (event) => { this.capturando(event); }
+    );
     this.columnas = [
       'ejecutivo',
       'meta',
-      'entregado',
-      'porcentaje'
+      'porcentaje',
+      'entregado'
     ];
-    /*this.columnas = [
-      'id_equipo',
-      'Nombre',
-      'Meta',
-      'Ejecutado',
-      'Realizado'
-    ];*/
     this.headers = [
       'Ejecutivo',
       'Meta',
       'Porcentaje',
       'Entregado'
     ];
-    /*this.headers = [
-      'Equipo',
-      'Nombre',
-      'Meta',
-      'Ejecutado',
-      'Realizado'
-    ]*/
     this.regresar = new EventEmitter<any>();
   }
 
@@ -67,22 +56,20 @@ export class TablaJefesComponent extends Datatabla implements OnInit, AfterConte
     this.filtrosService.buscadorEvent.unsubscribe();
   }
 
+  pintarTabla() {
+    this.jefesDataService.mostrarJefes(this.tipo_reporte, this.idFinantienda).then(
+      () => {
+        this.data = this.jefesDataService.data;
+        this.temp_var = true;
+      }
+    );
+  }
+
   ngOnInit() {
-    if (this.diario === true) {
-      this.jefesService.obtenerTarjetas().then(
-        () => {
-          this.data = this.jefesService.results;
-          this.temp_var = true;
-        }
-      );
-    } else {
-      console.log('Entro acumulados');
-      this.jefesAcumuladosService.obtenerTarjetas().then(
-        () => {
-          this.data = this.jefesService.results;
-          this.temp_var = true;
-        }
-      );
+    if (this.data) {
+      if (this.data.length > 0) {
+        this.temp_var = true;
+      }
     }
   }
 
@@ -125,6 +112,11 @@ export class TablaJefesComponent extends Datatabla implements OnInit, AfterConte
 
   haciaJefes() {
     this.mostrarJefes = true;
+  }
+
+  capturando(event: TipoReporte) {
+    this.tipo_reporte = event;
+    this.pintarTabla();
   }
 
 }

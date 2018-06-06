@@ -14,9 +14,9 @@ export class FinantiendasService extends ApiService {
   }
 
   obtenerFinantiendas(): Promise<void> {
-    return this.getData(true).then(
+    return this.getData(false).then(
       () => {
-        console.log('Results:' + this.results);
+        // console.log('Results:' + this.results);
         for (let index = 0; index < this.results.length; index++) {
           const finantienda = this.results[index];
           this.finantiendas.push(

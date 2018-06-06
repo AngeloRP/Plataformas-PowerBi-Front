@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 // import { ApiService } from '../../../../core/api/api.service';
 import { Http } from '@angular/http';
 import { PieGrafico } from '../pie-grafico';
@@ -15,9 +15,10 @@ export class PieGraficosComponent extends PieGrafico implements OnInit {
   // credicompras: PieGrafico;
   // efectivo: PieGrafico;
   graficos: Array<PieGrafico>;
-  mostrarGraficos = false;
+  asesores: any[] = [];
+  mostrarGraficos = true;
   loading = true;
-  filiales: any;
+  finantiendas: any;
 
   constructor(
     private http: Http,
@@ -29,7 +30,7 @@ export class PieGraficosComponent extends PieGrafico implements OnInit {
       data_percent: 1,
       data_color: 'grafico_color',
       titulo: '',
-      id: 1,
+      id: '1',
       font_size: 12
     });
     this.graficos = new Array<PieGrafico>();
@@ -43,7 +44,7 @@ export class PieGraficosComponent extends PieGrafico implements OnInit {
     this.render();
   }
 
-  render() {
+  private calcularTamanioGrafico() {
     const width = window.innerWidth;
     console.log('Width:' + width);
     if (width >= 1200) {
@@ -58,100 +59,44 @@ export class PieGraficosComponent extends PieGrafico implements OnInit {
     console.log('Data_size:' + this.data.data_size);
     console.log('Data_pie_size:' + this.data.data_pie_size);
     console.log('Font_size:' + this.data.font_size);
-    this.loading = false;
-    /*this.graficoSvr.obtenerFiliales().then(() => {
-      this.filiales = this.graficoSvr.results;
+  }
+
+  render() {
+    this.graficos = new Array<PieGrafico>();
+    this.calcularTamanioGrafico();
+    // this.loading = false;
+    this.graficoSvr.obtenerGrafico().then(() => {
+      this.asesores = this.graficoSvr.results;
+      this.finantiendas = this.graficoSvr.graficos;
       this.fillPieGrafico();
       this.loading = false;
-    });*/
-    /*this.graficos = new ApiService(this.http);
-    this.graficos.fillApiService('informacionFilial');
-    this.graficos.get().subscribe(
-      filiales => {
-        if (filiales.data) {
-          if (filiales.data.rpta) {
-            this.filiales = filiales.data.rpta;
-            // console.log('Filiales:' + JSON.stringify(this.filiales));
-            this.fillPieGrafico();
-            this.loading = false;
-          }
-        }
-      },
-      error => {
-      }
-    );*/
+    });
   }
 
 
   fillPieGrafico() {
-    for (let index = 0; index < this.filiales.length; index++) {
-      const filial = this.filiales[index];
+    console.log('FINANTIENDAS:' + JSON.stringify(this.finantiendas));
+    console.log('Asesores:' + JSON.stringify(this.asesores));
+    for (let index = 0; index < this.finantiendas.length; index++) {
+      const finantienda = this.finantiendas[index];
       const grafico = new PieGrafico({
         data_size: this.data.data_size,
         data_pie_size: this.data.data_pie_size,
-        data_percent: filial['Realizado'],
-        data_color: 'grafico_' + filial['Nombre'] + '_color',
-        titulo: filial['Nombre'],
-        id: filial['id_filial'],
+        data_percent: finantienda['porcentajeTotal'],
+        data_color: 'grafico_' + finantienda['finantiendaNombre'] + '_color',
+        titulo: finantienda['finantiendaNombre'],
+        id: finantienda['finantiendaId'],
         font_size: this.data.font_size
       });
-      /*grafico.fillPieGrafico({
-        data_size: this.data.data_size,
-        data_pie_size: this.data.data_pie_size,
-        data_percent: filial['Realizado'],
-        data_color: 'grafico_'+ filial['Nombre'] + '_color',
-        titulo: filial['Nombre'],
-        id: filial['id_filial'],
-        font_size: this.data.font_size
-      });*/
       this.graficos.push(grafico);
     }
-    /*this.tarjetas.fillPieGrafico({
-      data_size: this.data.data_size,
-      data_pie_size: this.data.data_pie_size,
-      data_percent: this.filiales[0]['Realizado'],
-      data_color: 'grafico_tarjetas_color',
-      titulo: this.filiales[0]['Nombre'],
-      id: this.filiales[0]['id_filial'],
-      font_size: this.data.font_size
-    });
-
-    this.servicios.fillPieGrafico({
-      data_size: this.data.data_size,
-      data_pie_size: this.data.data_pie_size,
-      data_color: 'grafico_servicios_color',
-      data_percent: 65,
-      titulo: 'Seguros',
-      font_size: this.data.font_size,
-      id: 2,
-    });
-
-    this.credicompras.fillPieGrafico({
-      data_size: this.data.data_size,
-      data_pie_size: this.data.data_pie_size,
-      data_color: 'grafico_compras_color',
-      data_percent: 80,
-      titulo: 'Credicompras',
-      font_size: this.data.font_size,
-      id: 3
-    });
-
-    this.efectivo.fillPieGrafico({
-      data_size: this.data.data_size,
-      data_pie_size: this.data.data_pie_size,
-      data_color: 'grafico_efectivo_color',
-      data_percent: 90,
-      titulo: 'Efectivo',
-      font_size: this.data.font_size,
-      id: 4
-    });*/
   }
 
 
 
   haciaTablaJefes(event) {
     console.log('Event hacia Jefes:' + JSON.stringify(event));
-    this.data.id = event.idFilial;
+    this.data.id = event.id;
     this.data.titulo = event.titulo;
     this.data.data_color = event.data_color;
     this.mostrarGraficos = false;

@@ -1,7 +1,8 @@
 import { Input, HostListener } from '@angular/core';
+import { TipoReporte } from 'app/enums/tipo_reporte.enum';
 
 export class Datatabla {
-  public diario = true;
+  public tipo_reporte: TipoReporte = TipoReporte.diario;
   public dtOptions: any = {};
   public data: any[];
   public temp_var: Object = false;
@@ -94,8 +95,8 @@ export class Datatabla {
   }
 
   posicionarTablaAlActivarBuscador(): void {
-    if (this.mostrar === true) {
-      $('.dataTables_wrapper').css({ 'top': '8px' });
+    if (this.mostrar === false) {
+      $('.dataTables_wrapper').css({ 'top': '40px' });
     } else {
       $('.dataTables_wrapper').css({ 'top': '40px' });
     }

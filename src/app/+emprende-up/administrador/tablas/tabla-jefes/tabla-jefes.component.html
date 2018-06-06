@@ -5,7 +5,7 @@
           </button>
           <h1>{{titulo}}</h1>
     </div>
-    <app-opciones-nav  *ngIf="this.temp_var" (nuevoSeleccionado)="capturando($event)"></app-opciones-nav>
+    <app-opciones-nav  *ngIf="this.temp_var" ></app-opciones-nav>
     <!--<app-buscador  *ngIf="this.temp_var"></app-buscador>-->
     <app-filtros *ngIf="this.temp_var" ></app-filtros>
     <table *ngIf="this.temp_var"

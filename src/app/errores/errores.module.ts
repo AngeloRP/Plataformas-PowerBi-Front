@@ -5,9 +5,6 @@ import { CommonModule } from '@angular/common';
   imports: [
     CommonModule
   ],
-  declarations: [],
-  providers: [
-    
-  ]
+  declarations: []
 })
-export class TablasServicesModule { }
+export class ErroresModule { }

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TablaJefesService } from './tabla-jefes.service';
 import { TablaJefesAcumuladosService } from './tabla-jefes-acumulados.service';
+import { TablaDataJefesService } from './tabla-data-jefes.service';
 
 @NgModule({
   imports: [
@@ -10,7 +11,8 @@ import { TablaJefesAcumuladosService } from './tabla-jefes-acumulados.service';
   declarations: [],
   providers: [
     TablaJefesService,
-    TablaJefesAcumuladosService
+    TablaJefesAcumuladosService,
+    TablaDataJefesService
   ]
 })
 export class TablaJefesServicesModule { }

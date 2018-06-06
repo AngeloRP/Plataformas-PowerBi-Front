@@ -17,6 +17,7 @@ export class FinantiendaSelectComponent implements OnInit {
     checkedStyle: 'fontawesome',
     buttonClasses: 'btn btn-default btn-block',
     dynamicTitleMaxItems: 1,
+    selectionLimit: 1,
     displayAllSelectedText: true
   };
   finantiendasSeleccionadas: FinantiendaInterface[];

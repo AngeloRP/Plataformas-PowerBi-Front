@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FiltrosService } from './filtros.service';
 
 @Component({
@@ -7,13 +7,15 @@ import { FiltrosService } from './filtros.service';
   styleUrls: ['./filtros.component.css']
 })
 export class FiltrosComponent implements OnInit {
-
+  clase_filtro = 'inactivo';
   constructor(
     public filtroSvr: FiltrosService
   ) {
+    
   }
 
   ngOnInit() {
+    this.filtroSvr.llenarClaseBuscador();
   }
 
 }

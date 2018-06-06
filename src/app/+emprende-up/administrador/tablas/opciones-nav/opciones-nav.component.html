@@ -1,7 +1,7 @@
 
-<div *ngIf="!loading" class="opciones-nav n-top-100 ph3 n-bg-near-black overflow-hidden tp-all td-2 relative-ns flex-ns items-center w-auto-ns top-auto-ns ph0-ns  visibility-hidden n-mx-h0-s disabled-link-s">
-  <ng-container *ngFor="let opcion of opciones;let i = index;">
-      <app-opcion-nav [data]="opcion" [indice]="i" (seleccionar)="seleccionar($event)"></app-opcion-nav>
+<div *ngIf="!opcionesNavSvr.loading" class="opciones-nav n-top-100 ph3 n-bg-near-black overflow-hidden tp-all td-2 relative-ns flex-ns items-center w-auto-ns top-auto-ns ph0-ns  visibility-hidden n-mx-h0-s disabled-link-s">
+  <ng-container *ngFor="let opcion of opcionesNavSvr.opciones;let i = index;">
+      <app-opcion-nav [data]="opcion" [indice]="i" (seleccionar)="opcionesNavSvr.seleccionar($event)"></app-opcion-nav>
   </ng-container>
   <!--<div *ngIf="data.presionado" class="dn db-ns n-afterline" style="background-color: rgb(219, 0, 124);">
   </div>-->

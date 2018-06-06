@@ -32,7 +32,8 @@
 <div *ngIf="!mostrarGraficos && !loading">
     <app-tabla-jefes
     (regresar)="eventoMostrarGraficos()"
-    [idFilial]="this.data.id"
+    [idFinantienda]="this.data.id + ''"
+    [data]="asesores"
     [titulo]="this.data.titulo"
     [fondoBase]="this.data.data_color"
     ></app-tabla-jefes>

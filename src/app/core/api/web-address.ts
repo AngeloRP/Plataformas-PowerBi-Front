@@ -1,22 +1,31 @@
 import { Headers } from '@angular/http';
 export class WebAddress {
     public headers: Headers;
-    private urlPath: string;
+    private dominio: string;
+    private siguientes: string;
     private queryParams: any[] = [];
     private formData: any[] = [];
 
     constructor(url: string, headers: Headers) {
-        this.urlPath = url;
+        this.dominio = url;
         this.headers = headers;
+        this.siguientes = '';
     }
 
     addUrl(ruta: any) {
         if (ruta !== undefined && ruta !== null && ruta !== '') {
-            this.urlPath += '/' + ruta;
+            // this.dominio += '/' + ruta;
+            this.siguientes += '/' + ruta;
         }
 
     }
 
+    setUlimo(ruta: any) {
+        if (ruta !== undefined && ruta !== null && ruta !== '') {
+            // this.dominio += '/' + ruta;
+            this.siguientes = '/' + ruta;
+        }
+    }
     addHeaders(headers: { name, value }[]) {
         if (headers !== null) {
             for (const header of headers) {
@@ -61,7 +70,7 @@ export class WebAddress {
         for (let queryParam of this.queryParams)
           query += '&' + queryParam.name + '=' + queryParam.value;
         return this.urlPath + '?' + query.substring(1);/** */
-        return this.urlPath;
+        return this.dominio + this.siguientes;
     }
 
     public getHeaders(): Headers {

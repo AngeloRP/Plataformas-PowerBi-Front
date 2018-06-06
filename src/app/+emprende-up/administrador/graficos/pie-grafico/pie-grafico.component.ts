@@ -16,7 +16,7 @@ export class PieGraficoComponent extends PieGrafico implements OnInit {
       data_percent: 1,
       data_color: 'grafico_color',
       titulo: '',
-      id: 1,
+      id: '1',
       font_size: 12
     });
     this.regresar = new EventEmitter<any>();
@@ -34,9 +34,10 @@ export class PieGraficoComponent extends PieGrafico implements OnInit {
   }
 
   haciaTablaJefes() {
+    console.log('Emitio evento');
     this.regresar.emit(
       {
-        idFilial: this.data.id,
+        id: this.data.id,
         titulo: this.data.titulo,
         data_color: this.data.data_color
       }

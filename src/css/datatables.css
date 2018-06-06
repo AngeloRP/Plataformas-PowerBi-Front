@@ -89,6 +89,7 @@ table.dataTable thead th, table.dataTable thead td{
 
 table.dataTable.DTFC_Cloned thead tr th {
     color: #FFFFFF !important;
+    background-color: #00a0e3;
 }
 
 /*@media (max-width:500px){

@@ -14,6 +14,8 @@ import { FormsModule } from '@angular/forms';
 import { FiltrosComponent } from './filtros/filtros.component';
 import { FiltrosService } from './filtros/filtros.service';
 import { ApiModule } from '../../../core/api/api.module';
+import { TablasServicesModule } from '../../../core/api/tablas-services/tablas-services.module';
+import { OpcionesNavService } from './opciones-nav/opciones-nav.service';
 
 @NgModule({
   imports: [
@@ -23,7 +25,8 @@ import { ApiModule } from '../../../core/api/api.module';
     FinantiendasServicesModule,
     FormsModule,
     MultiselectDropdownModule,
-    ApiModule
+    ApiModule,
+    TablasServicesModule
   ],
   declarations: [
     TablaJefesComponent,
@@ -39,7 +42,8 @@ import { ApiModule } from '../../../core/api/api.module';
     TablaEquiposComponent
   ],
   providers: [
-    FiltrosService
+    FiltrosService,
+    OpcionesNavService
   ]
 })
 export class TablasModule { }

@@ -28,7 +28,7 @@ export class Api {
     return { headers: new Headers(headers) };
   }
 
-  public evaluate(promise) {
+  /*public evaluate(promise) {
     // const auth = this.auth
     const router = this.router;
 
@@ -69,5 +69,5 @@ export class Api {
       console.error(`${error.status} - ${error.statusText}: ${message}`);
       return Promise.reject(new Error(message));
     });
-  }
+  }*/
 }

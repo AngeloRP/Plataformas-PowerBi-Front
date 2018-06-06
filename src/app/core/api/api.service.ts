@@ -82,12 +82,12 @@ export class ApiService extends EndPointService {
     return operacion;
   }
 
-  protected getData(mostrarAlertaSuccess: boolean = false, mostrarAlertaError: boolean = true) {
-    const resultado = this.get().toPromise().then(
+  protected  getData(mostrarAlertaSuccess: boolean = false, mostrarAlertaError: boolean = true) {
+    const resultado =  this.get().toPromise().then(
       resultados => {
+        console.log('Resultados: ' + JSON.stringify(resultados));
         if (resultados.data !== undefined) {
-          if (resultados.data.rpta !== undefined) {
-            console.log('Resultados: ' + JSON.stringify(resultados.data.rpta));
+          if (resultados.data.rpta !== undefined && resultados.data.rpta !== null) {
             this.results = resultados.data.rpta;
             if (mostrarAlertaSuccess === true && resultados.data.msg !== undefined) {
               this.notificationService.smallBox(
@@ -99,6 +99,7 @@ export class ApiService extends EndPointService {
                 }
               );
             }
+            return resultados.data;
           } else {
             this.results = null;
             if (resultados.data.msg !== undefined) {

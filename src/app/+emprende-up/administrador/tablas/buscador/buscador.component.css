@@ -1,7 +1,7 @@
 #buscador {
     float: left;
     padding: 7px 12px;
-    margin-top: 4px;
+    
     margin-bottom: 10px;
     position: absolute;
     left: -3px;
@@ -12,18 +12,20 @@
     box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2);
 }
 
-.b-activo a {
+#buscador.b-activo a {
     color: rgb(255, 0, 21);
 }
 
-.b-inactivo a {
+#buscador.b-inactivo a {
     color: white;
 }
 
-.b-inactivo {
+#buscador.b-inactivo {
     background-color: rgb(255, 0, 21);
+    margin-top: 4px;
 }
 
-.b-activo {
+#buscador.b-activo {
     background-color: rgba(193,198,208,.6);
+    margin-top: 40px;
 }

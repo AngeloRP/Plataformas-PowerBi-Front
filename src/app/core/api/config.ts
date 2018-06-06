@@ -31,9 +31,9 @@ function extraData(res: Response) {
 }
 // Manejo de errores en los servicios
 function handleError(error: Response) {
- // console.log('Handle Error');
- // console.log(error);
- // console.log('-----------------------');
+  console.log('Handle Error');
+  console.log(error);
+  console.log('-----------------------');
   /*
     let errMsg = (error.message) ? error.message :
       error.status ? `${error.status} - ${error.statusText}` : 'Server error';
