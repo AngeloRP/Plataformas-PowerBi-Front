@@ -4,7 +4,7 @@ import { Http, Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import * as  conexion_back from 'assets/api/back/url.json'
 import { config_server } from 'app/shared/conexion-back/middleware';
-declare var $: any;
+// declare var $: any;
 @Component({
   selector: 'app-jquery-table',
   templateUrl: './jquery_table.component.html',

@@ -1,4 +1,4 @@
-declare var $: any;
+// declare var $: any;
 
 export const VALIDATION_OPTIONS = {
   errorElement: 'em',

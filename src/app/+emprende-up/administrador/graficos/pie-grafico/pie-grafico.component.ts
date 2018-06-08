@@ -8,6 +8,7 @@ import { PieGrafico } from '../pie-grafico';
 })
 export class PieGraficoComponent extends PieGrafico implements OnInit {
   @Output() regresar: EventEmitter<any>;
+  fecha = 'Junio';
   mostrarGrafica = 'noMostrar';
   constructor() {
     super({
@@ -17,7 +18,8 @@ export class PieGraficoComponent extends PieGrafico implements OnInit {
       data_color: 'grafico_color',
       titulo: '',
       id: '1',
-      font_size: 12
+      font_size: 12,
+      tipo: ''
     });
     this.regresar = new EventEmitter<any>();
   }
@@ -39,7 +41,8 @@ export class PieGraficoComponent extends PieGrafico implements OnInit {
       {
         id: this.data.id,
         titulo: this.data.titulo,
-        data_color: this.data.data_color
+        data_color: this.data.data_color,
+        tipo: this.data.tipo
       }
     );
   }

@@ -9,8 +9,8 @@ import { FinantiendasService } from '../../../../core/api/finantiendas-services/
   styleUrls: ['./finantienda-select.component.css']
 })
 export class FinantiendaSelectComponent implements OnInit {
-  finantiendas: FinantiendaInterface[] = [];
-  finantiendaSeleccionada: FinantiendaInterface;
+  // finantiendas: FinantiendaInterface[] = [];
+  // finantiendaSeleccionada: FinantiendaInterface;
   loading = true;
   mySettings: IMultiSelectSettings = {
     enableSearch: true,
@@ -18,21 +18,28 @@ export class FinantiendaSelectComponent implements OnInit {
     buttonClasses: 'btn btn-default btn-block',
     dynamicTitleMaxItems: 1,
     selectionLimit: 1,
-    displayAllSelectedText: true
+    displayAllSelectedText: true,
+    autoUnselect: true
   };
-  finantiendasSeleccionadas: FinantiendaInterface[];
-  constructor(private finantiendaSvr: FinantiendasService) {
+  // finantiendasSeleccionadas: FinantiendaInterface[];
+  constructor(public finantiendaSvr: FinantiendasService) {
+
   }
 
   ngOnInit() {
     this.finantiendaSvr.obtenerFinantiendas().then(
       () => {
         console.log(':0');
-        this.finantiendas = this.finantiendaSvr.finantiendas;
+        // this.finantiendas = this.finantiendaSvr.finantiendas;
         this.loading = false;
         // this.finantiendaSeleccionada = this.fina
       }
     );
+  }
+
+  onChangeSelect(event) {
+    // this.finantiendaSvr.finantiendaSeleccionada = this.finantiendaSvr.finantiendaSeleccionada[event]
+    this.finantiendaSvr.actualizarFinantienda(event);
   }
 
 }

@@ -15,4 +15,5 @@ app-buscador, app-finantienda-select {
 #filtros {
     display: inline-block;
     padding: 0px;
+    margin-top: 5px;
 }

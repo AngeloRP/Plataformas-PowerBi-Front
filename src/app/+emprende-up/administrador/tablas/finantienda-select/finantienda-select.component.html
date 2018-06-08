@@ -1,8 +1,9 @@
 <ss-multiselect-dropdown 
 *ngIf="loading === false"
 [settings]="mySettings"
-[options]="finantiendas"
-[(ngModel)]="finantiendaSeleccionada"
+[options]="finantiendaSvr.finantiendas"
+[(ngModel)]="finantiendaSvr.finantiendaSeleccionada"
+(ngModelChange)="onChangeSelect($event)"
 [ngModelOptions]="{standalone: true}"
 >
 </ss-multiselect-dropdown>

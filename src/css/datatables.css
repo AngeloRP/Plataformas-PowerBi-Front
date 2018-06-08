@@ -2,7 +2,11 @@ table.dataTable.DTFC_Cloned {
     margin: 0.2px !important;
 }
 
-font-size: 1.4rem !important;
+.panel-body{
+    padding: 0px;
+}
+
+/* font-size: 1.4rem !important;*/
 
 table thead tr th {
     color: #93979e;
@@ -89,7 +93,7 @@ table.dataTable thead th, table.dataTable thead td{
 
 table.dataTable.DTFC_Cloned thead tr th {
     color: #FFFFFF !important;
-    background-color: #00a0e3;
+    background-color: #00a0e3 !important;
 }
 
 /*@media (max-width:500px){
@@ -148,7 +152,7 @@ div.dataTables_wrapper div.dataTables_filter label {
 div.dataTables_wrapper div.dataTables_filter input {
     margin-left: 0px !important;
     margin-right: -4px !important;
-    padding: 7px 12px;
+    padding: 10px 12px;
     border: none !important;
     background-color: #fff;
     width: calc(100% - 32px);
@@ -162,6 +166,12 @@ div.dataTables_wrapper div.dataTables_filter input {
 
 .input-group-addon{
     background-color: #fff;
+}
+
+.fa-calendar:before{
+    top: 5px;
+    left: 4px;
+    position: absolute;
 }
 
 /*.DTFC_LeftHeadWrapper > table > thead > tr:nth-child(1),

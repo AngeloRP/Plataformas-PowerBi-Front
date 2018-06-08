@@ -9,11 +9,12 @@ export class OpcionesNavService extends OpcionNav {
   @Output() nuevoSeleccionado: EventEmitter<TipoReporte>;
   constructor() {
     super();
-    this.opciones = [];
+    this.fillOpciones();
     this.nuevoSeleccionado = new EventEmitter<TipoReporte>();
   }
 
-  fillOpciones() {
+  private fillOpciones() {
+    this.opciones = [];
     this.opciones.push({
       titulo: 'Diario',
       presionado: false
@@ -36,14 +37,17 @@ export class OpcionesNavService extends OpcionNav {
           titulo: this.opciones[i].titulo,
           presionado: true
         };
-        this.nuevoSeleccionado.emit(TipoReporte.diario);
       } else {
         this.opciones[i] = {
           titulo: this.opciones[i].titulo,
           presionado: false
         };
-        this.nuevoSeleccionado.emit(TipoReporte.acumulado);
       }
+    }
+    if (event === 0) {
+      this.nuevoSeleccionado.emit(TipoReporte.diario);
+    } else {
+      this.nuevoSeleccionado.emit(TipoReporte.acumulado);
     }
     // console.log('Opciones cambiadas');
     // console.log(JSON.stringify(this.opciones));

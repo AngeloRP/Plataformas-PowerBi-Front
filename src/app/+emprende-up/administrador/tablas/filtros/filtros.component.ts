@@ -7,7 +7,7 @@ import { FiltrosService } from './filtros.service';
   styleUrls: ['./filtros.component.css']
 })
 export class FiltrosComponent implements OnInit {
-  clase_filtro = 'inactivo';
+  // clase_filtro = 'inactivo';
   constructor(
     public filtroSvr: FiltrosService
   ) {

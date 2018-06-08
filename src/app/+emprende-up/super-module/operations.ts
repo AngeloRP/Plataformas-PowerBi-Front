@@ -3,7 +3,7 @@ import { Input } from '@angular/core';
 import { RowForm, Option } from 'app/+emprende-up/super-module/form-super/input-form';
 import { SectionInt } from './form-super/input-form';
 
-declare var $: any;
+// declare var $: any;
 
 export class Operations {
   mostrarM = false;

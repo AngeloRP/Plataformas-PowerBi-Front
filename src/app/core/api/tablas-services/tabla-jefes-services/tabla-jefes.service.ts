@@ -13,12 +13,13 @@ export class TablaJefesService extends ApiService {
     // this.webAddress.addUrl('informacionJefesPorFilial');
   }
 
-  obtenerTarjetas(finantiendaId: string = '029', fecha: string = null): Promise<void> {
+  obtenerTarjetas(finantiendaId: string = '28', fecha: string = null): Promise<void> {
     // obtenerTarjetas(finantiendaId: number = 1): Promise<void> {
     this.webAddress.setUlimo('tarjetasCreditoEntregadasDiario/' + finantiendaId + '/' + fecha);
+    console.log('Url Acumulados:' + this.webAddress.getUrl());
     return this.getData(false).then(
       (resultado) => {
-        console.log('Consiguio jefes:' + resultado);
+        // console.log('Consiguio jefes:' + resultado);
       }
     );
   }

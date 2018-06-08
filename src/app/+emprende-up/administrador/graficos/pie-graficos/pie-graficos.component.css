@@ -1,3 +1,17 @@
 #pie_graficos{
-    margin-top: 15px;
+    /* margin-top: 15px; */
+}
+
+.titulo {
+    display: inline-block;
+    width: 100%;
+    padding: 0px 15px;
+}
+
+.titulo h2:first-child {
+    float: left;
+}
+
+.titulo h2:last-child {
+    float: right;
 }

@@ -1,3 +1,8 @@
-<p>
-  selector-rango works!
-</p>
+<div id="fechas_rango">
+  <div class="col-xs-6">
+    <app-selector-dia (fechaCambio)="capturarFechaInicio($event)"></app-selector-dia>
+  </div>
+  <div class="col-xs-6">
+    <app-selector-dia (fechaCambio)="capturarFechaFin($event)"></app-selector-dia>
+  </div>
+</div>

@@ -17,7 +17,7 @@ export class OpcionesNavComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.opcionesNavSvr.fillOpciones();
+    // this.opcionesNavSvr.fillOpciones();
   }
 
 }

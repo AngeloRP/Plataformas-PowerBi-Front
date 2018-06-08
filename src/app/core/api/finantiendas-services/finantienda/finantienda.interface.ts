@@ -1,5 +1,5 @@
 export interface FinantiendaInterface {
-    id: number,
+    id: string,
     name: string,
     checked: boolean
 }

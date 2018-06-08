@@ -1,4 +1,5 @@
 .titulo_pie {
+    margin-top: 0;
     margin-bottom: 0;
     font-weight: 500;
     text-align: center;
@@ -30,7 +31,7 @@
 }
 
 .centrarHorizontalmente button {
-    background-color: #E1E2E1;
+    background-color: transparent;
 }
 
 #panel-pie {

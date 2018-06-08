@@ -1,5 +1,6 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { OpcionNav } from './opcion-nav';
+import { OpcionesNavService } from '../opciones-nav/opciones-nav.service';
 
 @Component({
   selector: 'app-opcion-nav',
@@ -7,17 +8,13 @@ import { OpcionNav } from './opcion-nav';
   styleUrls: ['./opcion-nav.component.css']
 })
 export class OpcionNavComponent extends OpcionNav implements OnInit {
-  @Output() seleccionar: EventEmitter<any>;
-  constructor() {
+  constructor(
+    public opcionNavSvr: OpcionesNavService
+  ) {
     super();
-    this.seleccionar = new EventEmitter<any>();
   }
 
   ngOnInit() {
-  }
-
-  presionar() {
-    this.seleccionar.emit(this.indice);
   }
 
 }

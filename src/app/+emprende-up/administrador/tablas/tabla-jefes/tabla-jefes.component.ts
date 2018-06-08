@@ -6,7 +6,8 @@ import { OpcionesNavService } from '../opciones-nav/opciones-nav.service';
 import { JefesInterface } from './jefes.interface';
 import { TablaDataJefesService } from '../../../../core/api/tablas-services/tabla-jefes-services/tabla-data-jefes.service';
 import { TipoReporte } from 'app/enums/tipo_reporte.enum';
-declare let $: any;
+import { FinantiendasService } from '../../../../core/api/finantiendas-services/finantiendas.service';
+// declare let $: any;
 @Component({
   selector: 'app-tabla-jefes',
   templateUrl: './tabla-jefes.component.html',
@@ -16,8 +17,8 @@ export class TablaJefesComponent extends Datatabla implements OnInit, AfterConte
   @Input() idFinantienda = '1';
   @Output() regresar: EventEmitter<any>;
   @Input() data: JefesInterface[] = [];
+  fechas: any = null;
   finantiendaId = '029';
-  fecha = '20180105';
   nombreJefe = '';
   mostrarJefes = true;
   idJefe = 1;
@@ -26,50 +27,58 @@ export class TablaJefesComponent extends Datatabla implements OnInit, AfterConte
     private filtrosService: FiltrosService,
     private jefesDataService: TablaDataJefesService,
     private opcionesNavService: OpcionesNavService,
+    private finantiendaSvr: FinantiendasService,
     public notificationSvr: NotificationService
   ) {
     super();
+    this.regresar = new EventEmitter<any>();
     this.filtrosService.buscadorEvent.subscribe(
       (resultado) => {
         this.mostrarBuscador(resultado);
       }
     );
-    this.opcionesNavService.nuevoSeleccionado.subscribe(
-      (event) => { this.capturando(event); }
+    this.finantiendaSvr.cambioFinantienda.subscribe(
+      (finantienda) => {
+        console.log('Finantiendas:' + JSON.stringify(finantienda));
+        this.idFinantienda = finantienda.idFinantienda;
+        this.titulo = finantienda.nombre;
+        this.pintarTabla();
+      }
     );
-    this.columnas = [
-      'ejecutivo',
-      'meta',
-      'porcentaje',
-      'entregado'
-    ];
-    this.headers = [
-      'Ejecutivo',
-      'Meta',
-      'Porcentaje',
-      'Entregado'
-    ];
-    this.regresar = new EventEmitter<any>();
+    this.opcionesNavService.nuevoSeleccionado.subscribe(
+      (event) => { this.cambiandoTipoReporte(event); }
+    );
   }
 
   ngOnDestroy() {
-    this.filtrosService.buscadorEvent.unsubscribe();
+    // this.filtrosService.buscadorEvent.unsubscribe();
+    // this.finantiendaSvr.cambioFinantienda.unsubscribe();
+    // this.opcionesNavService.nuevoSeleccionado.unsubscribe();
   }
 
   pintarTabla() {
-    this.jefesDataService.mostrarJefes(this.tipo_reporte, this.idFinantienda).then(
+    this.temp_var = false;
+    console.log('Tipo Reporte: ' + this.tipo_reporte);
+    console.log('Finantienda:' + this.idFinantienda);
+    this.jefesDataService.mostrarJefes(this.tipo_reporte, this.idFinantienda, this.fechas).then(
       () => {
         this.data = this.jefesDataService.data;
+        // console.log('Data:' + JSON.stringify(this.data));
         this.temp_var = true;
+        this.renderizando = false;
       }
     );
   }
 
   ngOnInit() {
+    console.log('Data:' + JSON.stringify(this.data));
     if (this.data) {
       if (this.data.length > 0) {
         this.temp_var = true;
+        this.renderizando = false;
       }
+    } else {
+      this.pintarTabla();
     }
   }
 
@@ -89,7 +98,7 @@ export class TablaJefesComponent extends Datatabla implements OnInit, AfterConte
   }
 
   haciaEquipos(event) {
-    console.log('Evento:' + JSON.stringify(event));
+    // console.log('Evento:' + JSON.stringify(event));
     if (
       event[0] !== undefined &&
       event[0] !== null &&
@@ -114,9 +123,18 @@ export class TablaJefesComponent extends Datatabla implements OnInit, AfterConte
     this.mostrarJefes = true;
   }
 
-  capturando(event: TipoReporte) {
+  cambiandoTipoReporte(event: TipoReporte) {
+    console.log('Tipo de Reporte: ' + event);
     this.tipo_reporte = event;
     this.pintarTabla();
   }
+
+  actualizacionEnFechas(fechas) {
+    this.fechas = fechas;
+    console.log('Fechas En Tabla:' + JSON.stringify(fechas));
+    this.pintarTabla();
+  }
+
+
 
 }

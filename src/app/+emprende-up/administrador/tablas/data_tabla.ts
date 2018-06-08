@@ -2,13 +2,24 @@ import { Input, HostListener } from '@angular/core';
 import { TipoReporte } from 'app/enums/tipo_reporte.enum';
 
 export class Datatabla {
-  public tipo_reporte: TipoReporte = TipoReporte.diario;
+  public tipo_reporte: TipoReporte = TipoReporte.acumulado;
   public dtOptions: any = {};
   public data: any[];
   public temp_var: Object = false;
+  public renderizando = true;
   public mostrar = false;
-  public columnas: string[] = [];
-  public headers: string[] = [];
+  @Input() public columnas: string[] = [
+    'ejecutivo',
+    'meta',
+    'entregadas',
+    'porcentaje'
+  ];
+  @Input() public headers: string[] = [
+    'Ejecutivo',
+    'Meta',
+    'Entregado',
+    'Porcentaje'
+  ];
   @Input() titulo = '';
   @Input() fondoBase = '';
   constructor(
@@ -39,18 +50,19 @@ export class Datatabla {
       autoWidth: false,
       columnDefs: [
         {
-          'targets': [0, 1, 2, 3],
+          'targets': [0, 1, 2],
           'orderable': false
         }
       ],
+      order: [[3, 'asc']],
       rowCallback: (row: Node, data: any[] | Object, index: number) => {
         const self = this;
         // Unbind first in order to avoid any duplicate handler
         // (see https://github.com/l-lin/angular-datatables/issues/87)
         $('td', row).unbind('click');
         $('td', row).bind('click', () => {
-          console.log('Row:' + row);
-          console.log('Data:' + data);
+          // console.log('Row:' + row);
+          // console.log('Data:' + data);
           self.rumbo_A(data);
         });
         return row;
@@ -77,7 +89,7 @@ export class Datatabla {
 
   mostrarBuscador(event) {
 
-    console.log('Entro a evento mostrar buscador');
+    // console.log('Entro a evento mostrar buscador');
     setTimeout(() => {
       this.temp_var = false;
     }, 0);
@@ -96,9 +108,9 @@ export class Datatabla {
 
   posicionarTablaAlActivarBuscador(): void {
     if (this.mostrar === false) {
-      $('.dataTables_wrapper').css({ 'top': '40px' });
+      $('.dataTables_wrapper').css({ 'top': '8px' });
     } else {
-      $('.dataTables_wrapper').css({ 'top': '40px' });
+      $('.dataTables_wrapper').css({ 'top': '8px' });
     }
   }
 
@@ -110,7 +122,7 @@ export class Datatabla {
   onResize(): void {
     // this.fixBugColumnResize();
     if (this.temp_var === true) {
-      console.log('Entro a cambiar autoWidth');
+      // console.log('Entro a cambiar autoWidth');
       this.temp_var = false;
       setTimeout(() => {
         this.temp_var = true;

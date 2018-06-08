@@ -1,5 +1,5 @@
 // jQuery
-declare var jQuery: any;
+// declare var jQuery: any;
 
 // RxJS
 import 'rxjs/add/operator/map';

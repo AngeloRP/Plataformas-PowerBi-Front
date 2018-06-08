@@ -5,7 +5,7 @@ export class Finantienda {
     @Input() data: FinantiendaInterface;
     constructor() {
         this.data = {
-            id: 0,
+            id: '0',
             name: '',
             checked: false
         }

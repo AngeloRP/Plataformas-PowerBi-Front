@@ -12,11 +12,17 @@ export class TablaDataJefesService {
     private jefeAcumuladorService: TablaJefesAcumuladosService
   ) { }
 
-  mostrarJefes(tipo_reporte: TipoReporte, finantienda_id: string): Promise<void> {
+  mostrarJefes(tipo_reporte: TipoReporte, finantienda_id: string, fechas: any): Promise<void> {
+    console.log('Fechas:' + JSON.stringify(fechas));
     if (tipo_reporte === TipoReporte.diario) {
-      return this.jefeDiarioService.obtenerTarjetas(finantienda_id).then(
+      if (fechas !== null) {
+        if (fechas.fecha !== null) {
+          fechas = fechas.fecha;
+        }
+      }
+      return this.jefeDiarioService.obtenerTarjetas(finantienda_id, fechas).then(
         () => {
-          console.log('Jefes:' + JSON.stringify(this.jefeDiarioService.results));
+          // // console.log('Jefes:' + JSON.stringify(this.jefeDiarioService.results));
           if (this.jefeDiarioService.results.length > 0) {
             this.data = this.jefeDiarioService.results;
           } else {
@@ -43,8 +49,15 @@ export class TablaDataJefesService {
         }
       );
     } else {
-      console.log('Entro acumulados');
-      return this.jefeAcumuladorService.obtenerTarjetas(finantienda_id).then(
+      // console.log('Entro acumulados');
+      console.log('Fechas:' + JSON.stringify(fechas));
+      if (fechas === null) {
+        fechas = {
+          fechaInicio: null,
+          fechaFin: null
+        }
+      }
+      return this.jefeAcumuladorService.obtenerTarjetas(finantienda_id, fechas.fechaInicio, fechas.fechaFin).then(
         () => {
           if (this.jefeAcumuladorService.results.length > 0) {
             this.data = this.jefeAcumuladorService.results;

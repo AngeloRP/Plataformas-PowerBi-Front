@@ -85,7 +85,7 @@ export class ApiService extends EndPointService {
   protected  getData(mostrarAlertaSuccess: boolean = false, mostrarAlertaError: boolean = true) {
     const resultado =  this.get().toPromise().then(
       resultados => {
-        console.log('Resultados: ' + JSON.stringify(resultados));
+        // console.log('Resultados: ' + JSON.stringify(resultados));
         if (resultados.data !== undefined) {
           if (resultados.data.rpta !== undefined && resultados.data.rpta !== null) {
             this.results = resultados.data.rpta;

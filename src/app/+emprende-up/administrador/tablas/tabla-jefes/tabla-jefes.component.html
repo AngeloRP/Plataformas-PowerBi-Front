@@ -1,13 +1,18 @@
-<div *ngIf="mostrarJefes" class="col-xs-12" >
+<div *ngIf="mostrarJefes && !renderizando" class="col-xs-12" >
     <div class="d_flex">
         <button class="boton_regresar btn " (click)="eventoRegresar()">
             <i class="fa fa-arrow-left"></i>&nbsp;
           </button>
           <h1>{{titulo}}</h1>
     </div>
-    <app-opciones-nav  *ngIf="this.temp_var" ></app-opciones-nav>
+    <app-opciones-nav  ></app-opciones-nav>
+    <app-filtro-fechas
+    [tipoReporte]="tipo_reporte"
+    (cambioEnFechas)="actualizacionEnFechas($event)"
+    >
+    </app-filtro-fechas>
     <!--<app-buscador  *ngIf="this.temp_var"></app-buscador>-->
-    <app-filtros *ngIf="this.temp_var" ></app-filtros>
+    <app-filtros ></app-filtros>
     <table *ngIf="this.temp_var"
     id="{{titulo}}"
     appTextColor

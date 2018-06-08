@@ -4,7 +4,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -15,8 +14,8 @@ import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 
 // Core providers
-import {CoreModule} from "./core/core.module";
-import {SmartadminLayoutModule} from "./shared/layout/layout.module";
+import {CoreModule} from './core/core.module';
+import {SmartadminLayoutModule} from './shared/layout/layout.module';
 import { NgxDatatableCaseComponent } from './ngx-datatable-case/ngx-datatable-case.component';
 import { TranslateModule } from '../translate/translate.module';
 import { AdministradorActiveGuard } from 'app/guards/administrador-guard';
@@ -52,9 +51,6 @@ type StoreType = {
     TranslateModule,
     CoreModule,
     SmartadminLayoutModule,
-
-
-
     routing
   ],
   exports: [

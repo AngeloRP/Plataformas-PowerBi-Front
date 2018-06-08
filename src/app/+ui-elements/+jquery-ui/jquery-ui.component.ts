@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FadeInTop} from '../../shared/animations/fade-in-top.decorator';
 
-declare var $: any;
+// declare var $: any;
 
 @FadeInTop()
 @Component({

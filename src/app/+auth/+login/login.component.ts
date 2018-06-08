@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit, AfterContentChecked {
         }
       );*/
       this.loginService.login(this.login).then(() => {
-        console.log('Se logro :D');
+        // console.log('Se logro :D');
       });
     }
   }

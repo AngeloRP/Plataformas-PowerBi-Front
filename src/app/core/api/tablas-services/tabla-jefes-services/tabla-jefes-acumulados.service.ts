@@ -11,12 +11,13 @@ export class TablaJefesAcumuladosService extends ApiService {
     this.webAddress.addUrl('tarjetasCreditoEntregadasAcumuladas');
   }
 
-  obtenerTarjetas(finantiendaId: string = '028', fechaInicio: string = null, fechaFinal: string = null): Promise<void> {
+  obtenerTarjetas(finantiendaId: string = '28', fechaInicio: string = null, fechaFinal: string = null): Promise<void> {
     // obtenerTarjetas(finantiendaId: number = 1): Promise<void> {
     this.webAddress.setUlimo('tarjetasCreditoEntregadasAcumuladas/' + finantiendaId + '/' + fechaInicio + '/' + fechaFinal);
+    console.log('Url Acumulados:' + this.webAddress.getUrl());
     return this.getData(false).then(
       () => {
-        console.log('Consiguio acumulados');
+        // console.log('Consiguio acumulados');
       }
     );
   }

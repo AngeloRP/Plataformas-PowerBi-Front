@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {FuelUxWizardComponent} from "./fuel-ux-wizard.component";
+import {FuelUxWizardComponent} from './fuel-ux-wizard.component';
 
 @NgModule({
   imports: [

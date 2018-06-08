@@ -6,4 +6,5 @@ export interface PieGraficoInterface {
     titulo: string;
     font_size: number;
     id: string;
+    tipo: string;
 }
