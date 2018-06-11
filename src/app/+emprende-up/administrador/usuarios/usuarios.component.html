@@ -1,108 +1,26 @@
-<!--<app-widget *ngIf="!loading"
-[headerTitle]="'Usuarios'" 
-[contentTable]="true" 
-[tableUrl]="'listarUsuario'"
-[rpta]="'rpta'"
-[isPressed]="actualizar"
-[tableColums]="
-[
-{ data: 'Cuenta de usuario' },
-{ data: 'Nombre' },
-{ data: 'Género' },
-{ data: 'Fecha de nacimiento' },
-{ data: 'Teléfono' },
-{ data: 'Categoría' }
-]"
-[tableButtons]="buttons"
-></app-widget>-->
-
-<!--<app-widget *ngIf="!loading" [headerTitle]="'Usuarios'" [contentTable]="true" [tablaFilterActivity]="true" [tableUrl]="'listarUsuario'"
-    [rpta]="'rpta'" [isPressed]="actualizar" [tableColums]="
-[
-{ prop: 'Cuenta de usuario' },
-{ prop: 'Nombre' },
-{ prop: 'Género' },
-{ prop: 'Fecha de nacimiento' },
-{ prop: 'Teléfono' },
-{ prop: 'Categoría' }
-]" [tableButtons]="buttons" [rowActions]="actions" [posicion]="0" [hasFilter]="true"></app-widget>-->
-
-
-<div *ngIf="!loading">
-    <article class="col-xs-12 mb_25">
-        <div>
-            <!--<header class="headerComp">
-                <h6 class="tituloComp">USUARIOS</h6>
-            </header>-->
-            <div>
-                <app-on-off-switch
-                [opcion1]="'Activos'"
-                [opcion2]="'Inactivos'"
-                [model]="cambioEstado"
-                (modelChange)="cambiarTabla($event)"
-                class="switchFix"
-                ></app-on-off-switch>
-                <div *ngIf="cambioEstado" style="margin-top: 40px;">
-                    <app-table 
-                    [hasActive]="true"
-                    [tamanioAcciones]="120"
-                    [actions]="actions"
-                    [url]="'listarUsuarioActivos'"
-                    [posicion]="0"
-                    [hasButtons]="true"
-                    [buttons]="buttons"
-                    [hasFilter]="true"
-                    [searColumns]="
-                    [
-                    'Cuenta de usuario',
-                    'Nombre',
-                    'Paso',
-                    'Género',
-                    'Fecha de nacimiento',
-                    'Teléfono'
-                    ]"
-                    [columns]="
-                    [
-                    { prop: 'Cuenta de usuario'},
-                    { prop: 'Nombre' },
-                    { prop: 'Género',width:96, maxWidth:96 },
-                    { prop: 'Fecha de nacimiento', width:100, minWidth:100 },
-                    { prop: 'Teléfono',width:100,maxWidth:100  }
-                    ]"
-                    >
-                    </app-table>
-                </div>
-                <div *ngIf="!cambioEstado" style="margin-top: 40px;">
-                    <app-table 
-                    [hasActive]="true"
-                    [actions]="actions"
-                    [url]="'listarUsuarioInactivos'"
-                    [posicion]="0"
-                    [hasButtons]="true"
-                    [buttons]="buttons"
-                    [hasFilter]="true"    
-                    [searColumns]="
-                    [
-                    'Cuenta de usuario',
-                    'Nombre',
-                    'Género',
-                    'Fecha de nacimiento',
-                    'Teléfono'
-                    ]"
-                    [columns]="
-                    [
-                    { prop: 'Cuenta de usuario'},
-                    { prop: 'Nombre' },
-                    { prop: 'Género',width:96, maxWidth:96 },
-                    { prop: 'Fecha de nacimiento', width:100, minWidth:100 },
-                    { prop: 'Teléfono',width:100,maxWidth:100  }
-                    ]">
-                    </app-table>
-                </div>
-            </div>
-        </div>
-    </article>
-
+<div *ngIf="!renderizando" class="col-xs-12">
+    <app-filtros ></app-filtros>
+    <table *ngIf="this.temp_var"
+    id="{{titulo}}"
+    datatable [dtOptions]="dtOptions" class="table table-hover responsive no-wrap" >
+        <thead>
+            <tr>
+                <th *ngFor="let header of headers">{{header}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let rec of this.data;let i = index;">
+              <!--<td>{{rec['id_equipo']}}</td>-->
+              <td *ngFor="let columna of columnas;let i = index;">
+                <ng-container *ngIf="columna === 'porcentaje'">
+                    {{rec[columna] / 100 | percent:'1.0-2':'fr'}}
+                </ng-container>
+                <ng-container *ngIf="columna !== 'porcentaje'">
+                    {{rec[columna]}}
+                </ng-container>
+              </td>
+            </tr>
+          </tbody>
+    </table>
+    
 </div>
-
-<app-modal *ngIf="mostrarM == true" [modalData]="modalData" (cerrarModal)="cerrarModal($event)" (actualizarTabla)="actualizarTabla($event)"></app-modal>

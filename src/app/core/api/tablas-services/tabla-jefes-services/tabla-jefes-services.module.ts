@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common';
 import { TablaJefesService } from './tabla-jefes.service';
 import { TablaJefesAcumuladosService } from './tabla-jefes-acumulados.service';
 import { TablaDataJefesService } from './tabla-data-jefes.service';
+import { ApiModule } from '../../api.module';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    ApiModule
   ],
   declarations: [],
   providers: [

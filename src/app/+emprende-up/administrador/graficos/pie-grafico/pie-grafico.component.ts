@@ -18,6 +18,7 @@ export class PieGraficoComponent extends PieGrafico implements OnInit {
       data_color: 'grafico_color',
       titulo: '',
       id: '1',
+      fecha: new Date(),
       font_size: 12,
       tipo: ''
     });
@@ -36,12 +37,13 @@ export class PieGraficoComponent extends PieGrafico implements OnInit {
   }
 
   haciaTablaJefes() {
-    console.log('Emitio evento');
+    console.log('Emitio evento: ' + JSON.stringify(this.data));
     this.regresar.emit(
       {
         id: this.data.id,
         titulo: this.data.titulo,
         data_color: this.data.data_color,
+        fecha: this.data.fecha,
         tipo: this.data.tipo
       }
     );

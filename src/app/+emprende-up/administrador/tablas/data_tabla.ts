@@ -2,7 +2,7 @@ import { Input, HostListener } from '@angular/core';
 import { TipoReporte } from 'app/enums/tipo_reporte.enum';
 
 export class Datatabla {
-  public tipo_reporte: TipoReporte = TipoReporte.acumulado;
+  public tipo_reporte: TipoReporte = TipoReporte.diario;
   public dtOptions: any = {};
   public data: any[];
   public temp_var: Object = false;

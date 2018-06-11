@@ -8,14 +8,14 @@ export class AdministradorActiveGuard implements CanActivate {
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
 
         if (
-            window.localStorage.getItem('category') == null ||
-            window.localStorage.getItem('category') === undefined ||
-            window.localStorage.getItem('category') === 'null' ||
-            window.localStorage.getItem('category') === 'undefined') {
+            window.localStorage.getItem('DNI') == null ||
+            window.localStorage.getItem('DNI') === undefined ||
+            window.localStorage.getItem('DNI') === 'null' ||
+            window.localStorage.getItem('DNI') === 'undefined') {
             this.router.navigate(['/auth/login']);
             return false;
         } else {
-            if (window.localStorage.getItem('category') === '1') {
+            /*if (window.localStorage.getItem('category') === '1') {
                 return true;
             } else {
                 if (window.localStorage.getItem('category') === '2') {
@@ -28,8 +28,8 @@ export class AdministradorActiveGuard implements CanActivate {
                     this.router.navigate(['/auth/login']);
                     return false;
                 }
-            }
-
+            }*/
+            return true;
         }
     }
 }

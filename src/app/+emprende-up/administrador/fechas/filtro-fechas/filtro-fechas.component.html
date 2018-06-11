@@ -1,9 +1,9 @@
 <ng-container *ngIf="loading === false" >
     <div class="filtro_fechas col-xs-12" *ngIf="tipoReporte == 0">
-        <app-selector-dia (fechaCambio)="retornarFecha($event)"></app-selector-dia>
+        <app-selector-dia [fecha]="fecha" (fechaCambio)="retornarFecha($event)"></app-selector-dia>
       </div>
       <div class="filtro_fechas" *ngIf="tipoReporte == 1">
-        <app-selector-rango (cambioRangoFechas)="retornarFecha($event)" ></app-selector-rango>
+        <app-selector-rango (fechaCambio)="retornarFecha($event)" ></app-selector-rango>
       </div>
 </ng-container>
 

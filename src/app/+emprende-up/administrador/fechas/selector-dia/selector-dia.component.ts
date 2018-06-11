@@ -1,21 +1,17 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { SelectorFecha } from '../selector-fecha';
+import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 
 @Component({
   selector: 'app-selector-dia',
   templateUrl: './selector-dia.component.html',
   styleUrls: ['./selector-dia.component.css']
 })
-export class SelectorDiaComponent implements OnInit {
-  @Output() fechaCambio: EventEmitter<any>;
-  @Input() defaultDate: any = null;
-  dt: Date = new Date();
-  minDate: Date = void 0;
-  events: any[];
-  tomorrow: Date;
-  afterTomorrow: Date;
-  dateDisabled: { date: Date; mode: string }[];
-  constructor() {
-    this.fechaCambio = new EventEmitter<any>();
+export class SelectorDiaComponent extends SelectorFecha implements OnInit {
+  @Input() fecha: any = new Date();
+  defaultDate: Date = new Date();
+  constructor(public bsConfig: BsDatepickerConfig) {
+    super(bsConfig);
   }
 
   ngOnInit() {
@@ -29,14 +25,15 @@ export class SelectorDiaComponent implements OnInit {
 
   }
 
-  cambiarFecha(fecha: string) {
-    const array = fecha.split('/');
-    fecha = array[2] + array[0] + array[1];
-    console.log('Fecha:' + JSON.stringify(fecha));
-    // console.log('Fecha 2:' + JSON.stringify(this.fecha));
+  cambiarFecha(fecha: Date) {
+    console.log('Fecha: ' + JSON.stringify(fecha));
+    console.log('nuevaFecha:' + JSON.stringify(fecha));
+    if (fecha === null) {
+      fecha = new Date();
+    }
     this.fechaCambio.emit(
       {
-        fecha: fecha,
+        fecha: this.darFormatoFecha(fecha),
         tipo: 'unico'
       }
     );

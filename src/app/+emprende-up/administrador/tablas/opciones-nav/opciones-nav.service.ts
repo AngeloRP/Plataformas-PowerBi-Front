@@ -17,11 +17,11 @@ export class OpcionesNavService extends OpcionNav {
     this.opciones = [];
     this.opciones.push({
       titulo: 'Diario',
-      presionado: false
+      presionado: true
     });
     this.opciones.push({
       titulo: 'Acumulado',
-      presionado: true
+      presionado: false
     });
     this.loading = false;
   }

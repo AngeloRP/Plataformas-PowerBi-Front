@@ -1,4 +1,4 @@
-<div *ngIf="mostrarGraficos && !loading" id="pie_graficos">
+<div *ngIf="mostrarGraficos && !loading" id="pie_graficos" class="grafico_tarjetas_color">
   <!-- <h2>{{data.titulo}}     Junio</h2> -->
   <div class="titulo">
     <h2>{{data.titulo}}</h2>
@@ -34,6 +34,14 @@
 </div>
 
 <div *ngIf="!mostrarGraficos && !loading">
-  <app-tabla-jefes (regresar)="eventoMostrarGraficos()" [idFinantienda]="this.data.id + ''" [data]="asesores" [columnas]="columnas"
-    [headers]="headers" [titulo]="this.data.titulo" [fondoBase]="this.data.data_color"></app-tabla-jefes>
+  <app-tabla-jefes
+    [idFinantienda]="this.data.id + ''"
+    [fechaInicial]="data.fecha"
+    [data]="asesores"
+    [columnas]="columnas"
+    [headers]="headers"
+    [titulo]="this.data.titulo"
+    [fondoBase]="this.data.data_color"
+    (regresar)="eventoMostrarGraficos()" 
+    ></app-tabla-jefes>
 </div>

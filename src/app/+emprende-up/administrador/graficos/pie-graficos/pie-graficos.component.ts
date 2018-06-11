@@ -32,6 +32,7 @@ export class PieGraficosComponent extends PieGrafico implements OnInit {
       data_percent: 1,
       data_color: 'grafico_color',
       titulo: 'Prueba',
+      fecha: {},
       id: '1',
       font_size: 12,
       tipo: 'activadas'
@@ -68,11 +69,11 @@ export class PieGraficosComponent extends PieGrafico implements OnInit {
     this.graficos = new Array<PieGrafico>();
     this.calcularTamanioGrafico();
     // this.loading = false;
-    this.graficoSvr.obtenerGrafico().then(() => {
+    this.graficoSvr.obtenerGrafico(window.localStorage.getItem('finantiendaId')).then(() => {
       console.log('Graficos:' + JSON.stringify(this.graficoSvr.graficos));
       console.log('Asesores:' + JSON.stringify(this.graficoSvr.results));
       this.asesores = this.graficoSvr.asesoresEntregadas;
-      this.asesores = this.graficoSvr.asesoresEntregadas;
+      // this.asesores = this.graficoSvr.asesoresEntregadas;
       this.finantiendas = this.graficoSvr.graficos;
       this.fillPieGrafico();
       this.loading = false;
@@ -85,14 +86,16 @@ export class PieGraficosComponent extends PieGrafico implements OnInit {
     // console.log('Asesores:' + JSON.stringify(this.asesores));
     for (let index = 0; index < this.finantiendas.length; index++) {
       const finantienda = this.finantiendas[index];
+      console.log('Finantienda:' + JSON.stringify(finantienda));
       this.data.titulo = finantienda['finantiendaNombre'];
       const grafico = new PieGrafico({
         data_size: this.data.data_size,
         data_pie_size: this.data.data_pie_size,
         data_percent: finantienda['porcentajeTotal'],
-        data_color: 'grafico_' + finantienda['finantiendaNombre'] + '_color',
+        data_color: 'grafico_tarjetas_color',
         titulo: finantienda['finantiendaNombre'],
         id: finantienda['finantiendaId'],
+        fecha: finantienda['fecha'],
         font_size: this.data.font_size,
         tipo: finantienda['tipo']
       });
@@ -108,6 +111,7 @@ export class PieGraficosComponent extends PieGrafico implements OnInit {
     this.data.titulo = event.titulo;
     this.data.data_color = event.data_color;
     this.data.tipo = event.tipo;
+    this.data.fecha = event.fecha;  
     if (this.data.tipo === 'Activadas') {
       this.asesores = this.graficoSvr.asesoresActivadas;
       this.columnas = [

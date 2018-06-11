@@ -17,6 +17,7 @@ export class TablaJefesComponent extends Datatabla implements OnInit, AfterConte
   @Input() idFinantienda = '1';
   @Output() regresar: EventEmitter<any>;
   @Input() data: JefesInterface[] = [];
+  @Input() fechaInicial: any = new Date();
   fechas: any = null;
   finantiendaId = '029';
   nombreJefe = '';
@@ -57,15 +58,19 @@ export class TablaJefesComponent extends Datatabla implements OnInit, AfterConte
   }
 
   pintarTabla() {
-    this.temp_var = false;
+    setTimeout(() => {
+      this.temp_var = false;
+    }, 0);
     console.log('Tipo Reporte: ' + this.tipo_reporte);
     console.log('Finantienda:' + this.idFinantienda);
     this.jefesDataService.mostrarJefes(this.tipo_reporte, this.idFinantienda, this.fechas).then(
       () => {
         this.data = this.jefesDataService.data;
         // console.log('Data:' + JSON.stringify(this.data));
-        this.temp_var = true;
-        this.renderizando = false;
+        setTimeout(() => {
+          this.temp_var = true;
+          this.renderizando = false;
+        }, 0);
       }
     );
   }
@@ -74,8 +79,10 @@ export class TablaJefesComponent extends Datatabla implements OnInit, AfterConte
     console.log('Data:' + JSON.stringify(this.data));
     if (this.data) {
       if (this.data.length > 0) {
-        this.temp_var = true;
-        this.renderizando = false;
+        setTimeout(() => {
+          this.temp_var = true;
+          this.renderizando = false;
+        }, 0);
       }
     } else {
       this.pintarTabla();

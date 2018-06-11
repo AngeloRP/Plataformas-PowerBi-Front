@@ -5,8 +5,9 @@
           </button>
           <h1>{{titulo}}</h1>
     </div>
-    <app-opciones-nav  ></app-opciones-nav>
+    <app-opciones-nav ></app-opciones-nav>
     <app-filtro-fechas
+    [fecha]="fechaInicial"
     [tipoReporte]="tipo_reporte"
     (cambioEnFechas)="actualizacionEnFechas($event)"
     >

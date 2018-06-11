@@ -1,5 +1,5 @@
 import { Component, OnInit  } from '@angular/core';
-import { FiltrosService } from '../filtros/filtros.service';
+import { FiltrosService } from '../filtros.service';
 
 @Component({
   selector: 'app-buscador',

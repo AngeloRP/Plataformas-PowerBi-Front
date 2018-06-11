@@ -8,8 +8,8 @@ import { TipoReporte } from 'app/enums/tipo_reporte.enum';
 })
 export class FiltroFechasComponent implements OnInit {
   @Input() tipoReporte: TipoReporte;
+  @Input() fecha: any = new Date();
   @Output() cambioEnFechas: EventEmitter<any>;
-  fecha: any;
   loading = true;
   constructor() {
     this.cambioEnFechas = new EventEmitter<any>();

@@ -1,8 +1,20 @@
-<div id="fechas_rango">
+<!--<div id="fechas_rango">
   <div class="col-xs-6">
     <app-selector-dia (fechaCambio)="capturarFechaInicio($event)"></app-selector-dia>
   </div>
   <div class="col-xs-6">
     <app-selector-dia (fechaCambio)="capturarFechaFin($event)"></app-selector-dia>
+  </div>
+</div>-->
+<div class="row">
+  <div class="col-xs-12 col-12 col-md-4 ">
+    <input class="form-control"
+    #drp="bsDaterangepicker"
+    bsDaterangepicker
+    [bsConfig]="bsConfig"
+    [maxDate]="maxDate"
+    [(ngModel)]="bsRangeValue"
+    (bsValueChange)="cambiarFecha($event)"
+    >
   </div>
 </div>

@@ -39,7 +39,7 @@
 .login_header img {
     margin-right: auto;
     margin-left: auto;
-    margin-bottom: 25%;
+    
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
@@ -60,6 +60,7 @@
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     margin-top: 25%;
+    margin-bottom: 25%;
     /*::before{
         content: "";
         display: block;

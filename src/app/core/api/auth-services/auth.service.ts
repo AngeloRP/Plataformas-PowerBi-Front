@@ -12,14 +12,15 @@ export class AuthService extends ApiService {
     private router: Router
   ) {
     super(http, [], notificationService);
-    this.webAddress.addUrl('loginUsuario');
+    this.webAddress.addUrl('login');
   }
 
   login(body: { email: string, password: string }): Promise<void> {
     return this.postData(body, true).then(() => {
-      window.localStorage.setItem('email', this.results.email);
-      window.localStorage.setItem('userInformation', this.results.name);
-      window.localStorage.setItem('category', this.results.category);
+      window.localStorage.setItem('DNI', this.results.DNI);
+      // window.localStorage.setItem('userInformation', this.results.name);
+      window.localStorage.setItem('finantiendaId', '029');
+      // window.localStorage.setItem('category', this.results.category);
       this.router.navigate(['/']);
     }).catch(
       error => {

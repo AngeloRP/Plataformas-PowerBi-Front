@@ -34,6 +34,7 @@
         "css/position.css",
         "css/styles.css",
         "css/width.css",
+        "../node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
         "../node_modules/datatables.net-fixedcolumns-dt/css/fixedColumns.dataTables.min.css",
         "../node_modules/datatables.net-dt/css/jquery.dataTables.css"
       ],

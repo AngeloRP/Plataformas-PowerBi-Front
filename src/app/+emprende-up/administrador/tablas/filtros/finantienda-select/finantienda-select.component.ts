@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FinantiendaInterface } from '../../../../core/api/finantiendas-services/finantienda/finantienda.interface';
 import { IMultiSelectSettings } from 'angular-2-dropdown-multiselect';
-import { FinantiendasService } from '../../../../core/api/finantiendas-services/finantiendas.service';
+import { FinantiendasService } from '../../../../../core/api/finantiendas-services/finantiendas.service';
 
 @Component({
   selector: 'app-finantienda-select',

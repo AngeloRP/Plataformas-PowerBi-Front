@@ -5,10 +5,11 @@ import { SelectorRangoComponent } from './selector-rango/selector-rango.componen
 import { FormsModule } from '@angular/forms';
 import { SmartadminInputModule } from '../../../shared/forms/input/smartadmin-input.module';
 import { FiltroFechasComponent } from './filtro-fechas/filtro-fechas.component';
-import { DatepickerModule } from 'ngx-bootstrap';
+// import { DatepickerModule } from 'ngx-bootstrap';
+import { BsDatepickerModule } from 'ngx-bootstrap';
 @NgModule({
   imports: [
-    DatepickerModule.forRoot(),
+    BsDatepickerModule.forRoot(),
     CommonModule,
     FormsModule,
     SmartadminInputModule

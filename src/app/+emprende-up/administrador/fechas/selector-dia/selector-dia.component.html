@@ -10,9 +10,15 @@
   <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
 </div>-->
 
-<datepicker
-[(ngModel)]="dt"
-[minDate]="minDate"
-[showWeeks]="true"
-[dateDisabled]="dateDisabled">
-</datepicker>
+<div class="container-fluid">
+  <input type="text" style="background-color: white"
+  placeholder="Datepicker"
+  class="form-control"
+  bsDatepicker
+  [maxDate]="defaultDate"
+  [bsConfig]="bsConfig"
+  [ngModel]="fecha"
+  (bsValueChange)="cambiarFecha($event)"
+  >
+</div>
+
