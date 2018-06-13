@@ -38,7 +38,7 @@ export const routes: Routes = [
       },*/
       {
         path: 'administrador', loadChildren: 'app/+emprende-up/administrador/administrador.module#AdministradorModule',
-        data: { pageTitle: 'Home Administrador' } , canActivate: [AdministradorActiveGuard]
+        data: { pageTitle: 'Home Administrador' }// , canActivate: [AdministradorActiveGuard]
       }
     ],
 

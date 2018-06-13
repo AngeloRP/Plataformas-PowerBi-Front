@@ -24,11 +24,11 @@ export class PieGraficosService extends ApiService {
 
   obtenerGraficoEntregadas(finantiendaId: string = '029', fechaInicio: string = null, fechaFinal: string = null): Promise<void> {
     // obtenerTarjetas(finantiendaId: number = 1): Promise<void> {
-    this.webAddress.setUlimo('tcEntregadasDiario/' + finantiendaId + '/' + fechaInicio );
+    this.webAddress.setUlimo('tcEntregadasDiario/' + finantiendaId + '/' + fechaInicio);
     console.log('URL:' + this.webAddress.getUrl());
     return this.getData(false).then(
       (resultado) => {
-        console.log('Consiguio entregadas:' + JSON.stringify(this.results));
+        console.log('Consiguio entregadas:' + JSON.stringify(resultado));
         this.asesoresEntregadas = [];
         this.asesoresEntregadas = this.results;
         if (resultado !== undefined) {
@@ -39,7 +39,7 @@ export class PieGraficosService extends ApiService {
               porcentajeTotal: resultado.porcentajeTotal,
               finantiendaNombre: resultado.finantiendaDatos.finantiendaNombre,
               finantiendaId: resultado.finantiendaDatos.finantiendaId,
-              fecha: resultado.finantiendaDatos.fecha,
+              fecha: this.results[0]['fecha'],
               tipo: 'Entregadas'
             });
           }
@@ -49,20 +49,30 @@ export class PieGraficosService extends ApiService {
             porcentajeTotal: 20,
             finantiendaNombre: 'Prueba',
             finantiendaId: '029',
-            fecha: '',
+            fecha: '2018-06-10',
             tipo: 'Entregadas'
           });
         }
+      }
+    ).catch(
+      error => {
+        this.graficos.push({
+          porcentajeTotal: 20,
+          finantiendaNombre: 'Prueba',
+          finantiendaId: '029',
+          fecha: '2018-06-10',
+          tipo: 'Entregadas'
+        });
       }
     );
   }
 
   obtenerGraficoActivados(finantiendaId: string = '029', fechaInicio: string = null, fechaFinal: string = null): Promise<void> {
     // obtenerTarjetas(finantiendaId: number = 1): Promise<void> {
-    this.webAddress.setUlimo('tcActivadasDiario/' + finantiendaId + '/' + fechaInicio );
+    this.webAddress.setUlimo('tcActivadasDiario/' + finantiendaId + '/' + fechaInicio);
     return this.getData(false).then(
       (resultado) => {
-        console.log('Consiguio activadas:' + JSON.stringify(this.results));
+        console.log('Consiguio activadas:' + JSON.stringify(resultado));
         this.asesoresActivadas = [];
         if (this.results === undefined) {
           this.asesoresActivadas = this.results;
@@ -86,7 +96,7 @@ export class PieGraficosService extends ApiService {
               porcentajeTotal: resultado.porcentajeTotal,
               finantiendaNombre: resultado.finantiendaDatos.finantiendaNombre,
               finantiendaId: resultado.finantiendaDatos.finantiendaId,
-              fecha: resultado.finantiendaDatos.fecha,
+              fecha: resultado['rpta'][0]['fecha'],
               tipo: 'Activadas'
             });
           }
@@ -96,10 +106,20 @@ export class PieGraficosService extends ApiService {
             porcentajeTotal: 20,
             finantiendaNombre: 'Prueba',
             finantiendaId: '029',
-            fecha: '',
+            fecha: '2018-06-10',
             tipo: 'Activadas'
           });
         }
+      }
+    ).catch(
+      error => {
+        this.graficos.push({
+          porcentajeTotal: 20,
+          finantiendaNombre: 'Prueba',
+          finantiendaId: '029',
+          fecha: '2018-06-10',
+          tipo: 'Entregadas'
+        });
       }
     );
   }

@@ -10,7 +10,7 @@
   <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
 </div>-->
 
-<div class="container-fluid">
+<div class="container-fluid" *ngIf="!loading">
   <input type="text" style="background-color: white"
   placeholder="Datepicker"
   class="form-control"

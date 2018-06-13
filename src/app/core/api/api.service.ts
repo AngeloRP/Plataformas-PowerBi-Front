@@ -102,7 +102,7 @@ export class ApiService extends EndPointService {
             return resultados.data;
           } else {
             this.results = null;
-            if (resultados.data.msg !== undefined) {
+            /*if (resultados.data.msg !== undefined) {
               this.notificationService.bigBox(
                 {
                   title: resultados.data.msg,
@@ -111,7 +111,7 @@ export class ApiService extends EndPointService {
                   timeout: 5000
                 }
               );
-            }
+            }*/
           }
         } else {
           this.results = null;

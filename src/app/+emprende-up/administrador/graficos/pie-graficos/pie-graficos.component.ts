@@ -69,7 +69,11 @@ export class PieGraficosComponent extends PieGrafico implements OnInit {
     this.graficos = new Array<PieGrafico>();
     this.calcularTamanioGrafico();
     // this.loading = false;
-    this.graficoSvr.obtenerGrafico(window.localStorage.getItem('finantiendaId')).then(() => {
+    let finantiendaId = '029';
+    if (window.localStorage.getItem('finantiendaId')) {
+      finantiendaId = window.localStorage.getItem('finantiendaId');
+    }
+    this.graficoSvr.obtenerGrafico(finantiendaId).then(() => {
       console.log('Graficos:' + JSON.stringify(this.graficoSvr.graficos));
       console.log('Asesores:' + JSON.stringify(this.graficoSvr.results));
       this.asesores = this.graficoSvr.asesoresEntregadas;
@@ -88,6 +92,7 @@ export class PieGraficosComponent extends PieGrafico implements OnInit {
       const finantienda = this.finantiendas[index];
       console.log('Finantienda:' + JSON.stringify(finantienda));
       this.data.titulo = finantienda['finantiendaNombre'];
+      this.data.fecha = finantienda['fecha'];
       const grafico = new PieGrafico({
         data_size: this.data.data_size,
         data_pie_size: this.data.data_pie_size,
@@ -111,7 +116,7 @@ export class PieGraficosComponent extends PieGrafico implements OnInit {
     this.data.titulo = event.titulo;
     this.data.data_color = event.data_color;
     this.data.tipo = event.tipo;
-    this.data.fecha = event.fecha;  
+    this.data.fecha = event.fecha;
     if (this.data.tipo === 'Activadas') {
       this.asesores = this.graficoSvr.asesoresActivadas;
       this.columnas = [

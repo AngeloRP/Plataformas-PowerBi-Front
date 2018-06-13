@@ -29,7 +29,7 @@ export class FinantiendaSelectComponent implements OnInit {
   ngOnInit() {
     this.finantiendaSvr.obtenerFinantiendas().then(
       () => {
-        console.log(':0');
+        console.log('Consiguio Finantiendas');
         // this.finantiendas = this.finantiendaSvr.finantiendas;
         this.loading = false;
         // this.finantiendaSeleccionada = this.fina

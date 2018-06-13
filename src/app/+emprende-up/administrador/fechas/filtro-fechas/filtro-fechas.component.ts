@@ -18,6 +18,7 @@ export class FiltroFechasComponent implements OnInit {
   ngOnInit() {
     // console.log('Tipo Reporte:' + this.tipoReporte);
     this.loading = false;
+    console.log('Fecha:' + JSON.stringify(this.fecha));
   }
 
   retornarFecha(event) {

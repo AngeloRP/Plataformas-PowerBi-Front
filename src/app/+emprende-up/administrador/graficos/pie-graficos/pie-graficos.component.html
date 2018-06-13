@@ -2,7 +2,7 @@
   <!-- <h2>{{data.titulo}}     Junio</h2> -->
   <div class="titulo">
     <h2>{{data.titulo}}</h2>
-    <h2>Junio</h2>
+    <h2>{{data.fecha}}</h2>
   </div>
   <div *ngFor="let grafico of graficos;let i=index;">
     <app-pie-grafico [data]="grafico.data" (regresar)="haciaTablaJefes($event)"></app-pie-grafico>

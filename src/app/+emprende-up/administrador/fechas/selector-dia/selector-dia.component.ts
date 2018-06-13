@@ -19,6 +19,8 @@ export class SelectorDiaComponent extends SelectorFecha implements OnInit {
     // onSelectCallbacks.push((selectedDate) => {
     // console.log('Select Component Date:' + JSON.stringify(selectedDate));
     // });
+    console.log('Fecha final:' + JSON.stringify(this.fecha));
+    this.loading = false;
   }
 
   submitForm(event) {
@@ -26,6 +28,7 @@ export class SelectorDiaComponent extends SelectorFecha implements OnInit {
   }
 
   cambiarFecha(fecha: Date) {
+    console.log('Loading:'  + this.loading);
     console.log('Fecha: ' + JSON.stringify(fecha));
     console.log('nuevaFecha:' + JSON.stringify(fecha));
     if (fecha === null) {

@@ -2,6 +2,7 @@ import { EventEmitter, Output } from '@angular/core';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 export class SelectorFecha {
     @Output() fechaCambio: EventEmitter<any>;
+    loading = true;
     // bsConfig: Partial<BsDatepickerConfig> = new BsDatepickerConfig();
     constructor(bsConfig: BsDatepickerConfig) {
         this.fechaCambio = new EventEmitter<any>();
