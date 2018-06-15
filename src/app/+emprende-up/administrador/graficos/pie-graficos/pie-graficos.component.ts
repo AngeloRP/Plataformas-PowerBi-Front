@@ -21,6 +21,7 @@ export class PieGraficosComponent extends PieGrafico implements OnInit {
   mostrarGraficos = true;
   loading = true;
   finantiendas: any;
+  fecha: any;
 
   constructor(
     private http: Http,
@@ -92,7 +93,9 @@ export class PieGraficosComponent extends PieGrafico implements OnInit {
       const finantienda = this.finantiendas[index];
       console.log('Finantienda:' + JSON.stringify(finantienda));
       this.data.titulo = finantienda['finantiendaNombre'];
-      this.data.fecha = finantienda['fecha'];
+      this.data.fecha = finantienda['fecha'] + '';
+      const array = this.data.fecha.split('-');
+      this.fecha = array[2] + '/' + array[1] + '/' + array[0];
       const grafico = new PieGrafico({
         data_size: this.data.data_size,
         data_pie_size: this.data.data_pie_size,
