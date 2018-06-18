@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
+import { Component, OnInit, HostListener, OnDestroy, ViewEncapsulation } from '@angular/core';
 // import { ApiService } from '../../../../core/api/api.service';
 import { Http } from '@angular/http';
 import { PieGrafico } from '../pie-grafico';
@@ -7,7 +7,8 @@ import { PieGraficosService } from '../../../../core/api/graficos-services/pie-g
 @Component({
   selector: 'app-pie-graficos',
   templateUrl: './pie-graficos.component.html',
-  styleUrls: ['./pie-graficos.component.css']
+  styleUrls: ['./pie-graficos.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class PieGraficosComponent extends PieGrafico implements OnInit {
   // tarjetas: PieGrafico;
@@ -19,25 +20,23 @@ export class PieGraficosComponent extends PieGrafico implements OnInit {
   graficos: Array<PieGrafico>;
   asesores: any[] = [];
   mostrarGraficos = true;
-  loading = true;
   finantiendas: any;
-  fecha: any;
-
   constructor(
     private http: Http,
     private graficoSvr: PieGraficosService
   ) {
-    super({
+    super();
+    this.data = {
       data_size: 1,
       data_pie_size: 1,
       data_percent: 1,
-      data_color: 'grafico_color',
+      data_color: 'grafico_tarjetas_color',
       titulo: 'Prueba',
       fecha: {},
       id: '1',
       font_size: 12,
       tipo: 'activadas'
-    });
+    }
     this.graficos = new Array<PieGrafico>();
     // this.tarjetas = new PieGrafico();
     // this.servicios = new PieGrafico();
@@ -47,23 +46,6 @@ export class PieGraficosComponent extends PieGrafico implements OnInit {
 
   ngOnInit() {
     this.render();
-  }
-
-  private calcularTamanioGrafico() {
-    const width = window.innerWidth;
-    // console.log('Width:' + width);
-    if (width >= 1200) {
-      this.data.data_size = (width - 300) / 6;
-    } else if (width > 992) {
-      this.data.data_size = (width - 140) / 3;
-    } else {
-      this.data.data_size = (width - 140) / 2;
-    }
-    this.data.data_pie_size = this.data.data_size - 10;
-    this.data.font_size = this.data.data_pie_size / 5;
-    // console.log('Data_size:' + this.data.data_size);
-    // console.log('Data_pie_size:' + this.data.data_pie_size);
-    // console.log('Font_size:' + this.data.font_size);
   }
 
   render() {
@@ -94,9 +76,9 @@ export class PieGraficosComponent extends PieGrafico implements OnInit {
       console.log('Finantienda:' + JSON.stringify(finantienda));
       this.data.titulo = finantienda['finantiendaNombre'];
       this.data.fecha = finantienda['fecha'] + '';
-      const array = this.data.fecha.split('-');
-      this.fecha = array[2] + '/' + array[1] + '/' + array[0];
-      const grafico = new PieGrafico({
+      this.darFormatoFecha();
+      const grafico = new PieGrafico();
+      grafico.fillPieGrafico({
         data_size: this.data.data_size,
         data_pie_size: this.data.data_pie_size,
         data_percent: finantienda['porcentajeTotal'],
@@ -156,6 +138,10 @@ export class PieGraficosComponent extends PieGrafico implements OnInit {
     this.mostrarGraficos = true;
     // console.log('Loading?:' + this.loading);
     this.render();
+  }
+
+  eventoRegresar() {
+    this.regresar.emit(true);
   }
 
   @HostListener('window:resize', ['$event'])

@@ -1,0 +1,19 @@
+.titulo {
+    display: inline-block;
+    width: 100%;
+    padding: 0px 15px;
+}
+
+.titulo h5:first-child {
+    float: left;
+    word-break: break-word;
+    max-width: 150px;
+}
+
+.titulo h5:last-child {
+    float: right;
+}
+
+h5 {
+    margin: 10px 0px;
+}

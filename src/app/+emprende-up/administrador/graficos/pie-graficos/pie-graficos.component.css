@@ -1,17 +1,23 @@
-#pie_graficos{
+#pie_graficos .opciones{
     /* margin-top: 15px; */
+   
 }
 
-.titulo {
-    display: inline-block;
-    width: 100%;
+.opciones {
+    display: inline-flex !important;
     padding: 0px 15px;
+    width: 100%;
 }
 
-.titulo h2:first-child {
-    float: left;
+app-extra-info-grafico {
+    width: 100%;
+    margin-top: 10px;
 }
 
-.titulo h2:last-child {
-    float: right;
+#pie_graficos .opciones app-extra-info-grafico .titulo {
+    padding: 0px !important;
 }
+
+
+
+

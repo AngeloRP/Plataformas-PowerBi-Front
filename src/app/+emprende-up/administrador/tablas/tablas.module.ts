@@ -12,6 +12,7 @@ import { OpcionesNavService } from './opciones-nav/opciones-nav.service';
 import { FechasModule } from '../fechas/fechas.module';
 import { TablaJefesServicesModule } from '../../../core/api/tablas-services/tabla-jefes-services/tabla-jefes-services.module';
 import { FiltrosModule } from './filtros/filtros.module';
+import { ExtraInfoModule } from '../extra-info-grafico/extra-info-grafico.module';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { FiltrosModule } from './filtros/filtros.module';
     FechasModule,
     FiltrosModule,
     TablaJefesServicesModule,
-    TablasServicesModule
+    TablasServicesModule,
+    ExtraInfoModule
   ],
   declarations: [
     TablaJefesComponent,

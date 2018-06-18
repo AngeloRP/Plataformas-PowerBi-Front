@@ -1,0 +1,18 @@
+<div
+    *ngIf="!loading && !mostrarGraficos"
+    class="{{data.data_color}}"
+>
+    <app-extra-info-grafico [data]="{
+      titulo: data.titulo,
+      fecha: fecha
+    }"></app-extra-info-grafico>
+    <app-pie-grafico
+        [data]="data"
+        (regresar)="haciaGraficos($event)"
+    ></app-pie-grafico>
+</div>
+
+<app-pie-graficos
+    *ngIf="!loading && mostrarGraficos"
+    (regresar)="mostrarGraficoPrincipal()"
+></app-pie-graficos>

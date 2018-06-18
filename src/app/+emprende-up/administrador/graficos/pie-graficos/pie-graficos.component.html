@@ -1,9 +1,15 @@
 <div *ngIf="mostrarGraficos && !loading" id="pie_graficos" class="grafico_tarjetas_color">
   <!-- <h2>{{data.titulo}}     Junio</h2> -->
-  <div class="titulo">
-    <h2>{{data.titulo}}</h2>
-    <h2>{{fecha}}</h2>
+  <div class="opciones">
+      <button class="boton_regresar btn " (click)="eventoRegresar()">
+          <i class="fa fa-arrow-left"></i>&nbsp;
+      </button>
+      <app-extra-info-grafico [data]="{
+        titulo: data.titulo,
+        fecha: fecha
+      }"></app-extra-info-grafico>
   </div>
+  
   <div *ngFor="let grafico of graficos;let i=index;">
     <app-pie-grafico [data]="grafico.data" (regresar)="haciaTablaJefes($event)"></app-pie-grafico>
   </div>
@@ -37,6 +43,7 @@
   <app-tabla-jefes
     [idFinantienda]="this.data.id + ''"
     [fechaInicial]="data.fecha"
+    [fecha]="fecha"
     [data]="asesores"
     [columnas]="columnas"
     [headers]="headers"

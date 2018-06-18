@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter, Output, AfterContentChecked, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, AfterContentChecked, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { Datatabla } from '../data_tabla';
 import { NotificationService } from '../../../../shared/utils/notification.service';
 import { FiltrosService } from '../filtros/filtros.service';
@@ -11,13 +11,15 @@ import { FinantiendasService } from '../../../../core/api/finantiendas-services/
 @Component({
   selector: 'app-tabla-jefes',
   templateUrl: './tabla-jefes.component.html',
-  styleUrls: ['./tabla-jefes.component.css']
+  styleUrls: ['./tabla-jefes.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class TablaJefesComponent extends Datatabla implements OnInit, AfterContentChecked, OnDestroy {
   @Input() idFinantienda = '1';
   @Output() regresar: EventEmitter<any>;
   @Input() data: JefesInterface[] = [];
   @Input() fechaInicial: any = new Date();
+  @Input() fecha: any = {};
   fechas: any = null;
   finantiendaId = '029';
   nombreJefe = '';

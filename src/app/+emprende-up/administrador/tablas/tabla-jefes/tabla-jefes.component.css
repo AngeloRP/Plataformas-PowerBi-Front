@@ -1,0 +1,14 @@
+app-finantienda-select {
+    left: -8px;
+    position: relative;
+    display: block;
+    width: calc(100% + 6px);
+}
+
+#tabla_info div app-extra-info-grafico .titulo{
+    padding: 0px !important;
+}
+/*h2 {
+    margin: 20px 0px 10px 0px;
+}*/
+

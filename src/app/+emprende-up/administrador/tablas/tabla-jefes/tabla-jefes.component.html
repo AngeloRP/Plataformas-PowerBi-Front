@@ -1,19 +1,23 @@
-<div *ngIf="mostrarJefes && !renderizando" class="col-xs-12" >
-    <div class="d_flex">
+<div *ngIf="mostrarJefes && !renderizando" class="col-xs-12" id="tabla_info" >
+    <div class="d_flex grafico_tarjetas_color">
         <button class="boton_regresar btn " (click)="eventoRegresar()">
             <i class="fa fa-arrow-left"></i>&nbsp;
           </button>
-          <h1>{{titulo}}</h1>
+          <app-extra-info-grafico [data]="{
+            titulo: titulo,
+            fecha: fecha
+          }"></app-extra-info-grafico>
     </div>
-    <app-opciones-nav ></app-opciones-nav>
-    <app-filtro-fechas
+    <!-- <app-opciones-nav ></app-opciones-nav> -->
+    <!--<app-filtro-fechas
     [fecha]="fechaInicial"
     [tipoReporte]="tipo_reporte"
     (cambioEnFechas)="actualizacionEnFechas($event)"
     >
-    </app-filtro-fechas>
+    </app-filtro-fechas>-->
     <!--<app-buscador  *ngIf="this.temp_var"></app-buscador>-->
-    <app-filtros ></app-filtros>
+    <!-- <app-filtros ></app-filtros> -->
+    <app-finantienda-select ></app-finantienda-select>
     <table *ngIf="this.temp_var"
     id="{{titulo}}"
     appTextColor

@@ -7,22 +7,10 @@ import { PieGrafico } from '../pie-grafico';
   styleUrls: ['./pie-grafico.component.css']
 })
 export class PieGraficoComponent extends PieGrafico implements OnInit {
-  @Output() regresar: EventEmitter<any>;
   fecha = 'Junio';
   mostrarGrafica = 'noMostrar';
   constructor() {
-    super({
-      data_size: 1,
-      data_pie_size: 1,
-      data_percent: 1,
-      data_color: 'grafico_color',
-      titulo: '',
-      id: '1',
-      fecha: new Date(),
-      font_size: 12,
-      tipo: ''
-    });
-    this.regresar = new EventEmitter<any>();
+    super();
   }
 
   ngOnInit() {
